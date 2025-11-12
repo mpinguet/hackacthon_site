@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultat - BioMarket Insights</title>
+    <link rel="stylesheet" href="resultat.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">🌱 BioMarket Insights</div>
+            <button class="export-btn" onclick="window.print()">📄 Exporter PDF</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Bannière d'état -->
+        <div id="statusBanner" class="status-banner">
+            <div class="status-icon">⏳</div>
+            <div class="status-text">
+                <h3>Analyse en cours...</h3>
+                <p>Notre IA traite vos données pour générer un rapport complet</p>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+
+        <!-- Métadonnées de l'étude -->
+        <div id="metadata" class="metadata-card" style="display:none;">
+            <div class="meta-header">
+                <h1>📊 Rapport d'Étude de Marché Bio</h1>
+                <div class="meta-badges">
+                    <span class="badge badge-primary" id="secteurBadge"></span>
+                    <span class="badge badge-secondary" id="regionBadge"></span>
+                    <span class="badge badge-success">✓ Conforme RGPD</span>
+                </div>
+            </div>
+            <div class="meta-info">
+                <div class="info-item">
+                    <span class="info-label">📅 Date de génération:</span>
+                    <span class="info-value" id="dateGeneration"></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">🎯 Objectif:</span>
+                    <span class="info-value" id="objectifValue"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenu principal -->
+        <div id="mainReport" style="display:none;">
+            <!-- Résumé Exécutif -->
+            <section class="report-section">
+                <div class="section-header">
+                    <h2>📋 Résumé Exécutif</h2>
+                    <span class="section-badge">Synthèse</span>
+                </div>
+                <div class="summary-box">
+                    <p id="summaryText"></p>
+                </div>
+            </section>
+
+            <!-- Indicateurs Clés -->
+            <section class="report-section">
+                <div class="section-header">
+                    <h2>📈 Indicateurs Clés du Marché</h2>
+                </div>
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon">💰</div>
+                        <div class="kpi-value" id="kpiMarche">—</div>
+                        <div class="kpi-label">Taille du marché</div>
+                        <div class="kpi-trend positive">↑ 12% vs 2024</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon">🏢</div>
+                        <div class="kpi-value" id="kpiActeurs">—</div>
+                        <div class="kpi-label">Acteurs identifiés</div>
+                        <div class="kpi-trend neutral">→ Stable</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon">📊</div>
+                        <div class="kpi-value" id="kpiCroissance">—</div>
+                        <div class="kpi-label">Croissance annuelle</div>
+                        <div class="kpi-trend positive">↑ Forte</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon">⭐</div>
+                        <div class="kpi-value" id="kpiPotentiel">—</div>
+                        <div class="kpi-label">Potentiel</div>
+                        <div class="kpi-trend positive">↑ Élevé</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Graphiques -->
+            <section class="report-section">
+                <div class="section-header">
+                    <h2>📊 Analyses Visuelles</h2>
+                </div>
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3>Répartition du Marché Bio</h3>
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Évolution de la Demande (2020-2025)</h3>
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Comparaison Segments</h3>
+                        <canvas id="barChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Parts de Marché Concurrents</h3>
+                        <canvas id="doughnutChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Points Clés -->
+            <section class="report-section">
+                <div class="section-header">
+                    <h2>💡 Points Clés de l'Analyse</h2>
+                </div>
+                <div class="points-list" id="pointsList"></div>
+            </section>
+
+            <!-- Acteurs du Marché -->
+            <section class="report-section">
+                <div class="section-header">
+                    <h2>🏢 Cartographie des Acteurs</h2>
+                </div>
+                <div class="actors-grid" id="actorsGrid"></div>
+            </section>
+
+            <!-- Recommandations -->
+            <section class="report-section">
+                <div class="section-header">
+                    <h2>✅ Recommandations Stratégiques</h2>
+                </div>
+                <div class="recommendations-list" id="recosList"></div>
+            </section>
+
+            <!-- Données Brutes -->
+            <section class="report-section">
+                <div class="section-header">
+                    <h2>🔍 Données Techniques</h2>
+                </div>
+                <details class="raw-data">
+                    <summary>Afficher les données brutes (JSON)</summary>
+                    <pre id="rawData"></pre>
+                </details>
+            </section>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 BioMarket Insights - Étude générée par IA | Conforme RGPD</p>
+    </footer>
+
+    <script src="resultat.js"></script>
+</body>
+</html>

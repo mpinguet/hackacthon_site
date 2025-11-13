@@ -491,6 +491,16 @@ body {
     line-height: 1.6;
 }
 
+.reco-comment {
+    margin-top: 0.75rem;
+    color: #3e6b2e;
+    font-style: italic;
+    background: rgba(124,179,66,0.06);
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
 /* ===========================
    RAW DATA
    =========================== */

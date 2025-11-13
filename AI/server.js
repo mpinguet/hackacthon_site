@@ -75,7 +75,13 @@ Réponds en JSON pur (sans markdown):
     "marche": "Taille du marché (ex: 250M€)",
     "acteurs": "Nombre d'acteurs (ex: 45)",
     "croissance": "Croissance annuelle (ex: +8.5%)",
-    "potentiel": "Potentiel (Élevé/Modéré/Faible)"
+    "potentiel": "Potentiel (Élevé/Modéré/Faible)",
+    "trends": {
+      "marche": "1 mot: Forte/Modérée/Faible/Stable",
+      "acteurs": "1 mot: Croissant/Stable/Décroissant",
+      "croissance": "1 mot: Explosive/Forte/Modérée/Faible",
+      "potentiel": "1 mot: Exceptionnel/Élevé/Modéré/Limité"
+    }
   },
   "keyPoints": [
     "Point clé 1 sur les tendances du marché",
@@ -103,11 +109,23 @@ Réponds en JSON pur (sans markdown):
   ],
   "chartData": {
     "marketShare": [45, 20, 15, 12, 8],
+    "marketShareLabels": ["Alimentaire", "Cosmétiques", "Textiles", "Bien-être", "Autres"],
     "evolution": [150, 180, 220, 280, 350, 420],
+    "evolutionLabels": ["2020", "2021", "2022", "2023", "2024", "2025"],
     "segments": [28, 22, 18, 17, 15],
-    "competitors": [30, 25, 20, 25]
+    "segmentsLabels": ["Fruits & Légumes", "Produits laitiers", "Viandes", "Céréales", "Boissons"],
+    "competitors": [30, 25, 20, 25],
+    "competitorsLabels": ["Leader A", "Leader B", "Leader C", "Autres"]
   }
-}`;
+}
+
+IMPORTANT: Utilise les données JSON pour calculer:
+- evolution: base-toi sur la croissance du département (ex: ${deptData ? deptData.croissance : '12%'}). Calcule 6 valeurs de 2020 à 2025 avec cette progression annuelle
+- segments: pour secteur alimentaire, utilise les spécialités du département ${deptData ? `(${deptData.specialites.join(', ')})` : ''}
+- competitors: prends les 3 premiers acteurs_nationaux du JSON avec leurs vraies parts de marché
+- marketShare: répartition des 5 secteurs du JSON (alimentaire, cosmétique, textile, bien-être, autres)
+
+Génère des VALEURS RÉALISTES et COHÉRENTES avec le département ${region}.`;
 
         console.log('🤖 Interrogation de Ollama...');
         
@@ -119,7 +137,7 @@ Réponds en JSON pur (sans markdown):
             temperature: 0.3,  // Plus bas = plus rapide et déterministe
             top_p: 0.8
         }, {
-            timeout: 15000 // 15 secondes timeout max
+            timeout: 10000 // 10 secondes timeout max
         });
         
         console.log('✅ Réponse reçue de Ollama');
@@ -173,6 +191,96 @@ Réponds en JSON pur (sans markdown):
 // FONCTION DE FALLBACK
 // ===========================
 
+// Fonction pour générer les données de graphiques basées sur le JSON
+function generateChartDataFromJson(secteur, region, deptData) {
+    const secteurs = donneesBio.secteurs;
+    
+    // 1. PARTS DE MARCHÉ PAR SECTEUR
+    const secteursKeys = Object.keys(secteurs);
+    const marketShareLabels = secteursKeys.map(key => secteurs[key]?.nom || key);
+    const marketShare = secteursKeys.map((key, index) => {
+        // Si c'est le secteur sélectionné, donner une part plus importante
+        const nomSecteur = secteurs[key]?.nom || '';
+        if (nomSecteur.toLowerCase().includes(secteur.toLowerCase())) {
+            return 35 + Math.random() * 15; // 35-50%
+        }
+        return 10 + Math.random() * 20; // 10-30%
+    });
+    
+    // 2. ÉVOLUTION TEMPORELLE (2020-2025)
+    const evolutionLabels = ["2020", "2021", "2022", "2023", "2024", "2025"];
+    // Base value varie selon la taille du marché du département
+    let baseValue = 100;
+    if (deptData && deptData.taille_marche) {
+        const tailleMatch = deptData.taille_marche.match(/(\d+)/);
+        if (tailleMatch) {
+            baseValue = parseInt(tailleMatch[0]) * 0.7; // 70% de la taille actuelle en 2020
+        }
+    }
+    const croissanceRate = deptData ? parseFloat(deptData.croissance) / 100 : 0.12;
+    const evolution = evolutionLabels.map((year, index) => {
+        const value = baseValue * Math.pow(1 + croissanceRate, index);
+        return Math.round(value);
+    });
+    
+    // 3. SEGMENTS DU SECTEUR SÉLECTIONNÉ
+    let segmentsLabels = ["Fruits & Légumes", "Produits laitiers", "Viandes", "Céréales", "Boissons"];
+    let segments = [28, 22, 18, 17, 15];
+    
+    // Adapter les segments selon le secteur
+    if (secteur.toLowerCase().includes('cosmétique')) {
+        segmentsLabels = ["Soins visage", "Soins corps", "Maquillage", "Parfums", "Cheveux"];
+        segments = [30, 25, 20, 15, 10];
+    } else if (secteur.toLowerCase().includes('textile')) {
+        segmentsLabels = ["Vêtements", "Accessoires", "Chaussures", "Linge maison", "Sport"];
+        segments = [35, 20, 18, 15, 12];
+    } else if (secteur.toLowerCase().includes('bien-être')) {
+        segmentsLabels = ["Compléments", "Thés & Infusions", "Huiles essentielles", "Aromathérapie", "Autres"];
+        segments = [28, 24, 20, 18, 10];
+    } else if (secteur.toLowerCase().includes('alimentaire') && deptData && deptData.specialites) {
+        // Utiliser les spécialités du département pour l'alimentaire
+        const specialites = deptData.specialites.slice(0, 4);
+        segmentsLabels = [...specialites, "Autres produits"];
+        // Donner plus de poids aux spécialités locales
+        segments = [32, 26, 20, 14, 8];
+    }
+    
+    // 4. CONCURRENTS PRINCIPAUX
+    const topActeurs = donneesBio.acteurs_nationaux.slice(0, 3);
+    const competitorsLabels = [...topActeurs.map(a => a.nom), "Autres"];
+    const competitors = [
+        ...topActeurs.map(a => parseFloat(a.part_marche)),
+        100 - topActeurs.reduce((sum, a) => sum + parseFloat(a.part_marche), 0)
+    ];
+    
+    return {
+        marketShare,
+        marketShareLabels,
+        evolution,
+        evolutionLabels,
+        segments,
+        segmentsLabels,
+        competitors,
+        competitorsLabels
+    };
+}
+
+// Fonction pour déterminer la tendance en 1 mot basée sur les données
+function determineTrend(value, type) {
+    if (type === 'croissance') {
+        const num = parseFloat(value);
+        if (num >= 15) return 'Explosive';
+        if (num >= 10) return 'Forte';
+        if (num >= 5) return 'Modérée';
+        return 'Faible';
+    } else if (type === 'acteurs') {
+        if (value > 300) return 'Croissant';
+        if (value > 150) return 'Dynamique';
+        return 'Stable';
+    }
+    return 'Modérée';
+}
+
 function generateFallbackData(secteur, region, objectif) {
     // Utiliser les données JSON si disponibles
     const deptData = donneesBio.departements[region];
@@ -183,12 +291,24 @@ function generateFallbackData(secteur, region, objectif) {
         marche: deptData.taille_marche,
         acteurs: deptData.nb_operateurs_bio_total,
         croissance: deptData.croissance,
-        potentiel: deptData.potentiel
+        potentiel: deptData.potentiel,
+        trends: {
+            marche: determineTrend(deptData.croissance, 'croissance'),
+            acteurs: determineTrend(deptData.nb_operateurs_bio_total, 'acteurs'),
+            croissance: determineTrend(deptData.croissance, 'croissance'),
+            potentiel: deptData.potentiel === 'Très Élevé' ? 'Exceptionnel' : deptData.potentiel
+        }
     } : {
         marche: Math.floor(Math.random() * 500 + 200) + 'M€',
         acteurs: Math.floor(Math.random() * 50 + 30),
         croissance: '+' + (Math.random() * 10 + 5).toFixed(1) + '%',
-        potentiel: ['Élevé', 'Très Élevé', 'Modéré'][Math.floor(Math.random() * 3)]
+        potentiel: ['Élevé', 'Très Élevé', 'Modéré'][Math.floor(Math.random() * 3)],
+        trends: {
+            marche: 'Forte',
+            acteurs: 'Croissant',
+            croissance: 'Forte',
+            potentiel: 'Élevé'
+        }
     };
     
     // Résumé basé sur les données
@@ -237,12 +357,7 @@ function generateFallbackData(secteur, region, objectif) {
                 desc: 'Mettre en place une veille concurrentielle régulière avec BioMarket Insights pour ajuster la stratégie en temps réel.'
             }
         ],
-        chartData: {
-            marketShare: [45, 20, 15, 12, 8],
-            evolution: [150, 180, 220, 280, 350, 420],
-            segments: [28, 22, 18, 17, 15],
-            competitors: [30, 25, 20, 25]
-        },
+        chartData: generateChartDataFromJson(secteur, region, deptData),
         metadata: {
             secteur,
             region,

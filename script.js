@@ -2,13 +2,20 @@
 // FORM SUBMISSION HANDLER
 // ===========================
 
+
 document.getElementById('marketForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
     // Récupération des valeurs du formulaire
     const secteur = document.getElementById('secteur').value;
+    let secteurGlobal = document.getElementById('secteur').value;
+    localStorage.setItem('secteurGlobal', secteurGlobal);
     const region = document.getElementById('region').value;
+    let regionGlobale = document.getElementById('region').value;
+    localStorage.setItem('regionGlobale', regionGlobale);
     const objectif = document.getElementById('objectif').value;
+    let objectiGlobale = document.getElementById('objectif').value;
+    localStorage.setItem('objectifGlobale', objectiGlobale);
     
     // Validation et affichage des résultats
     if(secteur && region && objectif) {

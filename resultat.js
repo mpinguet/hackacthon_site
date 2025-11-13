@@ -117,6 +117,14 @@ function generateReport() {
     document.getElementById('kpiCroissance').textContent = aiData.kpis.croissance;
     document.getElementById('kpiPotentiel').textContent = aiData.kpis.potentiel;
     
+    // Tendances KPI depuis l'IA
+    if (aiData.kpis.trends) {
+        updateKpiTrend('kpiTrendMarche', aiData.kpis.trends.marche);
+        updateKpiTrend('kpiTrendActeurs', aiData.kpis.trends.acteurs);
+        updateKpiTrend('kpiTrendCroissance', aiData.kpis.trends.croissance);
+        updateKpiTrend('kpiTrendPotentiel', aiData.kpis.trends.potentiel);
+    }
+    
     // Générer les graphiques avec les données de l'IA
     generateCharts();
     
@@ -146,12 +154,12 @@ function generateCharts() {
         competitors: [30, 25, 20, 25]
     };
     
-    // Graphique en camembert - Répartition du marché
+    // Graphique en camembert - Parts de marché
     const pieCtx = document.getElementById('pieChart').getContext('2d');
     new Chart(pieCtx, {
         type: 'pie',
         data: {
-            labels: ['Alimentaire', 'Cosmétiques', 'Textiles', 'Bien-être', 'Autres'],
+            labels: chartData.marketShareLabels || ['Alimentaire', 'Cosmétiques', 'Textiles', 'Bien-être', 'Autres'],
             datasets: [{
                 data: chartData.marketShare,
                 backgroundColor: [
@@ -178,7 +186,7 @@ function generateCharts() {
     new Chart(lineCtx, {
         type: 'line',
         data: {
-            labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
+            labels: chartData.evolutionLabels || ['2020', '2021', '2022', '2023', '2024', '2025'],
             datasets: [{
                 label: 'Demande (en millions €)',
                 data: chartData.evolution,
@@ -208,7 +216,7 @@ function generateCharts() {
     new Chart(barCtx, {
         type: 'bar',
         data: {
-            labels: ['Fruits & Légumes', 'Produits laitiers', 'Viandes', 'Céréales', 'Boissons'],
+            labels: chartData.segmentsLabels || ['Fruits & Légumes', 'Produits laitiers', 'Viandes', 'Céréales', 'Boissons'],
             datasets: [{
                 label: 'Parts de marché (%)',
                 data: chartData.segments,
@@ -242,7 +250,7 @@ function generateCharts() {
     new Chart(doughnutCtx, {
         type: 'doughnut',
         data: {
-            labels: ['Leader A', 'Leader B', 'Leader C', 'Autres'],
+            labels: chartData.competitorsLabels || ['Leader A', 'Leader B', 'Leader C', 'Autres'],
             datasets: [{
                 data: chartData.competitors,
                 backgroundColor: [
@@ -439,6 +447,42 @@ function generateRecommendations() {
         `;
         recosList.appendChild(div);
     });
+}
+
+// ===========================
+// FONCTION POUR METTRE À JOUR LES TENDANCES KPI
+// ===========================
+
+function updateKpiTrend(elementId, trendText) {
+    const element = document.getElementById(elementId);
+    if (!element) return;
+    
+    // Déterminer l'icône et la classe CSS selon le mot
+    let icon = '→';
+    let cssClass = 'neutral';
+    const lowerText = trendText.toLowerCase();
+    
+    // Tendances positives
+    if (lowerText.includes('explos') || lowerText.includes('forte') || 
+        lowerText.includes('élevé') || lowerText.includes('excep') || 
+        lowerText.includes('croiss') || lowerText.includes('dynami')) {
+        icon = '↑';
+        cssClass = 'positive';
+    }
+    // Tendances négatives
+    else if (lowerText.includes('faible') || lowerText.includes('limit') || 
+             lowerText.includes('décroiss') || lowerText.includes('baisse')) {
+        icon = '↓';
+        cssClass = 'negative';
+    }
+    // Tendances neutres (stable, modéré)
+    else {
+        icon = '→';
+        cssClass = 'neutral';
+    }
+    
+    element.textContent = `${icon} ${trendText}`;
+    element.className = `kpi-trend ${cssClass}`;
 }
 
 // ===========================

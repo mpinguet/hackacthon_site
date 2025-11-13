@@ -243,12 +243,12 @@ Réponds en JSON pur (sans markdown):
     {"name": "Nom acteur 6", "type": "Type", "market": "7%", "growth": "+9%"}
   ],
   "recommendations": [
-    {"title": "Titre recommandation 1", "desc": "Description détaillée"},
-    {"title": "Titre recommandation 2", "desc": "Description détaillée"},
-    {"title": "Titre recommandation 3", "desc": "Description détaillée"},
-    {"title": "Titre recommandation 4", "desc": "Description détaillée"},
-    {"title": "Titre recommandation 5", "desc": "Description détaillée"},
-    {"title": "Titre recommandation 6", "desc": "Description détaillée"}
+        {"title": "Titre recommandation 1", "desc": "Description détaillée", "comment": "Bref commentaire lié aux données du marché (1-2 phrases)"},
+        {"title": "Titre recommandation 2", "desc": "Description détaillée", "comment": "Bref commentaire lié aux données du marché (1-2 phrases)"},
+        {"title": "Titre recommandation 3", "desc": "Description détaillée", "comment": "Bref commentaire lié aux données du marché (1-2 phrases)"},
+        {"title": "Titre recommandation 4", "desc": "Description détaillée", "comment": "Bref commentaire lié aux données du marché (1-2 phrases)"},
+        {"title": "Titre recommandation 5", "desc": "Description détaillée", "comment": "Bref commentaire lié aux données du marché (1-2 phrases)"},
+        {"title": "Titre recommandation 6", "desc": "Description détaillée", "comment": "Bref commentaire lié aux données du marché (1-2 phrases)"}
   ],
   "chartData": {
     "marketShare": [45, 20, 15, 12, 8],
@@ -267,6 +267,8 @@ IMPORTANT: Utilise les données JSON pour calculer:
 - segments: pour secteur alimentaire, utilise les spécialités du département ${deptData ? `(${deptData.specialites.join(', ')})` : ''}
 - competitors: prends les 3 premiers acteurs_nationaux du JSON avec leurs vraies parts de marché
 - marketShare: répartition des 5 secteurs du JSON (alimentaire, cosmétique, textile, bien-être, autres)
+
+IMPORTANT: Pour CHAQUE recommandation renvoyée dans "recommendations", ajoute un champ string nommé "comment" (1-2 phrases) qui explique pourquoi cette recommandation est pertinente au regard des KPIs et des données du marché fournies. Le champ `comment` doit être concret et référencé aux données (ex: croissance, parts de marché, spécialités locales).
 
 Génère des VALEURS RÉALISTES et COHÉRENTES avec le département ${region}.`;
 
@@ -478,26 +480,38 @@ function generateFallbackData(secteur, region, objectif) {
             {
                 title: 'Positionnement Local et Authentique',
                 desc: 'Miser sur l\'origine locale des produits et la transparence de la chaîne de production pour créer une connexion émotionnelle avec les consommateurs.'
+            ,
+                comment: deptData ? `Dans ${region}, les spécialités locales (${deptData.specialites.join(', ')}) renforcent l\'intérêt des consommateurs pour l\'origine locale — c\'est un levier d\'acquisition et de différenciation.` : 'Valoriser l\'origine locale et la traçabilité pour renforcer la confiance des consommateurs.'
             },
             {
                 title: 'Digitalisation de la Distribution',
                 desc: 'Développer une présence e-commerce forte avec click & collect et livraison rapide pour capter la croissance du canal digital (+25% annuel).'
+            ,
+                comment: deptData ? `Le canal digital croît dans la région; une plateforme e-commerce optimisée permettra de capter les consommateurs urbains et d\'augmenter la fréquence d\'achat.` : 'Le canal digital progresse rapidement; investir dans une expérience en ligne est stratégique.'
             },
             {
                 title: 'Partenariats Stratégiques',
                 desc: 'Établir des alliances avec des producteurs locaux et des magasins spécialisés pour sécuriser l\'approvisionnement et la distribution.'
+            ,
+                comment: 'Des partenariats avec producteurs locaux et détaillants spécialisés réduisent les risques d\'approvisionnement et augmentent la résilience face aux acteurs intégrés.'
             },
             {
                 title: 'Communication sur les Certifications',
                 desc: 'Mettre en avant les labels bio, certifications et démarches environnementales pour rassurer et convaincre les consommateurs exigeants.'
+            ,
+                comment: 'Les labels (AB, Ecocert...) restent un critère clé : une communication claire sur ces certifications augmente la crédibilité et la conversion.'
             },
             {
                 title: 'Innovation Produit',
                 desc: `Développer des produits différenciants dans le segment "${secteur}" en répondant aux nouvelles attentes : zéro déchet, vrac, formats nomades.`
+            ,
+                comment: `L\'innovation (zéro déchet, vrac, formats nomades) permet souvent d\'obtenir une prime prix et de fidéliser une clientèle engagée sur le segment ${secteur}.`
             },
             {
                 title: 'Analyse Continue du Marché',
                 desc: 'Mettre en place une veille concurrentielle régulière avec BioMarket Insights pour ajuster la stratégie en temps réel.'
+            ,
+                comment: 'Le marché est dynamique; une veille régulière (KPIs, concurrents, tendances) permet d\'anticiper les ruptures et d\'adapter l\'offre rapidement.'
             }
         ],
         chartData: generateChartDataFromJson(secteur, region, deptData),

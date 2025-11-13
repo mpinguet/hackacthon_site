@@ -1,0 +1,352 @@
+{
+  "paris": [
+    {
+      "id": "PAR-001",
+      "nom": "Terres & Pains Bio",
+      "activite": "Distribution",
+      "categorie": "Grossistes",
+      "segments": ["Distribution alimentaire bio", "Boulangerie", "Circuit court"],
+      "ville": "Paris",
+      "quartier": "11e",
+      "code_postal": "75011",
+      "adresse": "21 rue Servan",
+      "latitude": 48.8612,
+      "longitude": 2.3826,
+      "labels": ["AB", "Demeter"],
+      "site": "https://terresetpainsbio.paris",
+      "contact": {
+        "email": "contact@terrespains.fr",
+        "telephone": "+33 1 84 00 11 55"
+      },
+      "date_mise_a_jour": "2024-10-14"
+    },
+    {
+      "id": "PAR-002",
+      "nom": "Cooperative Vert Mont",
+      "activite": "Distribution",
+      "categorie": "Plateforme logistique",
+      "segments": ["Distribution alimentaire bio", "Restauration collective"],
+      "ville": "Paris",
+      "quartier": "18e",
+      "code_postal": "75018",
+      "adresse": "6 rue Ordener",
+      "latitude": 48.892,
+      "longitude": 2.3451,
+      "labels": ["AB"],
+      "site": "https://vertmont.coop",
+      "contact": {
+        "email": "hello@vertmont.coop",
+        "telephone": "+33 1 53 41 07 07"
+      },
+      "date_mise_a_jour": "2024-09-05"
+    },
+    {
+      "id": "PAR-003",
+      "nom": "Marches Urbains Bio",
+      "activite": "Distribution",
+      "categorie": "Grossistes",
+      "segments": ["Distribution alimentaire bio", "Retail"],
+      "ville": "Paris",
+      "quartier": "5e",
+      "code_postal": "75005",
+      "adresse": "12 rue Monge",
+      "latitude": 48.845,
+      "longitude": 2.352,
+      "labels": ["AB", "BioEntreprise"],
+      "site": "https://mubio.fr",
+      "contact": {
+        "email": "sourcing@mubio.fr",
+        "telephone": "+33 1 45 11 32 10"
+      },
+      "date_mise_a_jour": "2024-11-02"
+    },
+    {
+      "id": "PAR-004",
+      "nom": "Seine Bio Logistique",
+      "activite": "Distribution",
+      "categorie": "Hub logistique",
+      "segments": ["Distribution alimentaire bio", "Click & collect"],
+      "ville": "Paris",
+      "quartier": "13e",
+      "code_postal": "75013",
+      "adresse": "90 boulevard Vincent Auriol",
+      "latitude": 48.8324,
+      "longitude": 2.3645,
+      "labels": ["AB", "ISO22000"],
+      "site": "https://seinebio-log.fr",
+      "contact": {
+        "email": "ops@seinebio-log.fr",
+        "telephone": "+33 1 40 77 68 48"
+      },
+      "date_mise_a_jour": "2024-07-20"
+    },
+    {
+      "id": "PAR-005",
+      "nom": "Rive Droite Primeurs",
+      "activite": "Distribution",
+      "categorie": "Artisans/commercants",
+      "segments": ["Distribution alimentaire bio", "Primeurs"],
+      "ville": "Paris",
+      "quartier": "3e",
+      "code_postal": "75003",
+      "adresse": "34 rue de Bretagne",
+      "latitude": 48.8622,
+      "longitude": 2.3616,
+      "labels": ["AB"],
+      "site": "https://rivedroiteprimeurs.fr",
+      "contact": {
+        "email": "hello@rivedroiteprimeurs.fr",
+        "telephone": "+33 9 72 56 34 12"
+      },
+      "date_mise_a_jour": "2024-08-11"
+    },
+    {
+      "id": "PAR-006",
+      "nom": "Plateforme Quartier Bio",
+      "activite": "Distribution",
+      "categorie": "Plateforme multi-enseignes",
+      "segments": ["Distribution alimentaire bio", "Restauration rapide"],
+      "ville": "Paris",
+      "quartier": "15e",
+      "code_postal": "75015",
+      "adresse": "115 rue de la Convention",
+      "latitude": 48.838,
+      "longitude": 2.2902,
+      "labels": ["AB", "BCorp"],
+      "site": "https://quartierbio.paris",
+      "contact": {
+        "email": "contact@quartierbio.paris",
+        "telephone": "+33 1 87 65 43 10"
+      },
+      "date_mise_a_jour": "2024-06-30"
+    }
+  ],
+  "lyon": [
+    {
+      "id": "LYO-001",
+      "nom": "Rhone Bio Distribution",
+      "activite": "Distribution",
+      "categorie": "Grossistes",
+      "segments": ["Distribution alimentaire bio", "Circuit court"],
+      "ville": "Lyon",
+      "quartier": "7e",
+      "code_postal": "69007",
+      "adresse": "24 rue Chevreul",
+      "latitude": 45.7482,
+      "longitude": 4.8389,
+      "labels": ["AB"],
+      "site": "https://rhonebiodistrib.fr",
+      "contact": {
+        "email": "contact@rhonebiodistrib.fr",
+        "telephone": "+33 4 28 29 10 40"
+      },
+      "date_mise_a_jour": "2024-09-28"
+    },
+    {
+      "id": "LYO-002",
+      "nom": "Les Halles Bio de la Croix-Rousse",
+      "activite": "Distribution",
+      "categorie": "Marches",
+      "segments": ["Distribution alimentaire bio", "Primeurs"],
+      "ville": "Lyon",
+      "quartier": "4e",
+      "code_postal": "69004",
+      "adresse": "8 rue du Mail",
+      "latitude": 45.776,
+      "longitude": 4.827,
+      "labels": ["AB"],
+      "site": "https://hallesbio-lyon.fr",
+      "contact": {
+        "email": "bonjour@hallesbio-lyon.fr",
+        "telephone": "+33 4 87 65 12 78"
+      },
+      "date_mise_a_jour": "2024-07-05"
+    },
+    {
+      "id": "LYO-003",
+      "nom": "Alpines & Co Distribution",
+      "activite": "Distribution",
+      "categorie": "Plateforme logistique",
+      "segments": ["Distribution alimentaire bio", "Restauration collective"],
+      "ville": "Lyon",
+      "quartier": "Vaulx-en-Velin",
+      "code_postal": "69120",
+      "adresse": "12 avenue Eugene Henaff",
+      "latitude": 45.769,
+      "longitude": 4.926,
+      "labels": ["AB", "LabelBioSud"],
+      "site": "https://alpinesandco.fr",
+      "contact": {
+        "email": "contact@alpinesandco.fr",
+        "telephone": "+33 4 37 42 14 00"
+      },
+      "date_mise_a_jour": "2024-10-08"
+    },
+    {
+      "id": "LYO-004",
+      "nom": "Grain de Folie Bio",
+      "activite": "Distribution",
+      "categorie": "Artisans/commercants",
+      "segments": ["Distribution alimentaire bio", "Epicerie"],
+      "ville": "Lyon",
+      "quartier": "2e",
+      "code_postal": "69002",
+      "adresse": "5 rue Sebastien Gryphe",
+      "latitude": 45.7573,
+      "longitude": 4.8327,
+      "labels": ["AB"],
+      "site": "https://graindefoliebio.fr",
+      "contact": {
+        "email": "hello@graindefoliebio.fr",
+        "telephone": "+33 4 20 10 05 18"
+      },
+      "date_mise_a_jour": "2024-05-15"
+    }
+  ],
+  "marseille": [
+    {
+      "id": "MRS-001",
+      "nom": "Mediterranio Bio Hub",
+      "activite": "Distribution",
+      "categorie": "Hub logistique",
+      "segments": ["Distribution alimentaire bio", "Export"],
+      "ville": "Marseille",
+      "quartier": "Port",
+      "code_postal": "13002",
+      "adresse": "Quai du Lazaret",
+      "latitude": 43.304,
+      "longitude": 5.366,
+      "labels": ["AB", "BioEntreProvence"],
+      "site": "https://mediterraniohub.fr",
+      "contact": {
+        "email": "ops@mediterraniohub.fr",
+        "telephone": "+33 4 88 60 77 12"
+      },
+      "date_mise_a_jour": "2024-08-22"
+    },
+    {
+      "id": "MRS-002",
+      "nom": "Panier Bio Services",
+      "activite": "Distribution",
+      "categorie": "Artisans/commercants",
+      "segments": ["Distribution alimentaire bio", "Click & collect"],
+      "ville": "Marseille",
+      "quartier": "1er",
+      "code_postal": "13001",
+      "adresse": "14 rue du Panier",
+      "latitude": 43.299,
+      "longitude": 5.369,
+      "labels": ["AB"],
+      "site": "https://panierbioservices.fr",
+      "contact": {
+        "email": "bonjour@panierbioservices.fr",
+        "telephone": "+33 4 91 01 22 54"
+      },
+      "date_mise_a_jour": "2024-07-11"
+    },
+    {
+      "id": "MRS-003",
+      "nom": "Phocea Bio Distribution",
+      "activite": "Distribution",
+      "categorie": "Grossistes",
+      "segments": ["Distribution alimentaire bio", "Restauration collective"],
+      "ville": "Marseille",
+      "quartier": "La Valentine",
+      "code_postal": "13011",
+      "adresse": "253 boulevard Saint-Marcel",
+      "latitude": 43.285,
+      "longitude": 5.442,
+      "labels": ["AB", "LabelBioSud"],
+      "site": "https://phoceabio.fr",
+      "contact": {
+        "email": "contact@phoceabio.fr",
+        "telephone": "+33 4 91 80 66 09"
+      },
+      "date_mise_a_jour": "2024-09-19"
+    }
+  ],
+  "bordeaux": [
+    {
+      "id": "BDX-001",
+      "nom": "Garonne Bio Plateforme",
+      "activite": "Distribution",
+      "categorie": "Plateforme logistique",
+      "segments": ["Distribution alimentaire bio", "Export"],
+      "ville": "Bordeaux",
+      "quartier": "Bacalan",
+      "code_postal": "33300",
+      "adresse": "Hangar 18 Bassins a flot",
+      "latitude": 44.8727,
+      "longitude": -0.5511,
+      "labels": ["AB"],
+      "site": "https://garonnebio.fr",
+      "contact": {
+        "email": "hello@garonnebio.fr",
+        "telephone": "+33 5 56 39 45 12"
+      },
+      "date_mise_a_jour": "2024-10-09"
+    },
+    {
+      "id": "BDX-002",
+      "nom": "Ateliers Ferments du Sud-Ouest",
+      "activite": "Distribution",
+      "categorie": "Artisans/commercants",
+      "segments": ["Distribution alimentaire bio", "Epicerie"],
+      "ville": "Bordeaux",
+      "quartier": "Saint-Michel",
+      "code_postal": "33800",
+      "adresse": "9 rue des Menuts",
+      "latitude": 44.834,
+      "longitude": -0.567,
+      "labels": ["AB"],
+      "site": "https://ferments-sudouest.fr",
+      "contact": {
+        "email": "bonjour@ferments-sudouest.fr",
+        "telephone": "+33 5 57 91 88 02"
+      },
+      "date_mise_a_jour": "2024-06-18"
+    }
+  ],
+  "lille": [
+    {
+      "id": "LIL-001",
+      "nom": "Nordic Bio Supply",
+      "activite": "Distribution",
+      "categorie": "Grossistes",
+      "segments": ["Distribution alimentaire bio", "Retail"],
+      "ville": "Lille",
+      "quartier": "Euratechnologies",
+      "code_postal": "59000",
+      "adresse": "165 avenue de Bretagne",
+      "latitude": 50.6364,
+      "longitude": 3.0201,
+      "labels": ["AB"],
+      "site": "https://nordicbiosupply.fr",
+      "contact": {
+        "email": "contact@nordicbiosupply.fr",
+        "telephone": "+33 3 62 13 24 88"
+      },
+      "date_mise_a_jour": "2024-09-01"
+    },
+    {
+      "id": "LIL-002",
+      "nom": "Atelier Bio Flandres",
+      "activite": "Distribution",
+      "categorie": "Artisans/commercants",
+      "segments": ["Distribution alimentaire bio", "Click & collect"],
+      "ville": "Lille",
+      "quartier": "Vieux-Lille",
+      "code_postal": "59800",
+      "adresse": "27 rue de Gand",
+      "latitude": 50.6421,
+      "longitude": 3.0628,
+      "labels": ["AB"],
+      "site": "https://atelierbioflandres.fr",
+      "contact": {
+        "email": "atelier@bioflandres.fr",
+        "telephone": "+33 3 20 51 72 33"
+      },
+      "date_mise_a_jour": "2024-05-27"
+    }
+  ]
+}

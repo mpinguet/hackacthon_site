@@ -3,10 +3,23 @@ const cors = require('cors');
 const axios = require('axios');
 const path = require('path');
 const fs = require('fs');
+const { randomUUID } = require('crypto');
+const { collectContexte } = require('../api');
 
 // Charger les données du marché bio depuis le JSON
 const donneesBioPath = path.join(__dirname, 'data', 'donnees-bio.json');
 const donneesBio = JSON.parse(fs.readFileSync(donneesBioPath, 'utf8'));
+const operateursLocalPath = path.join(__dirname, 'data', 'operateurs-locaux.json');
+let operateursLocaux = {};
+try {
+    const rawOperators = JSON.parse(fs.readFileSync(operateursLocalPath, 'utf8'));
+    operateursLocaux = Object.entries(rawOperators).reduce((acc, [key, value]) => {
+        acc[normalizeCityName(key)] = value;
+        return acc;
+    }, {});
+} catch (error) {
+    console.warn('Impossible de charger operateurs-locaux.json:', error.message);
+}
 
 const app = express();
 const PORT = 3000;
@@ -17,9 +30,139 @@ app.use(express.json());
 // Servir les fichiers statiques depuis le dossier parent
 app.use(express.static(path.join(__dirname, '..')));
 
+function normalizeCityName(value) {
+    if (!value) return '';
+    return value
+        .toString()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .trim();
+}
+
+function formatLocalOperator(entry = {}) {
+    const activites = entry.activites || entry.segments || (entry.activite ? [entry.activite] : []);
+    const categories = entry.categories || (entry.categorie ? [entry.categorie] : []);
+    return {
+        id: entry.id || entry.nom,
+        nom: entry.nom || 'Operateur local',
+        activite: entry.activite || activites[0] || 'Non renseigne',
+        categorie: entry.categorie || categories[0] || 'Non renseigne',
+        segments: entry.segments || activites,
+        activites,
+        categories,
+        ville: entry.ville || '',
+        quartier: entry.quartier || null,
+        code_postal: entry.code_postal || null,
+        adresse: entry.adresse || null,
+        labels: entry.labels || [],
+        site: entry.site || null,
+        contact: entry.contact || null,
+        date_mise_a_jour: entry.date_mise_a_jour || null
+    };
+}
+
+function findLocalOperators(ville) {
+    const normalized = normalizeCityName(ville);
+    if (!normalized) return [];
+    const bucket =
+        operateursLocaux[normalized] ||
+        operateursLocaux[normalized.replace(/\s+/g, '')] ||
+        operateursLocaux[ville?.toLowerCase?.()] ||
+        [];
+    return bucket.map(formatLocalOperator);
+}
+
+function filterOperatorsBySegment(operators, segment) {
+    if (!segment) return operators;
+    const normalizedSegment = segment.toLowerCase();
+    const filtered = operators.filter(op =>
+        (op.segments || []).some(seg => seg.toLowerCase().includes(normalizedSegment)) ||
+        (op.activite || '').toLowerCase().includes(normalizedSegment)
+    );
+    return filtered.length ? filtered : operators;
+}
+
+function persistMarketData(prefix, payload) {
+    try {
+        const id = randomUUID();
+        const filename = `${prefix}-${new Date().toISOString().replace(/[:.]/g, '-')}-${id}.json`;
+        const filePath = path.join(__dirname, 'data', filename);
+        const toWrite = {
+            id,
+            prefix,
+            generated_at: new Date().toISOString(),
+            payload
+        };
+        fs.writeFileSync(filePath, JSON.stringify(toWrite, null, 2), 'utf8');
+    } catch (err) {
+        console.warn(`Impossible d'enregistrer le fichier ${prefix}:`, err.message);
+    }
+}
+
 // Configuration Ollama
 const OLLAMA_URL = 'http://localhost:11434/api/generate';
 const MODEL = 'deepseek-r1:8b';
+// ===========================
+// ENDPOINT OPERATEURS LOCAUX
+// ===========================
+
+app.get('/api/operateurs', (req, res) => {
+    const { ville, segment, limit } = req.query;
+    if (!ville) {
+        return res.status(400).json({
+            error: 'ville_requise',
+            message: 'Le parametre ville est obligatoire'
+        });
+    }
+
+    const baseList = findLocalOperators(ville);
+    if (!baseList.length) {
+        return res.status(404).json({
+            error: 'ville_non_supportee',
+            message: `Aucun operateur local reference pour ${ville}`
+        });
+    }
+
+    const filtered = filterOperatorsBySegment(baseList, segment);
+    const limitValue = limit ? Number(limit) : null;
+    const sliced = limitValue && limitValue > 0 ? filtered.slice(0, limitValue) : filtered;
+
+    res.json({
+        ville: ville,
+        segment: segment || null,
+        total: filtered.length,
+        limite: limitValue,
+        operateurs: sliced
+    });
+});
+
+// ===========================
+// ENDPOINT COLLECTEUR DE CONTEXTE
+// ===========================
+
+app.post('/api/contexte', async (req, res) => {
+    const { nom_ville, segment_analyse = '' } = req.body || {};
+
+    if (!nom_ville) {
+        return res.status(400).json({
+            error: 'nom_ville_requis',
+            message: 'Le champ nom_ville est obligatoire'
+        });
+    }
+
+    try {
+        console.log('?? Collecte de contexte demandee pour:', nom_ville, segment_analyse);
+        const contexte = await collectContexte(nom_ville, segment_analyse);
+        return res.json(contexte);
+    } catch (error) {
+        console.error('?? Erreur collecteur contexte:', error);
+                return res.status(502).json({
+                    error: 'collecte_contexte_impossible',
+                    message: error.message || 'Erreur inconnue pendant la collecte'
+                });
+            }
+});
 
 // ===========================
 // ENDPOINT PRINCIPAL - ANALYSE AVEC OLLAMA

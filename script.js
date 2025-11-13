@@ -160,7 +160,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const region = encodeURIComponent(document.getElementById('region').value);
         const objectif = encodeURIComponent(document.getElementById('objectif').value);
         
+        console.log('📤 Envoi des paramètres:');
+        console.log('  - secteur:', document.getElementById('secteur').value);
+        console.log('  - region:', document.getElementById('region').value);
+        console.log('  - objectif:', document.getElementById('objectif').value);
+        
         const url = `results.html?secteur=${secteur}&region=${region}&objectif=${objectif}`;
+        console.log('🔗 URL générée:', url);
         
         // Attendre 2 secondes avant d'ouvrir la nouvelle page
         setTimeout(function() {

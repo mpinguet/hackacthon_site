@@ -11,11 +11,58 @@ const secteur = decodeParam('secteur') || 'Alimentaire Bio';
 const region = decodeParam('region') || 'France';
 const objectif = decodeParam('objectif') || 'Analyse de marché générale';
 
+// Debug : afficher les paramètres reçus
+console.log('🔍 Paramètres reçus:');
+console.log('  - secteur:', secteur);
+console.log('  - region:', region);
+console.log('  - objectif:', objectif);
+
 // ===========================
-// SIMULATION DE CHARGEMENT
+// APPEL API OLLAMA
 // ===========================
 
-setTimeout(() => {
+// Configuration de l'API
+const API_URL = 'http://localhost:3000/api/analyze';
+
+// Variable globale pour stocker les données de l'IA
+let aiData = null;
+
+// Fonction pour appeler l'API Ollama
+async function fetchAIAnalysis() {
+    try {
+        console.log('🚀 Appel de l\'API Ollama...');
+        
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                secteur: secteur,
+                region: region,
+                objectif: objectif
+            })
+        });
+        
+        if (!response.ok) {
+            throw new Error('Erreur API: ' + response.status);
+        }
+        
+        const data = await response.json();
+        console.log('✅ Données reçues de l\'IA:', data);
+        return data;
+        
+    } catch (error) {
+        console.error('❌ Erreur lors de l\'appel API:', error);
+        return null;
+    }
+}
+
+// Lancement de l'analyse
+(async () => {
+    // Récupérer les données de l'IA
+    aiData = await fetchAIAnalysis();
+    
     // Masquer le banner de chargement
     document.getElementById('statusBanner').style.display = 'none';
     
@@ -38,57 +85,52 @@ setTimeout(() => {
     // Afficher le rapport
     document.getElementById('mainReport').style.display = 'block';
     
-    // Générer le contenu
+    // Générer le contenu avec les données de l'IA
     generateReport();
-}, 2000);
+})();
 
 // ===========================
 // GÉNÉRATION DU RAPPORT
 // ===========================
 
 function generateReport() {
-    // Résumé exécutif
-    document.getElementById('summaryText').textContent = 
-        `Cette analyse approfondie du secteur "${secteur}" dans la région "${region}" révèle un marché en pleine expansion avec un potentiel de croissance significatif. Les tendances actuelles montrent une forte demande pour les produits bio locaux, portée par une prise de conscience environnementale croissante des consommateurs. Le marché présente des opportunités stratégiques pour les nouveaux entrants et les acteurs existants souhaitant renforcer leur position.`;
+    // Si les données AI ne sont pas disponibles, utiliser des valeurs par défaut
+    if (!aiData) {
+        console.warn('⚠️ Données AI non disponibles, utilisation des valeurs par défaut');
+        aiData = {
+            summary: `Cette analyse approfondie du secteur "${secteur}" dans la région "${region}" révèle un marché en pleine expansion avec un potentiel de croissance significatif.`,
+            kpis: {
+                marche: Math.floor(Math.random() * 500 + 200) + 'M€',
+                acteurs: Math.floor(Math.random() * 50 + 30),
+                croissance: '+' + (Math.random() * 10 + 5).toFixed(1) + '%',
+                potentiel: ['Élevé', 'Très Élevé', 'Modéré'][Math.floor(Math.random() * 3)]
+            }
+        };
+    }
     
-    // Indicateurs clés
-    const kpis = {
-        marche: Math.floor(Math.random() * 500 + 200) + 'M€',
-        acteurs: Math.floor(Math.random() * 50 + 30),
-        croissance: '+' + (Math.random() * 10 + 5).toFixed(1) + '%',
-        potentiel: ['Élevé', 'Très Élevé', 'Modéré'][Math.floor(Math.random() * 3)]
-    };
+    // Résumé exécutif depuis l'IA
+    document.getElementById('summaryText').textContent = aiData.summary;
     
-    document.getElementById('kpiMarche').textContent = kpis.marche;
-    document.getElementById('kpiActeurs').textContent = kpis.acteurs;
-    document.getElementById('kpiCroissance').textContent = kpis.croissance;
-    document.getElementById('kpiPotentiel').textContent = kpis.potentiel;
+    // Indicateurs clés depuis l'IA
+    document.getElementById('kpiMarche').textContent = aiData.kpis.marche;
+    document.getElementById('kpiActeurs').textContent = aiData.kpis.acteurs;
+    document.getElementById('kpiCroissance').textContent = aiData.kpis.croissance;
+    document.getElementById('kpiPotentiel').textContent = aiData.kpis.potentiel;
     
-    // Générer les graphiques
+    // Générer les graphiques avec les données de l'IA
     generateCharts();
     
-    // Points clés
+    // Points clés depuis l'IA
     generateKeyPoints();
     
-    // Acteurs du marché
+    // Acteurs du marché depuis l'IA
     generateActors();
     
-    // Recommandations
+    // Recommandations depuis l'IA
     generateRecommendations();
     
     // Données brutes
-    document.getElementById('rawData').textContent = JSON.stringify({
-        secteur: secteur,
-        region: region,
-        objectif: objectif,
-        generatedAt: new Date().toISOString(),
-        kpis: kpis,
-        metadata: {
-            version: '1.0',
-            aiModel: 'BioMarket AI v4.5',
-            confidenceScore: 0.94
-        }
-    }, null, 2);
+    document.getElementById('rawData').textContent = JSON.stringify(aiData, null, 2);
 }
 
 // ===========================
@@ -96,6 +138,14 @@ function generateReport() {
 // ===========================
 
 function generateCharts() {
+    // Récupérer les données des graphiques depuis l'IA (ou utiliser des valeurs par défaut)
+    const chartData = aiData && aiData.chartData ? aiData.chartData : {
+        marketShare: [45, 20, 15, 12, 8],
+        evolution: [150, 180, 220, 280, 350, 420],
+        segments: [28, 22, 18, 17, 15],
+        competitors: [30, 25, 20, 25]
+    };
+    
     // Graphique en camembert - Répartition du marché
     const pieCtx = document.getElementById('pieChart').getContext('2d');
     new Chart(pieCtx, {
@@ -103,7 +153,7 @@ function generateCharts() {
         data: {
             labels: ['Alimentaire', 'Cosmétiques', 'Textiles', 'Bien-être', 'Autres'],
             datasets: [{
-                data: [45, 20, 15, 12, 8],
+                data: chartData.marketShare,
                 backgroundColor: [
                     '#7cb342',
                     '#aed581',
@@ -131,7 +181,7 @@ function generateCharts() {
             labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
             datasets: [{
                 label: 'Demande (en millions €)',
-                data: [150, 180, 220, 280, 350, 420],
+                data: chartData.evolution,
                 borderColor: '#7cb342',
                 backgroundColor: 'rgba(124, 179, 66, 0.1)',
                 tension: 0.4,
@@ -161,7 +211,7 @@ function generateCharts() {
             labels: ['Fruits & Légumes', 'Produits laitiers', 'Viandes', 'Céréales', 'Boissons'],
             datasets: [{
                 label: 'Parts de marché (%)',
-                data: [28, 22, 18, 17, 15],
+                data: chartData.segments,
                 backgroundColor: [
                     '#7cb342',
                     '#aed581',
@@ -194,7 +244,7 @@ function generateCharts() {
         data: {
             labels: ['Leader A', 'Leader B', 'Leader C', 'Autres'],
             datasets: [{
-                data: [30, 25, 20, 25],
+                data: chartData.competitors,
                 backgroundColor: [
                     '#2d5016',
                     '#7cb342',
@@ -219,7 +269,11 @@ function generateCharts() {
 // ===========================
 
 function generateKeyPoints() {
-    const points = [
+    // Utiliser les points depuis l'IA ou des points par défaut
+    const points = aiData && aiData.keyPoints ? aiData.keyPoints.map((text, idx) => ({
+        icon: ['📈', '🌍', '🏪', '👥', '🔒', '💡'][idx] || '✨',
+        text: text
+    })) : [
         {
             icon: '📈',
             text: `Le marché bio en ${region} connaît une croissance soutenue de 8-12% par an, portée par l'évolution des comportements de consommation.`
@@ -263,7 +317,11 @@ function generateKeyPoints() {
 // ===========================
 
 function generateActors() {
-    const actors = [
+    // Utiliser les acteurs depuis l'IA ou des acteurs par défaut
+    const actors = aiData && aiData.actors ? aiData.actors.map((actor, idx) => ({
+        ...actor,
+        icon: ['🏪', '🌾', '🏭', '💻', '✅', '🚚'][idx] || '🏢'
+    })) : [
         {
             name: 'Bio Coop France',
             type: 'Distributeur',
@@ -340,7 +398,8 @@ function generateActors() {
 // ===========================
 
 function generateRecommendations() {
-    const recommendations = [
+    // Utiliser les recommandations depuis l'IA ou des recommandations par défaut
+    const recommendations = aiData && aiData.recommendations ? aiData.recommendations : [
         {
             title: 'Positionnement Local et Authentique',
             desc: 'Miser sur l\'origine locale des produits et la transparence de la chaîne de production pour créer une connexion émotionnelle avec les consommateurs.'
@@ -386,7 +445,8 @@ function generateRecommendations() {
 // CONSOLE LOG
 // ===========================
 
-console.log('%c🌱 BioMarket Insights - Rapport Généré', 'color: #7cb342; font-size: 16px; font-weight: bold;');
+console.log('%c🌱 BioMarket Insights - Rapport Généré par IA', 'color: #7cb342; font-size: 16px; font-weight: bold;');
 console.log('Secteur:', secteur);
 console.log('Région:', region);
 console.log('Objectif:', objectif);
+console.log('🤖 IA utilisée: Ollama deepseek-r1:8b');

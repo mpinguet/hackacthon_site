@@ -1,0 +1,205 @@
+{
+  "id": "2ff2a0df-c5e9-4bde-b1e7-ff2d776e1f3e",
+  "prefix": "operateurs",
+  "generated_at": "2025-11-13T17:15:23.038Z",
+  "payload": {
+    "endpoint": "/api/operateurs",
+    "query": {
+      "ville": "Paris"
+    },
+    "response": {
+      "ville": "Paris",
+      "segment": null,
+      "total": 6,
+      "limite": null,
+      "operateurs": [
+        {
+          "id": "PAR-001",
+          "nom": "Terres & Pains Bio",
+          "activite": "Distribution",
+          "categorie": "Grossistes",
+          "segments": [
+            "Distribution alimentaire bio",
+            "Boulangerie",
+            "Circuit court"
+          ],
+          "activites": [
+            "Distribution alimentaire bio",
+            "Boulangerie",
+            "Circuit court"
+          ],
+          "categories": [
+            "Grossistes"
+          ],
+          "ville": "Paris",
+          "quartier": "11e",
+          "code_postal": "75011",
+          "adresse": "21 rue Servan",
+          "labels": [
+            "AB",
+            "Demeter"
+          ],
+          "site": "https://terresetpainsbio.paris",
+          "contact": {
+            "email": "contact@terrespains.fr",
+            "telephone": "+33 1 84 00 11 55"
+          },
+          "date_mise_a_jour": "2024-10-14"
+        },
+        {
+          "id": "PAR-002",
+          "nom": "Cooperative Vert Mont",
+          "activite": "Distribution",
+          "categorie": "Plateforme logistique",
+          "segments": [
+            "Distribution alimentaire bio",
+            "Restauration collective"
+          ],
+          "activites": [
+            "Distribution alimentaire bio",
+            "Restauration collective"
+          ],
+          "categories": [
+            "Plateforme logistique"
+          ],
+          "ville": "Paris",
+          "quartier": "18e",
+          "code_postal": "75018",
+          "adresse": "6 rue Ordener",
+          "labels": [
+            "AB"
+          ],
+          "site": "https://vertmont.coop",
+          "contact": {
+            "email": "hello@vertmont.coop",
+            "telephone": "+33 1 53 41 07 07"
+          },
+          "date_mise_a_jour": "2024-09-05"
+        },
+        {
+          "id": "PAR-003",
+          "nom": "Marches Urbains Bio",
+          "activite": "Distribution",
+          "categorie": "Grossistes",
+          "segments": [
+            "Distribution alimentaire bio",
+            "Retail"
+          ],
+          "activites": [
+            "Distribution alimentaire bio",
+            "Retail"
+          ],
+          "categories": [
+            "Grossistes"
+          ],
+          "ville": "Paris",
+          "quartier": "5e",
+          "code_postal": "75005",
+          "adresse": "12 rue Monge",
+          "labels": [
+            "AB",
+            "BioEntreprise"
+          ],
+          "site": "https://mubio.fr",
+          "contact": {
+            "email": "sourcing@mubio.fr",
+            "telephone": "+33 1 45 11 32 10"
+          },
+          "date_mise_a_jour": "2024-11-02"
+        },
+        {
+          "id": "PAR-004",
+          "nom": "Seine Bio Logistique",
+          "activite": "Distribution",
+          "categorie": "Hub logistique",
+          "segments": [
+            "Distribution alimentaire bio",
+            "Click & collect"
+          ],
+          "activites": [
+            "Distribution alimentaire bio",
+            "Click & collect"
+          ],
+          "categories": [
+            "Hub logistique"
+          ],
+          "ville": "Paris",
+          "quartier": "13e",
+          "code_postal": "75013",
+          "adresse": "90 boulevard Vincent Auriol",
+          "labels": [
+            "AB",
+            "ISO22000"
+          ],
+          "site": "https://seinebio-log.fr",
+          "contact": {
+            "email": "ops@seinebio-log.fr",
+            "telephone": "+33 1 40 77 68 48"
+          },
+          "date_mise_a_jour": "2024-07-20"
+        },
+        {
+          "id": "PAR-005",
+          "nom": "Rive Droite Primeurs",
+          "activite": "Distribution",
+          "categorie": "Artisans/commercants",
+          "segments": [
+            "Distribution alimentaire bio",
+            "Primeurs"
+          ],
+          "activites": [
+            "Distribution alimentaire bio",
+            "Primeurs"
+          ],
+          "categories": [
+            "Artisans/commercants"
+          ],
+          "ville": "Paris",
+          "quartier": "3e",
+          "code_postal": "75003",
+          "adresse": "34 rue de Bretagne",
+          "labels": [
+            "AB"
+          ],
+          "site": "https://rivedroiteprimeurs.fr",
+          "contact": {
+            "email": "hello@rivedroiteprimeurs.fr",
+            "telephone": "+33 9 72 56 34 12"
+          },
+          "date_mise_a_jour": "2024-08-11"
+        },
+        {
+          "id": "PAR-006",
+          "nom": "Plateforme Quartier Bio",
+          "activite": "Distribution",
+          "categorie": "Plateforme multi-enseignes",
+          "segments": [
+            "Distribution alimentaire bio",
+            "Restauration rapide"
+          ],
+          "activites": [
+            "Distribution alimentaire bio",
+            "Restauration rapide"
+          ],
+          "categories": [
+            "Plateforme multi-enseignes"
+          ],
+          "ville": "Paris",
+          "quartier": "15e",
+          "code_postal": "75015",
+          "adresse": "115 rue de la Convention",
+          "labels": [
+            "AB",
+            "BCorp"
+          ],
+          "site": "https://quartierbio.paris",
+          "contact": {
+            "email": "contact@quartierbio.paris",
+            "telephone": "+33 1 87 65 43 10"
+          },
+          "date_mise_a_jour": "2024-06-30"
+        }
+      ]
+    }
+  }
+}

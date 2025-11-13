@@ -128,13 +128,21 @@ app.get('/api/operateurs', (req, res) => {
     const limitValue = limit ? Number(limit) : null;
     const sliced = limitValue && limitValue > 0 ? filtered.slice(0, limitValue) : filtered;
 
-    res.json({
+    const responsePayload = {
         ville: ville,
         segment: segment || null,
         total: filtered.length,
         limite: limitValue,
         operateurs: sliced
+    };
+
+    persistMarketData('operateurs', {
+        endpoint: '/api/operateurs',
+        query: { ville, segment, limit },
+        response: responsePayload
     });
+
+    res.json(responsePayload);
 });
 
 // ===========================
@@ -154,6 +162,11 @@ app.post('/api/contexte', async (req, res) => {
     try {
         console.log('?? Collecte de contexte demandee pour:', nom_ville, segment_analyse);
         const contexte = await collectContexte(nom_ville, segment_analyse);
+        persistMarketData('contexte', {
+            endpoint: '/api/contexte',
+            request: { nom_ville, segment_analyse },
+            response: contexte
+        });
         return res.json(contexte);
     } catch (error) {
         console.error('?? Erreur collecteur contexte:', error);
@@ -268,7 +281,7 @@ IMPORTANT: Utilise les données JSON pour calculer:
 - competitors: prends les 3 premiers acteurs_nationaux du JSON avec leurs vraies parts de marché
 - marketShare: répartition des 5 secteurs du JSON (alimentaire, cosmétique, textile, bien-être, autres)
 
-IMPORTANT: Pour CHAQUE recommandation renvoyée dans "recommendations", ajoute un champ string nommé "comment" (1-2 phrases) qui explique pourquoi cette recommandation est pertinente au regard des KPIs et des données du marché fournies. Le champ `comment` doit être concret et référencé aux données (ex: croissance, parts de marché, spécialités locales).
+IMPORTANT: Pour CHAQUE recommandation renvoyée dans "recommendations", ajoute un champ string nommé "comment" (1-2 phrases) qui explique pourquoi cette recommandation est pertinente au regard des KPIs et des données du marché fournies. Le champ 'comment' doit être concret et référencé aux données (ex: croissance, parts de marché, spécialités locales).
 
 Génère des VALEURS RÉALISTES et COHÉRENTES avec le département ${region}.`;
 
@@ -312,10 +325,16 @@ Génère des VALEURS RÉALISTES et COHÉRENTES avec le département ${region}.`;
             objectif,
             generatedAt: new Date().toISOString(),
             aiModel: MODEL,
-            version: '1.0'
+            version: '1.0',
+            source: 'ollama'
         };
         
         console.log('📤 Envoi des résultats au client');
+        persistMarketData('analyse', {
+            endpoint: '/api/analyze',
+            request: { secteur, region, objectif },
+            response: analysisData
+        });
         res.json(analysisData);
         
     } catch (error) {
@@ -324,10 +343,16 @@ Génère des VALEURS RÉALISTES et COHÉRENTES avec le département ${region}.`;
         // En cas d'erreur, renvoyer des données de fallback
         const fallbackData = generateFallbackData(
             req.body.secteur || 'Alimentaire Bio',
-            req.body.region || 'Non spécifié',
-            req.body.objectif || 'Analyse générale'
+            req.body.region || 'Non sp�cifi�',
+            req.body.objectif || 'Analyse g�n�rale'
         );
         
+        persistMarketData('analyse-fallback', {
+            endpoint: '/api/analyze',
+            request: req.body,
+            response: fallbackData,
+            error: error.message
+        });
         res.json(fallbackData);
     }
 });

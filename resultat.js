@@ -21,8 +21,14 @@ console.log('  - objectif:', objectif);
 // APPEL API OLLAMA
 // ===========================
 
-// Configuration de l'API
-const API_URL = 'http://localhost:3000/api/analyze';
+// Configuration des APIs
+const API_ANALYZE_URL = 'http://localhost:3000/api/analyze';
+const API_CONTEXTE_URL = 'http://localhost:3000/api/contexte';
+const API_OPERATEURS_URL = 'http://localhost:3000/api/operateurs';
+
+// Variables additionnelles pour les autres APIs
+let contexteData = null;
+let operateursData = null;
 
 // Variable globale pour stocker les données de l'IA
 let aiData = null;
@@ -32,7 +38,7 @@ async function fetchAIAnalysis() {
     try {
         console.log('🚀 Appel de l\'API Ollama...');
         
-        const response = await fetch(API_URL, {
+        const response = await fetch(API_ANALYZE_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -54,6 +60,43 @@ async function fetchAIAnalysis() {
         
     } catch (error) {
         console.error('❌ Erreur lors de l\'appel API:', error);
+        return null;
+    }
+}
+
+// Fonction pour appeler l'API Contexte (collecteur multi-sources)
+async function fetchContexte() {
+    try {
+        console.log('📍 Appel de l\'API Contexte...');
+        const response = await fetch('http://localhost:3000/api/contexte', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                nom_ville: region,
+                segment_analyse: secteur
+            })
+        });
+        if (!response.ok) throw new Error('Erreur API Contexte: ' + response.status);
+        return await response.json();
+    } catch (e) {
+        console.warn('⚠️ Contexte indisponible:', e.message);
+        return null;
+    }
+}
+
+// Fonction pour appeler l'API Opérateurs locaux
+async function fetchOperateurs(limit = 25) {
+    try {
+        console.log('🏪 Appel de l\'API Opérateurs...');
+        const url = new URL('http://localhost:3000/api/operateurs');
+        url.searchParams.set('ville', region);
+        url.searchParams.set('segment', secteur);
+        url.searchParams.set('limit', String(limit));
+        const response = await fetch(url.toString());
+        if (!response.ok) throw new Error('Erreur API Operateurs: ' + response.status);
+        return await response.json();
+    } catch (e) {
+        console.warn('⚠️ Opérateurs indisponibles:', e.message);
         return null;
     }
 }
@@ -88,6 +131,66 @@ async function fetchAIAnalysis() {
     // Générer le contenu avec les données de l'IA
     generateReport();
 })();
+
+// Collectes additionnelles (contexte + opérateurs) déclenchées en parallèle
+(async () => {
+    try {
+        const [contexte, operateurs] = await Promise.all([
+            fetchContexte(),
+            fetchOperateurs(25)
+        ]);
+        contexteData = contexte;
+        operateursData = operateurs;
+        // Rafraîchir l'affichage des données techniques
+        const el = document.getElementById('rawData');
+    if (el) {
+        el.textContent = JSON.stringify({ analyze: aiData, contexte: contexteData, operateurs: operateursData }, null, 2);
+    }
+        // Si des opérateurs sont disponibles, les afficher dans la grille
+        if (operateursData && operateursData.operateurs && operateursData.operateurs.length) {
+            renderOperatorsGrid(operateursData.operateurs);
+        }
+    } catch (e) {
+        console.warn('⚠️ Appels secondaires incomplets:', e.message);
+    }
+})();
+
+// Rendu de la grille des opérateurs locaux
+function renderOperatorsGrid(ops) {
+    const actorsGrid = document.getElementById('actorsGrid');
+    if (!actorsGrid) return;
+    // vider la grille existante (issue de l'IA au besoin)
+    actorsGrid.innerHTML = '';
+    ops.forEach((op, idx) => {
+        const icon = ['🏬','🏪','📦','🚚','🍞','🥬'][idx % 6];
+        const name = op.nom || 'Opérateur local';
+        const type = op.categorie || op.activite || 'Non renseigné';
+        const statLeft = (op.labels && op.labels[0]) ? op.labels[0] : (op.segments && op.segments[0]) ? op.segments[0] : '-';
+        const statRight = op.site ? `<a href="${op.site}" target="_blank" rel="noopener">Site</a>` : '&nbsp;-';
+        const div = document.createElement('div');
+        div.className = 'actor-card';
+        div.innerHTML = `
+            <div class="actor-header">
+                <div class="actor-logo">${icon}</div>
+                <div>
+                    <div class="actor-name">${name}</div>
+                    <div class="actor-type">${type}</div>
+                </div>
+            </div>
+            <div class="actor-info">
+                <div class="actor-stat">
+                    <span>Label/segment:</span>
+                    <strong>${statLeft}</strong>
+                </div>
+                <div class="actor-stat">
+                    <span>Ressource:</span>
+                    <strong style="color: #4caf50;">${statRight}</strong>
+                </div>
+            </div>
+        `;
+        actorsGrid.appendChild(div);
+    });
+}
 
 // ===========================
 // GÉNÉRATION DU RAPPORT
@@ -138,7 +241,7 @@ function generateReport() {
     generateRecommendations();
     
     // Données brutes
-    document.getElementById('rawData').textContent = JSON.stringify(aiData, null, 2);
+    document.getElementById('rawData').textContent = JSON.stringify({ analyze: aiData, contexte: contexteData, operateurs: operateursData }, null, 2);
 }
 
 // ===========================
@@ -533,3 +636,4 @@ console.log('Secteur:', secteur);
 console.log('Région:', region);
 console.log('Objectif:', objectif);
 console.log('🤖 IA utilisée: Ollama deepseek-r1:8b');
+

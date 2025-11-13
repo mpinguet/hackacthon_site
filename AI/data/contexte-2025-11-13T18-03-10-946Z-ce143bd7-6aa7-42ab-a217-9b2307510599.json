@@ -1,0 +1,1132 @@
+{
+  "id": "ce143bd7-6aa7-42ab-a217-9b2307510599",
+  "prefix": "contexte",
+  "generated_at": "2025-11-13T18:03:10.946Z",
+  "payload": {
+    "endpoint": "/api/contexte",
+    "request": {
+      "nom_ville": "France",
+      "segment_analyse": "Alimentaire Bio"
+    },
+    "response": {
+      "meta": {
+        "ville_recherchee": "France",
+        "segment_analyse": "Alimentaire Bio",
+        "generated_at": "2025-11-13T18:03:10.946Z"
+      },
+      "geo": {
+        "nom_commune": "Fort-de-France",
+        "code_commune": "97209",
+        "population": 75165,
+        "code_departement": "972",
+        "code_region": "02",
+        "nom_region": "Martinique"
+      },
+      "concurrence_locale_api": {
+        "nb_operateurs_bio_total": 0,
+        "nb_concurrents_directs": 0,
+        "concurrents_directs": [],
+        "ventilation_activites": {},
+        "detail_operateurs": []
+      },
+      "risques_locaux_api": {
+        "code_commune": "97209",
+        "basol": {
+          "total": 10,
+          "items": [
+            {
+              "identifiant_ssp": "SSP000783401",
+              "nom_etablissement": "EDF Pointe des Carrières",
+              "adresse": "av victor lamon",
+              "adresse_lieudit": null,
+              "code_insee": "97209",
+              "nom_commune": "FORT-DE-FRANCE",
+              "statut": "En cours",
+              "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000783401",
+              "date_maj": "2014-06-23",
+              "geom": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                  [
+                    [
+                      [
+                        -61.057272,
+                        14.596239
+                      ],
+                      [
+                        -61.057338,
+                        14.596227
+                      ],
+                      [
+                        -61.057457,
+                        14.596206
+                      ],
+                      [
+                        -61.057574,
+                        14.596186
+                      ],
+                      [
+                        -61.057696,
+                        14.596163
+                      ],
+                      [
+                        -61.057811,
+                        14.596143
+                      ],
+                      [
+                        -61.057931,
+                        14.596122
+                      ],
+                      [
+                        -61.058039,
+                        14.596102
+                      ],
+                      [
+                        -61.058048,
+                        14.5961
+                      ],
+                      [
+                        -61.058164,
+                        14.59608
+                      ],
+                      [
+                        -61.058242,
+                        14.596066
+                      ],
+                      [
+                        -61.05829,
+                        14.596057
+                      ],
+                      [
+                        -61.05841,
+                        14.596035
+                      ],
+                      [
+                        -61.058505,
+                        14.596018
+                      ],
+                      [
+                        -61.058524,
+                        14.596024
+                      ],
+                      [
+                        -61.058639,
+                        14.596063
+                      ],
+                      [
+                        -61.058753,
+                        14.596101
+                      ],
+                      [
+                        -61.058873,
+                        14.596141
+                      ],
+                      [
+                        -61.058968,
+                        14.596173
+                      ],
+                      [
+                        -61.058962,
+                        14.59621
+                      ],
+                      [
+                        -61.058957,
+                        14.596243
+                      ],
+                      [
+                        -61.058949,
+                        14.596287
+                      ],
+                      [
+                        -61.058934,
+                        14.596369
+                      ],
+                      [
+                        -61.05892,
+                        14.596446
+                      ],
+                      [
+                        -61.058908,
+                        14.596521
+                      ],
+                      [
+                        -61.058894,
+                        14.596597
+                      ],
+                      [
+                        -61.05888,
+                        14.596672
+                      ],
+                      [
+                        -61.058877,
+                        14.596693
+                      ],
+                      [
+                        -61.05887,
+                        14.596733
+                      ],
+                      [
+                        -61.058867,
+                        14.596748
+                      ],
+                      [
+                        -61.058861,
+                        14.596783
+                      ],
+                      [
+                        -61.058854,
+                        14.59682
+                      ],
+                      [
+                        -61.058853,
+                        14.596831
+                      ],
+                      [
+                        -61.058848,
+                        14.596861
+                      ],
+                      [
+                        -61.058842,
+                        14.596896
+                      ],
+                      [
+                        -61.058837,
+                        14.59692
+                      ],
+                      [
+                        -61.058829,
+                        14.59697
+                      ],
+                      [
+                        -61.058827,
+                        14.596983
+                      ],
+                      [
+                        -61.058817,
+                        14.597042
+                      ],
+                      [
+                        -61.058797,
+                        14.59716
+                      ],
+                      [
+                        -61.058795,
+                        14.597175
+                      ],
+                      [
+                        -61.058786,
+                        14.597231
+                      ],
+                      [
+                        -61.058781,
+                        14.59726
+                      ],
+                      [
+                        -61.058773,
+                        14.597302
+                      ],
+                      [
+                        -61.058769,
+                        14.597324
+                      ],
+                      [
+                        -61.058761,
+                        14.597374
+                      ],
+                      [
+                        -61.058748,
+                        14.597444
+                      ],
+                      [
+                        -61.058736,
+                        14.597511
+                      ],
+                      [
+                        -61.058733,
+                        14.597531
+                      ],
+                      [
+                        -61.058726,
+                        14.597572
+                      ],
+                      [
+                        -61.058725,
+                        14.597577
+                      ],
+                      [
+                        -61.058721,
+                        14.597603
+                      ],
+                      [
+                        -61.058713,
+                        14.597647
+                      ],
+                      [
+                        -61.058709,
+                        14.59767
+                      ],
+                      [
+                        -61.0587,
+                        14.597722
+                      ],
+                      [
+                        -61.058697,
+                        14.597742
+                      ],
+                      [
+                        -61.058684,
+                        14.597817
+                      ],
+                      [
+                        -61.058671,
+                        14.597893
+                      ],
+                      [
+                        -61.058668,
+                        14.597914
+                      ],
+                      [
+                        -61.058658,
+                        14.597965
+                      ],
+                      [
+                        -61.058658,
+                        14.597969
+                      ],
+                      [
+                        -61.058653,
+                        14.597996
+                      ],
+                      [
+                        -61.058646,
+                        14.59804
+                      ],
+                      [
+                        -61.058628,
+                        14.598142
+                      ],
+                      [
+                        -61.058615,
+                        14.598219
+                      ],
+                      [
+                        -61.058606,
+                        14.598269
+                      ],
+                      [
+                        -61.058597,
+                        14.598298
+                      ],
+                      [
+                        -61.05859,
+                        14.598319
+                      ],
+                      [
+                        -61.058572,
+                        14.598374
+                      ],
+                      [
+                        -61.058566,
+                        14.598393
+                      ],
+                      [
+                        -61.058546,
+                        14.598448
+                      ],
+                      [
+                        -61.058532,
+                        14.598494
+                      ],
+                      [
+                        -61.058518,
+                        14.59852
+                      ],
+                      [
+                        -61.058514,
+                        14.598528
+                      ],
+                      [
+                        -61.058502,
+                        14.59855
+                      ],
+                      [
+                        -61.058489,
+                        14.598573
+                      ],
+                      [
+                        -61.058471,
+                        14.598606
+                      ],
+                      [
+                        -61.058462,
+                        14.598621
+                      ],
+                      [
+                        -61.058447,
+                        14.598649
+                      ],
+                      [
+                        -61.058423,
+                        14.598694
+                      ],
+                      [
+                        -61.058356,
+                        14.598817
+                      ],
+                      [
+                        -61.058349,
+                        14.59883
+                      ],
+                      [
+                        -61.058315,
+                        14.598891
+                      ],
+                      [
+                        -61.058277,
+                        14.59896
+                      ],
+                      [
+                        -61.058241,
+                        14.599026
+                      ],
+                      [
+                        -61.058231,
+                        14.599046
+                      ],
+                      [
+                        -61.058222,
+                        14.599062
+                      ],
+                      [
+                        -61.058216,
+                        14.599073
+                      ],
+                      [
+                        -61.05821,
+                        14.599084
+                      ],
+                      [
+                        -61.058198,
+                        14.599094
+                      ],
+                      [
+                        -61.058177,
+                        14.599117
+                      ],
+                      [
+                        -61.058151,
+                        14.599141
+                      ],
+                      [
+                        -61.058141,
+                        14.599154
+                      ],
+                      [
+                        -61.05812,
+                        14.599076
+                      ],
+                      [
+                        -61.058038,
+                        14.598676
+                      ],
+                      [
+                        -61.058027,
+                        14.598622
+                      ],
+                      [
+                        -61.058,
+                        14.598571
+                      ],
+                      [
+                        -61.05795,
+                        14.59854
+                      ],
+                      [
+                        -61.05773,
+                        14.598476
+                      ],
+                      [
+                        -61.057651,
+                        14.598479
+                      ],
+                      [
+                        -61.057603,
+                        14.598515
+                      ],
+                      [
+                        -61.057569,
+                        14.598562
+                      ],
+                      [
+                        -61.057535,
+                        14.598579
+                      ],
+                      [
+                        -61.057511,
+                        14.598575
+                      ],
+                      [
+                        -61.057496,
+                        14.598555
+                      ],
+                      [
+                        -61.057495,
+                        14.598552
+                      ],
+                      [
+                        -61.057521,
+                        14.598444
+                      ],
+                      [
+                        -61.057535,
+                        14.598403
+                      ],
+                      [
+                        -61.057486,
+                        14.598386
+                      ],
+                      [
+                        -61.057471,
+                        14.598415
+                      ],
+                      [
+                        -61.057206,
+                        14.598326
+                      ],
+                      [
+                        -61.057118,
+                        14.598296
+                      ],
+                      [
+                        -61.05714,
+                        14.598179
+                      ],
+                      [
+                        -61.057161,
+                        14.59807
+                      ],
+                      [
+                        -61.057179,
+                        14.597975
+                      ],
+                      [
+                        -61.057204,
+                        14.597846
+                      ],
+                      [
+                        -61.057233,
+                        14.597689
+                      ],
+                      [
+                        -61.057243,
+                        14.597635
+                      ],
+                      [
+                        -61.057246,
+                        14.597619
+                      ],
+                      [
+                        -61.057192,
+                        14.59759
+                      ],
+                      [
+                        -61.057099,
+                        14.597544
+                      ],
+                      [
+                        -61.057049,
+                        14.597501
+                      ],
+                      [
+                        -61.057021,
+                        14.597458
+                      ],
+                      [
+                        -61.057003,
+                        14.597429
+                      ],
+                      [
+                        -61.056994,
+                        14.597418
+                      ],
+                      [
+                        -61.056933,
+                        14.597426
+                      ],
+                      [
+                        -61.056962,
+                        14.597126
+                      ],
+                      [
+                        -61.056982,
+                        14.59691
+                      ],
+                      [
+                        -61.056989,
+                        14.596894
+                      ],
+                      [
+                        -61.057015,
+                        14.596837
+                      ],
+                      [
+                        -61.05709,
+                        14.596685
+                      ],
+                      [
+                        -61.05713,
+                        14.596606
+                      ],
+                      [
+                        -61.057151,
+                        14.596562
+                      ],
+                      [
+                        -61.057168,
+                        14.596527
+                      ],
+                      [
+                        -61.057202,
+                        14.596457
+                      ],
+                      [
+                        -61.057196,
+                        14.596449
+                      ],
+                      [
+                        -61.057182,
+                        14.596428
+                      ],
+                      [
+                        -61.057191,
+                        14.596411
+                      ],
+                      [
+                        -61.057197,
+                        14.596397
+                      ],
+                      [
+                        -61.057233,
+                        14.596321
+                      ],
+                      [
+                        -61.057267,
+                        14.59625
+                      ],
+                      [
+                        -61.057272,
+                        14.596239
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            },
+            {
+              "identifiant_ssp": "SSP000784301",
+              "nom_etablissement": "Décharge de la Trompeuse",
+              "adresse": "COHÉ DU LAMENTIN LA TROMPEUSE",
+              "adresse_lieudit": null,
+              "code_insee": "97209",
+              "nom_commune": "FORT-DE-FRANCE",
+              "statut": "En cours",
+              "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000784301",
+              "date_maj": "2014-07-04",
+              "geom": {
+                "type": "Point",
+                "coordinates": [
+                  -61.04235,
+                  14.607542
+                ]
+              }
+            },
+            {
+              "identifiant_ssp": "SSP000784601",
+              "nom_etablissement": "SARA - dépôt d'hydrocarbures",
+              "adresse": "",
+              "adresse_lieudit": null,
+              "code_insee": "97209",
+              "nom_commune": "FORT-DE-FRANCE",
+              "statut": "En cours",
+              "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000784601",
+              "date_maj": "2014-06-23",
+              "geom": {
+                "type": "Point",
+                "coordinates": [
+                  -61.05566,
+                  14.606199
+                ]
+              }
+            },
+            {
+              "identifiant_ssp": "SSP001138601",
+              "nom_etablissement": "Station-service TOTAL - Montgérald",
+              "adresse": "ROUTE DE CHATEAUBOEUF - RD13",
+              "adresse_lieudit": null,
+              "code_insee": "97209",
+              "nom_commune": "FORT-DE-FRANCE",
+              "statut": "En cours",
+              "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP001138601",
+              "date_maj": "2015-02-23",
+              "geom": {
+                "type": "Point",
+                "coordinates": [
+                  -61.04915,
+                  14.616257
+                ]
+              }
+            },
+            {
+              "identifiant_ssp": "SSP001138801",
+              "nom_etablissement": "Station-service RUBIS - Balata",
+              "adresse": "1.5km ROUTE DE BALATA",
+              "adresse_lieudit": null,
+              "code_insee": "97209",
+              "nom_commune": "FORT-DE-FRANCE",
+              "statut": "En cours",
+              "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP001138801",
+              "date_maj": "2015-02-23",
+              "geom": {
+                "type": "Point",
+                "coordinates": [
+                  -61.071882,
+                  14.622203
+                ]
+              }
+            },
+            {
+              "identifiant_ssp": "SSP001141101",
+              "nom_etablissement": "Station-service ESSO - Corniche",
+              "adresse": "7 BOULEVARD ATTULY",
+              "adresse_lieudit": null,
+              "code_insee": "97209",
+              "nom_commune": "FORT-DE-FRANCE",
+              "statut": "Clôturée",
+              "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP001141101",
+              "date_maj": "2024-12-17",
+              "geom": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                  [
+                    [
+                      [
+                        -61.074865,
+                        14.603187
+                      ],
+                      [
+                        -61.074928,
+                        14.603189
+                      ],
+                      [
+                        -61.074975,
+                        14.603192
+                      ],
+                      [
+                        -61.075068,
+                        14.603195
+                      ],
+                      [
+                        -61.075066,
+                        14.603234
+                      ],
+                      [
+                        -61.075061,
+                        14.603366
+                      ],
+                      [
+                        -61.07506,
+                        14.6034
+                      ],
+                      [
+                        -61.075053,
+                        14.603559
+                      ],
+                      [
+                        -61.07495,
+                        14.603555
+                      ],
+                      [
+                        -61.074846,
+                        14.60355
+                      ],
+                      [
+                        -61.074851,
+                        14.603443
+                      ],
+                      [
+                        -61.074856,
+                        14.603329
+                      ],
+                      [
+                        -61.074859,
+                        14.603258
+                      ],
+                      [
+                        -61.074861,
+                        14.603216
+                      ],
+                      [
+                        -61.074863,
+                        14.603187
+                      ],
+                      [
+                        -61.074865,
+                        14.603187
+                      ]
+                    ]
+                  ]
+                ]
+              }
+            },
+            {
+              "identifiant_ssp": "SSP001152101",
+              "nom_etablissement": "METALDom 1 - Société Nouvelle METALDOM SAS",
+              "adresse": "POINTE DES GRIVES",
+              "adresse_lieudit": null,
+              "code_insee": "97209",
+              "nom_commune": "FORT-DE-FRANCE",
+              "statut": "En cours",
+              "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP001152101",
+              "date_maj": "2014-07-04",
+              "geom": {
+                "type": "Point",
+                "coordinates": [
+                  -61.046837,
+                  14.597558
+                ]
+              }
+            },
+            {
+              "identifiant_ssp": "SSP001185301",
+              "nom_etablissement": "COLAS",
+              "adresse": "POINTE DES GRIVES",
+              "adresse_lieudit": null,
+              "code_insee": "97209",
+              "nom_commune": "FORT-DE-FRANCE",
+              "statut": "En cours",
+              "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP001185301",
+              "date_maj": "2014-07-04",
+              "geom": {
+                "type": "Point",
+                "coordinates": [
+                  -61.048403,
+                  14.597806
+                ]
+              }
+            },
+            {
+              "identifiant_ssp": "SSP001190701",
+              "nom_etablissement": "TOTAL Sainte-Thérèse",
+              "adresse": "AVENUE MAURICE BISHOP",
+              "adresse_lieudit": null,
+              "code_insee": "97209",
+              "nom_commune": "FORT-DE-FRANCE",
+              "statut": "En cours",
+              "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP001190701",
+              "date_maj": "2014-11-24",
+              "geom": {
+                "type": "Point",
+                "coordinates": [
+                  -61.052862,
+                  14.613107
+                ]
+              }
+            },
+            {
+              "identifiant_ssp": "SSP001193001",
+              "nom_etablissement": "Ancienne friche - Centre Technique de Transport",
+              "adresse": "RN9",
+              "adresse_lieudit": null,
+              "code_insee": "97209",
+              "nom_commune": "FORT-DE-FRANCE",
+              "statut": "En cours",
+              "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP001193001",
+              "date_maj": "2015-12-03",
+              "geom": {
+                "type": "Point",
+                "coordinates": [
+                  -61.041196,
+                  14.606882
+                ]
+              }
+            }
+          ],
+          "source": "georisques_api"
+        },
+        "azi": {
+          "total": 3,
+          "items": [
+            {
+              "code_national_azi": "972DEAL19990061",
+              "libelle_azi": "LA JAMBETTE RIVIERE",
+              "liste_libelle_risque": [
+                {
+                  "num_risque": "11",
+                  "libelle_risque_long": "Inondation"
+                }
+              ],
+              "libelle_bassin_risques": "",
+              "date_debut_programmation": "01/07/1999",
+              "date_fin_programmation": "01/07/1999",
+              "date_debut_etude": null,
+              "date_fin_etude": null,
+              "date_debut_information": null,
+              "date_fin_information": null,
+              "date_realisation": null,
+              "date_diffusion": "01/07/1999",
+              "date_publication_web": null,
+              "code_insee": "97209",
+              "libelle_commune": "FORT-DE-FRANCE"
+            },
+            {
+              "code_national_azi": "972DEAL19990086",
+              "libelle_azi": "RAVINE FOND ZOMBI",
+              "liste_libelle_risque": [
+                {
+                  "num_risque": "11",
+                  "libelle_risque_long": "Inondation"
+                }
+              ],
+              "libelle_bassin_risques": "",
+              "date_debut_programmation": "01/07/1999",
+              "date_fin_programmation": "01/07/1999",
+              "date_debut_etude": null,
+              "date_fin_etude": null,
+              "date_debut_information": null,
+              "date_fin_information": null,
+              "date_realisation": null,
+              "date_diffusion": "01/07/1999",
+              "date_publication_web": null,
+              "code_insee": "97209",
+              "libelle_commune": "FORT-DE-FRANCE"
+            },
+            {
+              "code_national_azi": "972DEAL19990128",
+              "libelle_azi": "MONSIEUR",
+              "liste_libelle_risque": [
+                {
+                  "num_risque": "11",
+                  "libelle_risque_long": "Inondation"
+                }
+              ],
+              "libelle_bassin_risques": "",
+              "date_debut_programmation": "01/07/1999",
+              "date_fin_programmation": "01/07/1999",
+              "date_debut_etude": null,
+              "date_fin_etude": null,
+              "date_debut_information": null,
+              "date_fin_information": null,
+              "date_realisation": null,
+              "date_diffusion": "01/07/1999",
+              "date_publication_web": null,
+              "code_insee": "97209",
+              "libelle_commune": "FORT-DE-FRANCE"
+            }
+          ],
+          "source": "georisques_api"
+        },
+        "catnat": {
+          "total": 10,
+          "items": [
+            {
+              "code_national_catnat": "INTE1726504A",
+              "date_debut_evt": "18/09/2017",
+              "date_fin_evt": "19/09/2017",
+              "date_publication_arrete": "22/09/2017",
+              "date_publication_jo": "24/09/2017",
+              "libelle_risque_jo": "Chocs Mécaniques liés à l'action des Vagues",
+              "code_insee": "97209",
+              "libelle_commune": "FORT-DE-FRANCE"
+            },
+            {
+              "code_national_catnat": "INTE1726504A",
+              "date_debut_evt": "18/09/2017",
+              "date_fin_evt": "19/09/2017",
+              "date_publication_arrete": "22/09/2017",
+              "date_publication_jo": "24/09/2017",
+              "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+              "code_insee": "97209",
+              "libelle_commune": "FORT-DE-FRANCE"
+            },
+            {
+              "code_national_catnat": "INTE2424582A",
+              "date_debut_evt": "30/06/2024",
+              "date_fin_evt": "01/07/2024",
+              "date_publication_arrete": "22/09/2024",
+              "date_publication_jo": "27/09/2024",
+              "libelle_risque_jo": "Chocs Mécaniques liés à l'action des Vagues",
+              "code_insee": "97209",
+              "libelle_commune": "FORT-DE-FRANCE"
+            },
+            {
+              "code_national_catnat": "INTE9000386A",
+              "date_debut_evt": "03/10/1990",
+              "date_fin_evt": "04/10/1990",
+              "date_publication_arrete": "12/10/1990",
+              "date_publication_jo": "16/10/1990",
+              "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+              "code_insee": "97209",
+              "libelle_commune": "FORT-DE-FRANCE"
+            },
+            {
+              "code_national_catnat": "INTE9000386A",
+              "date_debut_evt": "03/10/1990",
+              "date_fin_evt": "04/10/1990",
+              "date_publication_arrete": "12/10/1990",
+              "date_publication_jo": "16/10/1990",
+              "libelle_risque_jo": "Glissement de Terrain",
+              "code_insee": "97209",
+              "libelle_commune": "FORT-DE-FRANCE"
+            },
+            {
+              "code_national_catnat": "INTE9300537A",
+              "date_debut_evt": "14/08/1993",
+              "date_fin_evt": "15/08/1993",
+              "date_publication_arrete": "07/10/1993",
+              "date_publication_jo": "24/10/1993",
+              "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+              "code_insee": "97209",
+              "libelle_commune": "FORT-DE-FRANCE"
+            },
+            {
+              "code_national_catnat": "INTE9300537A",
+              "date_debut_evt": "14/08/1993",
+              "date_fin_evt": "15/08/1993",
+              "date_publication_arrete": "07/10/1993",
+              "date_publication_jo": "24/10/1993",
+              "libelle_risque_jo": "Glissement de Terrain",
+              "code_insee": "97209",
+              "libelle_commune": "FORT-DE-FRANCE"
+            },
+            {
+              "code_national_catnat": "INTE9300537A",
+              "date_debut_evt": "14/08/1993",
+              "date_fin_evt": "15/08/1993",
+              "date_publication_arrete": "07/10/1993",
+              "date_publication_jo": "24/10/1993",
+              "libelle_risque_jo": "Chocs Mécaniques liés à l'action des Vagues",
+              "code_insee": "97209",
+              "libelle_commune": "FORT-DE-FRANCE"
+            },
+            {
+              "code_national_catnat": "INTE9500510A",
+              "date_debut_evt": "26/08/1995",
+              "date_fin_evt": "27/08/1995",
+              "date_publication_arrete": "19/09/1995",
+              "date_publication_jo": "23/09/1995",
+              "libelle_risque_jo": "Chocs Mécaniques liés à l'action des Vagues",
+              "code_insee": "97209",
+              "libelle_commune": "FORT-DE-FRANCE"
+            },
+            {
+              "code_national_catnat": "INTE9500510A",
+              "date_debut_evt": "26/08/1995",
+              "date_fin_evt": "27/08/1995",
+              "date_publication_arrete": "19/09/1995",
+              "date_publication_jo": "23/09/1995",
+              "libelle_risque_jo": "Mouvement de Terrain",
+              "code_insee": "97209",
+              "libelle_commune": "FORT-DE-FRANCE"
+            }
+          ],
+          "source": "georisques_api"
+        }
+      },
+      "production_locale_region_5ans": [
+        {
+          "annee": 2020,
+          "surface_totale_ha": 1984.47,
+          "nb_fermes": 525
+        },
+        {
+          "annee": 2021,
+          "surface_totale_ha": 2141.73,
+          "nb_fermes": 604
+        },
+        {
+          "annee": 2022,
+          "surface_totale_ha": 2828.2,
+          "nb_fermes": 739
+        },
+        {
+          "annee": 2023,
+          "surface_totale_ha": 2535.08,
+          "nb_fermes": 705
+        },
+        {
+          "annee": 2024,
+          "surface_totale_ha": 2892.23,
+          "nb_fermes": 764
+        }
+      ],
+      "production_nationale_5ans": [
+        {
+          "annee": 2020,
+          "surface_totale_ha": 7554282.92,
+          "nb_fermes": 307312
+        },
+        {
+          "annee": 2021,
+          "surface_totale_ha": 8231508.48,
+          "nb_fermes": 337519
+        },
+        {
+          "annee": 2022,
+          "surface_totale_ha": 8466035.41,
+          "nb_fermes": 351659
+        },
+        {
+          "annee": 2023,
+          "surface_totale_ha": 8303291.32,
+          "nb_fermes": 359226
+        },
+        {
+          "annee": 2024,
+          "surface_totale_ha": 8134700.51,
+          "nb_fermes": 362486
+        }
+      ],
+      "tendance_ventes_pct_5ans": {
+        "periode": {
+          "debut": 2020,
+          "fin": 2024
+        },
+        "evolution_moyenne_pct": 3.68,
+        "details": [
+          {
+            "annee": 2020,
+            "evolution_pct_moyenne": 1.67
+          },
+          {
+            "annee": 2021,
+            "evolution_pct_moyenne": 5.76
+          },
+          {
+            "annee": 2022,
+            "evolution_pct_moyenne": 2.88
+          },
+          {
+            "annee": 2023,
+            "evolution_pct_moyenne": 4.12
+          },
+          {
+            "annee": 2024,
+            "evolution_pct_moyenne": 3.95
+          }
+        ]
+      },
+      "tendance_commerce_5ans": {
+        "periode": {
+          "debut": 6666,
+          "fin": 6666
+        },
+        "details": [
+          {
+            "annee": 6666,
+            "total_valeur_M_eur": 2538.66
+          }
+        ]
+      }
+    }
+  }
+}

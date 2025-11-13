@@ -1,0 +1,1667 @@
+{
+  "id": "1216e749-9b91-4318-a5d5-3e9d3180ad40",
+  "prefix": "analyse",
+  "generated_at": "2025-11-13T22:07:11.136Z",
+  "payload": {
+    "endpoint": "/api/analyze",
+    "request": {
+      "secteur": "alimentaire",
+      "region": "",
+      "objectif": "fruits",
+      "ville": "Strasbourg"
+    },
+    "response": {
+      "summary": "Le territoire Strasbourg (291 709 habitants) affiche 3.68% sur le segment alimentaire. Nous avons référencé - et identifié des dynamiques locales utiles pour l'objectif \"fruits\".",
+      "kpis": {
+        "marche": "2 538,66 M€ (flux commerce)",
+        "acteurs": "-",
+        "croissance": "3.68%",
+        "potentiel": "Modéré",
+        "trends": {
+          "marche": "Modérée",
+          "acteurs": "Non disponible",
+          "croissance": "Modéré",
+          "potentiel": "Modéré"
+        }
+      },
+      "keyPoints": [
+        "Le territoire Strasbourg compte 291 709 habitants et constitue la base de prospection.",
+        "Les ventes bio affichent une évolution moyenne de 3.68% sur 5 ans.",
+        "La surface bio régionale atteint 665 135,27 ha pour 22 920 fermes.",
+        "Surveillance environnementale: 10 sites BASOL référencés."
+      ],
+      "actors": [],
+      "recommendations": [
+        {
+          "title": "Structurer l’offre locale",
+          "desc": "Capitaliser sur les 0 opérateurs identifiés pour bâtir des partenariats exclusifs et sécuriser l’approvisionnement."
+        },
+        {
+          "title": "Accélérer sur les canaux en croissance",
+          "desc": "La croissance moyenne des ventes (3.68%) justifie un plan d’investissement marketing ciblé (drive, circuits courts)."
+        },
+        {
+          "title": "Maîtriser les risques locaux",
+          "desc": "Documenter les risques BASOL / AZI pour rassurer les distributeurs et renforcer la traçabilité environnementale."
+        }
+      ],
+      "chartData": {
+        "marketShare": [],
+        "marketShareLabels": [],
+        "evolution": [
+          1.67,
+          5.76,
+          2.88,
+          4.12,
+          3.95
+        ],
+        "evolutionLabels": [
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "segments": [],
+        "segmentsLabels": [],
+        "competitors": [],
+        "competitorsLabels": []
+      },
+      "context": {
+        "meta": {
+          "ville_recherchee": "Strasbourg",
+          "segment_analyse": "alimentaire",
+          "generated_at": "2025-11-13T22:06:11.127Z"
+        },
+        "geo": {
+          "nom_commune": "Strasbourg",
+          "code_commune": "67482",
+          "population": 291709,
+          "code_departement": "67",
+          "code_region": "44",
+          "nom_region": "Grand Est"
+        },
+        "concurrence_locale_api": {
+          "nb_operateurs_bio_total": 0,
+          "nb_concurrents_directs": 0,
+          "concurrents_directs": [],
+          "ventilation_activites": {},
+          "detail_operateurs": []
+        },
+        "risques_locaux_api": {
+          "code_commune": "67482",
+          "basol": {
+            "total": 10,
+            "items": [
+              {
+                "identifiant_ssp": "SSP000394801",
+                "nom_etablissement": "Collège et SEGPA Solignac",
+                "adresse": "16 RUE LOUIS BRAILLE",
+                "adresse_lieudit": null,
+                "code_insee": "67482",
+                "nom_commune": "STRASBOURG",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000394801",
+                "date_maj": "2017-09-05",
+                "geom": null
+              },
+              {
+                "identifiant_ssp": "SSP000404301",
+                "nom_etablissement": "Crèche La luciole",
+                "adresse": "36 RUE DU FAUBOURG DE PIERRE",
+                "adresse_lieudit": null,
+                "code_insee": "67482",
+                "nom_commune": "STRASBOURG",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000404301",
+                "date_maj": "2020-09-17",
+                "geom": null
+              },
+              {
+                "identifiant_ssp": "SSP000409201",
+                "nom_etablissement": "Village de Chalets / Centre d'hébergement d'urgence ADOMA",
+                "adresse": "1 RUE DE L''AIN",
+                "adresse_lieudit": null,
+                "code_insee": "67482",
+                "nom_commune": "STRASBOURG",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000409201",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          7.732383,
+                          48.567789
+                        ],
+                        [
+                          7.734523,
+                          48.568052
+                        ],
+                        [
+                          7.734443,
+                          48.567423
+                        ],
+                        [
+                          7.732592,
+                          48.567205
+                        ],
+                        [
+                          7.732383,
+                          48.567789
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000409601",
+                "nom_etablissement": "ECOCITE - Ilôt Bois",
+                "adresse": "ANGLE RUE DE VITRY LE FRANÇOIS ET RUE DES CAVALIERS",
+                "adresse_lieudit": null,
+                "code_insee": "67482",
+                "nom_commune": "STRASBOURG",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000409601",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          7.796271,
+                          48.569849
+                        ],
+                        [
+                          7.796271,
+                          48.569859
+                        ],
+                        [
+                          7.796255,
+                          48.569859
+                        ],
+                        [
+                          7.796255,
+                          48.569849
+                        ],
+                        [
+                          7.796271,
+                          48.569849
+                        ]
+                      ]
+                    ],
+                    [
+                      [
+                        [
+                          7.796242,
+                          48.569854
+                        ],
+                        [
+                          7.795694,
+                          48.570862
+                        ],
+                        [
+                          7.793474,
+                          48.569798
+                        ],
+                        [
+                          7.794418,
+                          48.568995
+                        ],
+                        [
+                          7.796242,
+                          48.569854
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000411601",
+                "nom_etablissement": "Clinique RHENA",
+                "adresse": "AVENUE DE L’EUROPE",
+                "adresse_lieudit": null,
+                "code_insee": "67482",
+                "nom_commune": "STRASBOURG",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000411601",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          7.792719,
+                          48.572428
+                        ],
+                        [
+                          7.79362,
+                          48.571597
+                        ],
+                        [
+                          7.793942,
+                          48.57137
+                        ],
+                        [
+                          7.794135,
+                          48.571278
+                        ],
+                        [
+                          7.794285,
+                          48.571228
+                        ],
+                        [
+                          7.794457,
+                          48.571164
+                        ],
+                        [
+                          7.79465,
+                          48.571129
+                        ],
+                        [
+                          7.794821,
+                          48.571108
+                        ],
+                        [
+                          7.795004,
+                          48.571086
+                        ],
+                        [
+                          7.795004,
+                          48.571065
+                        ],
+                        [
+                          7.795014,
+                          48.571037
+                        ],
+                        [
+                          7.795057,
+                          48.570987
+                        ],
+                        [
+                          7.795057,
+                          48.570951
+                        ],
+                        [
+                          7.793309,
+                          48.570043
+                        ],
+                        [
+                          7.793212,
+                          48.570071
+                        ],
+                        [
+                          7.791764,
+                          48.571512
+                        ],
+                        [
+                          7.791785,
+                          48.571633
+                        ],
+                        [
+                          7.792236,
+                          48.572222
+                        ],
+                        [
+                          7.792719,
+                          48.572428
+                        ]
+                      ]
+                    ],
+                    [
+                      [
+                        [
+                          7.790476,
+                          48.572215
+                        ],
+                        [
+                          7.79142,
+                          48.572804
+                        ],
+                        [
+                          7.792268,
+                          48.572641
+                        ],
+                        [
+                          7.792536,
+                          48.572542
+                        ],
+                        [
+                          7.792096,
+                          48.572343
+                        ],
+                        [
+                          7.79201,
+                          48.572272
+                        ],
+                        [
+                          7.79142,
+                          48.571484
+                        ],
+                        [
+                          7.790465,
+                          48.571967
+                        ],
+                        [
+                          7.790476,
+                          48.572215
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000421001",
+                "nom_etablissement": "Ancien garage Wollek",
+                "adresse": "RUE ADÈLE RITON",
+                "adresse_lieudit": null,
+                "code_insee": "67482",
+                "nom_commune": "STRASBOURG",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000421001",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          7.741415,
+                          48.592086
+                        ],
+                        [
+                          7.741415,
+                          48.592086
+                        ],
+                        [
+                          7.741544,
+                          48.592086
+                        ],
+                        [
+                          7.741544,
+                          48.591766
+                        ],
+                        [
+                          7.739736,
+                          48.591007
+                        ],
+                        [
+                          7.740322,
+                          48.591766
+                        ],
+                        [
+                          7.740462,
+                          48.591926
+                        ],
+                        [
+                          7.74046,
+                          48.591926
+                        ],
+                        [
+                          7.740464,
+                          48.591929
+                        ],
+                        [
+                          7.740464,
+                          48.591929
+                        ],
+                        [
+                          7.74048,
+                          48.591955
+                        ],
+                        [
+                          7.740499,
+                          48.591979
+                        ],
+                        [
+                          7.740948,
+                          48.59207
+                        ],
+                        [
+                          7.741088,
+                          48.592089
+                        ],
+                        [
+                          7.741089,
+                          48.592053
+                        ],
+                        [
+                          7.741088,
+                          48.592089
+                        ],
+                        [
+                          7.741415,
+                          48.592086
+                        ]
+                      ]
+                    ],
+                    [
+                      [
+                        [
+                          7.740499,
+                          48.591979
+                        ],
+                        [
+                          7.740322,
+                          48.591766
+                        ],
+                        [
+                          7.740472,
+                          48.591976
+                        ],
+                        [
+                          7.740499,
+                          48.591979
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000421101",
+                "nom_etablissement": "Ancien dépôt CTS de Neudorf",
+                "adresse": "RUE DE STOSSWIHR",
+                "adresse_lieudit": null,
+                "code_insee": "67482",
+                "nom_commune": "STRASBOURG",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000421101",
+                "date_maj": "2016-11-09",
+                "geom": null
+              },
+              {
+                "identifiant_ssp": "SSP000421201",
+                "nom_etablissement": "EDF - Ancienne centrale thermique",
+                "adresse": "RUE DE SÈTE",
+                "adresse_lieudit": null,
+                "code_insee": "67482",
+                "nom_commune": "STRASBOURG",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000421201",
+                "date_maj": "2017-12-28",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          7.794682,
+                          48.541968
+                        ],
+                        [
+                          7.793993,
+                          48.541559
+                        ],
+                        [
+                          7.793424,
+                          48.541216
+                        ],
+                        [
+                          7.793269,
+                          48.541346
+                        ],
+                        [
+                          7.792971,
+                          48.541553
+                        ],
+                        [
+                          7.792971,
+                          48.541553
+                        ],
+                        [
+                          7.792185,
+                          48.542104
+                        ],
+                        [
+                          7.791619,
+                          48.54251
+                        ],
+                        [
+                          7.791584,
+                          48.542597
+                        ],
+                        [
+                          7.791635,
+                          48.54267
+                        ],
+                        [
+                          7.792156,
+                          48.542991
+                        ],
+                        [
+                          7.792405,
+                          48.543151
+                        ],
+                        [
+                          7.792307,
+                          48.543227
+                        ],
+                        [
+                          7.792541,
+                          48.543374
+                        ],
+                        [
+                          7.79235,
+                          48.543513
+                        ],
+                        [
+                          7.792237,
+                          48.543591
+                        ],
+                        [
+                          7.792334,
+                          48.54365
+                        ],
+                        [
+                          7.792157,
+                          48.543783
+                        ],
+                        [
+                          7.792844,
+                          48.54421
+                        ],
+                        [
+                          7.793281,
+                          48.544485
+                        ],
+                        [
+                          7.794029,
+                          48.544941
+                        ],
+                        [
+                          7.795217,
+                          48.545668
+                        ],
+                        [
+                          7.796398,
+                          48.546401
+                        ],
+                        [
+                          7.797583,
+                          48.547143
+                        ],
+                        [
+                          7.798251,
+                          48.547553
+                        ],
+                        [
+                          7.798305,
+                          48.547582
+                        ],
+                        [
+                          7.798369,
+                          48.547594
+                        ],
+                        [
+                          7.798425,
+                          48.547599
+                        ],
+                        [
+                          7.7985,
+                          48.547599
+                        ],
+                        [
+                          7.798567,
+                          48.547578
+                        ],
+                        [
+                          7.798621,
+                          48.547548
+                        ],
+                        [
+                          7.798659,
+                          48.54752
+                        ],
+                        [
+                          7.798688,
+                          48.547475
+                        ],
+                        [
+                          7.798707,
+                          48.547434
+                        ],
+                        [
+                          7.798702,
+                          48.547386
+                        ],
+                        [
+                          7.798659,
+                          48.547206
+                        ],
+                        [
+                          7.797883,
+                          48.544012
+                        ],
+                        [
+                          7.797873,
+                          48.543976
+                        ],
+                        [
+                          7.79787,
+                          48.54395
+                        ],
+                        [
+                          7.797838,
+                          48.543936
+                        ],
+                        [
+                          7.797803,
+                          48.543907
+                        ],
+                        [
+                          7.797295,
+                          48.543591
+                        ],
+                        [
+                          7.796986,
+                          48.543398
+                        ],
+                        [
+                          7.796235,
+                          48.542929
+                        ],
+                        [
+                          7.795664,
+                          48.542584
+                        ],
+                        [
+                          7.794682,
+                          48.541968
+                        ]
+                      ],
+                      [
+                        [
+                          7.79468,
+                          48.541973
+                        ],
+                        [
+                          7.794508,
+                          48.542103
+                        ],
+                        [
+                          7.794682,
+                          48.541968
+                        ],
+                        [
+                          7.79468,
+                          48.541973
+                        ]
+                      ],
+                      [
+                        [
+                          7.792334,
+                          48.54365
+                        ],
+                        [
+                          7.793471,
+                          48.544352
+                        ],
+                        [
+                          7.794212,
+                          48.544813
+                        ],
+                        [
+                          7.793471,
+                          48.544352
+                        ],
+                        [
+                          7.792334,
+                          48.54365
+                        ]
+                      ],
+                      [
+                        [
+                          7.795234,
+                          48.543132
+                        ],
+                        [
+                          7.79505,
+                          48.543018
+                        ],
+                        [
+                          7.795234,
+                          48.543132
+                        ],
+                        [
+                          7.795234,
+                          48.543132
+                        ]
+                      ],
+                      [
+                        [
+                          7.795234,
+                          48.543132
+                        ],
+                        [
+                          7.795626,
+                          48.543376
+                        ],
+                        [
+                          7.796385,
+                          48.543843
+                        ],
+                        [
+                          7.796702,
+                          48.544033
+                        ],
+                        [
+                          7.796844,
+                          48.544127
+                        ],
+                        [
+                          7.796103,
+                          48.543669
+                        ],
+                        [
+                          7.795608,
+                          48.543367
+                        ],
+                        [
+                          7.795234,
+                          48.543132
+                        ],
+                        [
+                          7.795234,
+                          48.543132
+                        ],
+                        [
+                          7.795234,
+                          48.543132
+                        ]
+                      ],
+                      [
+                        [
+                          7.796844,
+                          48.544127
+                        ],
+                        [
+                          7.796388,
+                          48.544467
+                        ],
+                        [
+                          7.796388,
+                          48.544467
+                        ],
+                        [
+                          7.796388,
+                          48.544467
+                        ],
+                        [
+                          7.796844,
+                          48.544127
+                        ]
+                      ],
+                      [
+                        [
+                          7.794508,
+                          48.542103
+                        ],
+                        [
+                          7.795482,
+                          48.542709
+                        ],
+                        [
+                          7.794508,
+                          48.542103
+                        ],
+                        [
+                          7.794508,
+                          48.542103
+                        ]
+                      ],
+                      [
+                        [
+                          7.795144,
+                          48.543692
+                        ],
+                        [
+                          7.795637,
+                          48.544005
+                        ],
+                        [
+                          7.795269,
+                          48.543772
+                        ],
+                        [
+                          7.795144,
+                          48.543692
+                        ]
+                      ],
+                      [
+                        [
+                          7.794924,
+                          48.543758
+                        ],
+                        [
+                          7.794629,
+                          48.543572
+                        ],
+                        [
+                          7.794924,
+                          48.543758
+                        ],
+                        [
+                          7.794924,
+                          48.543758
+                        ]
+                      ],
+                      [
+                        [
+                          7.793124,
+                          48.543604
+                        ],
+                        [
+                          7.794218,
+                          48.544268
+                        ],
+                        [
+                          7.794409,
+                          48.54439
+                        ],
+                        [
+                          7.793124,
+                          48.543604
+                        ],
+                        [
+                          7.793124,
+                          48.543604
+                        ]
+                      ],
+                      [
+                        [
+                          7.798439,
+                          48.54742
+                        ],
+                        [
+                          7.798401,
+                          48.547257
+                        ],
+                        [
+                          7.798098,
+                          48.54601
+                        ],
+                        [
+                          7.798401,
+                          48.547257
+                        ],
+                        [
+                          7.798439,
+                          48.54742
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000426001",
+                "nom_etablissement": "Ancienne brasserie K1 KRONENBOURG",
+                "adresse": "ROUTE D''OBERHAUSBERGEN",
+                "adresse_lieudit": null,
+                "code_insee": "67482",
+                "nom_commune": "STRASBOURG",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000426001",
+                "date_maj": "2016-11-10",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          7.715111,
+                          48.593097
+                        ],
+                        [
+                          7.715686,
+                          48.592965
+                        ],
+                        [
+                          7.715737,
+                          48.593062
+                        ],
+                        [
+                          7.715807,
+                          48.593048
+                        ],
+                        [
+                          7.71583,
+                          48.593092
+                        ],
+                        [
+                          7.715795,
+                          48.593102
+                        ],
+                        [
+                          7.715934,
+                          48.593361
+                        ],
+                        [
+                          7.715965,
+                          48.593355
+                        ],
+                        [
+                          7.715985,
+                          48.59339
+                        ],
+                        [
+                          7.715921,
+                          48.593408
+                        ],
+                        [
+                          7.715978,
+                          48.59352
+                        ],
+                        [
+                          7.715458,
+                          48.593638
+                        ],
+                        [
+                          7.715399,
+                          48.593527
+                        ],
+                        [
+                          7.715333,
+                          48.593542
+                        ],
+                        [
+                          7.715312,
+                          48.593504
+                        ],
+                        [
+                          7.715344,
+                          48.593498
+                        ],
+                        [
+                          7.715206,
+                          48.593236
+                        ],
+                        [
+                          7.715174,
+                          48.593243
+                        ],
+                        [
+                          7.71515,
+                          48.593199
+                        ],
+                        [
+                          7.715214,
+                          48.593183
+                        ],
+                        [
+                          7.715183,
+                          48.593123
+                        ],
+                        [
+                          7.715133,
+                          48.593136
+                        ],
+                        [
+                          7.715111,
+                          48.593099
+                        ],
+                        [
+                          7.715111,
+                          48.593099
+                        ],
+                        [
+                          7.715111,
+                          48.593097
+                        ]
+                      ]
+                    ],
+                    [
+                      [
+                        [
+                          7.716121,
+                          48.593582
+                        ],
+                        [
+                          7.716252,
+                          48.593551
+                        ],
+                        [
+                          7.716256,
+                          48.59356
+                        ],
+                        [
+                          7.716457,
+                          48.593516
+                        ],
+                        [
+                          7.716577,
+                          48.593749
+                        ],
+                        [
+                          7.716243,
+                          48.593817
+                        ],
+                        [
+                          7.716121,
+                          48.593583
+                        ],
+                        [
+                          7.716121,
+                          48.593582
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000435201",
+                "nom_etablissement": "STARLETTE",
+                "adresse": "ROUTE DU PETIT RHIN",
+                "adresse_lieudit": null,
+                "code_insee": "67482",
+                "nom_commune": "STRASBOURG",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000435201",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          7.78509,
+                          48.571756
+                        ],
+                        [
+                          7.785205,
+                          48.571232
+                        ],
+                        [
+                          7.785052,
+                          48.571186
+                        ],
+                        [
+                          7.785044,
+                          48.5712
+                        ],
+                        [
+                          7.784905,
+                          48.571124
+                        ],
+                        [
+                          7.784805,
+                          48.571062
+                        ],
+                        [
+                          7.784709,
+                          48.570993
+                        ],
+                        [
+                          7.78462,
+                          48.570918
+                        ],
+                        [
+                          7.78454,
+                          48.570849
+                        ],
+                        [
+                          7.784465,
+                          48.570764
+                        ],
+                        [
+                          7.784395,
+                          48.570684
+                        ],
+                        [
+                          7.784333,
+                          48.570599
+                        ],
+                        [
+                          7.78428,
+                          48.570517
+                        ],
+                        [
+                          7.784223,
+                          48.57043
+                        ],
+                        [
+                          7.784188,
+                          48.570338
+                        ],
+                        [
+                          7.784151,
+                          48.570252
+                        ],
+                        [
+                          7.784121,
+                          48.570142
+                        ],
+                        [
+                          7.784148,
+                          48.570121
+                        ],
+                        [
+                          7.783979,
+                          48.570102
+                        ],
+                        [
+                          7.78318,
+                          48.573577
+                        ],
+                        [
+                          7.783132,
+                          48.573783
+                        ],
+                        [
+                          7.783095,
+                          48.573953
+                        ],
+                        [
+                          7.782503,
+                          48.576513
+                        ],
+                        [
+                          7.782467,
+                          48.576683
+                        ],
+                        [
+                          7.782455,
+                          48.57679
+                        ],
+                        [
+                          7.782432,
+                          48.576952
+                        ],
+                        [
+                          7.782434,
+                          48.57709
+                        ],
+                        [
+                          7.78243,
+                          48.577246
+                        ],
+                        [
+                          7.782447,
+                          48.577395
+                        ],
+                        [
+                          7.782462,
+                          48.577499
+                        ],
+                        [
+                          7.782472,
+                          48.577598
+                        ],
+                        [
+                          7.782502,
+                          48.577742
+                        ],
+                        [
+                          7.782534,
+                          48.577866
+                        ],
+                        [
+                          7.782694,
+                          48.578457
+                        ],
+                        [
+                          7.782764,
+                          48.578424
+                        ],
+                        [
+                          7.782965,
+                          48.578291
+                        ],
+                        [
+                          7.783023,
+                          48.578244
+                        ],
+                        [
+                          7.78315,
+                          48.578139
+                        ],
+                        [
+                          7.783252,
+                          48.578032
+                        ],
+                        [
+                          7.783343,
+                          48.57792
+                        ],
+                        [
+                          7.78342,
+                          48.577804
+                        ],
+                        [
+                          7.783486,
+                          48.577684
+                        ],
+                        [
+                          7.783528,
+                          48.577559
+                        ],
+                        [
+                          7.783692,
+                          48.577024
+                        ],
+                        [
+                          7.783903,
+                          48.576323
+                        ],
+                        [
+                          7.783979,
+                          48.57606
+                        ],
+                        [
+                          7.78451,
+                          48.574339
+                        ],
+                        [
+                          7.78451,
+                          48.574339
+                        ],
+                        [
+                          7.784538,
+                          48.574255
+                        ],
+                        [
+                          7.784619,
+                          48.574
+                        ],
+                        [
+                          7.784643,
+                          48.573769
+                        ],
+                        [
+                          7.78465,
+                          48.57372
+                        ],
+                        [
+                          7.784658,
+                          48.573649
+                        ],
+                        [
+                          7.78509,
+                          48.571756
+                        ]
+                      ],
+                      [
+                        [
+                          7.783095,
+                          48.573953
+                        ],
+                        [
+                          7.783097,
+                          48.573953
+                        ],
+                        [
+                          7.783223,
+                          48.573988
+                        ],
+                        [
+                          7.783786,
+                          48.574141
+                        ],
+                        [
+                          7.78451,
+                          48.574339
+                        ],
+                        [
+                          7.783223,
+                          48.573988
+                        ],
+                        [
+                          7.783095,
+                          48.573953
+                        ]
+                      ],
+                      [
+                        [
+                          7.784643,
+                          48.573769
+                        ],
+                        [
+                          7.78462,
+                          48.573859
+                        ],
+                        [
+                          7.784607,
+                          48.573911
+                        ],
+                        [
+                          7.784602,
+                          48.573913
+                        ],
+                        [
+                          7.784643,
+                          48.573769
+                        ]
+                      ],
+                      [
+                        [
+                          7.782528,
+                          48.577572
+                        ],
+                        [
+                          7.78252,
+                          48.577518
+                        ],
+                        [
+                          7.782513,
+                          48.577464
+                        ],
+                        [
+                          7.782528,
+                          48.577572
+                        ]
+                      ],
+                      [
+                        [
+                          7.782528,
+                          48.577572
+                        ],
+                        [
+                          7.782549,
+                          48.577682
+                        ],
+                        [
+                          7.782536,
+                          48.577628
+                        ],
+                        [
+                          7.782528,
+                          48.577572
+                        ]
+                      ],
+                      [
+                        [
+                          7.782549,
+                          48.577682
+                        ],
+                        [
+                          7.782578,
+                          48.577791
+                        ],
+                        [
+                          7.782563,
+                          48.577736
+                        ],
+                        [
+                          7.782549,
+                          48.577682
+                        ]
+                      ],
+                      [
+                        [
+                          7.783403,
+                          48.573591
+                        ],
+                        [
+                          7.783702,
+                          48.573673
+                        ],
+                        [
+                          7.783462,
+                          48.57361
+                        ],
+                        [
+                          7.783403,
+                          48.573591
+                        ]
+                      ],
+                      [
+                        [
+                          7.782508,
+                          48.577241
+                        ],
+                        [
+                          7.782517,
+                          48.577125
+                        ],
+                        [
+                          7.782525,
+                          48.577067
+                        ],
+                        [
+                          7.782525,
+                          48.577067
+                        ],
+                        [
+                          7.782508,
+                          48.577241
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              }
+            ],
+            "source": "georisques_api"
+          },
+          "azi": {
+            "total": 0,
+            "items": [],
+            "source": "georisques_api"
+          },
+          "catnat": {
+            "total": 10,
+            "items": [
+              {
+                "code_national_catnat": "ECOZ8800025A",
+                "date_debut_evt": "12/03/1988",
+                "date_fin_evt": "29/03/1988",
+                "date_publication_arrete": "10/06/1988",
+                "date_publication_jo": "19/06/1988",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "67482",
+                "libelle_commune": "STRASBOURG"
+              },
+              {
+                "code_national_catnat": "INTE0000626A",
+                "date_debut_evt": "03/05/2000",
+                "date_fin_evt": "03/05/2000",
+                "date_publication_arrete": "06/11/2000",
+                "date_publication_jo": "22/11/2000",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "67482",
+                "libelle_commune": "STRASBOURG"
+              },
+              {
+                "code_national_catnat": "INTE0000626A",
+                "date_debut_evt": "03/05/2000",
+                "date_fin_evt": "03/05/2000",
+                "date_publication_arrete": "06/11/2000",
+                "date_publication_jo": "22/11/2000",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "67482",
+                "libelle_commune": "STRASBOURG"
+              },
+              {
+                "code_national_catnat": "INTE0000626A",
+                "date_debut_evt": "11/05/2000",
+                "date_fin_evt": "12/05/2000",
+                "date_publication_arrete": "06/11/2000",
+                "date_publication_jo": "22/11/2000",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "67482",
+                "libelle_commune": "STRASBOURG"
+              },
+              {
+                "code_national_catnat": "INTE0000626A",
+                "date_debut_evt": "11/05/2000",
+                "date_fin_evt": "12/05/2000",
+                "date_publication_arrete": "06/11/2000",
+                "date_publication_jo": "22/11/2000",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "67482",
+                "libelle_commune": "STRASBOURG"
+              },
+              {
+                "code_national_catnat": "INTE9000113A",
+                "date_debut_evt": "14/02/1990",
+                "date_fin_evt": "19/02/1990",
+                "date_publication_arrete": "16/03/1990",
+                "date_publication_jo": "23/03/1990",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "67482",
+                "libelle_commune": "STRASBOURG"
+              },
+              {
+                "code_national_catnat": "INTE9200533A",
+                "date_debut_evt": "24/06/1992",
+                "date_fin_evt": "24/06/1992",
+                "date_publication_arrete": "24/12/1992",
+                "date_publication_jo": "16/01/1993",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "67482",
+                "libelle_commune": "STRASBOURG"
+              },
+              {
+                "code_national_catnat": "INTE9400502A",
+                "date_debut_evt": "19/06/1994",
+                "date_fin_evt": "19/06/1994",
+                "date_publication_arrete": "28/10/1994",
+                "date_publication_jo": "20/11/1994",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "67482",
+                "libelle_commune": "STRASBOURG"
+              },
+              {
+                "code_national_catnat": "INTE9500497A",
+                "date_debut_evt": "21/06/1995",
+                "date_fin_evt": "21/06/1995",
+                "date_publication_arrete": "28/09/1995",
+                "date_publication_jo": "15/10/1995",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "67482",
+                "libelle_commune": "STRASBOURG"
+              },
+              {
+                "code_national_catnat": "INTE9600421A",
+                "date_debut_evt": "09/06/1996",
+                "date_fin_evt": "09/06/1996",
+                "date_publication_arrete": "01/10/1996",
+                "date_publication_jo": "17/10/1996",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "67482",
+                "libelle_commune": "STRASBOURG"
+              }
+            ],
+            "source": "georisques_api"
+          }
+        },
+        "production_locale_region_5ans": [
+          {
+            "annee": 2020,
+            "surface_totale_ha": 628876.8,
+            "nb_fermes": 20312
+          },
+          {
+            "annee": 2021,
+            "surface_totale_ha": 687525.83,
+            "nb_fermes": 22508
+          },
+          {
+            "annee": 2022,
+            "surface_totale_ha": 713970.24,
+            "nb_fermes": 23260
+          },
+          {
+            "annee": 2023,
+            "surface_totale_ha": 687032.6,
+            "nb_fermes": 23087
+          },
+          {
+            "annee": 2024,
+            "surface_totale_ha": 665135.27,
+            "nb_fermes": 22920
+          }
+        ],
+        "production_nationale_5ans": [
+          {
+            "annee": 2020,
+            "surface_totale_ha": 7554282.92,
+            "nb_fermes": 307312
+          },
+          {
+            "annee": 2021,
+            "surface_totale_ha": 8231508.48,
+            "nb_fermes": 337519
+          },
+          {
+            "annee": 2022,
+            "surface_totale_ha": 8466035.41,
+            "nb_fermes": 351659
+          },
+          {
+            "annee": 2023,
+            "surface_totale_ha": 8303291.32,
+            "nb_fermes": 359226
+          },
+          {
+            "annee": 2024,
+            "surface_totale_ha": 8134700.51,
+            "nb_fermes": 362486
+          }
+        ],
+        "tendance_ventes_pct_5ans": {
+          "periode": {
+            "debut": 2020,
+            "fin": 2024
+          },
+          "evolution_moyenne_pct": 3.68,
+          "details": [
+            {
+              "annee": 2020,
+              "evolution_pct_moyenne": 1.67
+            },
+            {
+              "annee": 2021,
+              "evolution_pct_moyenne": 5.76
+            },
+            {
+              "annee": 2022,
+              "evolution_pct_moyenne": 2.88
+            },
+            {
+              "annee": 2023,
+              "evolution_pct_moyenne": 4.12
+            },
+            {
+              "annee": 2024,
+              "evolution_pct_moyenne": 3.95
+            }
+          ]
+        },
+        "tendance_commerce_5ans": {
+          "periode": {
+            "debut": 6666,
+            "fin": 6666
+          },
+          "details": [
+            {
+              "annee": 6666,
+              "total_valeur_M_eur": 2538.66
+            }
+          ]
+        }
+      },
+      "operateurs": {
+        "total": 0,
+        "list": []
+      },
+      "metadata": {
+        "secteur": "alimentaire",
+        "ville": "Strasbourg",
+        "region": "",
+        "objectif": "fruits",
+        "generatedAt": "2025-11-13T22:07:11.136Z",
+        "aiModel": "fallback"
+      }
+    }
+  }
+}

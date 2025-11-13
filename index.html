@@ -6,13 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="BioMarket Insights - Études de marché bio par IA en quelques minutes">
     <title>BioMarket Insights - Étude de Marché Bio par IA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header>
         <nav>
-            <div class="logo">BioMarket Insights</div>
+            <div class="logo">
+                <i class="ri-leaf-line"></i>
+                <span>BioMarket Insights</span>
+            </div>
             <ul class="nav-links">
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#probleme">Problématique</a></li>
@@ -39,19 +46,25 @@
             <h2 class="section-title">La Problématique</h2>
             <div class="cards">
                 <div class="card">
-                    <div class="card-icon">💰</div>
+                    <div class="card-icon">
+                        <i class="ri-money-euro-circle-line"></i>
+                    </div>
                     <h3>Coûts Prohibitifs</h3>
                     <p>Les études de marché traditionnelles coûtent entre 5 000€ et 50 000€, inaccessibles pour les PME
                         et acteurs locaux du bio.</p>
                 </div>
                 <div class="card">
-                    <div class="card-icon">⏰</div>
+                    <div class="card-icon">
+                        <i class="ri-time-line"></i>
+                    </div>
                     <h3>Délais Trop Longs</h3>
                     <p>Plusieurs semaines ou mois pour obtenir des résultats, alors que le marché bio évolue rapidement.
                     </p>
                 </div>
                 <div class="card">
-                    <div class="card-icon">📉</div>
+                    <div class="card-icon">
+                        <i class="ri-database-2-line"></i>
+                    </div>
                     <h3>Données Obsolètes</h3>
                     <p>Les études deviennent vite dépassées face à l'évolution rapide des tendances de consommation bio.
                     </p>
@@ -61,19 +74,25 @@
             <h2 class="section-title" style="margin-top: 4rem;">Notre Solution</h2>
             <div class="cards">
                 <div class="card">
-                    <div class="card-icon">🚀</div>
+                    <div class="card-icon">
+                        <i class="ri-rocket-line"></i>
+                    </div>
                     <h3>Rapidité Exceptionnelle</h3>
                     <p>Études complètes en quelques minutes grâce à l'intelligence artificielle et au traitement
                         automatique des données.</p>
                 </div>
                 <div class="card">
-                    <div class="card-icon">🎯</div>
+                    <div class="card-icon">
+                        <i class="ri-focus-3-line"></i>
+                    </div>
                     <h3>Personnalisation Totale</h3>
                     <p>Analyses adaptées à votre secteur bio spécifique : alimentaire, cosmétiques, textiles,
                         distribution...</p>
                 </div>
                 <div class="card">
-                    <div class="card-icon">🔒</div>
+                    <div class="card-icon">
+                        <i class="ri-shield-check-line"></i>
+                    </div>
                     <h3>Conformité RGPD</h3>
                     <p>Toutes les données sont traitées dans le respect de la réglementation européenne sur la
                         protection des données.</p>
@@ -87,32 +106,44 @@
             <h2 class="section-title">Fonctionnalités Clés</h2>
             <div class="feature-grid">
                 <div class="feature-item">
-                    <div class="feature-icon">📊</div>
+                    <div class="feature-icon">
+                        <i class="ri-line-chart-line"></i>
+                    </div>
                     <h3>Analyse Automatique</h3>
                     <p>Traitement intelligent des données de marché bio en temps réel</p>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon">🏢</div>
+                    <div class="feature-icon">
+                        <i class="ri-store-2-line"></i>
+                    </div>
                     <h3>Acteurs Clés</h3>
                     <p>Identification des producteurs, distributeurs et certifications bio</p>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon">🗺️</div>
+                    <div class="feature-icon">
+                        <i class="ri-map-pin-2-line"></i>
+                    </div>
                     <h3>Cartographie</h3>
                     <p>Visualisation des relations économiques du secteur bio</p>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon">👁️</div>
+                    <div class="feature-icon">
+                        <i class="ri-eye-line"></i>
+                    </div>
                     <h3>Veille Concurrentielle</h3>
                     <p>Suivi en temps réel de vos concurrents sur le marché bio</p>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon">📄</div>
+                    <div class="feature-icon">
+                        <i class="ri-file-list-3-line"></i>
+                    </div>
                     <h3>Export Synthétique</h3>
                     <p>Rapports professionnels prêts à présenter à vos investisseurs</p>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon">📈</div>
+                    <div class="feature-icon">
+                        <i class="ri-pie-chart-2-line"></i>
+                    </div>
                     <h3>Tendances Marché</h3>
                     <p>Analyse des évolutions et prévisions du secteur bio</p>
                 </div>
@@ -137,9 +168,13 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="region">Département d'Intérêt *</label>
-                        <select id="region" required>
-                            <option value="" disabled selected>Sélectionnez un département</option>
+                        <label for="ville">Ville ciblée *</label>
+                        <input type="text" id="ville" placeholder="Ex : Paris, Lyon, Nantes..." required />
+                    </div>
+                    <div class="form-group">
+                        <label for="region">Département d'intérêt (optionnel)</label>
+                        <select id="region">
+                            <option value="">Non précisé</option>
                             <option value="01 - Ain">01 - Ain</option>
                             <option value="02 - Aisne">02 - Aisne</option>
                             <option value="03 - Allier">03 - Allier</option>
@@ -256,8 +291,13 @@
                     <button type="submit" class="submit-btn">Lancer l'Analyse IA</button>
                 </form>
                 <div id="results" class="results">
-                    <h3>🎉 Analyse en Cours...</h3>
-                    <p>Notre IA traite votre demande. Vous recevrez un rapport complet sous quelques minutes.</p>
+                    <div class="results-header">
+                        <i class="ri-robot-2-line"></i>
+                        <div>
+                            <h3>Analyse en cours</h3>
+                            <p>Notre IA traite votre demande. Vous recevrez un rapport complet sous quelques minutes.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -270,18 +310,22 @@
                 outil stratégique d'aide à la décision pour développer le secteur bio de votre territoire</p>
             <div class="impact-stats">
                 <div class="stat">
+                    <i class="ri-refund-2-line"></i>
                     <div class="stat-number">95%</div>
                     <p>Réduction des coûts d'étude</p>
                 </div>
                 <div class="stat">
+                    <i class="ri-timer-flash-line"></i>
                     <div class="stat-number">98%</div>
                     <p>Gain de temps</p>
                 </div>
                 <div class="stat">
+                    <i class="ri-time-line"></i>
                     <div class="stat-number">24/7</div>
                     <p>Disponibilité</p>
                 </div>
                 <div class="stat">
+                    <i class="ri-shield-keyhole-line"></i>
                     <div class="stat-number">100%</div>
                     <p>Conforme RGPD</p>
                 </div>

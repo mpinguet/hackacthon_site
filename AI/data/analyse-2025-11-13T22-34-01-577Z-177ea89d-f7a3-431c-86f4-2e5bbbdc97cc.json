@@ -1,0 +1,2556 @@
+{
+  "id": "177ea89d-f7a3-431c-86f4-2e5bbbdc97cc",
+  "prefix": "analyse",
+  "generated_at": "2025-11-13T22:34:01.577Z",
+  "payload": {
+    "endpoint": "/api/analyze",
+    "request": {
+      "secteur": "alimentaire",
+      "region": "",
+      "objectif": "fruits",
+      "ville": "Nice"
+    },
+    "response": {
+      "summary": "L'agriculture biologique en France connaît une croissance significative, avec une augmentation de la surface cultivée et du nombre de fermes. Les ventes ont enregistré une progression soutenue au cours des dernières années, démontrant un intérêt croissant du marché pour les produits biologiques.",
+      "kpis": {
+        "marche": "Croissance des ventes moyennes de 3.95% en 2024, augmentation de la surface agricole (+272 231 ha entre 2020 et 2024)",
+        "acteurs": "Présence de nombreux petits exploitants, absence de données concrètes sur les concurrents directs",
+        "croissance": "Augmentation du nombre de fermes (+2 491 entre 2020 et 2024), progression des ventes (+5.76% en 2021)",
+        "potentiel": "Développement soutenu au niveau national et régional, valorisation croissante des produits biologiques",
+        "trends": {
+          "marche": "Croissance des ventes moyennes de 3.95% en 2024, augmentation de la surface agricole (+272 231 ha entre 2020 et 2024)",
+          "acteurs": "Présence de nombreux petits exploitants, absence de données concrètes sur les concurrents directs",
+          "croissance": "Augmentation du nombre de fermes (+2 491 entre 2020 et 2024), progression des ventes (+5.76% en 2021)",
+          "potentiel": "Développement soutenu au niveau national et régional, valorisation croissante des produits biologiques"
+        }
+      },
+      "keyPoints": [
+        "Croissance significative du marché des produits biologiques au niveau national et régional",
+        "Absence de données concrètes sur les concurrents directs",
+        "Développement soutenu de l'agriculture biologique avec une augmentation de la surface cultivée et du nombre de fermes",
+        "Tendance à la diversification des produits biologiques"
+      ],
+      "actors": [
+        {
+          "name": "Petits exploitants",
+          "type": "Producteurs",
+          "market": "Marché local et national",
+          "growth": "Croissance modeste",
+          "site": "Présentation directe aux consommateurs"
+        },
+        {
+          "name": "Grands groupes agro-alimentaires",
+          "type": "Transformateurs",
+          "market": "Marché national",
+          "growth": "Croissance rapide",
+          "site": "Présence sur les circuits de grande distribution"
+        }
+      ],
+      "recommendations": [
+        {
+          "title": "Collecte de données",
+          "desc": "Mener des études de marché pour identifier les concurrents directs et les tendances émergentes"
+        },
+        {
+          "title": "Valorisation des produits",
+          "desc": "Développer des stratégies marketing pour mettre en avant les avantages des produits biologiques"
+        }
+      ],
+      "chartData": {
+        "marketShare": [
+          {
+            "label": "2020",
+            "value": 7554282.92
+          },
+          {
+            "label": "2021",
+            "value": 8231508.48
+          },
+          {
+            "label": "2022",
+            "value": 8466035.41
+          },
+          {
+            "label": "2023",
+            "value": 8303291.32
+          },
+          {
+            "label": "2024",
+            "value": 8134700.51
+          }
+        ],
+        "marketShareLabels": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024"
+        ],
+        "evolution": [
+          {
+            "label": "2020",
+            "value": 1.67
+          },
+          {
+            "label": "2021",
+            "value": 5.76
+          },
+          {
+            "label": "2022",
+            "value": 2.88
+          },
+          {
+            "label": "2023",
+            "value": 4.12
+          },
+          {
+            "label": "2024",
+            "value": 3.95
+          }
+        ],
+        "evolutionLabels": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024"
+        ],
+        "segments": [
+          {
+            "label": "Ferme",
+            "value": 629639.02
+          },
+          {
+            "label": "Collectivité",
+            "value": 627981.2
+          }
+        ],
+        "segmentsLabels": [
+          "Ferme",
+          "Collectivité"
+        ],
+        "competitors": [],
+        "competitorsLabels": []
+      },
+      "aiModel": "deepseek-r1:8b",
+      "context": {
+        "meta": {
+          "ville_recherchee": "Nice",
+          "segment_analyse": "alimentaire",
+          "generated_at": "2025-11-13T22:33:31.108Z"
+        },
+        "geo": {
+          "nom_commune": "Nice",
+          "code_commune": "06088",
+          "population": 353701,
+          "code_departement": "06",
+          "code_region": "93",
+          "nom_region": "Provence-Alpes-Côte d'Azur"
+        },
+        "concurrence_locale_api": {
+          "nb_operateurs_bio_total": 0,
+          "nb_concurrents_directs": 0,
+          "concurrents_directs": [],
+          "ventilation_activites": {},
+          "detail_operateurs": []
+        },
+        "risques_locaux_api": {
+          "code_commune": "06088",
+          "basol": {
+            "total": 10,
+            "items": [
+              {
+                "identifiant_ssp": "SSP000410101",
+                "nom_etablissement": "Agence EDF GDF Nice Risso ( quartier St. jean d'angely)",
+                "adresse": "ROUTE DE TURIN",
+                "adresse_lieudit": null,
+                "code_insee": "06088",
+                "nom_commune": "NICE",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000410101",
+                "date_maj": "2018-01-10",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          7.284699,
+                          43.708291
+                        ],
+                        [
+                          7.284673,
+                          43.708297
+                        ],
+                        [
+                          7.284662,
+                          43.708301
+                        ],
+                        [
+                          7.284584,
+                          43.70832
+                        ],
+                        [
+                          7.284539,
+                          43.708331
+                        ],
+                        [
+                          7.284478,
+                          43.708346
+                        ],
+                        [
+                          7.284467,
+                          43.70835
+                        ],
+                        [
+                          7.284432,
+                          43.708362
+                        ],
+                        [
+                          7.284295,
+                          43.708409
+                        ],
+                        [
+                          7.284312,
+                          43.708475
+                        ],
+                        [
+                          7.284325,
+                          43.708526
+                        ],
+                        [
+                          7.284498,
+                          43.709191
+                        ],
+                        [
+                          7.284499,
+                          43.709192
+                        ],
+                        [
+                          7.284506,
+                          43.709219
+                        ],
+                        [
+                          7.284513,
+                          43.709246
+                        ],
+                        [
+                          7.284527,
+                          43.709302
+                        ],
+                        [
+                          7.284547,
+                          43.709375
+                        ],
+                        [
+                          7.284572,
+                          43.709472
+                        ],
+                        [
+                          7.284751,
+                          43.709439
+                        ],
+                        [
+                          7.284911,
+                          43.709409
+                        ],
+                        [
+                          7.285097,
+                          43.709371
+                        ],
+                        [
+                          7.28515,
+                          43.709358
+                        ],
+                        [
+                          7.285218,
+                          43.709342
+                        ],
+                        [
+                          7.285277,
+                          43.709326
+                        ],
+                        [
+                          7.285351,
+                          43.709305
+                        ],
+                        [
+                          7.285438,
+                          43.709279
+                        ],
+                        [
+                          7.285492,
+                          43.709261
+                        ],
+                        [
+                          7.285556,
+                          43.709238
+                        ],
+                        [
+                          7.285741,
+                          43.70917
+                        ],
+                        [
+                          7.285755,
+                          43.709184
+                        ],
+                        [
+                          7.285758,
+                          43.709183
+                        ],
+                        [
+                          7.285762,
+                          43.709182
+                        ],
+                        [
+                          7.285769,
+                          43.709183
+                        ],
+                        [
+                          7.285776,
+                          43.709184
+                        ],
+                        [
+                          7.285781,
+                          43.709188
+                        ],
+                        [
+                          7.285786,
+                          43.709192
+                        ],
+                        [
+                          7.285833,
+                          43.70926
+                        ],
+                        [
+                          7.28588,
+                          43.709243
+                        ],
+                        [
+                          7.285836,
+                          43.70918
+                        ],
+                        [
+                          7.285831,
+                          43.709163
+                        ],
+                        [
+                          7.285829,
+                          43.709149
+                        ],
+                        [
+                          7.285819,
+                          43.709139
+                        ],
+                        [
+                          7.286133,
+                          43.709014
+                        ],
+                        [
+                          7.286253,
+                          43.708955
+                        ],
+                        [
+                          7.286556,
+                          43.708793
+                        ],
+                        [
+                          7.286561,
+                          43.708797
+                        ],
+                        [
+                          7.286633,
+                          43.708759
+                        ],
+                        [
+                          7.28661,
+                          43.708735
+                        ],
+                        [
+                          7.286538,
+                          43.708663
+                        ],
+                        [
+                          7.286531,
+                          43.708668
+                        ],
+                        [
+                          7.286289,
+                          43.708421
+                        ],
+                        [
+                          7.286296,
+                          43.708417
+                        ],
+                        [
+                          7.286283,
+                          43.708404
+                        ],
+                        [
+                          7.286189,
+                          43.708307
+                        ],
+                        [
+                          7.285728,
+                          43.708305
+                        ],
+                        [
+                          7.285515,
+                          43.708306
+                        ],
+                        [
+                          7.285336,
+                          43.708305
+                        ],
+                        [
+                          7.285277,
+                          43.708303
+                        ],
+                        [
+                          7.285233,
+                          43.7083
+                        ],
+                        [
+                          7.285048,
+                          43.708277
+                        ],
+                        [
+                          7.284966,
+                          43.708265
+                        ],
+                        [
+                          7.284896,
+                          43.708252
+                        ],
+                        [
+                          7.284875,
+                          43.708273
+                        ],
+                        [
+                          7.284738,
+                          43.708281
+                        ],
+                        [
+                          7.284717,
+                          43.708287
+                        ],
+                        [
+                          7.284699,
+                          43.708291
+                        ]
+                      ]
+                    ],
+                    [
+                      [
+                        [
+                          7.287409,
+                          43.70858
+                        ],
+                        [
+                          7.287005,
+                          43.708881
+                        ],
+                        [
+                          7.286389,
+                          43.709224
+                        ],
+                        [
+                          7.285995,
+                          43.70938
+                        ],
+                        [
+                          7.285987,
+                          43.709368
+                        ],
+                        [
+                          7.285983,
+                          43.709369
+                        ],
+                        [
+                          7.285978,
+                          43.709369
+                        ],
+                        [
+                          7.285973,
+                          43.709368
+                        ],
+                        [
+                          7.285969,
+                          43.709366
+                        ],
+                        [
+                          7.285929,
+                          43.709312
+                        ],
+                        [
+                          7.285881,
+                          43.709329
+                        ],
+                        [
+                          7.285912,
+                          43.709376
+                        ],
+                        [
+                          7.285913,
+                          43.70938
+                        ],
+                        [
+                          7.285913,
+                          43.709383
+                        ],
+                        [
+                          7.285911,
+                          43.709387
+                        ],
+                        [
+                          7.285908,
+                          43.70939
+                        ],
+                        [
+                          7.285904,
+                          43.709393
+                        ],
+                        [
+                          7.285912,
+                          43.709404
+                        ],
+                        [
+                          7.285821,
+                          43.709433
+                        ],
+                        [
+                          7.285382,
+                          43.709571
+                        ],
+                        [
+                          7.284768,
+                          43.709716
+                        ],
+                        [
+                          7.284755,
+                          43.709717
+                        ],
+                        [
+                          7.284737,
+                          43.709717
+                        ],
+                        [
+                          7.284718,
+                          43.709715
+                        ],
+                        [
+                          7.2847,
+                          43.709711
+                        ],
+                        [
+                          7.284683,
+                          43.709706
+                        ],
+                        [
+                          7.284667,
+                          43.709696
+                        ],
+                        [
+                          7.284659,
+                          43.709689
+                        ],
+                        [
+                          7.284651,
+                          43.70968
+                        ],
+                        [
+                          7.284632,
+                          43.709655
+                        ],
+                        [
+                          7.284703,
+                          43.709958
+                        ],
+                        [
+                          7.2848,
+                          43.71037
+                        ],
+                        [
+                          7.285025,
+                          43.711255
+                        ],
+                        [
+                          7.285058,
+                          43.711457
+                        ],
+                        [
+                          7.285059,
+                          43.711502
+                        ],
+                        [
+                          7.285044,
+                          43.711679
+                        ],
+                        [
+                          7.285084,
+                          43.711709
+                        ],
+                        [
+                          7.287931,
+                          43.711434
+                        ],
+                        [
+                          7.288059,
+                          43.71142
+                        ],
+                        [
+                          7.288105,
+                          43.711379
+                        ],
+                        [
+                          7.288106,
+                          43.71136
+                        ],
+                        [
+                          7.288121,
+                          43.711357
+                        ],
+                        [
+                          7.288103,
+                          43.711123
+                        ],
+                        [
+                          7.28809,
+                          43.711121
+                        ],
+                        [
+                          7.288051,
+                          43.710703
+                        ],
+                        [
+                          7.288043,
+                          43.710636
+                        ],
+                        [
+                          7.287999,
+                          43.710404
+                        ],
+                        [
+                          7.287982,
+                          43.710308
+                        ],
+                        [
+                          7.28795,
+                          43.710005
+                        ],
+                        [
+                          7.287939,
+                          43.710004
+                        ],
+                        [
+                          7.287707,
+                          43.709084
+                        ],
+                        [
+                          7.287693,
+                          43.709045
+                        ],
+                        [
+                          7.28762,
+                          43.709063
+                        ],
+                        [
+                          7.287535,
+                          43.708783
+                        ],
+                        [
+                          7.287574,
+                          43.70877
+                        ],
+                        [
+                          7.28753,
+                          43.708682
+                        ],
+                        [
+                          7.287538,
+                          43.70857
+                        ],
+                        [
+                          7.28746,
+                          43.708543
+                        ],
+                        [
+                          7.287409,
+                          43.70858
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000410201",
+                "nom_etablissement": "RAPID COTE D'AZUR",
+                "adresse": "14 RUE FRANÇOIS GUISOL",
+                "adresse_lieudit": null,
+                "code_insee": "06088",
+                "nom_commune": "NICE",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000410201",
+                "date_maj": "2018-01-10",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          7.28413,
+                          43.700455
+                        ],
+                        [
+                          7.284113,
+                          43.700362
+                        ],
+                        [
+                          7.284104,
+                          43.700309
+                        ],
+                        [
+                          7.28408,
+                          43.700175
+                        ],
+                        [
+                          7.284071,
+                          43.700121
+                        ],
+                        [
+                          7.284064,
+                          43.700081
+                        ],
+                        [
+                          7.284056,
+                          43.700036
+                        ],
+                        [
+                          7.284051,
+                          43.700005
+                        ],
+                        [
+                          7.284041,
+                          43.699951
+                        ],
+                        [
+                          7.284036,
+                          43.69992
+                        ],
+                        [
+                          7.284028,
+                          43.699875
+                        ],
+                        [
+                          7.28402,
+                          43.699831
+                        ],
+                        [
+                          7.284012,
+                          43.699782
+                        ],
+                        [
+                          7.284007,
+                          43.699755
+                        ],
+                        [
+                          7.283933,
+                          43.699763
+                        ],
+                        [
+                          7.28381,
+                          43.699773
+                        ],
+                        [
+                          7.28363,
+                          43.699788
+                        ],
+                        [
+                          7.283617,
+                          43.699716
+                        ],
+                        [
+                          7.283501,
+                          43.699727
+                        ],
+                        [
+                          7.283468,
+                          43.69973
+                        ],
+                        [
+                          7.283404,
+                          43.699736
+                        ],
+                        [
+                          7.283263,
+                          43.699734
+                        ],
+                        [
+                          7.283273,
+                          43.699838
+                        ],
+                        [
+                          7.283278,
+                          43.699889
+                        ],
+                        [
+                          7.283282,
+                          43.699935
+                        ],
+                        [
+                          7.283285,
+                          43.699978
+                        ],
+                        [
+                          7.283289,
+                          43.700014
+                        ],
+                        [
+                          7.283293,
+                          43.700069
+                        ],
+                        [
+                          7.283295,
+                          43.700093
+                        ],
+                        [
+                          7.2833,
+                          43.700151
+                        ],
+                        [
+                          7.283303,
+                          43.700191
+                        ],
+                        [
+                          7.283308,
+                          43.700241
+                        ],
+                        [
+                          7.283311,
+                          43.700287
+                        ],
+                        [
+                          7.283315,
+                          43.70033
+                        ],
+                        [
+                          7.283318,
+                          43.700361
+                        ],
+                        [
+                          7.283499,
+                          43.70035
+                        ],
+                        [
+                          7.283512,
+                          43.700349
+                        ],
+                        [
+                          7.283524,
+                          43.700348
+                        ],
+                        [
+                          7.283602,
+                          43.700344
+                        ],
+                        [
+                          7.283621,
+                          43.70047
+                        ],
+                        [
+                          7.283673,
+                          43.700491
+                        ],
+                        [
+                          7.283908,
+                          43.700472
+                        ],
+                        [
+                          7.283931,
+                          43.70047
+                        ],
+                        [
+                          7.283956,
+                          43.700469
+                        ],
+                        [
+                          7.28413,
+                          43.700455
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000418701",
+                "nom_etablissement": "SOGARE",
+                "adresse": "480 BOULEVARD DE LA MADELEINE",
+                "adresse_lieudit": null,
+                "code_insee": "06088",
+                "nom_commune": "NICE",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000418701",
+                "date_maj": "2018-01-10",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          7.222774,
+                          43.728561
+                        ],
+                        [
+                          7.22281,
+                          43.728531
+                        ],
+                        [
+                          7.222681,
+                          43.728464
+                        ],
+                        [
+                          7.222576,
+                          43.728409
+                        ],
+                        [
+                          7.222541,
+                          43.728389
+                        ],
+                        [
+                          7.222536,
+                          43.728393
+                        ],
+                        [
+                          7.222512,
+                          43.728381
+                        ],
+                        [
+                          7.222412,
+                          43.728479
+                        ],
+                        [
+                          7.222411,
+                          43.728478
+                        ],
+                        [
+                          7.222512,
+                          43.728381
+                        ],
+                        [
+                          7.222536,
+                          43.728393
+                        ],
+                        [
+                          7.222541,
+                          43.728389
+                        ],
+                        [
+                          7.222576,
+                          43.728409
+                        ],
+                        [
+                          7.222681,
+                          43.728464
+                        ],
+                        [
+                          7.22281,
+                          43.728531
+                        ],
+                        [
+                          7.222873,
+                          43.72848
+                        ],
+                        [
+                          7.222866,
+                          43.72839
+                        ],
+                        [
+                          7.222853,
+                          43.728341
+                        ],
+                        [
+                          7.222919,
+                          43.728178
+                        ],
+                        [
+                          7.22292,
+                          43.728145
+                        ],
+                        [
+                          7.222898,
+                          43.728076
+                        ],
+                        [
+                          7.222887,
+                          43.728064
+                        ],
+                        [
+                          7.22265,
+                          43.727953
+                        ],
+                        [
+                          7.22265,
+                          43.727953
+                        ],
+                        [
+                          7.222417,
+                          43.727837
+                        ],
+                        [
+                          7.222245,
+                          43.727726
+                        ],
+                        [
+                          7.222137,
+                          43.727855
+                        ],
+                        [
+                          7.222069,
+                          43.727965
+                        ],
+                        [
+                          7.222069,
+                          43.727965
+                        ],
+                        [
+                          7.222059,
+                          43.727984
+                        ],
+                        [
+                          7.222042,
+                          43.728107
+                        ],
+                        [
+                          7.222035,
+                          43.728172
+                        ],
+                        [
+                          7.222049,
+                          43.728259
+                        ],
+                        [
+                          7.222075,
+                          43.728329
+                        ],
+                        [
+                          7.222097,
+                          43.72835
+                        ],
+                        [
+                          7.222191,
+                          43.728429
+                        ],
+                        [
+                          7.222361,
+                          43.728573
+                        ],
+                        [
+                          7.222376,
+                          43.728587
+                        ],
+                        [
+                          7.222382,
+                          43.728603
+                        ],
+                        [
+                          7.22239,
+                          43.728646
+                        ],
+                        [
+                          7.222391,
+                          43.728672
+                        ],
+                        [
+                          7.222378,
+                          43.728722
+                        ],
+                        [
+                          7.222356,
+                          43.728784
+                        ],
+                        [
+                          7.222375,
+                          43.728785
+                        ],
+                        [
+                          7.222428,
+                          43.72879
+                        ],
+                        [
+                          7.222428,
+                          43.72879
+                        ],
+                        [
+                          7.222375,
+                          43.728785
+                        ],
+                        [
+                          7.222356,
+                          43.728784
+                        ],
+                        [
+                          7.22235,
+                          43.728815
+                        ],
+                        [
+                          7.22235,
+                          43.728815
+                        ],
+                        [
+                          7.22234,
+                          43.728921
+                        ],
+                        [
+                          7.222374,
+                          43.728876
+                        ],
+                        [
+                          7.222494,
+                          43.72878
+                        ],
+                        [
+                          7.222524,
+                          43.728757
+                        ],
+                        [
+                          7.222628,
+                          43.728683
+                        ],
+                        [
+                          7.222721,
+                          43.728605
+                        ],
+                        [
+                          7.222773,
+                          43.728561
+                        ],
+                        [
+                          7.222774,
+                          43.728561
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000418801",
+                "nom_etablissement": "Station Service SHELL",
+                "adresse": "44 BD DE LA MADELEINE",
+                "adresse_lieudit": null,
+                "code_insee": "06088",
+                "nom_commune": "NICE",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000418801",
+                "date_maj": "2017-12-18",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          7.24239,
+                          43.696437
+                        ],
+                        [
+                          7.242376,
+                          43.696429
+                        ],
+                        [
+                          7.242292,
+                          43.696369
+                        ],
+                        [
+                          7.242315,
+                          43.69635
+                        ],
+                        [
+                          7.242247,
+                          43.696305
+                        ],
+                        [
+                          7.242182,
+                          43.69626
+                        ],
+                        [
+                          7.242219,
+                          43.696148
+                        ],
+                        [
+                          7.242166,
+                          43.696114
+                        ],
+                        [
+                          7.242022,
+                          43.696232
+                        ],
+                        [
+                          7.241944,
+                          43.6963
+                        ],
+                        [
+                          7.241842,
+                          43.696409
+                        ],
+                        [
+                          7.242145,
+                          43.696619
+                        ],
+                        [
+                          7.24239,
+                          43.696437
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000429301",
+                "nom_etablissement": "Station Service Corniglion Molinier",
+                "adresse": "PROMENADE CORNIGLION MOLINIER",
+                "adresse_lieudit": null,
+                "code_insee": "06088",
+                "nom_commune": "NICE",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000429301",
+                "date_maj": "2021-04-21",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          7.229199,
+                          43.677083
+                        ],
+                        [
+                          7.229212,
+                          43.677062
+                        ],
+                        [
+                          7.229234,
+                          43.677035
+                        ],
+                        [
+                          7.229287,
+                          43.676991
+                        ],
+                        [
+                          7.2293,
+                          43.676983
+                        ],
+                        [
+                          7.229303,
+                          43.676982
+                        ],
+                        [
+                          7.229402,
+                          43.676919
+                        ],
+                        [
+                          7.229846,
+                          43.676783
+                        ],
+                        [
+                          7.229467,
+                          43.676114
+                        ],
+                        [
+                          7.229368,
+                          43.676147
+                        ],
+                        [
+                          7.229168,
+                          43.675795
+                        ],
+                        [
+                          7.22914,
+                          43.675745
+                        ],
+                        [
+                          7.229139,
+                          43.675743
+                        ],
+                        [
+                          7.229196,
+                          43.675726
+                        ],
+                        [
+                          7.229223,
+                          43.675718
+                        ],
+                        [
+                          7.229242,
+                          43.675712
+                        ],
+                        [
+                          7.22927,
+                          43.675704
+                        ],
+                        [
+                          7.229003,
+                          43.675235
+                        ],
+                        [
+                          7.229001,
+                          43.675244
+                        ],
+                        [
+                          7.228997,
+                          43.675251
+                        ],
+                        [
+                          7.228992,
+                          43.675258
+                        ],
+                        [
+                          7.228985,
+                          43.675265
+                        ],
+                        [
+                          7.228976,
+                          43.67527
+                        ],
+                        [
+                          7.228966,
+                          43.675274
+                        ],
+                        [
+                          7.228531,
+                          43.675407
+                        ],
+                        [
+                          7.228508,
+                          43.675413
+                        ],
+                        [
+                          7.228496,
+                          43.675415
+                        ],
+                        [
+                          7.228471,
+                          43.675418
+                        ],
+                        [
+                          7.228456,
+                          43.675417
+                        ],
+                        [
+                          7.228441,
+                          43.675415
+                        ],
+                        [
+                          7.228426,
+                          43.675412
+                        ],
+                        [
+                          7.228412,
+                          43.675408
+                        ],
+                        [
+                          7.228398,
+                          43.675403
+                        ],
+                        [
+                          7.228386,
+                          43.675397
+                        ],
+                        [
+                          7.228364,
+                          43.675379
+                        ],
+                        [
+                          7.228347,
+                          43.67536
+                        ],
+                        [
+                          7.228324,
+                          43.675325
+                        ],
+                        [
+                          7.22832,
+                          43.675323
+                        ],
+                        [
+                          7.228274,
+                          43.675298
+                        ],
+                        [
+                          7.228229,
+                          43.675272
+                        ],
+                        [
+                          7.228207,
+                          43.675258
+                        ],
+                        [
+                          7.228181,
+                          43.67524
+                        ],
+                        [
+                          7.228157,
+                          43.67522
+                        ],
+                        [
+                          7.22814,
+                          43.675202
+                        ],
+                        [
+                          7.228123,
+                          43.675183
+                        ],
+                        [
+                          7.228108,
+                          43.675164
+                        ],
+                        [
+                          7.228079,
+                          43.675122
+                        ],
+                        [
+                          7.228058,
+                          43.67509
+                        ],
+                        [
+                          7.22805,
+                          43.67508
+                        ],
+                        [
+                          7.228043,
+                          43.675072
+                        ],
+                        [
+                          7.228035,
+                          43.675065
+                        ],
+                        [
+                          7.228024,
+                          43.675058
+                        ],
+                        [
+                          7.22814,
+                          43.675457
+                        ],
+                        [
+                          7.228389,
+                          43.675893
+                        ],
+                        [
+                          7.228402,
+                          43.675917
+                        ],
+                        [
+                          7.228459,
+                          43.676086
+                        ],
+                        [
+                          7.229015,
+                          43.677065
+                        ],
+                        [
+                          7.229268,
+                          43.677427
+                        ],
+                        [
+                          7.229194,
+                          43.677293
+                        ],
+                        [
+                          7.229176,
+                          43.677215
+                        ],
+                        [
+                          7.229176,
+                          43.677168
+                        ],
+                        [
+                          7.229184,
+                          43.677123
+                        ],
+                        [
+                          7.229193,
+                          43.677098
+                        ],
+                        [
+                          7.229199,
+                          43.677083
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000480801",
+                "nom_etablissement": "Collège Antoine RISSO",
+                "adresse": "8 BOULEVARD PIERRE SOLA",
+                "adresse_lieudit": null,
+                "code_insee": "06088",
+                "nom_commune": "NICE",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000480801",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          7.285717,
+                          43.707071
+                        ],
+                        [
+                          7.285635,
+                          43.706998
+                        ],
+                        [
+                          7.285573,
+                          43.706987
+                        ],
+                        [
+                          7.285481,
+                          43.707014
+                        ],
+                        [
+                          7.285531,
+                          43.707111
+                        ],
+                        [
+                          7.28555,
+                          43.707137
+                        ],
+                        [
+                          7.285511,
+                          43.707151
+                        ],
+                        [
+                          7.285471,
+                          43.707164
+                        ],
+                        [
+                          7.285396,
+                          43.707185
+                        ],
+                        [
+                          7.285384,
+                          43.707188
+                        ],
+                        [
+                          7.285366,
+                          43.70716
+                        ],
+                        [
+                          7.285349,
+                          43.707133
+                        ],
+                        [
+                          7.285308,
+                          43.707145
+                        ],
+                        [
+                          7.285259,
+                          43.70708
+                        ],
+                        [
+                          7.284914,
+                          43.707183
+                        ],
+                        [
+                          7.284807,
+                          43.707215
+                        ],
+                        [
+                          7.284774,
+                          43.707225
+                        ],
+                        [
+                          7.284632,
+                          43.707268
+                        ],
+                        [
+                          7.284455,
+                          43.707322
+                        ],
+                        [
+                          7.284414,
+                          43.707334
+                        ],
+                        [
+                          7.28442,
+                          43.707343
+                        ],
+                        [
+                          7.284428,
+                          43.707368
+                        ],
+                        [
+                          7.28443,
+                          43.70738
+                        ],
+                        [
+                          7.284429,
+                          43.707392
+                        ],
+                        [
+                          7.284435,
+                          43.707449
+                        ],
+                        [
+                          7.284441,
+                          43.707507
+                        ],
+                        [
+                          7.284448,
+                          43.707569
+                        ],
+                        [
+                          7.28445,
+                          43.707576
+                        ],
+                        [
+                          7.284482,
+                          43.707667
+                        ],
+                        [
+                          7.285673,
+                          43.707329
+                        ],
+                        [
+                          7.285636,
+                          43.707258
+                        ],
+                        [
+                          7.285628,
+                          43.707243
+                        ],
+                        [
+                          7.285682,
+                          43.707225
+                        ],
+                        [
+                          7.285713,
+                          43.707206
+                        ],
+                        [
+                          7.285729,
+                          43.707196
+                        ],
+                        [
+                          7.285806,
+                          43.70715
+                        ],
+                        [
+                          7.285717,
+                          43.707071
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000480901",
+                "nom_etablissement": "Ecole élémentaire « Digue des Français I »",
+                "adresse": "194 ROUTE DE GRENOBLE",
+                "adresse_lieudit": null,
+                "code_insee": "06088",
+                "nom_commune": "NICE",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000480901",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          7.201504,
+                          43.677075
+                        ],
+                        [
+                          7.201909,
+                          43.677191
+                        ],
+                        [
+                          7.201893,
+                          43.677243
+                        ],
+                        [
+                          7.201874,
+                          43.677288
+                        ],
+                        [
+                          7.201885,
+                          43.677291
+                        ],
+                        [
+                          7.201879,
+                          43.677308
+                        ],
+                        [
+                          7.201824,
+                          43.677587
+                        ],
+                        [
+                          7.201892,
+                          43.677602
+                        ],
+                        [
+                          7.202026,
+                          43.677627
+                        ],
+                        [
+                          7.202243,
+                          43.677662
+                        ],
+                        [
+                          7.202345,
+                          43.677675
+                        ],
+                        [
+                          7.202509,
+                          43.677692
+                        ],
+                        [
+                          7.202664,
+                          43.677709
+                        ],
+                        [
+                          7.202757,
+                          43.677718
+                        ],
+                        [
+                          7.202913,
+                          43.677737
+                        ],
+                        [
+                          7.203196,
+                          43.677774
+                        ],
+                        [
+                          7.203495,
+                          43.677818
+                        ],
+                        [
+                          7.203501,
+                          43.677795
+                        ],
+                        [
+                          7.203528,
+                          43.67769
+                        ],
+                        [
+                          7.203537,
+                          43.677657
+                        ],
+                        [
+                          7.20356,
+                          43.67757
+                        ],
+                        [
+                          7.203542,
+                          43.677565
+                        ],
+                        [
+                          7.203547,
+                          43.677518
+                        ],
+                        [
+                          7.203466,
+                          43.677495
+                        ],
+                        [
+                          7.203479,
+                          43.677471
+                        ],
+                        [
+                          7.203369,
+                          43.677437
+                        ],
+                        [
+                          7.203366,
+                          43.677444
+                        ],
+                        [
+                          7.203291,
+                          43.677423
+                        ],
+                        [
+                          7.203295,
+                          43.677415
+                        ],
+                        [
+                          7.20303,
+                          43.677335
+                        ],
+                        [
+                          7.202974,
+                          43.677336
+                        ],
+                        [
+                          7.202896,
+                          43.677347
+                        ],
+                        [
+                          7.202779,
+                          43.677315
+                        ],
+                        [
+                          7.202708,
+                          43.677251
+                        ],
+                        [
+                          7.202703,
+                          43.677259
+                        ],
+                        [
+                          7.20266,
+                          43.677244
+                        ],
+                        [
+                          7.202669,
+                          43.677228
+                        ],
+                        [
+                          7.202609,
+                          43.677212
+                        ],
+                        [
+                          7.202575,
+                          43.677201
+                        ],
+                        [
+                          7.202396,
+                          43.677149
+                        ],
+                        [
+                          7.202391,
+                          43.677157
+                        ],
+                        [
+                          7.202288,
+                          43.677126
+                        ],
+                        [
+                          7.202295,
+                          43.677116
+                        ],
+                        [
+                          7.201829,
+                          43.676974
+                        ],
+                        [
+                          7.201737,
+                          43.676948
+                        ],
+                        [
+                          7.201725,
+                          43.676945
+                        ],
+                        [
+                          7.201713,
+                          43.676944
+                        ],
+                        [
+                          7.201701,
+                          43.676943
+                        ],
+                        [
+                          7.201689,
+                          43.676944
+                        ],
+                        [
+                          7.201547,
+                          43.676984
+                        ],
+                        [
+                          7.201504,
+                          43.677075
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000481001",
+                "nom_etablissement": "Groupe Scolaire Fuon Cauda",
+                "adresse": "3-6 AVENUE LACROIX ET 78 AVENUE SAINT-LAMBERT",
+                "adresse_lieudit": null,
+                "code_insee": "06088",
+                "nom_commune": "NICE",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000481001",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          7.264695,
+                          43.712059
+                        ],
+                        [
+                          7.264523,
+                          43.71205
+                        ],
+                        [
+                          7.26448,
+                          43.712047
+                        ],
+                        [
+                          7.264474,
+                          43.712046
+                        ],
+                        [
+                          7.264452,
+                          43.712047
+                        ],
+                        [
+                          7.264367,
+                          43.712041
+                        ],
+                        [
+                          7.264355,
+                          43.712089
+                        ],
+                        [
+                          7.26436,
+                          43.712148
+                        ],
+                        [
+                          7.264365,
+                          43.712151
+                        ],
+                        [
+                          7.264366,
+                          43.712176
+                        ],
+                        [
+                          7.264356,
+                          43.712217
+                        ],
+                        [
+                          7.264333,
+                          43.712261
+                        ],
+                        [
+                          7.264312,
+                          43.71229
+                        ],
+                        [
+                          7.264283,
+                          43.712327
+                        ],
+                        [
+                          7.264205,
+                          43.712407
+                        ],
+                        [
+                          7.264217,
+                          43.712424
+                        ],
+                        [
+                          7.264274,
+                          43.712428
+                        ],
+                        [
+                          7.264153,
+                          43.712524
+                        ],
+                        [
+                          7.264077,
+                          43.712521
+                        ],
+                        [
+                          7.264027,
+                          43.712579
+                        ],
+                        [
+                          7.263988,
+                          43.712614
+                        ],
+                        [
+                          7.263927,
+                          43.712671
+                        ],
+                        [
+                          7.26377,
+                          43.712804
+                        ],
+                        [
+                          7.263868,
+                          43.712843
+                        ],
+                        [
+                          7.26405,
+                          43.712914
+                        ],
+                        [
+                          7.264108,
+                          43.712921
+                        ],
+                        [
+                          7.264278,
+                          43.712939
+                        ],
+                        [
+                          7.264278,
+                          43.712939
+                        ],
+                        [
+                          7.264342,
+                          43.712946
+                        ],
+                        [
+                          7.264526,
+                          43.712967
+                        ],
+                        [
+                          7.26458,
+                          43.712974
+                        ],
+                        [
+                          7.264794,
+                          43.712998
+                        ],
+                        [
+                          7.265013,
+                          43.713023
+                        ],
+                        [
+                          7.265019,
+                          43.713023
+                        ],
+                        [
+                          7.265022,
+                          43.712986
+                        ],
+                        [
+                          7.265178,
+                          43.712997
+                        ],
+                        [
+                          7.265348,
+                          43.713009
+                        ],
+                        [
+                          7.265367,
+                          43.713012
+                        ],
+                        [
+                          7.265441,
+                          43.713014
+                        ],
+                        [
+                          7.265463,
+                          43.712839
+                        ],
+                        [
+                          7.26549,
+                          43.712597
+                        ],
+                        [
+                          7.265417,
+                          43.712593
+                        ],
+                        [
+                          7.26543,
+                          43.712458
+                        ],
+                        [
+                          7.265458,
+                          43.712461
+                        ],
+                        [
+                          7.265469,
+                          43.712453
+                        ],
+                        [
+                          7.265479,
+                          43.712173
+                        ],
+                        [
+                          7.265478,
+                          43.712149
+                        ],
+                        [
+                          7.265473,
+                          43.71211
+                        ],
+                        [
+                          7.265472,
+                          43.712098
+                        ],
+                        [
+                          7.265421,
+                          43.712095
+                        ],
+                        [
+                          7.265277,
+                          43.712087
+                        ],
+                        [
+                          7.265118,
+                          43.71208
+                        ],
+                        [
+                          7.264954,
+                          43.712072
+                        ],
+                        [
+                          7.264806,
+                          43.712063
+                        ],
+                        [
+                          7.264695,
+                          43.712059
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000481101",
+                "nom_etablissement": "Ecole maternelle publique Jules FERRY",
+                "adresse": "5 RUE DE LA GENDARMERIE",
+                "adresse_lieudit": null,
+                "code_insee": "06088",
+                "nom_commune": "NICE",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000481101",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          7.280127,
+                          43.710392
+                        ],
+                        [
+                          7.280092,
+                          43.710396
+                        ],
+                        [
+                          7.280082,
+                          43.710451
+                        ],
+                        [
+                          7.279813,
+                          43.710486
+                        ],
+                        [
+                          7.279518,
+                          43.711153
+                        ],
+                        [
+                          7.27984,
+                          43.711126
+                        ],
+                        [
+                          7.28016,
+                          43.711071
+                        ],
+                        [
+                          7.280287,
+                          43.711164
+                        ],
+                        [
+                          7.280347,
+                          43.711232
+                        ],
+                        [
+                          7.280399,
+                          43.711228
+                        ],
+                        [
+                          7.280598,
+                          43.711185
+                        ],
+                        [
+                          7.280563,
+                          43.711089
+                        ],
+                        [
+                          7.280512,
+                          43.710955
+                        ],
+                        [
+                          7.280486,
+                          43.71089
+                        ],
+                        [
+                          7.28039,
+                          43.710884
+                        ],
+                        [
+                          7.280323,
+                          43.710881
+                        ],
+                        [
+                          7.28028,
+                          43.710878
+                        ],
+                        [
+                          7.280209,
+                          43.710874
+                        ],
+                        [
+                          7.28013,
+                          43.710868
+                        ],
+                        [
+                          7.280147,
+                          43.710731
+                        ],
+                        [
+                          7.280107,
+                          43.710733
+                        ],
+                        [
+                          7.28009,
+                          43.710676
+                        ],
+                        [
+                          7.280109,
+                          43.710566
+                        ],
+                        [
+                          7.280116,
+                          43.710472
+                        ],
+                        [
+                          7.280125,
+                          43.710431
+                        ],
+                        [
+                          7.280127,
+                          43.710392
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000481201",
+                "nom_etablissement": "Groupe scolaire publique du Port",
+                "adresse": "23 RUE EMMANUEL PHILIBERT",
+                "adresse_lieudit": null,
+                "code_insee": "06088",
+                "nom_commune": "NICE",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000481201",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          7.28361,
+                          43.6979
+                        ],
+                        [
+                          7.283551,
+                          43.69756
+                        ],
+                        [
+                          7.283095,
+                          43.697602
+                        ],
+                        [
+                          7.283085,
+                          43.697751
+                        ],
+                        [
+                          7.283102,
+                          43.697931
+                        ],
+                        [
+                          7.28361,
+                          43.6979
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              }
+            ],
+            "source": "georisques_api"
+          },
+          "azi": {
+            "total": 2,
+            "items": [
+              {
+                "code_national_azi": "13DREAL20050018",
+                "libelle_azi": "AZI06 - le Var",
+                "liste_libelle_risque": [
+                  {
+                    "num_risque": "11",
+                    "libelle_risque_long": "Inondation"
+                  }
+                ],
+                "libelle_bassin_risques": "BV du fleuve le Var",
+                "date_debut_programmation": null,
+                "date_fin_programmation": null,
+                "date_debut_etude": null,
+                "date_fin_etude": null,
+                "date_debut_information": null,
+                "date_fin_information": null,
+                "date_realisation": "01/12/2004",
+                "date_diffusion": null,
+                "date_publication_web": "01/06/2005",
+                "code_insee": "06088",
+                "libelle_commune": "NICE"
+              },
+              {
+                "code_national_azi": "13DREAL20050019",
+                "libelle_azi": "AZI06 cotiers 06",
+                "liste_libelle_risque": [
+                  {
+                    "num_risque": "11",
+                    "libelle_risque_long": "Inondation"
+                  }
+                ],
+                "libelle_bassin_risques": "cote",
+                "date_debut_programmation": null,
+                "date_fin_programmation": null,
+                "date_debut_etude": null,
+                "date_fin_etude": null,
+                "date_debut_information": null,
+                "date_fin_information": null,
+                "date_realisation": "01/12/2004",
+                "date_diffusion": null,
+                "date_publication_web": "01/06/2005",
+                "code_insee": "06088",
+                "libelle_commune": "NICE"
+              }
+            ],
+            "source": "georisques_api"
+          },
+          "catnat": {
+            "total": 10,
+            "items": [
+              {
+                "code_national_catnat": "INTE0000117A",
+                "date_debut_evt": "23/10/1999",
+                "date_fin_evt": "24/10/1999",
+                "date_publication_arrete": "03/03/2000",
+                "date_publication_jo": "19/03/2000",
+                "libelle_risque_jo": "Mouvement de Terrain",
+                "code_insee": "06088",
+                "libelle_commune": "NICE"
+              },
+              {
+                "code_national_catnat": "INTE0000117A",
+                "date_debut_evt": "23/10/1999",
+                "date_fin_evt": "24/10/1999",
+                "date_publication_arrete": "03/03/2000",
+                "date_publication_jo": "19/03/2000",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "06088",
+                "libelle_commune": "NICE"
+              },
+              {
+                "code_national_catnat": "INTE0000117A",
+                "date_debut_evt": "23/10/1999",
+                "date_fin_evt": "24/10/1999",
+                "date_publication_arrete": "03/03/2000",
+                "date_publication_jo": "19/03/2000",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "06088",
+                "libelle_commune": "NICE"
+              },
+              {
+                "code_national_catnat": "INTE0000117A",
+                "date_debut_evt": "18/09/1999",
+                "date_fin_evt": "19/09/1999",
+                "date_publication_arrete": "03/03/2000",
+                "date_publication_jo": "19/03/2000",
+                "libelle_risque_jo": "Mouvement de Terrain",
+                "code_insee": "06088",
+                "libelle_commune": "NICE"
+              },
+              {
+                "code_national_catnat": "INTE0000117A",
+                "date_debut_evt": "18/09/1999",
+                "date_fin_evt": "19/09/1999",
+                "date_publication_arrete": "03/03/2000",
+                "date_publication_jo": "19/03/2000",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "06088",
+                "libelle_commune": "NICE"
+              },
+              {
+                "code_national_catnat": "INTE0000117A",
+                "date_debut_evt": "18/09/1999",
+                "date_fin_evt": "19/09/1999",
+                "date_publication_arrete": "03/03/2000",
+                "date_publication_jo": "19/03/2000",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "06088",
+                "libelle_commune": "NICE"
+              },
+              {
+                "code_national_catnat": "INTE0000626A",
+                "date_debut_evt": "06/06/2000",
+                "date_fin_evt": "06/06/2000",
+                "date_publication_arrete": "06/11/2000",
+                "date_publication_jo": "22/11/2000",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "06088",
+                "libelle_commune": "NICE"
+              },
+              {
+                "code_national_catnat": "INTE0000770A",
+                "date_debut_evt": "11/10/2000",
+                "date_fin_evt": "11/10/2000",
+                "date_publication_arrete": "19/12/2000",
+                "date_publication_jo": "29/12/2000",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "06088",
+                "libelle_commune": "NICE"
+              },
+              {
+                "code_national_catnat": "INTE0000770A",
+                "date_debut_evt": "11/10/2000",
+                "date_fin_evt": "11/10/2000",
+                "date_publication_arrete": "19/12/2000",
+                "date_publication_jo": "29/12/2000",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "06088",
+                "libelle_commune": "NICE"
+              },
+              {
+                "code_national_catnat": "INTE0000770A",
+                "date_debut_evt": "05/11/2000",
+                "date_fin_evt": "06/11/2000",
+                "date_publication_arrete": "19/12/2000",
+                "date_publication_jo": "29/12/2000",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "06088",
+                "libelle_commune": "NICE"
+              }
+            ],
+            "source": "georisques_api"
+          }
+        },
+        "production_locale_region_5ans": [
+          {
+            "annee": 2020,
+            "surface_totale_ha": 554807.86,
+            "nb_fermes": 25377
+          },
+          {
+            "annee": 2021,
+            "surface_totale_ha": 608458.65,
+            "nb_fermes": 27968
+          },
+          {
+            "annee": 2022,
+            "surface_totale_ha": 629639.02,
+            "nb_fermes": 29248
+          },
+          {
+            "annee": 2023,
+            "surface_totale_ha": 652331.97,
+            "nb_fermes": 30412
+          },
+          {
+            "annee": 2024,
+            "surface_totale_ha": 627981.2,
+            "nb_fermes": 30876
+          }
+        ],
+        "production_nationale_5ans": [
+          {
+            "annee": 2020,
+            "surface_totale_ha": 7554282.92,
+            "nb_fermes": 307312
+          },
+          {
+            "annee": 2021,
+            "surface_totale_ha": 8231508.48,
+            "nb_fermes": 337519
+          },
+          {
+            "annee": 2022,
+            "surface_totale_ha": 8466035.41,
+            "nb_fermes": 351659
+          },
+          {
+            "annee": 2023,
+            "surface_totale_ha": 8303291.32,
+            "nb_fermes": 359226
+          },
+          {
+            "annee": 2024,
+            "surface_totale_ha": 8134700.51,
+            "nb_fermes": 362486
+          }
+        ],
+        "tendance_ventes_pct_5ans": {
+          "periode": {
+            "debut": 2020,
+            "fin": 2024
+          },
+          "evolution_moyenne_pct": 3.68,
+          "details": [
+            {
+              "annee": 2020,
+              "evolution_pct_moyenne": 1.67
+            },
+            {
+              "annee": 2021,
+              "evolution_pct_moyenne": 5.76
+            },
+            {
+              "annee": 2022,
+              "evolution_pct_moyenne": 2.88
+            },
+            {
+              "annee": 2023,
+              "evolution_pct_moyenne": 4.12
+            },
+            {
+              "annee": 2024,
+              "evolution_pct_moyenne": 3.95
+            }
+          ]
+        },
+        "tendance_commerce_5ans": {
+          "periode": {
+            "debut": 6666,
+            "fin": 6666
+          },
+          "details": [
+            {
+              "annee": 6666,
+              "total_valeur_M_eur": 2538.66
+            }
+          ]
+        }
+      },
+      "operateurs": {
+        "total": 0,
+        "list": []
+      },
+      "metadata": {
+        "secteur": "alimentaire",
+        "ville": "Nice",
+        "region": "",
+        "objectif": "fruits",
+        "generatedAt": "2025-11-13T22:34:01.577Z",
+        "aiModel": "deepseek-r1:8b"
+      }
+    }
+  }
+}

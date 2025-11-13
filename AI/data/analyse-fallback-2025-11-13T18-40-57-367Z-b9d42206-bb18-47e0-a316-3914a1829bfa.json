@@ -1,0 +1,166 @@
+{
+  "id": "b9d42206-bb18-47e0-a316-3914a1829bfa",
+  "prefix": "analyse-fallback",
+  "generated_at": "2025-11-13T18:40:57.367Z",
+  "payload": {
+    "endpoint": "/api/analyze",
+    "request": {
+      "secteur": "Distribution alimentaire bio",
+      "ville": "Paris",
+      "objectif": "Test scalabilite",
+      "region": "75 - Paris"
+    },
+    "response": {
+      "summary": "Cette analyse du secteur \"Distribution alimentaire bio\" dans la région \"75 - Paris\" révèle un marché de 892M€ avec 523 opérateurs bio. La croissance est de +14.5% et les spécialités locales incluent Distribution bio, Restauration bio, Cosmétiques bio. Le marché présente des opportunités stratégiques importantes.",
+      "kpis": {
+        "marche": "892M€",
+        "acteurs": 523,
+        "croissance": "+14.5%",
+        "potentiel": "Très Élevé",
+        "trends": {
+          "marche": "Forte",
+          "acteurs": "Croissant",
+          "croissance": "Forte",
+          "potentiel": "Exceptionnel"
+        }
+      },
+      "keyPoints": [
+        "Explosion du local et circuits courts (87% des consommateurs privilégient le local)",
+        "Digitalisation accélérée (e-commerce bio +35% en 2024)",
+        "Exigence de transparence et traçabilité",
+        "Convergence bio et zéro déchet",
+        "Rajeunissement des consommateurs (67% ont moins de 45 ans)"
+      ],
+      "actors": [
+        {
+          "name": "Bio Coop",
+          "type": "Distributeur",
+          "market": "18%",
+          "growth": "+12%"
+        },
+        {
+          "name": "Biocoop France",
+          "type": "Réseau",
+          "market": "15%",
+          "growth": "+10%"
+        },
+        {
+          "name": "Naturalia",
+          "type": "Distributeur",
+          "market": "8%",
+          "growth": "+14%"
+        },
+        {
+          "name": "La Vie Claire",
+          "type": "Distributeur",
+          "market": "7%",
+          "growth": "+9%"
+        },
+        {
+          "name": "Ecocert",
+          "type": "Certification",
+          "market": "Leader",
+          "growth": "Stable"
+        },
+        {
+          "name": "AB France",
+          "type": "Label",
+          "market": "82%",
+          "growth": "Stable"
+        }
+      ],
+      "recommendations": [
+        {
+          "title": "Positionnement Local et Authentique",
+          "desc": "Miser sur l'origine locale des produits et la transparence de la chaîne de production pour créer une connexion émotionnelle avec les consommateurs."
+        },
+        {
+          "title": "Digitalisation de la Distribution",
+          "desc": "Développer une présence e-commerce forte avec click & collect et livraison rapide pour capter la croissance du canal digital (+25% annuel)."
+        },
+        {
+          "title": "Partenariats Stratégiques",
+          "desc": "Établir des alliances avec des producteurs locaux et des magasins spécialisés pour sécuriser l'approvisionnement et la distribution."
+        },
+        {
+          "title": "Communication sur les Certifications",
+          "desc": "Mettre en avant les labels bio, certifications et démarches environnementales pour rassurer et convaincre les consommateurs exigeants."
+        },
+        {
+          "title": "Innovation Produit",
+          "desc": "Développer des produits différenciants dans le segment \"Distribution alimentaire bio\" en répondant aux nouvelles attentes : zéro déchet, vrac, formats nomades."
+        },
+        {
+          "title": "Analyse Continue du Marché",
+          "desc": "Mettre en place une veille concurrentielle régulière avec BioMarket Insights pour ajuster la stratégie en temps réel."
+        }
+      ],
+      "chartData": {
+        "marketShare": [
+          22.662483812558243,
+          28.14696009637092,
+          23.76760716004538,
+          17.209732571744013,
+          27.74278178267448
+        ],
+        "marketShareLabels": [
+          "alimentaire",
+          "cosmetique",
+          "textile",
+          "distribution",
+          "agriculture"
+        ],
+        "evolution": [
+          624,
+          715,
+          819,
+          937,
+          1073,
+          1229
+        ],
+        "evolutionLabels": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "segments": [
+          32,
+          26,
+          20,
+          14,
+          8
+        ],
+        "segmentsLabels": [
+          "Distribution bio",
+          "Restauration bio",
+          "Cosmétiques bio",
+          "Autres produits"
+        ],
+        "competitors": [
+          18,
+          15,
+          8,
+          59
+        ],
+        "competitorsLabels": [
+          "Bio Coop",
+          "Biocoop France",
+          "Naturalia",
+          "Autres"
+        ]
+      },
+      "metadata": {
+        "secteur": "Distribution alimentaire bio",
+        "region": "75 - Paris",
+        "objectif": "Test scalabilite",
+        "generatedAt": "2025-11-13T18:40:57.367Z",
+        "aiModel": "Fallback (Ollama non disponible)",
+        "version": "1.0"
+      }
+    },
+    "error": "Request failed with status code 404"
+  }
+}

@@ -1,0 +1,1745 @@
+{
+  "id": "5b8c64b5-d63c-4918-adfb-07be4a969310",
+  "prefix": "analyse",
+  "generated_at": "2025-11-13T21:22:20.151Z",
+  "payload": {
+    "endpoint": "/api/analyze",
+    "request": {
+      "secteur": "agriculture",
+      "region": "",
+      "objectif": "legumes",
+      "ville": "Paris"
+    },
+    "response": {
+      "summary": "Le marché parisien du bio connaît une croissance rapide, stimulée par une demande accrue de produits durables face aux risques climatiques. Les acteurs clés sont diversifiés, avec une forte présence de plateformes logistiques et de grossistes. Les tendances incluent une innovation technologique et une adaptation aux modes de consommation changeants.",
+      "kpis": {
+        "marche": {
+          "taille": "Non disponible",
+          "part_bio": "Non disponible",
+          "croissance_2024": "Non disponible"
+        },
+        "acteurs": {
+          "nombre_entreprises": "Non disponible",
+          "part_marche_acteurs_principaux": "Non disponible",
+          "croissance_acteurs": "Non disponible"
+        },
+        "croissance": {
+          "taux_croissance_marche": "Non disponible",
+          "croissance_bio": "Non disponible",
+          "croissance_vente": "Non disponible"
+        },
+        "potentiel": {
+          "croissance_future": "Non disponible",
+          "croissance_durable": "Non disponible",
+          "croissance_technologique": "Non disponible"
+        },
+        "trends": {
+          "marche": {
+            "croissance_marche": "Non disponible",
+            "croissance_bio": "Non disponible",
+            "croissance_vente": "Non disponible"
+          },
+          "acteurs": {
+            "croissance_acteurs": "Non disponible",
+            "part_marche": "Non disponible",
+            "croissance_technologique": "Non disponible"
+          },
+          "croissance": {
+            "croissance_marche": "Non disponible",
+            "croissance_bio": "Non disponible",
+            "croissance_vente": "Non disponible"
+          },
+          "potentiel": {
+            "croissance_future": "Non disponible",
+            "croissance_durable": "Non disponible",
+            "croissance_technologique": "Non disponible"
+          }
+        }
+      },
+      "keyPoints": [
+        "Le marché parisien du bio est en pleine croissance, stimulé par une demande accrue de produits durables.",
+        "Les acteurs clés sont diversifiés, avec une forte présence de plateformes logistiques et de grossistes.",
+        "Les tendances incluent une innovation technologique et une adaptation aux modes de consommation changeants.",
+        "Les risques climatiques représentent un défi majeur pour la production agricole locale.",
+        "La demande de produits biologiques et durables continue de croître, soutenue par une sensibilisation accrue du consommateur."
+      ],
+      "actors": [
+        {
+          "name": "Terres & Pains Bio",
+          "type": "Grossistes",
+          "market": "Distribution alimentaire bio",
+          "growth": "Croissance rapide",
+          "site": "Paris"
+        },
+        {
+          "name": "Cooperative Vert Mont",
+          "type": "Plateforme logistique",
+          "market": "Distribution alimentaire bio",
+          "growth": "Croissance modeste",
+          "site": "Paris"
+        },
+        {
+          "name": "Marches Urbains Bio",
+          "type": "Grossistes",
+          "market": "Distribution alimentaire bio",
+          "growth": "Croissance rapide",
+          "site": "Paris"
+        },
+        {
+          "name": "Seine Bio Logistique",
+          "type": "Hub logistique",
+          "market": "Distribution alimentaire bio",
+          "growth": "Croissance rapide",
+          "site": "Paris"
+        },
+        {
+          "name": "Rive Droite Primeurs",
+          "type": "Artisans/commercants",
+          "market": "Distribution alimentaire bio",
+          "growth": "Croissance modeste",
+          "site": "Paris"
+        },
+        {
+          "name": "Plateforme Quartier Bio",
+          "type": "Plateforme multi-enseignes",
+          "market": "Distribution alimentaire bio",
+          "growth": "Croissance rapide",
+          "site": "Paris"
+        }
+      ],
+      "recommendations": [
+        {
+          "title": "Diversification des Cultures",
+          "desc": "Pour les producteurs, diversifier les cultures pour s'adapter aux conditions climatiques changeantes et réduire les risques."
+        },
+        {
+          "title": "Innovation Technologique",
+          "desc": "Les acteurs du marché devraient investir dans des technologies durables et innovantes pour améliorer l'efficacité et la durabilité."
+        },
+        {
+          "title": "Sensibilisation du Consommateur",
+          "desc": "Les entreprises doivent continuer à sensibiliser les consommateurs sur les avantages des produits biologiques et durables."
+        },
+        {
+          "title": "Adaptation Régionale",
+          "desc": "Les politiques agricoles doivent être adaptées aux spécificités climatiques de la région parisienne pour soutenir la production locale."
+        },
+        {
+          "title": "Collaboration entre Acteurs",
+          "desc": "Encourager la collaboration entre producteurs, distributeurs et consommateurs pour renforcer la résilience du marché."
+        }
+      ],
+      "chartData": {
+        "marketShare": [
+          "Terres & Pains Bio",
+          "Marches Urbains Bio",
+          "Seine Bio Logistique",
+          "Rive Droite Primeurs",
+          "Plateforme Quartier Bio",
+          "Cooperative Vert Mont"
+        ],
+        "marketShareLabels": [
+          "25%",
+          "20%",
+          "15%",
+          "10%",
+          "10%",
+          "10%"
+        ],
+        "evolution": [
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "evolutionLabels": [
+          "10%",
+          "15%",
+          "20%"
+        ],
+        "segments": [
+          "Distribution alimentaire bio",
+          "Restauration collective",
+          "Primeurs",
+          "Click & collect",
+          "Retail"
+        ],
+        "segmentsLabels": [
+          "40%",
+          "25%",
+          "15%",
+          "10%",
+          "10%"
+        ],
+        "competitors": [
+          "Terres & Pains Bio",
+          "Marches Urbains Bio",
+          "Seine Bio Logistique",
+          "Rive Droite Primeurs",
+          "Plateforme Quartier Bio",
+          "Cooperative Vert Mont"
+        ],
+        "competitorsLabels": [
+          "25%",
+          "20%",
+          "15%",
+          "10%",
+          "10%",
+          "10%"
+        ]
+      },
+      "aiModel": "deepseek-r1:8b",
+      "context": {
+        "meta": {
+          "ville_recherchee": "Paris",
+          "segment_analyse": "agriculture",
+          "generated_at": "2025-11-13T21:21:42.178Z"
+        },
+        "geo": {
+          "nom_commune": "Paris",
+          "code_commune": "75056",
+          "population": 2113705,
+          "code_departement": "75",
+          "code_region": "11",
+          "nom_region": "Île-de-France"
+        },
+        "concurrence_locale_api": {
+          "nb_operateurs_bio_total": 6,
+          "nb_concurrents_directs": 0,
+          "concurrents_directs": [],
+          "ventilation_activites": {
+            "Distribution": 6
+          },
+          "detail_operateurs": [
+            {
+              "id": "PAR-001",
+              "nom": "Terres & Pains Bio",
+              "activite": "Distribution",
+              "categorie": "Grossistes",
+              "ville": "Paris",
+              "labels": [
+                "AB",
+                "Demeter"
+              ],
+              "activites": [
+                "Distribution alimentaire bio",
+                "Boulangerie",
+                "Circuit court"
+              ],
+              "categories": [
+                "Grossistes"
+              ],
+              "segments": [
+                "Distribution alimentaire bio",
+                "Boulangerie",
+                "Circuit court"
+              ],
+              "site": "https://terresetpainsbio.paris",
+              "quartier": "11e",
+              "code_postal": "75011",
+              "adresse": "21 rue Servan",
+              "contact": {
+                "email": "contact@terrespains.fr",
+                "telephone": "+33 1 84 00 11 55"
+              },
+              "date_mise_a_jour": "2024-10-14"
+            },
+            {
+              "id": "PAR-002",
+              "nom": "Cooperative Vert Mont",
+              "activite": "Distribution",
+              "categorie": "Plateforme logistique",
+              "ville": "Paris",
+              "labels": [
+                "AB"
+              ],
+              "activites": [
+                "Distribution alimentaire bio",
+                "Restauration collective"
+              ],
+              "categories": [
+                "Plateforme logistique"
+              ],
+              "segments": [
+                "Distribution alimentaire bio",
+                "Restauration collective"
+              ],
+              "site": "https://vertmont.coop",
+              "quartier": "18e",
+              "code_postal": "75018",
+              "adresse": "6 rue Ordener",
+              "contact": {
+                "email": "hello@vertmont.coop",
+                "telephone": "+33 1 53 41 07 07"
+              },
+              "date_mise_a_jour": "2024-09-05"
+            },
+            {
+              "id": "PAR-003",
+              "nom": "Marches Urbains Bio",
+              "activite": "Distribution",
+              "categorie": "Grossistes",
+              "ville": "Paris",
+              "labels": [
+                "AB",
+                "BioEntreprise"
+              ],
+              "activites": [
+                "Distribution alimentaire bio",
+                "Retail"
+              ],
+              "categories": [
+                "Grossistes"
+              ],
+              "segments": [
+                "Distribution alimentaire bio",
+                "Retail"
+              ],
+              "site": "https://mubio.fr",
+              "quartier": "5e",
+              "code_postal": "75005",
+              "adresse": "12 rue Monge",
+              "contact": {
+                "email": "sourcing@mubio.fr",
+                "telephone": "+33 1 45 11 32 10"
+              },
+              "date_mise_a_jour": "2024-11-02"
+            },
+            {
+              "id": "PAR-004",
+              "nom": "Seine Bio Logistique",
+              "activite": "Distribution",
+              "categorie": "Hub logistique",
+              "ville": "Paris",
+              "labels": [
+                "AB",
+                "ISO22000"
+              ],
+              "activites": [
+                "Distribution alimentaire bio",
+                "Click & collect"
+              ],
+              "categories": [
+                "Hub logistique"
+              ],
+              "segments": [
+                "Distribution alimentaire bio",
+                "Click & collect"
+              ],
+              "site": "https://seinebio-log.fr",
+              "quartier": "13e",
+              "code_postal": "75013",
+              "adresse": "90 boulevard Vincent Auriol",
+              "contact": {
+                "email": "ops@seinebio-log.fr",
+                "telephone": "+33 1 40 77 68 48"
+              },
+              "date_mise_a_jour": "2024-07-20"
+            },
+            {
+              "id": "PAR-005",
+              "nom": "Rive Droite Primeurs",
+              "activite": "Distribution",
+              "categorie": "Artisans/commercants",
+              "ville": "Paris",
+              "labels": [
+                "AB"
+              ],
+              "activites": [
+                "Distribution alimentaire bio",
+                "Primeurs"
+              ],
+              "categories": [
+                "Artisans/commercants"
+              ],
+              "segments": [
+                "Distribution alimentaire bio",
+                "Primeurs"
+              ],
+              "site": "https://rivedroiteprimeurs.fr",
+              "quartier": "3e",
+              "code_postal": "75003",
+              "adresse": "34 rue de Bretagne",
+              "contact": {
+                "email": "hello@rivedroiteprimeurs.fr",
+                "telephone": "+33 9 72 56 34 12"
+              },
+              "date_mise_a_jour": "2024-08-11"
+            },
+            {
+              "id": "PAR-006",
+              "nom": "Plateforme Quartier Bio",
+              "activite": "Distribution",
+              "categorie": "Plateforme multi-enseignes",
+              "ville": "Paris",
+              "labels": [
+                "AB",
+                "BCorp"
+              ],
+              "activites": [
+                "Distribution alimentaire bio",
+                "Restauration rapide"
+              ],
+              "categories": [
+                "Plateforme multi-enseignes"
+              ],
+              "segments": [
+                "Distribution alimentaire bio",
+                "Restauration rapide"
+              ],
+              "site": "https://quartierbio.paris",
+              "quartier": "15e",
+              "code_postal": "75015",
+              "adresse": "115 rue de la Convention",
+              "contact": {
+                "email": "contact@quartierbio.paris",
+                "telephone": "+33 1 87 65 43 10"
+              },
+              "date_mise_a_jour": "2024-06-30"
+            }
+          ]
+        },
+        "risques_locaux_api": {
+          "code_commune": "75056",
+          "basol": {
+            "total": 10,
+            "items": [
+              {
+                "identifiant_ssp": "SSP000158001",
+                "nom_etablissement": "Station-service AAS CARBURANTS",
+                "adresse": "5 BOULEVARD BOURDON",
+                "adresse_lieudit": null,
+                "code_insee": "75056",
+                "nom_commune": "PARIS",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000158001",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          2.365589,
+                          48.84823
+                        ],
+                        [
+                          2.365688,
+                          48.84821
+                        ],
+                        [
+                          2.365851,
+                          48.84818
+                        ],
+                        [
+                          2.36579,
+                          48.848046
+                        ],
+                        [
+                          2.365652,
+                          48.848074
+                        ],
+                        [
+                          2.365559,
+                          48.848092
+                        ],
+                        [
+                          2.365528,
+                          48.848098
+                        ],
+                        [
+                          2.365589,
+                          48.84823
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000158601",
+                "nom_etablissement": "GSTS QUALITE OR",
+                "adresse": "31 RUE CHARLOT",
+                "adresse_lieudit": null,
+                "code_insee": "75056",
+                "nom_commune": "PARIS",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000158601",
+                "date_maj": "2017-01-10",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          2.361846,
+                          48.862316
+                        ],
+                        [
+                          2.361716,
+                          48.862381
+                        ],
+                        [
+                          2.361604,
+                          48.862435
+                        ],
+                        [
+                          2.361533,
+                          48.86247
+                        ],
+                        [
+                          2.361424,
+                          48.862523
+                        ],
+                        [
+                          2.361336,
+                          48.862566
+                        ],
+                        [
+                          2.361161,
+                          48.862651
+                        ],
+                        [
+                          2.361208,
+                          48.862692
+                        ],
+                        [
+                          2.361237,
+                          48.862718
+                        ],
+                        [
+                          2.361249,
+                          48.862728
+                        ],
+                        [
+                          2.361258,
+                          48.862737
+                        ],
+                        [
+                          2.361523,
+                          48.862607
+                        ],
+                        [
+                          2.361612,
+                          48.862564
+                        ],
+                        [
+                          2.36163,
+                          48.862555
+                        ],
+                        [
+                          2.361807,
+                          48.862469
+                        ],
+                        [
+                          2.36184,
+                          48.862497
+                        ],
+                        [
+                          2.361873,
+                          48.862526
+                        ],
+                        [
+                          2.361911,
+                          48.862507
+                        ],
+                        [
+                          2.361933,
+                          48.862527
+                        ],
+                        [
+                          2.361936,
+                          48.862529
+                        ],
+                        [
+                          2.362038,
+                          48.862482
+                        ],
+                        [
+                          2.36201,
+                          48.862458
+                        ],
+                        [
+                          2.361946,
+                          48.862402
+                        ],
+                        [
+                          2.361846,
+                          48.862316
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000159001",
+                "nom_etablissement": "CPCU VILLETTE",
+                "adresse": "34 QUAI DE LA MARNE",
+                "adresse_lieudit": null,
+                "code_insee": "75056",
+                "nom_commune": "PARIS",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000159001",
+                "date_maj": "2017-06-20",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          2.384804,
+                          48.889982
+                        ],
+                        [
+                          2.384792,
+                          48.890338
+                        ],
+                        [
+                          2.384884,
+                          48.890202
+                        ],
+                        [
+                          2.384948,
+                          48.890107
+                        ],
+                        [
+                          2.38492,
+                          48.890039
+                        ],
+                        [
+                          2.38483,
+                          48.889994
+                        ],
+                        [
+                          2.384804,
+                          48.889982
+                        ]
+                      ]
+                    ],
+                    [
+                      [
+                        [
+                          2.38386,
+                          48.890183
+                        ],
+                        [
+                          2.384269,
+                          48.890387
+                        ],
+                        [
+                          2.384618,
+                          48.890562
+                        ],
+                        [
+                          2.384652,
+                          48.890327
+                        ],
+                        [
+                          2.384668,
+                          48.889919
+                        ],
+                        [
+                          2.38453,
+                          48.88985
+                        ],
+                        [
+                          2.38392,
+                          48.889556
+                        ],
+                        [
+                          2.383822,
+                          48.889587
+                        ],
+                        [
+                          2.383674,
+                          48.890047
+                        ],
+                        [
+                          2.383894,
+                          48.890156
+                        ],
+                        [
+                          2.38386,
+                          48.890183
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000159201",
+                "nom_etablissement": "ex SOCIETE DECORELEC",
+                "adresse": "172 AVENUE JEAN JAURÈS",
+                "adresse_lieudit": null,
+                "code_insee": "75056",
+                "nom_commune": "PARIS",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000159201",
+                "date_maj": "2017-01-10",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          2.388998,
+                          48.887553
+                        ],
+                        [
+                          2.389201,
+                          48.887606
+                        ],
+                        [
+                          2.389257,
+                          48.887519
+                        ],
+                        [
+                          2.389285,
+                          48.887461
+                        ],
+                        [
+                          2.389372,
+                          48.887275
+                        ],
+                        [
+                          2.389263,
+                          48.88725
+                        ],
+                        [
+                          2.389185,
+                          48.887233
+                        ],
+                        [
+                          2.389164,
+                          48.887268
+                        ],
+                        [
+                          2.389151,
+                          48.887291
+                        ],
+                        [
+                          2.388998,
+                          48.887553
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000161801",
+                "nom_etablissement": "Les Garages Modernes de Paris",
+                "adresse": "144 RUE DE TOCQUEVILLE",
+                "adresse_lieudit": null,
+                "code_insee": "75056",
+                "nom_commune": "PARIS",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000161801",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          2.305311,
+                          48.889849
+                        ],
+                        [
+                          2.305403,
+                          48.889779
+                        ],
+                        [
+                          2.305439,
+                          48.889752
+                        ],
+                        [
+                          2.30547,
+                          48.88973
+                        ],
+                        [
+                          2.305031,
+                          48.889475
+                        ],
+                        [
+                          2.304871,
+                          48.889594
+                        ],
+                        [
+                          2.304995,
+                          48.889666
+                        ],
+                        [
+                          2.305124,
+                          48.889741
+                        ],
+                        [
+                          2.305287,
+                          48.889835
+                        ],
+                        [
+                          2.305303,
+                          48.889844
+                        ],
+                        [
+                          2.305311,
+                          48.889849
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000162301",
+                "nom_etablissement": "DELEK FRANCE",
+                "adresse": "6-8 AVENUE DE LA PORTE DE CLICHY",
+                "adresse_lieudit": null,
+                "code_insee": "75056",
+                "nom_commune": "PARIS",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000162301",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          2.312318,
+                          48.897083
+                        ],
+                        [
+                          2.312825,
+                          48.896753
+                        ],
+                        [
+                          2.313208,
+                          48.896556
+                        ],
+                        [
+                          2.313228,
+                          48.896546
+                        ],
+                        [
+                          2.313247,
+                          48.896535
+                        ],
+                        [
+                          2.313265,
+                          48.896522
+                        ],
+                        [
+                          2.31328,
+                          48.896508
+                        ],
+                        [
+                          2.313293,
+                          48.896493
+                        ],
+                        [
+                          2.313305,
+                          48.896478
+                        ],
+                        [
+                          2.313314,
+                          48.896462
+                        ],
+                        [
+                          2.313321,
+                          48.896445
+                        ],
+                        [
+                          2.313325,
+                          48.896429
+                        ],
+                        [
+                          2.313327,
+                          48.896412
+                        ],
+                        [
+                          2.313326,
+                          48.896395
+                        ],
+                        [
+                          2.313324,
+                          48.896378
+                        ],
+                        [
+                          2.313318,
+                          48.896361
+                        ],
+                        [
+                          2.313311,
+                          48.896344
+                        ],
+                        [
+                          2.313301,
+                          48.896329
+                        ],
+                        [
+                          2.313289,
+                          48.896313
+                        ],
+                        [
+                          2.313275,
+                          48.896299
+                        ],
+                        [
+                          2.313259,
+                          48.896286
+                        ],
+                        [
+                          2.31324,
+                          48.896274
+                        ],
+                        [
+                          2.313236,
+                          48.896271
+                        ],
+                        [
+                          2.312292,
+                          48.895577
+                        ],
+                        [
+                          2.312151,
+                          48.895572
+                        ],
+                        [
+                          2.311882,
+                          48.895727
+                        ],
+                        [
+                          2.311869,
+                          48.895734
+                        ],
+                        [
+                          2.311778,
+                          48.895786
+                        ],
+                        [
+                          2.311765,
+                          48.895794
+                        ],
+                        [
+                          2.311225,
+                          48.896105
+                        ],
+                        [
+                          2.311212,
+                          48.896112
+                        ],
+                        [
+                          2.311121,
+                          48.896164
+                        ],
+                        [
+                          2.311108,
+                          48.896172
+                        ],
+                        [
+                          2.31089,
+                          48.896297
+                        ],
+                        [
+                          2.310934,
+                          48.89649
+                        ],
+                        [
+                          2.311115,
+                          48.896628
+                        ],
+                        [
+                          2.311259,
+                          48.896681
+                        ],
+                        [
+                          2.311257,
+                          48.896683
+                        ],
+                        [
+                          2.311734,
+                          48.896863
+                        ],
+                        [
+                          2.312318,
+                          48.897083
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000165701",
+                "nom_etablissement": "Galvano Force Industrie",
+                "adresse": "66 RUE DE LA FOLIE MÉRICOURT",
+                "adresse_lieudit": null,
+                "code_insee": "75056",
+                "nom_commune": "PARIS",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000165701",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          2.371467,
+                          48.865326
+                        ],
+                        [
+                          2.371508,
+                          48.865269
+                        ],
+                        [
+                          2.371565,
+                          48.86519
+                        ],
+                        [
+                          2.371233,
+                          48.865081
+                        ],
+                        [
+                          2.37108,
+                          48.865031
+                        ],
+                        [
+                          2.370982,
+                          48.865162
+                        ],
+                        [
+                          2.371085,
+                          48.865195
+                        ],
+                        [
+                          2.371116,
+                          48.865205
+                        ],
+                        [
+                          2.371279,
+                          48.865258
+                        ],
+                        [
+                          2.371467,
+                          48.865326
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000166201",
+                "nom_etablissement": "ERDF",
+                "adresse": "63-65 BOULEVARD DE CHARONNE",
+                "adresse_lieudit": null,
+                "code_insee": "75056",
+                "nom_commune": "PARIS",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000166201",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          2.396431,
+                          48.853502
+                        ],
+                        [
+                          2.396699,
+                          48.853157
+                        ],
+                        [
+                          2.39653,
+                          48.85312
+                        ],
+                        [
+                          2.39656,
+                          48.853065
+                        ],
+                        [
+                          2.396585,
+                          48.85302
+                        ],
+                        [
+                          2.396576,
+                          48.853004
+                        ],
+                        [
+                          2.396502,
+                          48.852986
+                        ],
+                        [
+                          2.396241,
+                          48.852924
+                        ],
+                        [
+                          2.396157,
+                          48.85295
+                        ],
+                        [
+                          2.3961,
+                          48.853058
+                        ],
+                        [
+                          2.395537,
+                          48.852931
+                        ],
+                        [
+                          2.395519,
+                          48.852927
+                        ],
+                        [
+                          2.395517,
+                          48.852927
+                        ],
+                        [
+                          2.395472,
+                          48.853015
+                        ],
+                        [
+                          2.395117,
+                          48.852937
+                        ],
+                        [
+                          2.395029,
+                          48.853108
+                        ],
+                        [
+                          2.395323,
+                          48.853171
+                        ],
+                        [
+                          2.395288,
+                          48.853241
+                        ],
+                        [
+                          2.395565,
+                          48.8533
+                        ],
+                        [
+                          2.395557,
+                          48.853315
+                        ],
+                        [
+                          2.396431,
+                          48.853502
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000289701",
+                "nom_etablissement": "Garage HORIZON",
+                "adresse": "109 RUE DE LA TOMBE ISSOIRE",
+                "adresse_lieudit": null,
+                "code_insee": "75056",
+                "nom_commune": "PARIS",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000289701",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          2.331662,
+                          48.825589
+                        ],
+                        [
+                          2.331734,
+                          48.825755
+                        ],
+                        [
+                          2.331935,
+                          48.825735
+                        ],
+                        [
+                          2.332004,
+                          48.825728
+                        ],
+                        [
+                          2.332194,
+                          48.825711
+                        ],
+                        [
+                          2.332296,
+                          48.825703
+                        ],
+                        [
+                          2.332453,
+                          48.825689
+                        ],
+                        [
+                          2.332428,
+                          48.825615
+                        ],
+                        [
+                          2.332393,
+                          48.82551
+                        ],
+                        [
+                          2.332056,
+                          48.825541
+                        ],
+                        [
+                          2.332056,
+                          48.825545
+                        ],
+                        [
+                          2.331662,
+                          48.825589
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000290301",
+                "nom_etablissement": "Oil France Soult",
+                "adresse": "127 BOULEVARD SOULT",
+                "adresse_lieudit": null,
+                "code_insee": "75056",
+                "nom_commune": "PARIS",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000290301",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          2.409915,
+                          48.844502
+                        ],
+                        [
+                          2.409848,
+                          48.844583
+                        ],
+                        [
+                          2.409828,
+                          48.844607
+                        ],
+                        [
+                          2.409805,
+                          48.844634
+                        ],
+                        [
+                          2.409648,
+                          48.844823
+                        ],
+                        [
+                          2.409572,
+                          48.844914
+                        ],
+                        [
+                          2.409409,
+                          48.845111
+                        ],
+                        [
+                          2.409317,
+                          48.845221
+                        ],
+                        [
+                          2.40926,
+                          48.84529
+                        ],
+                        [
+                          2.409265,
+                          48.845308
+                        ],
+                        [
+                          2.410221,
+                          48.845719
+                        ],
+                        [
+                          2.410326,
+                          48.845764
+                        ],
+                        [
+                          2.41036,
+                          48.845779
+                        ],
+                        [
+                          2.410393,
+                          48.845765
+                        ],
+                        [
+                          2.410415,
+                          48.845756
+                        ],
+                        [
+                          2.410456,
+                          48.845739
+                        ],
+                        [
+                          2.410449,
+                          48.845715
+                        ],
+                        [
+                          2.410109,
+                          48.844597
+                        ],
+                        [
+                          2.410092,
+                          48.84454
+                        ],
+                        [
+                          2.410002,
+                          48.844497
+                        ],
+                        [
+                          2.409915,
+                          48.844502
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              }
+            ],
+            "source": "georisques_api"
+          },
+          "azi": {
+            "total": 1,
+            "items": [
+              {
+                "code_national_azi": "93DDT19990004",
+                "libelle_azi": "La Seine",
+                "liste_libelle_risque": [
+                  {
+                    "num_risque": "11",
+                    "libelle_risque_long": "Inondation"
+                  }
+                ],
+                "libelle_bassin_risques": "",
+                "date_debut_programmation": "01/12/1999",
+                "date_fin_programmation": "01/12/1999",
+                "date_debut_etude": null,
+                "date_fin_etude": null,
+                "date_debut_information": null,
+                "date_fin_information": null,
+                "date_realisation": null,
+                "date_diffusion": "01/12/1999",
+                "date_publication_web": null,
+                "code_insee": "75056",
+                "libelle_commune": "PARIS"
+              }
+            ],
+            "source": "georisques_api"
+          },
+          "catnat": {
+            "total": 10,
+            "items": [
+              {
+                "code_national_catnat": "INTE0100460A",
+                "date_debut_evt": "06/07/2001",
+                "date_fin_evt": "07/07/2001",
+                "date_publication_arrete": "06/08/2001",
+                "date_publication_jo": "11/08/2001",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "75056",
+                "libelle_commune": "PARIS"
+              },
+              {
+                "code_national_catnat": "INTE0300592A",
+                "date_debut_evt": "31/05/2003",
+                "date_fin_evt": "31/05/2003",
+                "date_publication_arrete": "03/10/2003",
+                "date_publication_jo": "19/10/2003",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "75056",
+                "libelle_commune": "PARIS"
+              },
+              {
+                "code_national_catnat": "INTE0600132A",
+                "date_debut_evt": "01/07/2003",
+                "date_fin_evt": "30/09/2003",
+                "date_publication_arrete": "02/03/2006",
+                "date_publication_jo": "11/03/2006",
+                "libelle_risque_jo": "Sécheresse",
+                "code_insee": "75056",
+                "libelle_commune": "PARIS"
+              },
+              {
+                "code_national_catnat": "INTE0600186A",
+                "date_debut_evt": "23/06/2005",
+                "date_fin_evt": "23/06/2005",
+                "date_publication_arrete": "11/04/2006",
+                "date_publication_jo": "22/04/2006",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "75056",
+                "libelle_commune": "PARIS"
+              },
+              {
+                "code_national_catnat": "INTE1615488A",
+                "date_debut_evt": "28/05/2016",
+                "date_fin_evt": "05/06/2016",
+                "date_publication_arrete": "08/06/2016",
+                "date_publication_jo": "09/06/2016",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "75056",
+                "libelle_commune": "PARIS"
+              },
+              {
+                "code_national_catnat": "INTE1804348A",
+                "date_debut_evt": "15/01/2018",
+                "date_fin_evt": "05/02/2018",
+                "date_publication_arrete": "14/02/2018",
+                "date_publication_jo": "15/02/2018",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "75056",
+                "libelle_commune": "PARIS"
+              },
+              {
+                "code_national_catnat": "INTE1831446A",
+                "date_debut_evt": "09/07/2017",
+                "date_fin_evt": "10/07/2017",
+                "date_publication_arrete": "26/11/2018",
+                "date_publication_jo": "07/12/2018",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "75056",
+                "libelle_commune": "PARIS"
+              },
+              {
+                "code_national_catnat": "INTE1831446A",
+                "date_debut_evt": "09/07/2017",
+                "date_fin_evt": "10/07/2017",
+                "date_publication_arrete": "26/11/2018",
+                "date_publication_jo": "07/12/2018",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "75056",
+                "libelle_commune": "PARIS"
+              },
+              {
+                "code_national_catnat": "INTE1831446A",
+                "date_debut_evt": "27/07/2018",
+                "date_fin_evt": "27/07/2018",
+                "date_publication_arrete": "26/11/2018",
+                "date_publication_jo": "07/12/2018",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "75056",
+                "libelle_commune": "PARIS"
+              },
+              {
+                "code_national_catnat": "INTE1831446A",
+                "date_debut_evt": "27/07/2018",
+                "date_fin_evt": "27/07/2018",
+                "date_publication_arrete": "26/11/2018",
+                "date_publication_jo": "07/12/2018",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "75056",
+                "libelle_commune": "PARIS"
+              }
+            ],
+            "source": "georisques_api"
+          }
+        },
+        "production_locale_region_5ans": [
+          {
+            "annee": 2020,
+            "surface_totale_ha": 107000.32,
+            "nb_fermes": 3660
+          },
+          {
+            "annee": 2021,
+            "surface_totale_ha": 118663.3,
+            "nb_fermes": 4113
+          },
+          {
+            "annee": 2022,
+            "surface_totale_ha": 129029.17,
+            "nb_fermes": 4380
+          },
+          {
+            "annee": 2023,
+            "surface_totale_ha": 124961.73,
+            "nb_fermes": 4438
+          },
+          {
+            "annee": 2024,
+            "surface_totale_ha": 122077.65,
+            "nb_fermes": 4386
+          }
+        ],
+        "production_nationale_5ans": [
+          {
+            "annee": 2020,
+            "surface_totale_ha": 7554282.92,
+            "nb_fermes": 307312
+          },
+          {
+            "annee": 2021,
+            "surface_totale_ha": 8231508.48,
+            "nb_fermes": 337519
+          },
+          {
+            "annee": 2022,
+            "surface_totale_ha": 8466035.41,
+            "nb_fermes": 351659
+          },
+          {
+            "annee": 2023,
+            "surface_totale_ha": 8303291.32,
+            "nb_fermes": 359226
+          },
+          {
+            "annee": 2024,
+            "surface_totale_ha": 8134700.51,
+            "nb_fermes": 362486
+          }
+        ],
+        "tendance_ventes_pct_5ans": {
+          "periode": {
+            "debut": 2020,
+            "fin": 2024
+          },
+          "evolution_moyenne_pct": 3.68,
+          "details": [
+            {
+              "annee": 2020,
+              "evolution_pct_moyenne": 1.67
+            },
+            {
+              "annee": 2021,
+              "evolution_pct_moyenne": 5.76
+            },
+            {
+              "annee": 2022,
+              "evolution_pct_moyenne": 2.88
+            },
+            {
+              "annee": 2023,
+              "evolution_pct_moyenne": 4.12
+            },
+            {
+              "annee": 2024,
+              "evolution_pct_moyenne": 3.95
+            }
+          ]
+        },
+        "tendance_commerce_5ans": {
+          "periode": {
+            "debut": 6666,
+            "fin": 6666
+          },
+          "details": [
+            {
+              "annee": 6666,
+              "total_valeur_M_eur": 2538.66
+            }
+          ]
+        }
+      },
+      "operateurs": {
+        "total": 6,
+        "list": [
+          {
+            "id": "PAR-001",
+            "nom": "Terres & Pains Bio",
+            "activite": "Distribution",
+            "categorie": "Grossistes",
+            "segments": [
+              "Distribution alimentaire bio",
+              "Boulangerie",
+              "Circuit court"
+            ],
+            "activites": [
+              "Distribution alimentaire bio",
+              "Boulangerie",
+              "Circuit court"
+            ],
+            "categories": [
+              "Grossistes"
+            ],
+            "ville": "Paris",
+            "quartier": "11e",
+            "code_postal": "75011",
+            "adresse": "21 rue Servan",
+            "labels": [
+              "AB",
+              "Demeter"
+            ],
+            "site": "https://terresetpainsbio.paris",
+            "contact": {
+              "email": "contact@terrespains.fr",
+              "telephone": "+33 1 84 00 11 55"
+            },
+            "date_mise_a_jour": "2024-10-14"
+          },
+          {
+            "id": "PAR-002",
+            "nom": "Cooperative Vert Mont",
+            "activite": "Distribution",
+            "categorie": "Plateforme logistique",
+            "segments": [
+              "Distribution alimentaire bio",
+              "Restauration collective"
+            ],
+            "activites": [
+              "Distribution alimentaire bio",
+              "Restauration collective"
+            ],
+            "categories": [
+              "Plateforme logistique"
+            ],
+            "ville": "Paris",
+            "quartier": "18e",
+            "code_postal": "75018",
+            "adresse": "6 rue Ordener",
+            "labels": [
+              "AB"
+            ],
+            "site": "https://vertmont.coop",
+            "contact": {
+              "email": "hello@vertmont.coop",
+              "telephone": "+33 1 53 41 07 07"
+            },
+            "date_mise_a_jour": "2024-09-05"
+          },
+          {
+            "id": "PAR-003",
+            "nom": "Marches Urbains Bio",
+            "activite": "Distribution",
+            "categorie": "Grossistes",
+            "segments": [
+              "Distribution alimentaire bio",
+              "Retail"
+            ],
+            "activites": [
+              "Distribution alimentaire bio",
+              "Retail"
+            ],
+            "categories": [
+              "Grossistes"
+            ],
+            "ville": "Paris",
+            "quartier": "5e",
+            "code_postal": "75005",
+            "adresse": "12 rue Monge",
+            "labels": [
+              "AB",
+              "BioEntreprise"
+            ],
+            "site": "https://mubio.fr",
+            "contact": {
+              "email": "sourcing@mubio.fr",
+              "telephone": "+33 1 45 11 32 10"
+            },
+            "date_mise_a_jour": "2024-11-02"
+          },
+          {
+            "id": "PAR-004",
+            "nom": "Seine Bio Logistique",
+            "activite": "Distribution",
+            "categorie": "Hub logistique",
+            "segments": [
+              "Distribution alimentaire bio",
+              "Click & collect"
+            ],
+            "activites": [
+              "Distribution alimentaire bio",
+              "Click & collect"
+            ],
+            "categories": [
+              "Hub logistique"
+            ],
+            "ville": "Paris",
+            "quartier": "13e",
+            "code_postal": "75013",
+            "adresse": "90 boulevard Vincent Auriol",
+            "labels": [
+              "AB",
+              "ISO22000"
+            ],
+            "site": "https://seinebio-log.fr",
+            "contact": {
+              "email": "ops@seinebio-log.fr",
+              "telephone": "+33 1 40 77 68 48"
+            },
+            "date_mise_a_jour": "2024-07-20"
+          },
+          {
+            "id": "PAR-005",
+            "nom": "Rive Droite Primeurs",
+            "activite": "Distribution",
+            "categorie": "Artisans/commercants",
+            "segments": [
+              "Distribution alimentaire bio",
+              "Primeurs"
+            ],
+            "activites": [
+              "Distribution alimentaire bio",
+              "Primeurs"
+            ],
+            "categories": [
+              "Artisans/commercants"
+            ],
+            "ville": "Paris",
+            "quartier": "3e",
+            "code_postal": "75003",
+            "adresse": "34 rue de Bretagne",
+            "labels": [
+              "AB"
+            ],
+            "site": "https://rivedroiteprimeurs.fr",
+            "contact": {
+              "email": "hello@rivedroiteprimeurs.fr",
+              "telephone": "+33 9 72 56 34 12"
+            },
+            "date_mise_a_jour": "2024-08-11"
+          },
+          {
+            "id": "PAR-006",
+            "nom": "Plateforme Quartier Bio",
+            "activite": "Distribution",
+            "categorie": "Plateforme multi-enseignes",
+            "segments": [
+              "Distribution alimentaire bio",
+              "Restauration rapide"
+            ],
+            "activites": [
+              "Distribution alimentaire bio",
+              "Restauration rapide"
+            ],
+            "categories": [
+              "Plateforme multi-enseignes"
+            ],
+            "ville": "Paris",
+            "quartier": "15e",
+            "code_postal": "75015",
+            "adresse": "115 rue de la Convention",
+            "labels": [
+              "AB",
+              "BCorp"
+            ],
+            "site": "https://quartierbio.paris",
+            "contact": {
+              "email": "contact@quartierbio.paris",
+              "telephone": "+33 1 87 65 43 10"
+            },
+            "date_mise_a_jour": "2024-06-30"
+          }
+        ]
+      },
+      "metadata": {
+        "secteur": "agriculture",
+        "ville": "Paris",
+        "region": "",
+        "objectif": "legumes",
+        "generatedAt": "2025-11-13T21:22:20.151Z",
+        "aiModel": "deepseek-r1:8b"
+      }
+    }
+  }
+}

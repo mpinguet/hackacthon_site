@@ -1,0 +1,1797 @@
+{
+  "id": "2902b470-1dac-4f90-8355-f915bbea8369",
+  "prefix": "analyse",
+  "generated_at": "2025-11-13T20:40:21.242Z",
+  "payload": {
+    "endpoint": "/api/analyze",
+    "request": {
+      "secteur": "cosmetique",
+      "region": "",
+      "objectif": "viticulture",
+      "ville": "Nimes"
+    },
+    "response": {
+      "summary": "Le marché agricole et agroalimentaire de la région et du pays affiche une croissance significative au cours des dernières années, avec une augmentation de la production et du nombre de fermes. Les évaluations des produits sont globalement positives, soulignant la qualité et la compétitivité des prix. Cependant, le nombre d'opérateurs biologiques reste faible, laissant place à des opportunités de développement dans ce segment.",
+      "kpis": {
+        "marche": "La production nationale a augmenté de 7 554 282,92 ha en 2020 à 8 134 700,51 ha en 2024. Le nombre de fermes a également augmenté.",
+        "acteurs": "Il n'y a actuellement aucun opérateur biologique enregistré. Le nombre de concurrents directs est de 0.",
+        "croissance": "Les ventes ont connu une évolution moyenne de 1,67 % à 5,76 % par an entre 2020 et 2024.",
+        "potentiel": "Le marché présente un potentiel de croissance avec une demande croissante pour des produits de qualité et durables.",
+        "trends": {
+          "marche": "Croissance constante de la production et de la surface agricole entre 2020 et 2024.",
+          "acteurs": "Faible présence d'opérateurs biologiques et concurrents directs.",
+          "croissance": "Évolution positive des ventes avec une moyenne de 3,95 % en 2024.",
+          "potentiel": "Augmentation de la demande pour les produits de qualité et durables."
+        }
+      },
+      "keyPoints": [
+        "Les avis des utilisateurs sont très positifs pour la qualité des produits.",
+        "Les prix sont perçus comme compétitifs.",
+        "Le service client est réactif.",
+        "Le marché agricole et agroalimentaire est en pleine croissance.",
+        "Il existe une demande pour les produits biologiques.",
+        "La concurrence directe est faible.",
+        "Les ventes ont connu une croissance régulière au cours des dernières années."
+      ],
+      "actors": [
+        {
+          "name": "Opérateur Agricole",
+          "type": "Producteur",
+          "market": "National",
+          "growth": "Croissance régulière",
+          "site": "Présent dans toute la France"
+        },
+        {
+          "name": "Distributeur",
+          "type": "Commercial",
+          "market": "National",
+          "growth": "Croissance modérée",
+          "site": "Présent dans toute la France"
+        },
+        {
+          "name": "Producteur Biologique",
+          "type": "Producteur",
+          "market": "Local",
+          "growth": "Faible",
+          "site": "Présent dans la région"
+        }
+      ],
+      "recommendations": [
+        {
+          "title": "Développer la production biologique",
+          "desc": "Augmenter la part des produits biologiques pour répondre à la demande croissante."
+        },
+        {
+          "title": "Améliorer la réputation du service client",
+          "desc": "Maintenir et renforcer la réactivité du service client pour fidéliser les clients."
+        },
+        {
+          "title": "Élargir la gamme de produits",
+          "desc": "Proposer une variété plus large de produits pour attirer un public plus large."
+        },
+        {
+          "title": "Augmenter la visibilité du marché",
+          "desc": "Présenter davantage le marché sur les réseaux sociaux et dans les médias pour attirer de nouveaux clients."
+        }
+      ],
+      "chartData": {
+        "marketShare": [
+          {
+            "label": "2020",
+            "value": 7554282.92
+          },
+          {
+            "label": "2021",
+            "value": 8231508.48
+          },
+          {
+            "label": "2022",
+            "value": 8466035.41
+          },
+          {
+            "label": "2023",
+            "value": 8303291.32
+          },
+          {
+            "label": "2024",
+            "value": 8134700.51
+          }
+        ],
+        "marketShareLabels": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024"
+        ],
+        "evolution": [
+          {
+            "label": "2020",
+            "value": 1.67
+          },
+          {
+            "label": "2021",
+            "value": 5.76
+          },
+          {
+            "label": "2022",
+            "value": 2.88
+          },
+          {
+            "label": "2023",
+            "value": 4.12
+          },
+          {
+            "label": "2024",
+            "value": 3.95
+          }
+        ],
+        "evolutionLabels": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024"
+        ],
+        "segments": [
+          {
+            "label": "Produits Biologiques",
+            "value": 0
+          },
+          {
+            "label": "Produits Courants",
+            "value": 100
+          }
+        ],
+        "segmentsLabels": [
+          "Produits Biologiques",
+          "Produits Courants"
+        ],
+        "competitors": [
+          {
+            "label": "Concurrent A",
+            "value": 0
+          },
+          {
+            "label": "Concurrent B",
+            "value": 0
+          },
+          {
+            "label": "Concurrent C",
+            "value": 0
+          }
+        ],
+        "competitorsLabels": [
+          "Concurrent A",
+          "Concurrent B",
+          "Concurrent C"
+        ]
+      },
+      "aiModel": "deepseek-r1:8b",
+      "context": {
+        "meta": {
+          "ville_recherchee": "Nimes",
+          "segment_analyse": "cosmetique",
+          "generated_at": "2025-11-13T20:39:37.879Z"
+        },
+        "geo": {
+          "nom_commune": "Nîmes",
+          "code_commune": "30189",
+          "population": 150444,
+          "code_departement": "30",
+          "code_region": "76",
+          "nom_region": "Occitanie"
+        },
+        "concurrence_locale_api": {
+          "nb_operateurs_bio_total": 0,
+          "nb_concurrents_directs": 0,
+          "concurrents_directs": [],
+          "ventilation_activites": {},
+          "detail_operateurs": []
+        },
+        "risques_locaux_api": {
+          "code_commune": "30189",
+          "basol": {
+            "total": 4,
+            "items": [
+              {
+                "identifiant_ssp": "SSP000191501",
+                "nom_etablissement": "CEAC",
+                "adresse": "",
+                "adresse_lieudit": null,
+                "code_insee": "30189",
+                "nom_commune": "NIMES",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000191501",
+                "date_maj": "2021-09-23",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          4.310588,
+                          43.806241
+                        ],
+                        [
+                          4.310256,
+                          43.806509
+                        ],
+                        [
+                          4.309951,
+                          43.806898
+                        ],
+                        [
+                          4.30964,
+                          43.807316
+                        ],
+                        [
+                          4.309713,
+                          43.807322
+                        ],
+                        [
+                          4.309828,
+                          43.808521
+                        ],
+                        [
+                          4.310562,
+                          43.809048
+                        ],
+                        [
+                          4.310887,
+                          43.80877
+                        ],
+                        [
+                          4.311309,
+                          43.808413
+                        ],
+                        [
+                          4.311652,
+                          43.808123
+                        ],
+                        [
+                          4.311894,
+                          43.807918
+                        ],
+                        [
+                          4.312129,
+                          43.807719
+                        ],
+                        [
+                          4.312267,
+                          43.807601
+                        ],
+                        [
+                          4.312391,
+                          43.807498
+                        ],
+                        [
+                          4.310588,
+                          43.806241
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000193201",
+                "nom_etablissement": "SNCF Technicentre Languedoc-Roussillon",
+                "adresse": "97 RUE PIERRE SEMARD",
+                "adresse_lieudit": null,
+                "code_insee": "30189",
+                "nom_commune": "NIMES",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000193201",
+                "date_maj": "2021-10-18",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          4.377714,
+                          43.845366
+                        ],
+                        [
+                          4.377724,
+                          43.84536
+                        ],
+                        [
+                          4.377475,
+                          43.845064
+                        ],
+                        [
+                          4.378509,
+                          43.845313
+                        ],
+                        [
+                          4.379254,
+                          43.845634
+                        ],
+                        [
+                          4.379665,
+                          43.845585
+                        ],
+                        [
+                          4.379686,
+                          43.845584
+                        ],
+                        [
+                          4.37971,
+                          43.845584
+                        ],
+                        [
+                          4.379735,
+                          43.845587
+                        ],
+                        [
+                          4.38217,
+                          43.846177
+                        ],
+                        [
+                          4.38211,
+                          43.846728
+                        ],
+                        [
+                          4.381301,
+                          43.84676
+                        ],
+                        [
+                          4.381296,
+                          43.846814
+                        ],
+                        [
+                          4.381322,
+                          43.846898
+                        ],
+                        [
+                          4.381583,
+                          43.846968
+                        ],
+                        [
+                          4.381618,
+                          43.846922
+                        ],
+                        [
+                          4.382346,
+                          43.846817
+                        ],
+                        [
+                          4.382466,
+                          43.846815
+                        ],
+                        [
+                          4.382573,
+                          43.846816
+                        ],
+                        [
+                          4.382598,
+                          43.846816
+                        ],
+                        [
+                          4.382662,
+                          43.84682
+                        ],
+                        [
+                          4.38271,
+                          43.846823
+                        ],
+                        [
+                          4.382777,
+                          43.846828
+                        ],
+                        [
+                          4.382839,
+                          43.846831
+                        ],
+                        [
+                          4.382987,
+                          43.846835
+                        ],
+                        [
+                          4.383056,
+                          43.846837
+                        ],
+                        [
+                          4.38318,
+                          43.846839
+                        ],
+                        [
+                          4.383226,
+                          43.846838
+                        ],
+                        [
+                          4.383314,
+                          43.846838
+                        ],
+                        [
+                          4.383388,
+                          43.846838
+                        ],
+                        [
+                          4.383474,
+                          43.846838
+                        ],
+                        [
+                          4.383741,
+                          43.846849
+                        ],
+                        [
+                          4.383813,
+                          43.846853
+                        ],
+                        [
+                          4.38386,
+                          43.846855
+                        ],
+                        [
+                          4.383897,
+                          43.846857
+                        ],
+                        [
+                          4.383897,
+                          43.846857
+                        ],
+                        [
+                          4.383992,
+                          43.846863
+                        ],
+                        [
+                          4.384052,
+                          43.846867
+                        ],
+                        [
+                          4.384564,
+                          43.846883
+                        ],
+                        [
+                          4.384829,
+                          43.846901
+                        ],
+                        [
+                          4.385016,
+                          43.846921
+                        ],
+                        [
+                          4.386098,
+                          43.847109
+                        ],
+                        [
+                          4.386122,
+                          43.8471
+                        ],
+                        [
+                          4.38622,
+                          43.847121
+                        ],
+                        [
+                          4.386199,
+                          43.847176
+                        ],
+                        [
+                          4.38625,
+                          43.847191
+                        ],
+                        [
+                          4.387229,
+                          43.847526
+                        ],
+                        [
+                          4.387564,
+                          43.847804
+                        ],
+                        [
+                          4.389698,
+                          43.848126
+                        ],
+                        [
+                          4.389705,
+                          43.848109
+                        ],
+                        [
+                          4.389795,
+                          43.848117
+                        ],
+                        [
+                          4.389901,
+                          43.847517
+                        ],
+                        [
+                          4.38977,
+                          43.847499
+                        ],
+                        [
+                          4.389769,
+                          43.847474
+                        ],
+                        [
+                          4.389758,
+                          43.847455
+                        ],
+                        [
+                          4.389738,
+                          43.847433
+                        ],
+                        [
+                          4.389715,
+                          43.847417
+                        ],
+                        [
+                          4.389664,
+                          43.847392
+                        ],
+                        [
+                          4.389472,
+                          43.847308
+                        ],
+                        [
+                          4.389394,
+                          43.847275
+                        ],
+                        [
+                          4.389324,
+                          43.847257
+                        ],
+                        [
+                          4.389238,
+                          43.847235
+                        ],
+                        [
+                          4.387731,
+                          43.846953
+                        ],
+                        [
+                          4.38646,
+                          43.846629
+                        ],
+                        [
+                          4.386433,
+                          43.846633
+                        ],
+                        [
+                          4.386382,
+                          43.846675
+                        ],
+                        [
+                          4.386358,
+                          43.84669
+                        ],
+                        [
+                          4.386318,
+                          43.846687
+                        ],
+                        [
+                          4.386285,
+                          43.846675
+                        ],
+                        [
+                          4.386297,
+                          43.846596
+                        ],
+                        [
+                          4.386279,
+                          43.846576
+                        ],
+                        [
+                          4.385764,
+                          43.846427
+                        ],
+                        [
+                          4.385656,
+                          43.846393
+                        ],
+                        [
+                          4.385263,
+                          43.846244
+                        ],
+                        [
+                          4.385039,
+                          43.846102
+                        ],
+                        [
+                          4.385013,
+                          43.84609
+                        ],
+                        [
+                          4.38495,
+                          43.8461
+                        ],
+                        [
+                          4.382292,
+                          43.845462
+                        ],
+                        [
+                          4.382228,
+                          43.84497
+                        ],
+                        [
+                          4.382213,
+                          43.844974
+                        ],
+                        [
+                          4.381878,
+                          43.845054
+                        ],
+                        [
+                          4.381844,
+                          43.844994
+                        ],
+                        [
+                          4.38153,
+                          43.845124
+                        ],
+                        [
+                          4.381495,
+                          43.845139
+                        ],
+                        [
+                          4.381468,
+                          43.845144
+                        ],
+                        [
+                          4.381418,
+                          43.845154
+                        ],
+                        [
+                          4.38027,
+                          43.845192
+                        ],
+                        [
+                          4.380225,
+                          43.845196
+                        ],
+                        [
+                          4.380171,
+                          43.845206
+                        ],
+                        [
+                          4.380146,
+                          43.845212
+                        ],
+                        [
+                          4.380109,
+                          43.845229
+                        ],
+                        [
+                          4.380078,
+                          43.845257
+                        ],
+                        [
+                          4.380034,
+                          43.845303
+                        ],
+                        [
+                          4.380027,
+                          43.845317
+                        ],
+                        [
+                          4.379952,
+                          43.8453
+                        ],
+                        [
+                          4.379973,
+                          43.845266
+                        ],
+                        [
+                          4.379997,
+                          43.845231
+                        ],
+                        [
+                          4.380009,
+                          43.845216
+                        ],
+                        [
+                          4.380043,
+                          43.845192
+                        ],
+                        [
+                          4.380073,
+                          43.845176
+                        ],
+                        [
+                          4.3801,
+                          43.845164
+                        ],
+                        [
+                          4.380105,
+                          43.845105
+                        ],
+                        [
+                          4.379241,
+                          43.845096
+                        ],
+                        [
+                          4.378423,
+                          43.844737
+                        ],
+                        [
+                          4.377472,
+                          43.844203
+                        ],
+                        [
+                          4.377304,
+                          43.844098
+                        ],
+                        [
+                          4.377243,
+                          43.844061
+                        ],
+                        [
+                          4.377029,
+                          43.84392
+                        ],
+                        [
+                          4.376384,
+                          43.843441
+                        ],
+                        [
+                          4.376102,
+                          43.843209
+                        ],
+                        [
+                          4.376149,
+                          43.843125
+                        ],
+                        [
+                          4.376395,
+                          43.843187
+                        ],
+                        [
+                          4.376943,
+                          43.84176
+                        ],
+                        [
+                          4.376695,
+                          43.841701
+                        ],
+                        [
+                          4.376675,
+                          43.841752
+                        ],
+                        [
+                          4.376614,
+                          43.841739
+                        ],
+                        [
+                          4.376609,
+                          43.841742
+                        ],
+                        [
+                          4.376445,
+                          43.841709
+                        ],
+                        [
+                          4.376389,
+                          43.841856
+                        ],
+                        [
+                          4.376399,
+                          43.841859
+                        ],
+                        [
+                          4.376383,
+                          43.841896
+                        ],
+                        [
+                          4.376111,
+                          43.841794
+                        ],
+                        [
+                          4.376129,
+                          43.841747
+                        ],
+                        [
+                          4.376075,
+                          43.841735
+                        ],
+                        [
+                          4.376091,
+                          43.841681
+                        ],
+                        [
+                          4.376066,
+                          43.841674
+                        ],
+                        [
+                          4.376092,
+                          43.841585
+                        ],
+                        [
+                          4.375972,
+                          43.841553
+                        ],
+                        [
+                          4.375982,
+                          43.841531
+                        ],
+                        [
+                          4.375521,
+                          43.841419
+                        ],
+                        [
+                          4.375452,
+                          43.841608
+                        ],
+                        [
+                          4.374967,
+                          43.841529
+                        ],
+                        [
+                          4.374973,
+                          43.841553
+                        ],
+                        [
+                          4.374656,
+                          43.841589
+                        ],
+                        [
+                          4.374482,
+                          43.841453
+                        ],
+                        [
+                          4.374519,
+                          43.841434
+                        ],
+                        [
+                          4.374341,
+                          43.841263
+                        ],
+                        [
+                          4.374355,
+                          43.841237
+                        ],
+                        [
+                          4.373541,
+                          43.841013
+                        ],
+                        [
+                          4.373343,
+                          43.840963
+                        ],
+                        [
+                          4.373152,
+                          43.840916
+                        ],
+                        [
+                          4.373013,
+                          43.841309
+                        ],
+                        [
+                          4.372442,
+                          43.841215
+                        ],
+                        [
+                          4.372283,
+                          43.841583
+                        ],
+                        [
+                          4.372093,
+                          43.841543
+                        ],
+                        [
+                          4.372086,
+                          43.841554
+                        ],
+                        [
+                          4.372053,
+                          43.841546
+                        ],
+                        [
+                          4.371619,
+                          43.842576
+                        ],
+                        [
+                          4.370496,
+                          43.842323
+                        ],
+                        [
+                          4.370437,
+                          43.84236
+                        ],
+                        [
+                          4.370232,
+                          43.842524
+                        ],
+                        [
+                          4.370127,
+                          43.842607
+                        ],
+                        [
+                          4.369923,
+                          43.842782
+                        ],
+                        [
+                          4.369795,
+                          43.842892
+                        ],
+                        [
+                          4.369743,
+                          43.842981
+                        ],
+                        [
+                          4.369746,
+                          43.842999
+                        ],
+                        [
+                          4.369762,
+                          43.843011
+                        ],
+                        [
+                          4.369945,
+                          43.84306
+                        ],
+                        [
+                          4.369861,
+                          43.843238
+                        ],
+                        [
+                          4.369814,
+                          43.843255
+                        ],
+                        [
+                          4.369777,
+                          43.843287
+                        ],
+                        [
+                          4.370294,
+                          43.843616
+                        ],
+                        [
+                          4.371879,
+                          43.844002
+                        ],
+                        [
+                          4.373554,
+                          43.844205
+                        ],
+                        [
+                          4.373671,
+                          43.844212
+                        ],
+                        [
+                          4.373734,
+                          43.84422
+                        ],
+                        [
+                          4.373784,
+                          43.844232
+                        ],
+                        [
+                          4.374719,
+                          43.844594
+                        ],
+                        [
+                          4.375076,
+                          43.8447
+                        ],
+                        [
+                          4.375727,
+                          43.844864
+                        ],
+                        [
+                          4.375852,
+                          43.844885
+                        ],
+                        [
+                          4.376198,
+                          43.844915
+                        ],
+                        [
+                          4.376776,
+                          43.844916
+                        ],
+                        [
+                          4.376899,
+                          43.844953
+                        ],
+                        [
+                          4.377107,
+                          43.845054
+                        ],
+                        [
+                          4.377254,
+                          43.845143
+                        ],
+                        [
+                          4.37731,
+                          43.845186
+                        ],
+                        [
+                          4.377448,
+                          43.845288
+                        ],
+                        [
+                          4.377468,
+                          43.845307
+                        ],
+                        [
+                          4.377613,
+                          43.8454
+                        ],
+                        [
+                          4.377714,
+                          43.845366
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000224501",
+                "nom_etablissement": "Ancienne usine à gaz",
+                "adresse": "AVENUE DU GÉNÉRAL LECLERC",
+                "adresse_lieudit": null,
+                "code_insee": "30189",
+                "nom_commune": "NIMES",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000224501",
+                "date_maj": "2022-04-12",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          4.366209,
+                          43.830944
+                        ],
+                        [
+                          4.366119,
+                          43.830949
+                        ],
+                        [
+                          4.366079,
+                          43.83102
+                        ],
+                        [
+                          4.3661,
+                          43.831037
+                        ],
+                        [
+                          4.366162,
+                          43.831089
+                        ],
+                        [
+                          4.366134,
+                          43.831109
+                        ],
+                        [
+                          4.365817,
+                          43.831336
+                        ],
+                        [
+                          4.365814,
+                          43.831339
+                        ],
+                        [
+                          4.36581,
+                          43.831344
+                        ],
+                        [
+                          4.365808,
+                          43.831349
+                        ],
+                        [
+                          4.365807,
+                          43.831356
+                        ],
+                        [
+                          4.365808,
+                          43.831361
+                        ],
+                        [
+                          4.365809,
+                          43.831365
+                        ],
+                        [
+                          4.365813,
+                          43.831372
+                        ],
+                        [
+                          4.365817,
+                          43.831376
+                        ],
+                        [
+                          4.365822,
+                          43.83138
+                        ],
+                        [
+                          4.365828,
+                          43.831382
+                        ],
+                        [
+                          4.366398,
+                          43.831556
+                        ],
+                        [
+                          4.366596,
+                          43.831616
+                        ],
+                        [
+                          4.36666,
+                          43.831636
+                        ],
+                        [
+                          4.366915,
+                          43.831714
+                        ],
+                        [
+                          4.367028,
+                          43.831748
+                        ],
+                        [
+                          4.367334,
+                          43.831552
+                        ],
+                        [
+                          4.367343,
+                          43.831547
+                        ],
+                        [
+                          4.366886,
+                          43.831163
+                        ],
+                        [
+                          4.36682,
+                          43.830907
+                        ],
+                        [
+                          4.36638,
+                          43.830933
+                        ],
+                        [
+                          4.366209,
+                          43.830944
+                        ]
+                      ],
+                      [
+                        [
+                          4.366503,
+                          43.831393
+                        ],
+                        [
+                          4.366485,
+                          43.831409
+                        ],
+                        [
+                          4.366492,
+                          43.831398
+                        ],
+                        [
+                          4.366507,
+                          43.831373
+                        ],
+                        [
+                          4.366522,
+                          43.831387
+                        ],
+                        [
+                          4.366503,
+                          43.831393
+                        ]
+                      ]
+                    ],
+                    [
+                      [
+                        [
+                          4.367419,
+                          43.831499
+                        ],
+                        [
+                          4.367969,
+                          43.831157
+                        ],
+                        [
+                          4.367947,
+                          43.830959
+                        ],
+                        [
+                          4.367945,
+                          43.83095
+                        ],
+                        [
+                          4.367934,
+                          43.830844
+                        ],
+                        [
+                          4.366919,
+                          43.830902
+                        ],
+                        [
+                          4.366977,
+                          43.831127
+                        ],
+                        [
+                          4.367028,
+                          43.83117
+                        ],
+                        [
+                          4.367419,
+                          43.831499
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000458401",
+                "nom_etablissement": "Caserne Général Vallongues",
+                "adresse": "62B RUE VINCENT FAITA",
+                "adresse_lieudit": null,
+                "code_insee": "30189",
+                "nom_commune": "NIMES",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000458401",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          4.372975,
+                          43.844317
+                        ],
+                        [
+                          4.372914,
+                          43.844332
+                        ],
+                        [
+                          4.372783,
+                          43.844368
+                        ],
+                        [
+                          4.37246,
+                          43.844453
+                        ],
+                        [
+                          4.372423,
+                          43.844468
+                        ],
+                        [
+                          4.371866,
+                          43.844699
+                        ],
+                        [
+                          4.372367,
+                          43.845262
+                        ],
+                        [
+                          4.371783,
+                          43.845515
+                        ],
+                        [
+                          4.371685,
+                          43.845558
+                        ],
+                        [
+                          4.371867,
+                          43.845796
+                        ],
+                        [
+                          4.371956,
+                          43.845912
+                        ],
+                        [
+                          4.372197,
+                          43.846226
+                        ],
+                        [
+                          4.372243,
+                          43.846211
+                        ],
+                        [
+                          4.37262,
+                          43.846729
+                        ],
+                        [
+                          4.372701,
+                          43.846698
+                        ],
+                        [
+                          4.372711,
+                          43.846695
+                        ],
+                        [
+                          4.372872,
+                          43.846634
+                        ],
+                        [
+                          4.372902,
+                          43.846623
+                        ],
+                        [
+                          4.373162,
+                          43.846525
+                        ],
+                        [
+                          4.373275,
+                          43.846483
+                        ],
+                        [
+                          4.373316,
+                          43.846468
+                        ],
+                        [
+                          4.373371,
+                          43.846447
+                        ],
+                        [
+                          4.373476,
+                          43.846407
+                        ],
+                        [
+                          4.373585,
+                          43.846366
+                        ],
+                        [
+                          4.37367,
+                          43.846334
+                        ],
+                        [
+                          4.373835,
+                          43.846273
+                        ],
+                        [
+                          4.37391,
+                          43.846244
+                        ],
+                        [
+                          4.373937,
+                          43.846234
+                        ],
+                        [
+                          4.37408,
+                          43.846428
+                        ],
+                        [
+                          4.374142,
+                          43.846406
+                        ],
+                        [
+                          4.37419,
+                          43.846386
+                        ],
+                        [
+                          4.374436,
+                          43.846724
+                        ],
+                        [
+                          4.374446,
+                          43.846717
+                        ],
+                        [
+                          4.374748,
+                          43.846599
+                        ],
+                        [
+                          4.375018,
+                          43.846495
+                        ],
+                        [
+                          4.375041,
+                          43.846492
+                        ],
+                        [
+                          4.375035,
+                          43.846462
+                        ],
+                        [
+                          4.375099,
+                          43.846454
+                        ],
+                        [
+                          4.375102,
+                          43.846459
+                        ],
+                        [
+                          4.375185,
+                          43.846422
+                        ],
+                        [
+                          4.375151,
+                          43.846307
+                        ],
+                        [
+                          4.375136,
+                          43.846255
+                        ],
+                        [
+                          4.375097,
+                          43.846124
+                        ],
+                        [
+                          4.374914,
+                          43.845503
+                        ],
+                        [
+                          4.374843,
+                          43.845262
+                        ],
+                        [
+                          4.374894,
+                          43.845174
+                        ],
+                        [
+                          4.374895,
+                          43.845173
+                        ],
+                        [
+                          4.374922,
+                          43.845124
+                        ],
+                        [
+                          4.374937,
+                          43.845097
+                        ],
+                        [
+                          4.374967,
+                          43.845045
+                        ],
+                        [
+                          4.374986,
+                          43.845009
+                        ],
+                        [
+                          4.375002,
+                          43.844981
+                        ],
+                        [
+                          4.375091,
+                          43.844827
+                        ],
+                        [
+                          4.375105,
+                          43.844804
+                        ],
+                        [
+                          4.374906,
+                          43.844757
+                        ],
+                        [
+                          4.374771,
+                          43.844714
+                        ],
+                        [
+                          4.374627,
+                          43.844668
+                        ],
+                        [
+                          4.374332,
+                          43.844552
+                        ],
+                        [
+                          4.374098,
+                          43.844461
+                        ],
+                        [
+                          4.373961,
+                          43.844406
+                        ],
+                        [
+                          4.373863,
+                          43.844375
+                        ],
+                        [
+                          4.373806,
+                          43.844357
+                        ],
+                        [
+                          4.373729,
+                          43.844334
+                        ],
+                        [
+                          4.373728,
+                          43.844334
+                        ],
+                        [
+                          4.373565,
+                          43.844302
+                        ],
+                        [
+                          4.373489,
+                          43.84429
+                        ],
+                        [
+                          4.373477,
+                          43.844288
+                        ],
+                        [
+                          4.373449,
+                          43.844287
+                        ],
+                        [
+                          4.373355,
+                          43.844284
+                        ],
+                        [
+                          4.373231,
+                          43.844283
+                        ],
+                        [
+                          4.372975,
+                          43.844317
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              }
+            ],
+            "source": "georisques_api"
+          },
+          "azi": {
+            "total": 2,
+            "items": [
+              {
+                "code_national_azi": "30DDTM20130150",
+                "libelle_azi": "BV Vidourle, Vistre et Rhôny",
+                "liste_libelle_risque": [
+                  {
+                    "num_risque": "113",
+                    "libelle_risque_long": "Par une crue torrentielle ou à montée rapide de cours d'eau"
+                  },
+                  {
+                    "num_risque": "11",
+                    "libelle_risque_long": "Inondation"
+                  }
+                ],
+                "libelle_bassin_risques": "Vidourle, Vistre et Rhôny",
+                "date_debut_programmation": null,
+                "date_fin_programmation": null,
+                "date_debut_etude": null,
+                "date_fin_etude": null,
+                "date_debut_information": null,
+                "date_fin_information": null,
+                "date_realisation": "01/07/2004",
+                "date_diffusion": null,
+                "date_publication_web": null,
+                "code_insee": "30189",
+                "libelle_commune": "NIMES"
+              },
+              {
+                "code_national_azi": "34DREAL20070007",
+                "libelle_azi": "Atlas des zones inondables du bassin versant du Vidourle",
+                "liste_libelle_risque": [
+                  {
+                    "num_risque": "11",
+                    "libelle_risque_long": "Inondation"
+                  }
+                ],
+                "libelle_bassin_risques": "Vidourle",
+                "date_debut_programmation": null,
+                "date_fin_programmation": null,
+                "date_debut_etude": null,
+                "date_fin_etude": null,
+                "date_debut_information": null,
+                "date_fin_information": null,
+                "date_realisation": null,
+                "date_diffusion": "26/07/2004",
+                "date_publication_web": null,
+                "code_insee": "30189",
+                "libelle_commune": "NIMES"
+              }
+            ],
+            "source": "georisques_api"
+          },
+          "catnat": {
+            "total": 10,
+            "items": [
+              {
+                "code_national_catnat": "BUDD8750038A",
+                "date_debut_evt": "11/02/1987",
+                "date_fin_evt": "13/02/1987",
+                "date_publication_arrete": "24/06/1987",
+                "date_publication_jo": "10/07/1987",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "30189",
+                "libelle_commune": "NIMES"
+              },
+              {
+                "code_national_catnat": "INTE0200523A",
+                "date_debut_evt": "08/09/2002",
+                "date_fin_evt": "10/09/2002",
+                "date_publication_arrete": "19/09/2002",
+                "date_publication_jo": "20/09/2002",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "30189",
+                "libelle_commune": "NIMES"
+              },
+              {
+                "code_national_catnat": "INTE0300648A",
+                "date_debut_evt": "22/09/2003",
+                "date_fin_evt": "22/09/2003",
+                "date_publication_arrete": "17/11/2003",
+                "date_publication_jo": "30/11/2003",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "30189",
+                "libelle_commune": "NIMES"
+              },
+              {
+                "code_national_catnat": "INTE0500017A",
+                "date_debut_evt": "04/11/2004",
+                "date_fin_evt": "04/11/2004",
+                "date_publication_arrete": "11/01/2005",
+                "date_publication_jo": "01/02/2005",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "30189",
+                "libelle_commune": "NIMES"
+              },
+              {
+                "code_national_catnat": "INTE0500698A",
+                "date_debut_evt": "06/09/2005",
+                "date_fin_evt": "09/09/2005",
+                "date_publication_arrete": "10/10/2005",
+                "date_publication_jo": "14/10/2005",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "30189",
+                "libelle_commune": "NIMES"
+              },
+              {
+                "code_national_catnat": "INTE1319723A",
+                "date_debut_evt": "01/01/2012",
+                "date_fin_evt": "31/12/2012",
+                "date_publication_arrete": "29/07/2013",
+                "date_publication_jo": "02/08/2013",
+                "libelle_risque_jo": "Sécheresse",
+                "code_insee": "30189",
+                "libelle_commune": "NIMES"
+              },
+              {
+                "code_national_catnat": "INTE1425669A",
+                "date_debut_evt": "29/09/2014",
+                "date_fin_evt": "29/09/2014",
+                "date_publication_arrete": "04/11/2014",
+                "date_publication_jo": "07/11/2014",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "30189",
+                "libelle_commune": "NIMES"
+              },
+              {
+                "code_national_catnat": "INTE1425669A",
+                "date_debut_evt": "29/09/2014",
+                "date_fin_evt": "29/09/2014",
+                "date_publication_arrete": "04/11/2014",
+                "date_publication_jo": "07/11/2014",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "30189",
+                "libelle_commune": "NIMES"
+              },
+              {
+                "code_national_catnat": "INTE1425669A",
+                "date_debut_evt": "09/10/2014",
+                "date_fin_evt": "11/10/2014",
+                "date_publication_arrete": "04/11/2014",
+                "date_publication_jo": "07/11/2014",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "30189",
+                "libelle_commune": "NIMES"
+              },
+              {
+                "code_national_catnat": "INTE1425669A",
+                "date_debut_evt": "09/10/2014",
+                "date_fin_evt": "11/10/2014",
+                "date_publication_arrete": "04/11/2014",
+                "date_publication_jo": "07/11/2014",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "30189",
+                "libelle_commune": "NIMES"
+              }
+            ],
+            "source": "georisques_api"
+          }
+        },
+        "production_locale_region_5ans": [
+          {
+            "annee": 2020,
+            "surface_totale_ha": 1652856.12,
+            "nb_fermes": 69304
+          },
+          {
+            "annee": 2021,
+            "surface_totale_ha": 1811454.44,
+            "nb_fermes": 76700
+          },
+          {
+            "annee": 2022,
+            "surface_totale_ha": 1857907.75,
+            "nb_fermes": 79728
+          },
+          {
+            "annee": 2023,
+            "surface_totale_ha": 1813066.41,
+            "nb_fermes": 82143
+          },
+          {
+            "annee": 2024,
+            "surface_totale_ha": 1793261.19,
+            "nb_fermes": 84618
+          }
+        ],
+        "production_nationale_5ans": [
+          {
+            "annee": 2020,
+            "surface_totale_ha": 7554282.92,
+            "nb_fermes": 307312
+          },
+          {
+            "annee": 2021,
+            "surface_totale_ha": 8231508.48,
+            "nb_fermes": 337519
+          },
+          {
+            "annee": 2022,
+            "surface_totale_ha": 8466035.41,
+            "nb_fermes": 351659
+          },
+          {
+            "annee": 2023,
+            "surface_totale_ha": 8303291.32,
+            "nb_fermes": 359226
+          },
+          {
+            "annee": 2024,
+            "surface_totale_ha": 8134700.51,
+            "nb_fermes": 362486
+          }
+        ],
+        "tendance_ventes_pct_5ans": {
+          "periode": {
+            "debut": 2020,
+            "fin": 2024
+          },
+          "evolution_moyenne_pct": 3.68,
+          "details": [
+            {
+              "annee": 2020,
+              "evolution_pct_moyenne": 1.67
+            },
+            {
+              "annee": 2021,
+              "evolution_pct_moyenne": 5.76
+            },
+            {
+              "annee": 2022,
+              "evolution_pct_moyenne": 2.88
+            },
+            {
+              "annee": 2023,
+              "evolution_pct_moyenne": 4.12
+            },
+            {
+              "annee": 2024,
+              "evolution_pct_moyenne": 3.95
+            }
+          ]
+        },
+        "tendance_commerce_5ans": {
+          "periode": {
+            "debut": 6666,
+            "fin": 6666
+          },
+          "details": [
+            {
+              "annee": 6666,
+              "total_valeur_M_eur": 2538.66
+            }
+          ]
+        }
+      },
+      "operateurs": {
+        "total": 0,
+        "list": []
+      },
+      "metadata": {
+        "secteur": "cosmetique",
+        "ville": "Nimes",
+        "region": "",
+        "objectif": "viticulture",
+        "generatedAt": "2025-11-13T20:40:21.242Z",
+        "aiModel": "deepseek-r1:8b"
+      }
+    }
+  }
+}

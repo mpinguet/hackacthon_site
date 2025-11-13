@@ -2,48 +2,81 @@
 // FORM SUBMISSION HANDLER
 // ===========================
 
+document.addEventListener('DOMContentLoaded', initializeMarketForm);
 
-document.getElementById('marketForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Récupération des valeurs du formulaire
-    const secteur = document.getElementById('secteur').value;
-    let secteurGlobal = document.getElementById('secteur').value;
-    localStorage.setItem('secteurGlobal', secteurGlobal);
-    const region = document.getElementById('region').value;
-    let regionGlobale = document.getElementById('region').value;
-    localStorage.setItem('regionGlobale', regionGlobale);
-    const objectif = document.getElementById('objectif').value;
-    let objectiGlobale = document.getElementById('objectif').value;
-    localStorage.setItem('objectifGlobale', objectiGlobale);
-    
-    // Validation et affichage des résultats
-    if(secteur && region && objectif) {
-        const resultsDiv = document.getElementById('results');
-        resultsDiv.style.display = 'block';
-        
-        // Affichage dynamique des résultats
-        resultsDiv.innerHTML = `
-            <h3>✅ Demande Reçue!</h3>
-            <p><strong>Secteur:</strong> ${secteur}</p>
-            <p><strong>Région:</strong> ${region}</p>
-            <p><strong>Objectif:</strong> ${objectif}</p>
-            <p style="margin-top: 1.5rem; padding: 1rem; background: white; border-radius: 8px; border-left: 4px solid var(--secondary);">
-                🤖 Notre IA analyse actuellement:<br>
-                • Les acteurs majeurs du ${secteur} en ${region}<br>
-                • Les tendances de consommation bio<br>
-                • Les opportunités de marché<br>
-                • La concurrence locale et nationale<br>
-            </p>
-        `;
-        
-        // Réinitialisation du formulaire
-        document.getElementById('marketForm').reset();
-        
-        // Scroll vers les résultats
-        resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+function initializeMarketForm() {
+    const form = document.getElementById('marketForm');
+    if (!form) return;
+    form.addEventListener('submit', handleMarketFormSubmit);
+}
+
+function handleMarketFormSubmit(event) {
+    event.preventDefault();
+
+    const secteurInput = document.getElementById('secteur');
+    const villeInput = document.getElementById('ville');
+    const regionInput = document.getElementById('region');
+    const objectifInput = document.getElementById('objectif');
+
+    const secteur = (secteurInput?.value || '').trim();
+    const ville = (villeInput?.value || '').trim();
+    const region = (regionInput?.value || '').trim();
+    const objectif = (objectifInput?.value || '').trim();
+
+    const missing = [];
+    if (!secteur) missing.push('secteur');
+    if (!ville) missing.push('ville');
+    if (!objectif) missing.push('objectif');
+
+    if (missing.length) {
+        alert(`Merci de renseigner les champs obligatoires : ${missing.join(', ')}`);
+        (secteur ? (ville ? objectifInput : villeInput) : secteurInput)?.focus();
+        return;
     }
-});
+
+    persistSelections({ secteur, ville, region, objectif });
+    renderSubmissionPreview({ secteur, ville, region, objectif });
+
+    const params = new URLSearchParams({ secteur, ville, objectif });
+    if (region) params.set('region', region);
+
+    setTimeout(() => {
+        window.location.href = `results.html?${params.toString()}`;
+    }, 600);
+}
+
+function persistSelections({ secteur, ville, region, objectif }) {
+    localStorage.setItem('secteurGlobal', secteur);
+    localStorage.setItem('villeGlobale', ville);
+    localStorage.setItem('regionGlobale', region);
+    localStorage.setItem('objectifGlobale', objectif);
+}
+
+function renderSubmissionPreview({ secteur, ville, region, objectif }) {
+    const resultsDiv = document.getElementById('results');
+    if (!resultsDiv) return;
+    resultsDiv.style.display = 'block';
+    resultsDiv.innerHTML = `
+        <div class="results-header">
+            <i class="ri-check-double-line"></i>
+            <div>
+                <h3>Demande reçue</h3>
+                <p>La configuration a bien été transmise à notre IA.</p>
+            </div>
+        </div>
+        <ul class="results-summary">
+            <li><i class="ri-archive-stack-line"></i>Secteur : <strong>${secteur}</strong></li>
+            <li><i class="ri-building-line"></i>Ville ciblée : <strong>${ville}</strong></li>
+            ${region ? `<li><i class="ri-map-pin-line"></i>Département : <strong>${region}</strong></li>` : ''}
+            <li><i class="ri-focus-line"></i>Objectif : <strong>${objectif}</strong></li>
+        </ul>
+        <div class="results-note">
+            <i class="ri-robot-2-line"></i>
+            <p>Préparation du rapport en cours... redirection automatique vers la page résultats.</p>
+        </div>
+    `;
+    resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -156,34 +189,9 @@ window.addEventListener('scroll', () => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('marketForm');
-    if (!form) return;
-    
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        
-        const secteur = encodeURIComponent(document.getElementById('secteur').value);
-        const region = encodeURIComponent(document.getElementById('region').value);
-        const objectif = encodeURIComponent(document.getElementById('objectif').value);
-        
-        console.log('📤 Envoi des paramètres:');
-        console.log('  - secteur:', document.getElementById('secteur').value);
-        console.log('  - region:', document.getElementById('region').value);
-        console.log('  - objectif:', document.getElementById('objectif').value);
-        
-        const url = `results.html?secteur=${secteur}&region=${region}&objectif=${objectif}`;
-        console.log('🔗 URL générée:', url);
-        
-        // Attendre 2 secondes avant d'ouvrir la nouvelle page
-        setTimeout(function() {
-            window.open(url, '_blank');
-        }, 2000); // 2000 millisecondes = 2 secondes
-    });
-});
 // ===========================
 // CONSOLE MESSAGE
 // ===========================
 
-console.log('%c🌱 BioMarket Insights', 'color: #7cb342; font-size: 20px; font-weight: bold;');
-console.log('%cÉtudes de marché bio par IA - Développé avec ❤️', 'color: #2d5016; font-size: 12px;');
+console.log('%cBioMarket Insights', 'color: #7cb342; font-size: 20px; font-weight: bold;');
+console.log('%cÉtudes de marché bio par IA - Développé avec passion', 'color: #2d5016; font-size: 12px;');

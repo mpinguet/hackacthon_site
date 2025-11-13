@@ -1,0 +1,166 @@
+{
+  "id": "043840f4-8ddb-41ff-8404-4e3a3e098683",
+  "prefix": "analyse-fallback",
+  "generated_at": "2025-11-13T18:28:48.394Z",
+  "payload": {
+    "endpoint": "/api/analyze",
+    "request": {
+      "secteur": "Alimentaire Bio",
+      "region": "France",
+      "objectif": "Analyse de marché générale"
+    },
+    "response": {
+      "summary": "Cette analyse du secteur \"Alimentaire Bio\" dans la région \"France\" révèle un marché en pleine expansion avec un potentiel de croissance significatif. Le marché présente des opportunités stratégiques importantes.",
+      "kpis": {
+        "marche": "454M€",
+        "acteurs": 54,
+        "croissance": "+13.3%",
+        "potentiel": "Modéré",
+        "trends": {
+          "marche": "Forte",
+          "acteurs": "Croissant",
+          "croissance": "Forte",
+          "potentiel": "Élevé"
+        }
+      },
+      "keyPoints": [
+        "Explosion du local et circuits courts (87% des consommateurs privilégient le local)",
+        "Digitalisation accélérée (e-commerce bio +35% en 2024)",
+        "Exigence de transparence et traçabilité",
+        "Convergence bio et zéro déchet",
+        "Rajeunissement des consommateurs (67% ont moins de 45 ans)"
+      ],
+      "actors": [
+        {
+          "name": "Bio Coop",
+          "type": "Distributeur",
+          "market": "18%",
+          "growth": "+12%"
+        },
+        {
+          "name": "Biocoop France",
+          "type": "Réseau",
+          "market": "15%",
+          "growth": "+10%"
+        },
+        {
+          "name": "Naturalia",
+          "type": "Distributeur",
+          "market": "8%",
+          "growth": "+14%"
+        },
+        {
+          "name": "La Vie Claire",
+          "type": "Distributeur",
+          "market": "7%",
+          "growth": "+9%"
+        },
+        {
+          "name": "Ecocert",
+          "type": "Certification",
+          "market": "Leader",
+          "growth": "Stable"
+        },
+        {
+          "name": "AB France",
+          "type": "Label",
+          "market": "82%",
+          "growth": "Stable"
+        }
+      ],
+      "recommendations": [
+        {
+          "title": "Positionnement Local et Authentique",
+          "desc": "Miser sur l'origine locale des produits et la transparence de la chaîne de production pour créer une connexion émotionnelle avec les consommateurs."
+        },
+        {
+          "title": "Digitalisation de la Distribution",
+          "desc": "Développer une présence e-commerce forte avec click & collect et livraison rapide pour capter la croissance du canal digital (+25% annuel)."
+        },
+        {
+          "title": "Partenariats Stratégiques",
+          "desc": "Établir des alliances avec des producteurs locaux et des magasins spécialisés pour sécuriser l'approvisionnement et la distribution."
+        },
+        {
+          "title": "Communication sur les Certifications",
+          "desc": "Mettre en avant les labels bio, certifications et démarches environnementales pour rassurer et convaincre les consommateurs exigeants."
+        },
+        {
+          "title": "Innovation Produit",
+          "desc": "Développer des produits différenciants dans le segment \"Alimentaire Bio\" en répondant aux nouvelles attentes : zéro déchet, vrac, formats nomades."
+        },
+        {
+          "title": "Analyse Continue du Marché",
+          "desc": "Mettre en place une veille concurrentielle régulière avec BioMarket Insights pour ajuster la stratégie en temps réel."
+        }
+      ],
+      "chartData": {
+        "marketShare": [
+          11.789866023724148,
+          15.948015764838788,
+          27.23115330810675,
+          29.19117783227433,
+          28.844945059305026
+        ],
+        "marketShareLabels": [
+          "alimentaire",
+          "cosmetique",
+          "textile",
+          "distribution",
+          "agriculture"
+        ],
+        "evolution": [
+          100,
+          112,
+          125,
+          140,
+          157,
+          176
+        ],
+        "evolutionLabels": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "segments": [
+          28,
+          22,
+          18,
+          17,
+          15
+        ],
+        "segmentsLabels": [
+          "Fruits & Légumes",
+          "Produits laitiers",
+          "Viandes",
+          "Céréales",
+          "Boissons"
+        ],
+        "competitors": [
+          18,
+          15,
+          8,
+          59
+        ],
+        "competitorsLabels": [
+          "Bio Coop",
+          "Biocoop France",
+          "Naturalia",
+          "Autres"
+        ]
+      },
+      "metadata": {
+        "secteur": "Alimentaire Bio",
+        "region": "France",
+        "objectif": "Analyse de marché générale",
+        "generatedAt": "2025-11-13T18:28:48.394Z",
+        "aiModel": "Fallback (Ollama non disponible)",
+        "version": "1.0"
+      }
+    },
+    "error": "Request failed with status code 404"
+  }
+}

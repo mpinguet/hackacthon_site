@@ -1,600 +1,861 @@
-// ===========================
-// RÉCUPÉRATION DES PARAMÈTRES
-// ===========================
+const API_ANALYZE_URL = 'http://localhost:3000/api/analyze';
 
 function decodeParam(key) {
-    const params = new URLSearchParams(window.location.search);
-    return params.get(key) ? decodeURIComponent(params.get(key)) : '';
+  const params = new URLSearchParams(window.location.search);
+  return params.get(key) ? decodeURIComponent(params.get(key)) : '';
 }
 
-const secteur = localStorage.getItem('secteurGlobal') || 'Alimentaire Bio';
-const region = localStorage.getItem('regionGlobale') || "France";
-const objectif = localStorage.getItem('objectifGlobale') || "Etude de marché générale";
+const secteur = decodeParam('secteur') || 'Alimentaire Bio';
+const ville = decodeParam('ville') || decodeParam('region') || 'Paris';
+const region = decodeParam('region') || '';
+const objectif = decodeParam('objectif') || 'Analyse de marché générale';
 
-// Debug : afficher les paramètres reçus
-console.log('🔍 Paramètres reçus:');
-console.log('  - secteur:', secteur);
-console.log('  - region:', region);
-console.log('  - objectif:', objectif);
+let chartInstances = [];
+let collapsibleInitialized = false;
+let progressValue = 0;
+let progressTimer = null;
 
-// ===========================
-// APPEL API OLLAMA
-// ===========================
+init();
 
-// Configuration des APIs
-const API_ANALYZE_URL = 'http://localhost:3000/api/analyze';
-const API_CONTEXTE_URL = 'http://localhost:3000/api/contexte';
-const API_OPERATEURS_URL = 'http://localhost:3000/api/operateurs';
-
-// Variables additionnelles pour les autres APIs
-let contexteData = null;
-let operateursData = null;
-
-// Variable globale pour stocker les données de l'IA
-let aiData = null;
-
-// Fonction pour appeler l'API Ollama
-async function fetchAIAnalysis() {
-    try {
-        console.log('🚀 Appel de l\'API Ollama...');
-        
-        const response = await fetch(API_ANALYZE_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                secteur: secteur,
-                region: region,
-                objectif: objectif
-            })
-        });
-        
-        if (!response.ok) {
-            throw new Error('Erreur API: ' + response.status);
-        }
-        
-        const data = await response.json();
-        console.log('✅ Données reçues de l\'IA:', data);
-        return data;
-        
-    } catch (error) {
-        console.error('❌ Erreur lors de l\'appel API:', error);
-        return null;
-    }
+async function init() {
+  startProgressLoop();
+  try {
+    const study = await fetchStudy();
+    updateProgress(55, 'Analyse des données contextuelles...');
+    renderMetadata(study);
+    renderSummary(study);
+    renderSignals(study);
+    renderKpis(study);
+    updateProgress(70, 'Génération des visualisations...');
+    renderCharts(study.chartData, study.context);
+    renderKeyPoints(study.keyPoints);
+    renderActors(study);
+    renderCompetitionDetails(study.context?.concurrence_locale_api);
+    updateProgress(85, 'Synthèse des recommandations...');
+    renderRecommendations(study.recommendations);
+    renderContext(study.context);
+    renderMacro(study.context?.macro_france);
+    renderRiskTimeline(study.context?.risques_locaux_api);
+    renderRaw(study);
+    setupCollapsibles();
+    finishProgress('Analyse terminée. Préparation du rapport...');
+    setTimeout(hideStatusBanner, 600);
+  } catch (error) {
+    console.error('Erreur étude:', error);
+    failProgress(error.message || "Impossible de récupérer l'étude");
+    showStatusError(error.message || "Impossible de récupérer l'étude" );
+  }
 }
 
-// Fonction pour appeler l'API Contexte (collecteur multi-sources)
-async function fetchContexte() {
-    try {
-        console.log('📍 Appel de l\'API Contexte...');
-        const response = await fetch('http://localhost:3000/api/contexte', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                nom_ville: region,
-                segment_analyse: secteur
-            })
-        });
-        if (!response.ok) throw new Error('Erreur API Contexte: ' + response.status);
-        return await response.json();
-    } catch (e) {
-        console.warn('⚠️ Contexte indisponible:', e.message);
-        return null;
-    }
+async function fetchStudy() {
+  const response = await fetch(API_ANALYZE_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ secteur, region, objectif, ville })
+  });
+  if (!response.ok) throw new Error(`API analyse: ${response.status}`);
+  return response.json();
 }
 
-// Fonction pour appeler l'API Opérateurs locaux
-async function fetchOperateurs(limit = 25) {
-    try {
-        console.log('🏪 Appel de l\'API Opérateurs...');
-        const url = new URL('http://localhost:3000/api/operateurs');
-        url.searchParams.set('ville', region);
-        url.searchParams.set('segment', secteur);
-        url.searchParams.set('limit', String(limit));
-        const response = await fetch(url.toString());
-        if (!response.ok) throw new Error('Erreur API Operateurs: ' + response.status);
-        return await response.json();
-    } catch (e) {
-        console.warn('⚠️ Opérateurs indisponibles:', e.message);
-        return null;
-    }
+function hideStatusBanner() {
+  const banner = document.getElementById('statusBanner');
+  if (banner) banner.style.display = 'none';
+  document.getElementById('metadata').style.display = 'block';
+  document.getElementById('mainReport').style.display = 'block';
 }
 
-// Lancement de l'analyse
-(async () => {
-    // Récupérer les données de l'IA
-    aiData = await fetchAIAnalysis();
-    
-    // Masquer le banner de chargement
-    document.getElementById('statusBanner').style.display = 'none';
-    
-    // Afficher les métadonnées
-    const metadataCard = document.getElementById('metadata');
-    metadataCard.style.display = 'block';
-    
-    // Remplir les métadonnées
-    document.getElementById('secteurBadge').textContent = `📦 ${secteur}`;
-    document.getElementById('regionBadge').textContent = `📍 ${region}`;
-    document.getElementById('dateGeneration').textContent = new Date().toLocaleDateString('fr-FR', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-    });
-    document.getElementById('objectifValue').textContent = objectif;
-    
-    // Afficher le rapport
-    document.getElementById('mainReport').style.display = 'block';
-    
-    // Générer le contenu avec les données de l'IA
-    generateReport();
-})();
-
-// Collectes additionnelles (contexte + opérateurs) déclenchées en parallèle
-(async () => {
-    try {
-        const [contexte, operateurs] = await Promise.all([
-            fetchContexte(),
-            fetchOperateurs(25)
-        ]);
-        contexteData = contexte;
-        operateursData = operateurs;
-        // Rafraîchir l'affichage des données techniques
-        const el = document.getElementById('rawData');
-    if (el) {
-        el.textContent = JSON.stringify({ analyze: aiData, contexte: contexteData, operateurs: operateursData }, null, 2);
-    }
-        // Si des opérateurs sont disponibles, les afficher dans la grille
-        if (operateursData && operateursData.operateurs && operateursData.operateurs.length) {
-            renderOperatorsGrid(operateursData.operateurs);
-        }
-    } catch (e) {
-        console.warn('⚠️ Appels secondaires incomplets:', e.message);
-    }
-})();
-
-// Rendu de la grille des opérateurs locaux
-function renderOperatorsGrid(ops) {
-    const actorsGrid = document.getElementById('actorsGrid');
-    if (!actorsGrid) return;
-    // vider la grille existante (issue de l'IA au besoin)
-    actorsGrid.innerHTML = '';
-    ops.forEach((op, idx) => {
-        const icon = ['🏬','🏪','📦','🚚','🍞','🥬'][idx % 6];
-        const name = op.nom || 'Opérateur local';
-        const type = op.categorie || op.activite || 'Non renseigné';
-        const statLeft = (op.labels && op.labels[0]) ? op.labels[0] : (op.segments && op.segments[0]) ? op.segments[0] : '-';
-        const statRight = op.site ? `<a href="${op.site}" target="_blank" rel="noopener">Site</a>` : '&nbsp;-';
-        const div = document.createElement('div');
-        div.className = 'actor-card';
-        div.innerHTML = `
-            <div class="actor-header">
-                <div class="actor-logo">${icon}</div>
-                <div>
-                    <div class="actor-name">${name}</div>
-                    <div class="actor-type">${type}</div>
-                </div>
-            </div>
-            <div class="actor-info">
-                <div class="actor-stat">
-                    <span>Label/segment:</span>
-                    <strong>${statLeft}</strong>
-                </div>
-                <div class="actor-stat">
-                    <span>Ressource:</span>
-                    <strong style="color: #4caf50;">${statRight}</strong>
-                </div>
-            </div>
-        `;
-        actorsGrid.appendChild(div);
-    });
+function showStatusError(message) {
+  const banner = document.getElementById('statusBanner');
+  if (!banner) return;
+  banner.querySelector('.status-text h3').textContent = 'Erreur';
+  banner.querySelector('.status-text p').textContent = message;
+  banner.querySelector('.progress-bar').style.display = 'none';
+  const icon = banner.querySelector('.status-icon i');
+  if (icon) {
+    icon.classList.remove('status-spinner');
+    icon.className = 'ri-error-warning-line';
+  }
 }
 
-// ===========================
-// GÉNÉRATION DU RAPPORT
-// ===========================
-
-function generateReport() {
-    // Si les données AI ne sont pas disponibles, utiliser des valeurs par défaut
-    if (!aiData) {
-        console.warn('⚠️ Données AI non disponibles, utilisation des valeurs par défaut');
-        aiData = {
-            summary: `Cette analyse approfondie du secteur "${secteur}" dans le dommaine "${objectif}", dans la région "${region}" révèle un marché en pleine expansion avec un potentiel de croissance significatif.`,
-            kpis: {
-                marche: Math.floor(Math.random() * 500 + 200) + 'M€',
-                acteurs: Math.floor(Math.random() * 50 + 30),
-                croissance: '+' + (Math.random() * 10 + 5).toFixed(1) + '%',
-                potentiel: ['Élevé', 'Très Élevé', 'Modéré'][Math.floor(Math.random() * 3)]
-            }
-        };
-    }
-    
-    // Résumé exécutif depuis l'IA
-    document.getElementById('summaryText').textContent = aiData.summary;
-    
-    // Indicateurs clés depuis l'IA
-    document.getElementById('kpiMarche').textContent = aiData.kpis.marche;
-    document.getElementById('kpiActeurs').textContent = aiData.kpis.acteurs;
-    document.getElementById('kpiCroissance').textContent = aiData.kpis.croissance;
-    document.getElementById('kpiPotentiel').textContent = aiData.kpis.potentiel;
-    
-    // Tendances KPI depuis l'IA
-    if (aiData.kpis.trends) {
-        updateKpiTrend('kpiTrendMarche', aiData.kpis.trends.marche);
-        updateKpiTrend('kpiTrendActeurs', aiData.kpis.trends.acteurs);
-        updateKpiTrend('kpiTrendCroissance', aiData.kpis.trends.croissance);
-        updateKpiTrend('kpiTrendPotentiel', aiData.kpis.trends.potentiel);
-    }
-    
-    // Générer les graphiques avec les données de l'IA
-    generateCharts();
-    
-    // Points clés depuis l'IA
-    generateKeyPoints();
-    
-    // Acteurs du marché depuis l'IA
-    generateActors();
-    
-    // Recommandations depuis l'IA
-    generateRecommendations();
-    
-    // Données brutes
-    document.getElementById('rawData').textContent = JSON.stringify({ analyze: aiData, contexte: contexteData, operateurs: operateursData }, null, 2);
+function renderMetadata(study) {
+  const secteurLabel = study?.metadata?.secteur || secteur;
+  const villeLabel = study?.metadata?.ville || study?.context?.geo?.nom_commune || ville;
+  const regionLabel = study?.metadata?.region || study?.context?.geo?.nom_region || region;
+  setBadge('secteurBadge', `<i class="ri-archive-stack-line"></i><span>${secteurLabel}</span>`);
+  setBadge('villeBadge', villeLabel ? `<i class="ri-building-4-line"></i><span>${villeLabel}</span>` : '');
+  setBadge('regionBadge', regionLabel ? `<i class="ri-map-pin-2-line"></i><span>${regionLabel}</span>` : '');
+  setText('dateGeneration', new Date().toLocaleString('fr-FR'));
+  setText('objectifValue', objectif);
 }
 
-// ===========================
-// GÉNÉRATION DES GRAPHIQUES
-// ===========================
+function renderSummary(study) {
+  setText('summaryText', study.summary || 'Aucun résumé disponible.');
+}
 
-function generateCharts() {
-    // Récupérer les données des graphiques depuis l'IA (ou utiliser des valeurs par défaut)
-    const chartData = aiData && aiData.chartData ? aiData.chartData : {
-        marketShare: [45, 20, 15, 12, 8],
-        evolution: [150, 180, 220, 280, 350, 420],
-        segments: [28, 22, 18, 17, 15],
-        competitors: [30, 25, 20, 25]
+function renderSignals(study) {
+  const board = document.getElementById('signalsBoard');
+  if (!board) return;
+  const signals = computeSignals(study);
+  board.innerHTML = signals.map(signal => `
+    <div class="signal-card signal-${signal.severity}">
+      <div class="signal-dot"></div>
+      <div class="signal-content">
+        <div class="signal-label">${signal.label}</div>
+        <div class="signal-message">${signal.message}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function computeSignals(study) {
+  const signals = [];
+  const kpis = study?.kpis || {};
+  const croissance = parsePercent(kpis.croissance);
+  if (croissance != null) {
+    if (croissance < 1) {
+      signals.push({ label: 'Croissance du marché', message: 'Tendance en régression, revoir le positionnement.', severity: 'bad' });
+    } else if (croissance < 4) {
+      signals.push({ label: 'Croissance du marché', message: 'Progression modérée, surveiller la dynamique.', severity: 'watch' });
+    } else {
+      signals.push({ label: 'Croissance du marché', message: 'Croissance soutenue, opportunité favorable.', severity: 'good' });
+    }
+  }
+
+  const operateursTotal = study?.operateurs?.total ?? kpis.acteurs;
+  if (typeof operateursTotal === 'number') {
+    if (operateursTotal < 5) {
+      signals.push({ label: 'Présence d’acteurs', message: 'Très peu d’opérateurs référencés, marché à structurer.', severity: 'bad' });
+    } else if (operateursTotal < 15) {
+      signals.push({ label: 'Présence d’acteurs', message: 'Réseau local à étoffer.', severity: 'watch' });
+    } else {
+      signals.push({ label: 'Présence d’acteurs', message: 'Écosystème local actif.', severity: 'good' });
+    }
+  }
+
+  const potentiel = (kpis.potentiel || '').toLowerCase();
+  if (potentiel) {
+    if (potentiel.includes('très') || potentiel.includes('elev')) {
+      signals.push({ label: 'Potentiel commercial', message: 'Potentiel élevé identifié.', severity: 'good' });
+    } else if (potentiel.includes('mod')) {
+      signals.push({ label: 'Potentiel commercial', message: 'Potentiel moyen, besoin d’innovations.', severity: 'watch' });
+    } else {
+      signals.push({ label: 'Potentiel commercial', message: 'Potentiel limité actuellement.', severity: 'bad' });
+    }
+  }
+
+  const risks = study?.context?.risques_locaux_api || {};
+  const catnatTotal = risks?.catnat?.total;
+  if (typeof catnatTotal === 'number') {
+    if (catnatTotal > 15) {
+      signals.push({ label: 'Risques CATNAT', message: 'Historique d’événements élevé, vigilance réglementaire.', severity: 'bad' });
+    } else if (catnatTotal > 5) {
+      signals.push({ label: 'Risques CATNAT', message: 'Quelques aléas recensés, prévoir un plan de mitigation.', severity: 'watch' });
+    } else {
+      signals.push({ label: 'Risques CATNAT', message: 'Risque naturel limité.', severity: 'good' });
+    }
+  }
+
+  const ventes = study?.context?.tendance_ventes_pct_5ans?.details || [];
+  if (ventes.length >= 2) {
+    const last = ventes[ventes.length - 1]?.evolution_pct_moyenne;
+    if (typeof last === 'number') {
+      if (last < 0) {
+        signals.push({ label: 'Évolution des ventes', message: 'Dernière année en baisse, revoir l’offre.', severity: 'bad' });
+      } else if (last < 3) {
+        signals.push({ label: 'Évolution des ventes', message: 'Croissance fragile, intensifier l’acquisition.', severity: 'watch' });
+      } else {
+        signals.push({ label: 'Évolution des ventes', message: 'Croissance confirmée sur la période récente.', severity: 'good' });
+      }
+    }
+  }
+
+  return signals;
+}
+
+function renderKpis(study) {
+  const kpis = study.kpis || {};
+  setText('kpiMarche', kpis.marche);
+  setText('kpiActeurs', kpis.acteurs);
+  setText('kpiCroissance', kpis.croissance);
+  setText('kpiPotentiel', kpis.potentiel);
+  if (study.operateurs && typeof study.operateurs.total === 'number') {
+    setText('kpiActeurs', study.operateurs.total);
+  }
+  if (kpis.trends) {
+    updateKpiTrend('kpiTrendMarche', kpis.trends.marche);
+    updateKpiTrend('kpiTrendActeurs', kpis.trends.acteurs);
+    updateKpiTrend('kpiTrendCroissance', kpis.trends.croissance);
+    updateKpiTrend('kpiTrendPotentiel', kpis.trends.potentiel);
+  }
+}
+
+function setText(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value != null ? value : '-';
+}
+
+function setBadge(id, value) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  if (!value) {
+    el.style.display = 'none';
+    el.innerHTML = '';
+  } else {
+    el.style.display = 'inline-flex';
+    el.innerHTML = value;
+  }
+}
+
+function renderCharts(data, context) {
+  chartInstances.forEach(instance => instance.destroy && instance.destroy());
+  chartInstances = [];
+  const activityDataset = computeActivityDataset(data, context);
+  renderSimpleChart('pieChart', 'pie', activityDataset, { plugins: { legend: { position: 'bottom' } } });
+
+  const demandeDataset = computeDemandDataset(data, context);
+  renderComplexChart('lineChart', 'line', demandeDataset, { plugins: { legend: { position: 'bottom' } } });
+
+  const segmentsDataset = computeSegmentDataset(data, context);
+  renderSimpleChart('barChart', 'bar', segmentsDataset, { plugins: { legend: { display: false } } });
+
+  const competitorDataset = computeCompetitorDataset(context);
+  renderSimpleChart('doughnutChart', 'doughnut', competitorDataset, { plugins: { legend: { position: 'bottom' } } });
+
+  const productionDataset = computeProductionDataset(context);
+  renderComplexChart('productionChart', 'line', productionDataset, {
+    plugins: { legend: { position: 'bottom' } },
+    tension: 0.3
+  });
+
+  const commerceDataset = computeCommerceDataset(context);
+  renderSimpleChart('commerceChart', 'bar', commerceDataset, { plugins: { legend: { position: 'bottom' } } });
+
+  const macroDataset = computeMacroDataset(context);
+  renderComplexChart('macroChart', 'line', macroDataset, {
+    plugins: { legend: { position: 'bottom' } },
+    tension: 0.3
+  });
+}
+
+function renderSimpleChart(canvasId, type, dataset, options = {}) {
+  const ctx = getChartContext(canvasId, dataset);
+  if (!ctx) return;
+  const colors = dataset.colors || buildColors(dataset.data.length);
+  const chart = new Chart(ctx, {
+    type,
+    data: {
+      labels: dataset.labels,
+      datasets: [{
+        label: dataset.label || undefined,
+        data: dataset.data,
+        backgroundColor: colors,
+        borderColor: colors,
+        tension: options.tension || 0.4,
+        fill: options.fill || false
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: options.plugins || {}
+    }
+  });
+  chartInstances.push(chart);
+}
+
+function renderComplexChart(canvasId, type, dataset, options = {}) {
+  const ctx = getChartContext(canvasId, dataset);
+  if (!ctx) return;
+  const chart = new Chart(ctx, {
+    type,
+    data: {
+      labels: dataset.labels,
+      datasets: dataset.datasets
+    },
+    options: {
+      responsive: true,
+      plugins: options.plugins || {},
+      interaction: { intersect: false },
+      scales: type === 'bar' ? undefined : {
+        y: { beginAtZero: false }
+      }
+    }
+  });
+  chartInstances.push(chart);
+}
+
+function getChartContext(canvasId, dataset) {
+  const canvas = document.getElementById(canvasId);
+  const card = canvas ? canvas.closest('.chart-card') : null;
+  if (!canvas || !card) return null;
+  const hasData = dataset && Array.isArray(dataset.labels) && dataset.labels.length && (
+    (dataset.data && dataset.data.length) ||
+    (dataset.datasets && dataset.datasets.some(ds => ds.data && ds.data.length && ds.data.some(val => val != null)))
+  );
+  if (!hasData) {
+    card.style.display = 'none';
+    return null;
+  }
+  card.style.display = '';
+  return canvas.getContext('2d');
+}
+
+function buildColors(count) {
+  const palette = ['#7cb342','#aed581','#2d5016','#9ccc65','#c5e1a5','#dcedc8','#4caf50','#689f38','#558b2f','#8bc34a'];
+  return Array.from({ length: count }, (_, idx) => palette[idx % palette.length]);
+}
+
+function computeActivityDataset(chartData, context) {
+  if (Array.isArray(chartData?.marketShare) && chartData.marketShare.length) {
+    return {
+      labels: chartData.marketShareLabels || [],
+      data: chartData.marketShare
     };
-    
-    // Graphique en camembert - Parts de marché
-    const pieCtx = document.getElementById('pieChart').getContext('2d');
-    new Chart(pieCtx, {
-        type: 'pie',
-        data: {
-            labels: chartData.marketShareLabels || ['Alimentaire', 'Cosmétiques', 'Textiles', 'Bien-être', 'Autres'],
-            datasets: [{
-                data: chartData.marketShare,
-                backgroundColor: [
-                    '#7cb342',
-                    '#aed581',
-                    '#2d5016',
-                    '#9ccc65',
-                    '#c5e1a5'
-                ]
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }
-    });
-    
-    // Graphique linéaire - Évolution
-    const lineCtx = document.getElementById('lineChart').getContext('2d');
-    new Chart(lineCtx, {
-        type: 'line',
-        data: {
-            labels: chartData.evolutionLabels || ['2020', '2021', '2022', '2023', '2024', '2025'],
-            datasets: [{
-                label: 'Demande (en millions €)',
-                data: chartData.evolution,
-                borderColor: '#7cb342',
-                backgroundColor: 'rgba(124, 179, 66, 0.1)',
-                tension: 0.4,
-                fill: true
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: false
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-    
-    // Graphique en barres - Comparaison segments
-    const barCtx = document.getElementById('barChart').getContext('2d');
-    new Chart(barCtx, {
-        type: 'bar',
-        data: {
-            labels: chartData.segmentsLabels || ['Fruits & Légumes', 'Produits laitiers', 'Viandes', 'Céréales', 'Boissons'],
-            datasets: [{
-                label: 'Parts de marché (%)',
-                data: chartData.segments,
-                backgroundColor: [
-                    '#7cb342',
-                    '#aed581',
-                    '#9ccc65',
-                    '#c5e1a5',
-                    '#dcedc8'
-                ]
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: false
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    max: 30
-                }
-            }
-        }
-    });
-    
-    // Graphique doughnut - Parts concurrents
-    const doughnutCtx = document.getElementById('doughnutChart').getContext('2d');
-    new Chart(doughnutCtx, {
-        type: 'doughnut',
-        data: {
-            labels: chartData.competitorsLabels || ['Leader A', 'Leader B', 'Leader C', 'Autres'],
-            datasets: [{
-                data: chartData.competitors,
-                backgroundColor: [
-                    '#2d5016',
-                    '#7cb342',
-                    '#aed581',
-                    '#c5e1a5'
-                ]
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }
-    });
+  }
+  const ventilation = context?.concurrence_locale_api?.ventilation_activites;
+  if (ventilation && Object.keys(ventilation).length) {
+    const labels = Object.keys(ventilation);
+    const data = labels.map(label => ventilation[label]);
+    return { labels, data };
+  }
+  return null;
 }
 
-// ===========================
-// POINTS CLÉS
-// ===========================
-
-function generateKeyPoints() {
-    // Utiliser les points depuis l'IA ou des points par défaut
-    const points = aiData && aiData.keyPoints ? aiData.keyPoints.map((text, idx) => ({
-        icon: ['📈', '🌍', '🏪', '👥', '🔒', '💡'][idx] || '✨',
-        text: text
-    })) : [
-        {
-            icon: '📈',
-            text: `Le marché bio en ${region} connaît une croissance soutenue de 8-12% par an, portée par l'évolution des comportements de consommation.`
-        },
-        {
-            icon: '🌍',
-            text: 'La demande pour les produits locaux et de saison augmente significativement, créant des opportunités pour les circuits courts.'
-        },
-        {
-            icon: '🏪',
-            text: 'La distribution se diversifie : grandes surfaces (45%), magasins spécialisés (30%), vente directe (15%), e-commerce (10%).'
-        },
-        {
-            icon: '👥',
-            text: 'Le profil consommateur évolue : 67% des acheteurs bio ont moins de 45 ans, avec un pouvoir d\'achat moyen à élevé.'
-        },
-        {
-            icon: '🔒',
-            text: 'Les certifications et labels (AB, Ecocert, Nature & Progrès) restent des critères décisifs pour 82% des consommateurs.'
-        },
-        {
-            icon: '💡',
-            text: `Le segment "${secteur}" présente des barrières à l'entrée modérées mais nécessite une expertise en traçabilité et qualité.`
-        }
-    ];
-    
-    const pointsList = document.getElementById('pointsList');
-    points.forEach(point => {
-        const div = document.createElement('div');
-        div.className = 'point-item';
-        div.innerHTML = `
-            <div class="point-icon">${point.icon}</div>
-            <div class="point-text">${point.text}</div>
-        `;
-        pointsList.appendChild(div);
-    });
+function computeDemandDataset(chartData, context) {
+  if (Array.isArray(chartData?.evolution) && chartData.evolution.length) {
+    return {
+      labels: chartData.evolutionLabels || [],
+      datasets: [{
+        label: 'Demande (%)',
+        data: chartData.evolution,
+        borderColor: '#7cb342',
+        backgroundColor: 'rgba(124,179,66,0.15)',
+        fill: true,
+        tension: 0.4
+      }]
+    };
+  }
+  const details = context?.tendance_ventes_pct_5ans?.details;
+  if (Array.isArray(details) && details.length) {
+    const labels = details.map(item => item.annee);
+    const data = details.map(item => Number(item.evolution_pct_moyenne) || 0);
+    return {
+      labels,
+      datasets: [{
+        label: 'Demande (%)',
+        data,
+        borderColor: '#7cb342',
+        backgroundColor: 'rgba(124,179,66,0.15)',
+        fill: true,
+        tension: 0.4
+      }]
+    };
+  }
+  return null;
 }
 
-// ===========================
-// ACTEURS DU MARCHÉ
-// ===========================
+function computeSegmentDataset(chartData, context) {
+  if (Array.isArray(chartData?.segments) && chartData.segments.length) {
+    return {
+      labels: chartData.segmentsLabels || [],
+      data: chartData.segments
+    };
+  }
+  const detail = context?.concurrence_locale_api?.detail_operateurs;
+  if (Array.isArray(detail) && detail.length) {
+    const counts = detail.reduce((acc, op) => {
+      const key = op.categorie || op.activite || 'Autre';
+      acc[key] = (acc[key] || 0) + 1;
+      return acc;
+    }, {});
+    const labels = Object.keys(counts).slice(0, 8);
+    const data = labels.map(label => counts[label]);
+    return { labels, data };
+  }
+  return null;
+}
 
-function generateActors() {
-    // Utiliser les acteurs depuis l'IA ou des acteurs par défaut
-    const actors = aiData && aiData.actors ? aiData.actors.map((actor, idx) => ({
-        ...actor,
-        icon: ['🏪', '🌾', '🏭', '💻', '✅', '🚚'][idx] || '🏢'
-    })) : [
-        {
-            name: 'Bio Coop France',
-            type: 'Distributeur',
-            icon: '🏪',
-            market: '18%',
-            growth: '+12%'
-        },
-        {
-            name: 'Fermes Bio Locales',
-            type: 'Producteur',
-            icon: '🌾',
-            market: '15%',
-            growth: '+8%'
-        },
-        {
-            name: 'NaturaBio',
-            type: 'Transformateur',
-            icon: '🏭',
-            market: '12%',
-            growth: '+15%'
-        },
-        {
-            name: 'Marché Vert',
-            type: 'Plateforme',
-            icon: '💻',
-            market: '8%',
-            growth: '+25%'
-        },
-        {
-            name: 'Ecocert Région',
-            type: 'Certification',
-            icon: '✅',
-            market: 'Leader',
-            growth: 'Stable'
-        },
-        {
-            name: 'Bio Express',
-            type: 'Logistique',
-            icon: '🚚',
-            market: '10%',
-            growth: '+10%'
-        }
-    ];
-    
-    const actorsGrid = document.getElementById('actorsGrid');
-    actors.forEach(actor => {
-        const div = document.createElement('div');
-        div.className = 'actor-card';
-        div.innerHTML = `
-            <div class="actor-header">
-                <div class="actor-logo">${actor.icon}</div>
-                <div>
-                    <div class="actor-name">${actor.name}</div>
-                    <div class="actor-type">${actor.type}</div>
-                </div>
+function computeCompetitorDataset(context) {
+  const ventilation = context?.concurrence_locale_api?.ventilation_activites;
+  if (ventilation && Object.keys(ventilation).length) {
+    const labels = Object.keys(ventilation);
+    const data = labels.map(label => ventilation[label]);
+    return { labels, data };
+  }
+  const detail = context?.concurrence_locale_api?.detail_operateurs;
+  if (Array.isArray(detail) && detail.length) {
+    const top = detail.slice(0, 6);
+    return {
+      labels: top.map(op => op.nom || 'Opérateur'),
+      data: top.map(() => 1)
+    };
+  }
+  return null;
+}
+
+function computeProductionDataset(context) {
+  const region = context?.production_locale_region_5ans || [];
+  const national = context?.production_nationale_5ans || [];
+  if (!region.length && !national.length) return null;
+  const years = Array.from(new Set([...region, ...national].map(item => item.annee))).sort((a, b) => a - b);
+  const regionData = years.map(year => (region.find(item => item.annee === year)?.surface_totale_ha) || null);
+  const nationalData = years.map(year => (national.find(item => item.annee === year)?.surface_totale_ha) || null);
+  if (!regionData.some(Boolean) && !nationalData.some(Boolean)) return null;
+  return {
+    labels: years,
+    datasets: [
+      {
+        label: 'Région (ha)',
+        data: regionData,
+        borderColor: '#7cb342',
+        backgroundColor: 'rgba(124,179,66,0.15)',
+        fill: false,
+        tension: 0.3
+      },
+      {
+        label: 'France (ha)',
+        data: nationalData,
+        borderColor: '#2d5016',
+        backgroundColor: 'rgba(45,80,22,0.15)',
+        fill: false,
+        tension: 0.3
+      }
+    ]
+  };
+}
+
+function computeCommerceDataset(context) {
+  const details = context?.tendance_commerce_5ans?.details;
+  if (!Array.isArray(details) || !details.length) return null;
+  const labels = details.map(item => item.annee);
+  const data = details.map(item => Number(item.total_valeur_M_eur) || 0);
+  if (!data.some(val => val)) return null;
+  return {
+    labels,
+    data,
+    label: 'Commerce (M€)'
+  };
+}
+
+function computeMacroDataset(context) {
+  const macro = context?.macro_france;
+  if (!macro) return null;
+  const seriesKeys = Object.keys(macro);
+  if (!seriesKeys.length) return null;
+  const years = Array.from(new Set(seriesKeys.flatMap(key => (macro[key] || []).map(item => item.annee)))).sort((a, b) => a - b);
+  if (!years.length) return null;
+  const datasets = [];
+  if (macro.population?.length) {
+    datasets.push({
+      label: 'Population (M)',
+      data: years.map(year => {
+        const value = macro.population.find(item => item.annee === year)?.valeur;
+        return value != null ? Number(value) / 1_000_000 : null;
+      }),
+      borderColor: '#2d5016',
+      backgroundColor: 'rgba(45,80,22,0.1)',
+      fill: false,
+      tension: 0.3
+    });
+  }
+  if (macro.gdp_growth?.length) {
+    datasets.push({
+      label: 'Croissance PIB (%)',
+      data: years.map(year => macro.gdp_growth.find(item => item.annee === year)?.valeur ?? null),
+      borderColor: '#7cb342',
+      backgroundColor: 'rgba(124,179,66,0.1)',
+      fill: false,
+      tension: 0.3
+    });
+  }
+  if (macro.agri_land_pct?.length) {
+    datasets.push({
+      label: 'Surface agricole (%)',
+      data: years.map(year => macro.agri_land_pct.find(item => item.annee === year)?.valeur ?? null),
+      borderColor: '#aed581',
+      backgroundColor: 'rgba(174,213,129,0.15)',
+      fill: false,
+      tension: 0.3
+    });
+  }
+  if (!datasets.length) return null;
+  return { labels: years, datasets };
+}
+
+function renderKeyPoints(points) {
+  const list = document.getElementById('pointsList');
+  if (!list) return;
+  list.innerHTML = '';
+  const pointIcons = [
+    'ri-line-chart-line',
+    'ri-bar-chart-grouped-line',
+    'ri-shopping-bag-3-line',
+    'ri-price-tag-3-line',
+    'ri-seedling-line',
+    'ri-settings-3-line'
+  ];
+  (points || []).forEach((text, idx) => {
+    const div = document.createElement('div');
+    div.className = 'point-item';
+    const icon = pointIcons[idx % pointIcons.length];
+    div.innerHTML = `<div class="point-icon"><i class="${icon}"></i></div><div class="point-text">${text}</div>`;
+    list.appendChild(div);
+  });
+}
+
+function renderActors(study) {
+  const grid = document.getElementById('actorsGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  const actors = Array.isArray(study.actors) && study.actors.length ? study.actors : (study.operateurs?.list || []);
+  const actorIcons = [
+    'ri-store-2-line',
+    'ri-building-2-line',
+    'ri-archive-stack-line',
+    'ri-truck-line',
+    'ri-restaurant-2-line',
+    'ri-leaf-line'
+  ];
+  (actors || []).forEach((actor, idx) => {
+    const div = document.createElement('div');
+    div.className = 'actor-card';
+    const siteLink = actor.site ? `<a href="${actor.site}" target="_blank" rel="noopener">Site</a>` : '-';
+    const icon = actorIcons[idx % actorIcons.length];
+    div.innerHTML = `
+      <div class="actor-header">
+        <div class="actor-logo"><i class="${icon}"></i></div>
+        <div>
+          <div class="actor-name">${actor.name || actor.nom || '-'}</div>
+          <div class="actor-type">${actor.type || actor.categorie || actor.activite || '-'}</div>
+        </div>
+      </div>
+      <div class="actor-info">
+        <div class="actor-stat"><span>Position:</span><strong>${actor.market || '-'}</strong></div>
+        <div class="actor-stat"><span>Ressource:</span><strong>${actor.growth || siteLink}</strong></div>
+      </div>`;
+    grid.appendChild(div);
+  });
+}
+
+function renderCompetitionDetails(concurrence) {
+  const summaryHost = document.getElementById('competitionSummary');
+  const splitHost = document.getElementById('activitySplit');
+  const table = document.getElementById('competitorsTable');
+  if (!summaryHost || !splitHost || !table) return;
+  if (!concurrence) {
+    summaryHost.innerHTML = '<p>Données concurrence indisponibles.</p>';
+    splitHost.innerHTML = '';
+    table.innerHTML = '';
+    return;
+  }
+
+  summaryHost.innerHTML = `
+    <div class="summary-card">
+      <div class="summary-label">Opérateurs référencés</div>
+      <div class="summary-value">${concurrence.nb_operateurs_bio_total ?? '-'}</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-label">Concurrents directs</div>
+      <div class="summary-value">${concurrence.nb_concurrents_directs ?? '-'}</div>
+    </div>
+  `;
+
+  const ventilation = concurrence.ventilation_activites || {};
+  const total = Object.values(ventilation).reduce((sum, val) => sum + (Number(val) || 0), 0);
+  if (total) {
+    splitHost.innerHTML = Object.entries(ventilation)
+      .sort((a, b) => b[1] - a[1])
+      .map(([label, value]) => {
+        const pct = total ? ((value / total) * 100).toFixed(1) : '-';
+        return `
+          <div class="split-item">
+            <div class="split-label">${label}</div>
+            <div class="split-bar">
+              <div class="split-fill" style="width:${pct}%;"></div>
             </div>
-            <div class="actor-info">
-                <div class="actor-stat">
-                    <span>Part de marché:</span>
-                    <strong>${actor.market}</strong>
-                </div>
-                <div class="actor-stat">
-                    <span>Croissance:</span>
-                    <strong style="color: #4caf50;">${actor.growth}</strong>
-                </div>
-            </div>
+            <div class="split-value">${value} opérateurs • ${pct}%</div>
+          </div>
         `;
-        actorsGrid.appendChild(div);
-    });
+      })
+      .join('');
+  } else {
+    splitHost.innerHTML = '<p>Aucune ventilation disponible.</p>';
+  }
+
+  const competitors = concurrence.concurrents_directs || [];
+  if (!competitors.length) {
+    table.innerHTML = '<tbody><tr><td>Aucun concurrent direct identifié.</td></tr></tbody>';
+  } else {
+    const headers = ['Nom', 'Activité', 'Catégorie', 'Ville', 'Labels'];
+    const rows = competitors.map(comp => [
+      comp.nom || '-',
+      comp.activite || '-',
+      comp.categorie || '-',
+      comp.ville || '-',
+      (comp.labels || []).slice(0, 2).join(' • ') || '-'
+    ]);
+    table.innerHTML = `
+      <thead><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+      <tbody>
+        ${rows.map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`).join('')}
+      </tbody>
+    `;
+  }
 }
 
-// ===========================
-// RECOMMANDATIONS
-// ===========================
+function renderRecommendations(list) {
+  const cont = document.getElementById('recosList');
+  if (!cont) return;
+  cont.innerHTML = '';
+  (list || []).forEach((item, idx) => {
+    const div = document.createElement('div');
+    div.className = 'reco-item';
+    div.innerHTML = `
+      <div class="reco-number">${idx + 1}</div>
+      <div class="reco-content">
+        <div class="reco-title">${item.title || '-'}</div>
+        <div class="reco-desc">${item.desc || ''}</div>
+      </div>`;
+    cont.appendChild(div);
+  });
+}
 
-function generateRecommendations() {
-    // Utiliser les recommandations depuis l'IA ou des recommandations par défaut
-    const recommendations = aiData && aiData.recommendations ? aiData.recommendations : [
-        {
-            title: 'Positionnement Local et Authentique',
-            desc: 'Miser sur l\'origine locale des produits et la transparence de la chaîne de production pour créer une connexion émotionnelle avec les consommateurs.'
-        },
-        {
-            title: 'Digitalisation de la Distribution',
-            desc: 'Développer une présence e-commerce forte avec click & collect et livraison rapide pour capter la croissance du canal digital (+25% annuel).'
-        },
-        {
-            title: 'Partenariats Stratégiques',
-            desc: 'Établir des alliances avec des producteurs locaux et des magasins spécialisés pour sécuriser l\'approvisionnement et la distribution.'
-        },
-        {
-            title: 'Communication sur les Certifications',
-            desc: 'Mettre en avant les labels bio, certifications et démarches environnementales pour rassurer et convaincre les consommateurs exigeants.'
-        },
-        {
-            title: 'Innovation Produit',
-            desc: `Développer des produits différenciants dans le segment "${secteur}" en répondant aux nouvelles attentes : zéro déchet, vrac, formats nomades.`
-        },
-        {
-            title: 'Analyse Continue du Marché',
-            desc: 'Mettre en place une veille concurrentielle régulière avec BioMarket Insights pour ajuster la stratégie en temps réel.'
-        }
+function renderContext(context) {
+  if (!context) return;
+  const geoHost = document.getElementById('contextGeo');
+  if (geoHost) {
+    geoHost.innerHTML = '';
+    const geo = context.geo || {};
+    addContextCard(geoHost, 'Ville', geo.nom_commune || ville);
+    addContextCard(geoHost, 'Région', geo.nom_region || region || '-');
+    addContextCard(geoHost, 'Population', geo.population ? Intl.NumberFormat('fr-FR').format(geo.population) : '-');
+    addContextCard(geoHost, 'Code INSEE', geo.code_commune || '-');
+  }
+  const riskHost = document.getElementById('contextRisks');
+  if (riskHost) {
+    riskHost.innerHTML = '';
+    const risks = context.risques_locaux_api || {};
+    [['BASOL','basol'],['AZI','azi'],['CATNAT','catnat']].forEach(([label,key]) => {
+      const bloc = risks[key] || {};
+      const total = typeof bloc.total === 'number' ? bloc.total : (Array.isArray(bloc.items) ? bloc.items.length : 0);
+      addContextCard(riskHost, label, total);
+    });
+  }
+  buildTable('prodRegionTable', ['Année','Surface (ha)','Fermes'], (context.production_locale_region_5ans || []).map(item => [item.annee || '-', formatNumber(item.surface_totale_ha), formatNumber(item.nb_fermes)]));
+  buildTable('prodNationalTable', ['Année','Surface (ha)','Fermes'], (context.production_nationale_5ans || []).map(item => [item.annee || '-', formatNumber(item.surface_totale_ha), formatNumber(item.nb_fermes)]));
+  buildTable('ventesTable', ['Année','Évolution (%)'], (context.tendance_ventes_pct_5ans?.details || []).map(item => [item.annee || '-', formatPercent(item.evolution_pct_moyenne)]));
+  buildTable('commerceTable', ['Année','Valeur (M€)'], (context.tendance_commerce_5ans?.details || []).map(item => [item.annee || '-', formatNumber(item.total_valeur_M_eur)]));
+}
+
+function renderMacro(macro) {
+  const cardsHost = document.getElementById('macroCards');
+  const table = document.getElementById('macroTable');
+  if (!cardsHost || !table) return;
+  if (!macro || !Object.keys(macro).length) {
+    cardsHost.innerHTML = '<p>Données nationales indisponibles.</p>';
+    table.innerHTML = '';
+    return;
+  }
+
+  const cardConfigs = [
+    { key: 'population', label: 'Population France', suffix: 'hab.' },
+    { key: 'gdp_growth', label: 'Croissance PIB', suffix: '%' },
+    { key: 'agri_land_pct', label: 'Surface agricole (% du territoire)', suffix: '%' }
+  ];
+
+  cardsHost.innerHTML = cardConfigs.map(cfg => {
+    const latest = (macro[cfg.key] || []).slice(-1)[0];
+    const previous = (macro[cfg.key] || []).slice(-2)[0];
+    const delta = latest && previous ? latest.valeur - previous.valeur : null;
+    const deltaText =
+      delta == null
+        ? '-'
+        : `${delta > 0 ? '+' : ''}${delta.toLocaleString('fr-FR', { maximumFractionDigits: 2 })}${cfg.suffix}`;
+    return `
+      <div class="summary-card">
+        <div class="summary-label">${cfg.label}</div>
+        <div class="summary-value">${latest ? latest.valeur.toLocaleString('fr-FR', { maximumFractionDigits: 2 }) : '-'}</div>
+        <div class="summary-delta">${latest ? `Variation ${latest.annee}: ${deltaText}` : ''}</div>
+      </div>
+    `;
+  }).join('');
+
+  const yearsSet = new Set();
+  Object.values(macro).forEach(series => {
+    (series || []).forEach(point => yearsSet.add(point.annee));
+  });
+  const years = Array.from(yearsSet).sort((a, b) => b - a);
+
+  const headers = ['Année', 'Population', 'Croissance PIB (%)', 'Surface agricole (%)'];
+  const rows = years.map(year => {
+    const pop = (macro.population || []).find(item => item.annee === year)?.valeur;
+    const gdp = (macro.gdp_growth || []).find(item => item.annee === year)?.valeur;
+    const agri = (macro.agri_land_pct || []).find(item => item.annee === year)?.valeur;
+    return [
+      year,
+      pop != null ? pop.toLocaleString('fr-FR', { maximumFractionDigits: 0 }) : '-',
+      gdp != null ? gdp.toFixed(2) : '-',
+      agri != null ? agri.toFixed(2) : '-'
     ];
-    
-    const recosList = document.getElementById('recosList');
-    recommendations.forEach((reco, index) => {
-        const div = document.createElement('div');
-        div.className = 'reco-item';
-        div.innerHTML = `
-            <div class="reco-number">${index + 1}</div>
-            <div class="reco-content">
-                <div class="reco-title">${reco.title}</div>
-                <div class="reco-desc">${reco.desc}</div>
-            </div>
-        `;
-        recosList.appendChild(div);
-    });
+  });
+
+  if (!rows.length) {
+    table.innerHTML = '<tbody><tr><td>Données macro indisponibles.</td></tr></tbody>';
+    return;
+  }
+
+  table.innerHTML = `
+    <thead><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+    <tbody>
+      ${rows.map(row => `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`).join('')}
+    </tbody>
+  `;
 }
 
-// ===========================
-// FONCTION POUR METTRE À JOUR LES TENDANCES KPI
-// ===========================
+function addContextCard(host, label, value) {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `<div class="context-label">${label}</div><div class="context-value">${value}</div>`;
+  host.appendChild(card);
+}
 
+function buildTable(tableId, headers, rows) {
+  const table = document.getElementById(tableId);
+  if (!table) return;
+  if (!Array.isArray(rows) || !rows.length) {
+    table.innerHTML = '<tbody><tr><td colspan="'+headers.length+'">Donnée indisponible</td></tr></tbody>';
+    return;
+  }
+  const thead = `<thead><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>`;
+  const tbodyRows = rows.map(row => `<tr>${row.map(cell => `<td>${cell ?? ''}</td>`).join('')}</tr>`).join('');
+  table.innerHTML = thead + '<tbody>' + tbodyRows + '</tbody>';
+}
+
+function renderRaw(payload) {
+  const rawEl = document.getElementById('rawData');
+  if (rawEl) rawEl.textContent = JSON.stringify(payload, null, 2);
+}
+
+function startProgressLoop() {
+  updateProgress(10, 'Connexion aux sources de données...');
+  progressTimer = setInterval(() => {
+    if (progressValue < 60) {
+      updateProgress(progressValue + Math.random() * 4, 'Collecte en cours...');
+    }
+  }, 1000);
+}
+
+function updateProgress(value, message) {
+  progressValue = Math.min(100, Math.max(progressValue, value));
+  const fill = document.querySelector('.progress-fill');
+  if (fill) fill.style.width = `${progressValue}%`;
+  if (message) {
+    const desc = document.querySelector('#statusBanner .status-text p');
+    if (desc) desc.textContent = message;
+  }
+}
+
+function finishProgress(message) {
+  if (progressTimer) {
+    clearInterval(progressTimer);
+    progressTimer = null;
+  }
+  updateProgress(100, message || 'Analyse finalisée.');
+}
+
+function failProgress(message) {
+  if (progressTimer) {
+    clearInterval(progressTimer);
+    progressTimer = null;
+  }
+  updateProgress(100, message);
+}
+
+function renderRiskTimeline(risques) {
+  const host = document.getElementById('riskTimeline');
+  if (!host) return;
+  if (!risques || !risques.catnat) {
+    host.innerHTML = '<p>Données risques indisponibles.</p>';
+    return;
+  }
+  const events = risques.catnat.items || risques.catnat.derniers_evenements || [];
+  if (!events.length) {
+    host.innerHTML = '<p>Aucun événement majeur recensé.</p>';
+    return;
+  }
+  host.innerHTML = events.slice(0, 8).map(evt => `
+    <div class="timeline-entry">
+      <div class="timeline-node"></div>
+      <div class="timeline-content">
+        <div class="timeline-title">${evt.libelle_risque_jo || evt.risque || 'Événement'}</div>
+        <div class="timeline-date">${evt.date_debut_evt || evt.debut || '-'} → ${evt.date_fin_evt || evt.fin || '-'}</div>
+        <div class="timeline-meta">${evt.libelle_commune || risques.code_commune || ''}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function setupCollapsibles() {
+  const sections = document.querySelectorAll('.report-section.collapsible');
+  sections.forEach(section => {
+    const toggle = section.querySelector('.collapse-toggle');
+    const content = section.querySelector('.section-content');
+    if (!toggle || !content) return;
+    toggle.addEventListener('click', () => {
+      section.classList.toggle('collapsed');
+      if (section.classList.contains('collapsed')) {
+        content.style.maxHeight = '0px';
+        toggle.innerHTML = '<i class="ri-arrow-down-s-line"></i>';
+      } else {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        toggle.innerHTML = '<i class="ri-arrow-up-s-line"></i>';
+      }
+    });
+    content.style.maxHeight = content.scrollHeight + 'px';
+  });
+  if (!collapsibleInitialized) {
+    window.addEventListener('resize', adjustCollapsibleHeights);
+    collapsibleInitialized = true;
+  }
+}
+
+function adjustCollapsibleHeights() {
+  document.querySelectorAll('.report-section.collapsible').forEach(section => {
+    if (section.classList.contains('collapsed')) return;
+    const content = section.querySelector('.section-content');
+    if (content) {
+      content.style.maxHeight = content.scrollHeight + 'px';
+    }
+  });
+}
+
+function formatNumber(value) {
+  if (value == null || value === '') return '-';
+  const numeric = Number(value);
+  if (Number.isNaN(numeric)) return value;
+  return Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2 }).format(numeric);
+}
+
+function formatPercent(value) {
+  if (value == null || value === '') return '-';
+  const num = Number(value);
+  if (Number.isNaN(num)) return value;
+  return `${num.toFixed(2)}%`;
+}
 function updateKpiTrend(elementId, trendText) {
-    const element = document.getElementById(elementId);
-    if (!element) return;
-    
-    // Déterminer l'icône et la classe CSS selon le mot
-    let icon = '→';
-    let cssClass = 'neutral';
-    const lowerText = trendText.toLowerCase();
-    
-    // Tendances positives
-    if (lowerText.includes('explos') || lowerText.includes('forte') || 
-        lowerText.includes('élevé') || lowerText.includes('excep') || 
-        lowerText.includes('croiss') || lowerText.includes('dynami')) {
-        icon = '↑';
-        cssClass = 'positive';
-    }
-    // Tendances négatives
-    else if (lowerText.includes('faible') || lowerText.includes('limit') || 
-             lowerText.includes('décroiss') || lowerText.includes('baisse')) {
-        icon = '↓';
-        cssClass = 'negative';
-    }
-    // Tendances neutres (stable, modéré)
-    else {
-        icon = '→';
-        cssClass = 'neutral';
-    }
-    
-    element.textContent = `${icon} ${trendText}`;
-    element.className = `kpi-trend ${cssClass}`;
+  const trend = document.getElementById(elementId);
+  if (!trend) return;
+  const value = (trendText || '').toLowerCase();
+  let cssClass = 'neutral';
+  if (['forte','élevé','elevé','explosive','croissant'].some(v => value.includes(v))) {
+    cssClass = 'positive';
+  } else if (['faible','risque','baisse','décroissant','decroissant'].some(v => value.includes(v))) {
+    cssClass = 'negative';
+  }
+  trend.className = `kpi-trend ${cssClass}`;
+  trend.textContent = trendText || '-';
 }
-
-// ===========================
-// CONSOLE LOG
-// ===========================
-
-console.log('%c🌱 BioMarket Insights - Rapport Généré par IA', 'color: #7cb342; font-size: 16px; font-weight: bold;');
-console.log('Secteur:', secteur);
-console.log('Région:', region);
-console.log('Objectif:', objectif);
-console.log('🤖 IA utilisée: Ollama deepseek-r1:8b');
-
+function parsePercent(value) {
+  if (value == null) return null;
+  const match = String(value).replace(',', '.').match(/-?\d+(\.\d+)?/);
+  return match ? parseFloat(match[0]) : null;
+}

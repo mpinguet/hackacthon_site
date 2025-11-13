@@ -11,11 +11,16 @@ const axios = require('axios');
 const sqlite3 = require('sqlite3').verbose();
 
 const GEO_API_URL = 'https://geo.api.gouv.fr/communes';
-const AGENCE_BIO_URL = 'https://opendata.agencebio.org/api/gouv/operateurs/';
 const GEORISQUES_ENDPOINTS = {
   basol: 'https://www.georisques.gouv.fr/api/v1/ssp/instructions',
   azi: 'https://www.georisques.gouv.fr/api/v1/gaspar/azi',
   catnat: 'https://www.georisques.gouv.fr/api/v1/gaspar/catnat'
+};
+const WORLD_BANK_COUNTRY = 'FRA';
+const WORLD_BANK_INDICATORS = {
+  population: 'SP.POP.TOTL',
+  gdp_growth: 'NY.GDP.MKTP.KD.ZG',
+  agri_land_pct: 'AG.LND.AGRI.ZS'
 };
 
 const DB_PATH = path.join(__dirname, 'votre_base_de_donnees.db');
@@ -67,11 +72,12 @@ async function collectContexte(nom_ville, segment_analyse) {
   try {
     db = await openDatabase(DB_PATH);
 
-    const [concurrence_locale_api, risques_locaux_api, productionData, marcheData] = await Promise.all([
+    const [concurrence_locale_api, risques_locaux_api, productionData, marcheData, macroFrance] = await Promise.all([
       fetchAgenceBio(nom_ville, segment_analyse, geo),
       fetchGeoRisques(geo),
       fetchProductionData(db, nom_region),
-      fetchMarcheData(db)
+      fetchMarcheData(db),
+      fetchMacroTrends()
     ]);
 
     const contexte_data = {
@@ -86,7 +92,8 @@ async function collectContexte(nom_ville, segment_analyse) {
       production_locale_region_5ans: productionData.production_locale_region_5ans,
       production_nationale_5ans: productionData.production_nationale_5ans,
       tendance_ventes_pct_5ans: marcheData.tendance_ventes_pct_5ans,
-      tendance_commerce_5ans: marcheData.tendance_commerce_5ans
+      tendance_commerce_5ans: marcheData.tendance_commerce_5ans,
+      macro_france: macroFrance
     };
 
     return contexte_data;
@@ -686,6 +693,39 @@ function buildConcurrencePayload(operators, normalizedSegment) {
     ventilation_activites: ventilationActivites,
     detail_operateurs: operators
   };
+}
+
+async function fetchMacroTrends() {
+  try {
+    const entries = await Promise.all(
+      Object.entries(WORLD_BANK_INDICATORS).map(async ([key, indicator]) => {
+        const series = await fetchWorldBankSeries(indicator);
+        return [key, series];
+      })
+    );
+    return entries.reduce((acc, [key, value]) => {
+      acc[key] = value;
+      return acc;
+    }, {});
+  } catch (error) {
+    console.warn('Impossible de récupérer les indicateurs World Bank:', error.message);
+    return {};
+  }
+}
+
+async function fetchWorldBankSeries(indicator) {
+  const url = `https://api.worldbank.org/v2/country/${WORLD_BANK_COUNTRY}/indicator/${indicator}?format=json&per_page=8`;
+  const response = await axios.get(url, { timeout: 15000 });
+  const [, data] = response.data || [];
+  if (!Array.isArray(data)) return [];
+  return data
+    .filter(entry => entry.value != null)
+    .slice(0, 6)
+    .map(entry => ({
+      annee: Number(entry.date),
+      valeur: Number(entry.value)
+    }))
+    .sort((a, b) => a.annee - b.annee);
 }
 
 function lookupDepartementFallback(codeDepartement) {

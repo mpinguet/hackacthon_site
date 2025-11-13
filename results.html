@@ -1,165 +1,327 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Résultat - BioMarket Insights</title>
-    <link rel="stylesheet" href="resultat.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BioMarket Insights - Résultats</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="resultat.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 </head>
 <body>
     <header class="header">
         <div class="header-content">
-            <div class="logo">🌱 BioMarket Insights</div>
-            <button class="export-btn" onclick="window.print()">📄 Exporter PDF</button>
+            <div class="logo">
+                <i class="ri-leaf-line"></i>
+                <span>BioMarket Insights</span>
+            </div>
+            <button class="export-btn" onclick="window.print()">
+                <i class="ri-share-forward-line"></i>
+                Exporter PDF
+            </button>
         </div>
     </header>
 
     <div class="container">
-        <!-- Bannière d'état -->
         <div id="statusBanner" class="status-banner">
-            <div class="status-icon">⏳</div>
-            <div class="status-text">
-                <h3>Analyse en cours...</h3>
-                <p>Notre IA traite vos données pour générer un rapport complet</p>
+            <div class="status-icon">
+                <i class="ri-loader-4-line status-spinner"></i>
             </div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
+            <div class="status-text">
+                <h3>Analyse en cours…</h3>
+                <p>Notre IA rassemble les données terrain, les insights marché et les opérateurs locaux.</p>
+                <div class="progress-bar"><div class="progress-fill"></div></div>
             </div>
         </div>
 
-        <!-- Métadonnées de l'étude -->
         <div id="metadata" class="metadata-card" style="display:none;">
             <div class="meta-header">
-                <h1>📊 Rapport d'Étude de Marché Bio</h1>
+                <h1>Rapport d'étude de marché bio</h1>
                 <div class="meta-badges">
                     <span class="badge badge-primary" id="secteurBadge"></span>
+                    <span class="badge badge-secondary" id="villeBadge"></span>
                     <span class="badge badge-secondary" id="regionBadge"></span>
-                    <span class="badge badge-success">✓ Conforme RGPD</span>
+                    <span class="badge badge-success">Conforme RGPD</span>
                 </div>
             </div>
             <div class="meta-info">
                 <div class="info-item">
-                    <span class="info-label">📅 Date de génération:</span>
+                    <span class="info-label">Date de génération</span>
                     <span class="info-value" id="dateGeneration"></span>
                 </div>
                 <div class="info-item">
-                    <span class="info-label">🎯 Objectif:</span>
+                    <span class="info-label">Objectif</span>
                     <span class="info-value" id="objectifValue"></span>
                 </div>
             </div>
         </div>
 
-        <!-- Contenu principal -->
         <div id="mainReport" style="display:none;">
-            <!-- Résumé Exécutif -->
-            <section class="report-section">
+            <section class="report-section collapsible">
                 <div class="section-header">
-                    <h2>📋 Résumé Exécutif</h2>
+                    <h2><i class="ri-article-line"></i> Résumé exécutif</h2>
                     <span class="section-badge">Synthèse</span>
+                    <button class="collapse-toggle" type="button">
+                        <i class="ri-arrow-up-s-line"></i>
+                    </button>
                 </div>
-                <div class="summary-box">
+                <div class="section-content">
+                    <div class="summary-box">
                     <p id="summaryText"></p>
+                    </div>
                 </div>
             </section>
 
-            <!-- Indicateurs Clés -->
-            <section class="report-section">
+            <section class="report-section collapsible">
                 <div class="section-header">
-                    <h2>📈 Indicateurs Clés du Marché</h2>
+                    <h2><i class="ri-traffic-light-line"></i> Voyants opérationnels</h2>
+                    <span class="section-badge">Points critiques</span>
+                    <button class="collapse-toggle" type="button">
+                        <i class="ri-arrow-up-s-line"></i>
+                    </button>
                 </div>
-                <div class="kpi-grid">
+                <div class="section-content">
+                    <div class="signals-board" id="signalsBoard"></div>
+                </div>
+            </section>
+
+            <section class="report-section collapsible">
+                <div class="section-header">
+                    <h2><i class="ri-bar-chart-box-line"></i> Indicateurs clés du marché</h2>
+                    <button class="collapse-toggle" type="button">
+                        <i class="ri-arrow-up-s-line"></i>
+                    </button>
+                </div>
+                <div class="section-content">
+                    <div class="kpi-grid">
                     <div class="kpi-card">
-                        <div class="kpi-icon">💰</div>
-                        <div class="kpi-value" id="kpiMarche">—</div>
+                        <div class="kpi-icon"><i class="ri-funds-line"></i></div>
+                        <div class="kpi-value" id="kpiMarche">-</div>
                         <div class="kpi-label">Taille du marché</div>
-                        <div class="kpi-trend positive" id="kpiTrendMarche">↑ 12% vs 2024</div>
+                        <div class="kpi-trend" id="kpiTrendMarche">-</div>
                     </div>
                     <div class="kpi-card">
-                        <div class="kpi-icon">🏢</div>
-                        <div class="kpi-value" id="kpiActeurs">—</div>
+                        <div class="kpi-icon"><i class="ri-team-line"></i></div>
+                        <div class="kpi-value" id="kpiActeurs">-</div>
                         <div class="kpi-label">Acteurs identifiés</div>
-                        <div class="kpi-trend neutral" id="kpiTrendActeurs">→ Stable</div>
+                        <div class="kpi-trend" id="kpiTrendActeurs">-</div>
                     </div>
                     <div class="kpi-card">
-                        <div class="kpi-icon">📊</div>
-                        <div class="kpi-value" id="kpiCroissance">—</div>
+                        <div class="kpi-icon"><i class="ri-trending-up-line"></i></div>
+                        <div class="kpi-value" id="kpiCroissance">-</div>
                         <div class="kpi-label">Croissance annuelle</div>
-                        <div class="kpi-trend positive" id="kpiTrendCroissance">↑ Forte</div>
+                        <div class="kpi-trend" id="kpiTrendCroissance">-</div>
                     </div>
                     <div class="kpi-card">
-                        <div class="kpi-icon">⭐</div>
-                        <div class="kpi-value" id="kpiPotentiel">—</div>
+                        <div class="kpi-icon"><i class="ri-compass-discover-line"></i></div>
+                        <div class="kpi-value" id="kpiPotentiel">-</div>
                         <div class="kpi-label">Potentiel</div>
-                        <div class="kpi-trend positive" id="kpiTrendPotentiel">↑ Élevé</div>
+                        <div class="kpi-trend" id="kpiTrendPotentiel">-</div>
+                    </div>
+                </div>
+                </div>
+            </section>
+
+            <section class="report-section collapsible">
+                <div class="section-header">
+                    <h2><i class="ri-donut-chart-line"></i> Analyses visuelles</h2>
+                    <button class="collapse-toggle" type="button">
+                        <i class="ri-arrow-up-s-line"></i>
+                    </button>
+                </div>
+                <div class="section-content">
+                    <div class="charts-grid">
+                        <div class="chart-card">
+                            <h3>Répartition du marché bio</h3>
+                            <canvas id="pieChart"></canvas>
+                        </div>
+                        <div class="chart-card">
+                            <h3>Évolution de la demande (5 ans)</h3>
+                            <canvas id="lineChart"></canvas>
+                        </div>
+                        <div class="chart-card">
+                            <h3>Segments clés</h3>
+                            <canvas id="barChart"></canvas>
+                        </div>
+                        <div class="chart-card">
+                            <h3>Parts des concurrents</h3>
+                            <canvas id="doughnutChart"></canvas>
+                        </div>
+                        <div class="chart-card">
+                            <h3>Production régionale vs nationale</h3>
+                            <canvas id="productionChart"></canvas>
+                        </div>
+                        <div class="chart-card">
+                            <h3>Volumes commerce international</h3>
+                            <canvas id="commerceChart"></canvas>
+                        </div>
+                        <div class="chart-card">
+                            <h3>Tendances macro France</h3>
+                            <canvas id="macroChart"></canvas>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Graphiques -->
-            <section class="report-section">
+            <section class="report-section collapsible">
                 <div class="section-header">
-                    <h2>📊 Analyses Visuelles</h2>
+                    <h2><i class="ri-pushpin-line"></i> Points clés de l'analyse</h2>
+                    <button class="collapse-toggle" type="button">
+                        <i class="ri-arrow-up-s-line"></i>
+                    </button>
                 </div>
-                <div class="charts-grid">
-                    <div class="chart-card">
-                        <h3>Répartition du Marché Bio</h3>
-                        <canvas id="pieChart"></canvas>
-                    </div>
-                    <div class="chart-card">
-                        <h3>Évolution de la Demande (2020-2025)</h3>
-                        <canvas id="lineChart"></canvas>
-                    </div>
-                    <div class="chart-card">
-                        <h3>Comparaison Segments</h3>
-                        <canvas id="barChart"></canvas>
-                    </div>
-                    <div class="chart-card">
-                        <h3>Parts de Marché Concurrents</h3>
-                        <canvas id="doughnutChart"></canvas>
+                <div class="section-content">
+                    <div class="points-list" id="pointsList"></div>
+                </div>
+            </section>
+
+            <section class="report-section collapsible">
+                <div class="section-header">
+                    <h2><i class="ri-community-line"></i> Cartographie des acteurs</h2>
+                    <button class="collapse-toggle" type="button">
+                        <i class="ri-arrow-up-s-line"></i>
+                    </button>
+                </div>
+                <div class="section-content">
+                    <div class="actors-grid" id="actorsGrid"></div>
+                </div>
+            </section>
+
+            <section class="report-section collapsible">
+                <div class="section-header">
+                    <h2><i class="ri-store-3-line"></i> Concurrence locale détaillée</h2>
+                    <button class="collapse-toggle" type="button">
+                        <i class="ri-arrow-up-s-line"></i>
+                    </button>
+                </div>
+                <div class="section-content">
+                    <div class="competition-kpis" id="competitionSummary"></div>
+                    <div class="competition-split" id="activitySplit"></div>
+                    <div class="table-card">
+                        <table id="competitorsTable" class="data-table"></table>
                     </div>
                 </div>
             </section>
 
-            <!-- Points Clés -->
-            <section class="report-section">
+            <section class="report-section collapsible">
                 <div class="section-header">
-                    <h2>💡 Points Clés de l'Analyse</h2>
+                    <h2><i class="ri-lightbulb-line"></i> Recommandations stratégiques</h2>
+                    <button class="collapse-toggle" type="button">
+                        <i class="ri-arrow-up-s-line"></i>
+                    </button>
                 </div>
-                <div class="points-list" id="pointsList"></div>
+                <div class="section-content">
+                    <div class="recommendations-list" id="recosList"></div>
+                </div>
             </section>
 
-            <!-- Acteurs du Marché -->
-            <section class="report-section">
+            <section class="report-section collapsible">
                 <div class="section-header">
-                    <h2>🏢 Cartographie des Acteurs</h2>
+                    <h2><i class="ri-map-pin-2-line"></i> Contexte local</h2>
+                    <span class="section-badge">Géo & risques</span>
+                    <button class="collapse-toggle" type="button">
+                        <i class="ri-arrow-up-s-line"></i>
+                    </button>
                 </div>
-                <div class="actors-grid" id="actorsGrid"></div>
+                <div class="section-content">
+                    <div id="contextGeo" class="cards context-grid"></div>
+                    <div id="contextRisks" class="cards context-grid" style="margin-top:12px"></div>
+                </div>
             </section>
 
-            <!-- Recommandations -->
-            <section class="report-section">
+            <section class="report-section collapsible">
                 <div class="section-header">
-                    <h2>✅ Recommandations Stratégiques</h2>
+                    <h2><i class="ri-global-line"></i> Indicateurs nationaux</h2>
+                    <button class="collapse-toggle" type="button">
+                        <i class="ri-arrow-up-s-line"></i>
+                    </button>
                 </div>
-                <div class="recommendations-list" id="recosList"></div>
+                <div class="section-content">
+                    <div class="macro-cards" id="macroCards"></div>
+                    <div class="table-card">
+                        <table id="macroTable" class="data-table"></table>
+                    </div>
+                </div>
             </section>
 
-            <!-- Données Brutes -->
-            <section class="report-section">
+            <section class="report-section collapsible">
                 <div class="section-header">
-                    <h2>🔍 Données Techniques</h2>
+                    <h2><i class="ri-plant-line"></i> Production (5 ans)</h2>
+                    <span class="section-badge">Région & national</span>
+                    <button class="collapse-toggle" type="button">
+                        <i class="ri-arrow-up-s-line"></i>
+                    </button>
                 </div>
-                <details class="raw-data">
+                <div class="section-content">
+                    <div class="context-grid">
+                    <div class="card">
+                        <h3>Région</h3>
+                        <table id="prodRegionTable" class="data-table"></table>
+                    </div>
+                    <div class="card">
+                        <h3>National</h3>
+                        <table id="prodNationalTable" class="data-table"></table>
+                    </div>
+                </div>
+                </div>
+            </section>
+
+            <section class="report-section collapsible">
+                <div class="section-header">
+                    <h2><i class="ri-line-chart-line"></i> Tendances marché (5 ans)</h2>
+                    <span class="section-badge">Ventes & commerce</span>
+                    <button class="collapse-toggle" type="button">
+                        <i class="ri-arrow-up-s-line"></i>
+                    </button>
+                </div>
+                <div class="section-content">
+                    <div class="context-grid">
+                    <div class="card">
+                        <h3>Ventes (%)</h3>
+                        <table id="ventesTable" class="data-table"></table>
+                    </div>
+                    <div class="card">
+                        <h3>Commerce (M€)</h3>
+                        <table id="commerceTable" class="data-table"></table>
+                    </div>
+                </div>
+                </div>
+            </section>
+
+            
+            <section class="report-section collapsible">
+                <div class="section-header">
+                    <h2><i class="ri-shield-cross-line"></i> Chronologie des risques</h2>
+                    <button class="collapse-toggle" type="button">
+                        <i class="ri-arrow-up-s-line"></i>
+                    </button>
+                </div>
+                <div class="section-content">
+                    <div class="risk-timeline" id="riskTimeline"></div>
+                </div>
+            </section>
+            <section class="report-section collapsible">
+                <div class="section-header">
+                    <h2><i class="ri-database-2-line"></i> Données techniques</h2>
+                    <button class="collapse-toggle" type="button">
+                        <i class="ri-arrow-up-s-line"></i>
+                    </button>
+                </div>
+                <div class="section-content">
+                    <details class="raw-data">
                     <summary>Afficher les données brutes (JSON)</summary>
                     <pre id="rawData"></pre>
                 </details>
+                </div>
             </section>
         </div>
     </div>
 
     <footer class="footer">
-        <p>© 2025 BioMarket Insights - Étude générée par IA | Conforme RGPD</p>
+        <p>© 2025 BioMarket Insights - Étude générée par IA</p>
     </footer>
 
     <script src="resultat.js"></script>

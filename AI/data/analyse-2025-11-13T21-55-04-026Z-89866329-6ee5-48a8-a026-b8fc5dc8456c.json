@@ -1,0 +1,1336 @@
+{
+  "id": "89866329-6ee5-48a8-a026-b8fc5dc8456c",
+  "prefix": "analyse",
+  "generated_at": "2025-11-13T21:55:04.026Z",
+  "payload": {
+    "endpoint": "/api/analyze",
+    "request": {
+      "secteur": "distribution",
+      "region": "",
+      "objectif": "fruits",
+      "ville": "Rennes"
+    },
+    "response": {
+      "summary": "Le territoire Rennes (227 830 habitants) affiche 3.68% sur le segment distribution. Nous avons référencé - et identifié des dynamiques locales utiles pour l'objectif \"fruits\".",
+      "kpis": {
+        "marche": "2 538,66 M€ (flux commerce)",
+        "acteurs": "-",
+        "croissance": "3.68%",
+        "potentiel": "Modéré",
+        "trends": {
+          "marche": "Modérée",
+          "acteurs": "Non disponible",
+          "croissance": "Modéré",
+          "potentiel": "Modéré"
+        }
+      },
+      "keyPoints": [
+        "Le territoire Rennes compte 227 830 habitants et constitue la base de prospection.",
+        "Les ventes bio affichent une évolution moyenne de 3.68% sur 5 ans.",
+        "La surface bio régionale atteint 497 420,11 ha pour 25 929 fermes.",
+        "Surveillance environnementale: 6 sites BASOL référencés."
+      ],
+      "actors": [],
+      "recommendations": [
+        {
+          "title": "Structurer l’offre locale",
+          "desc": "Capitaliser sur les 0 opérateurs identifiés pour bâtir des partenariats exclusifs et sécuriser l’approvisionnement."
+        },
+        {
+          "title": "Accélérer sur les canaux en croissance",
+          "desc": "La croissance moyenne des ventes (3.68%) justifie un plan d’investissement marketing ciblé (drive, circuits courts)."
+        },
+        {
+          "title": "Maîtriser les risques locaux",
+          "desc": "Documenter les risques BASOL / AZI pour rassurer les distributeurs et renforcer la traçabilité environnementale."
+        }
+      ],
+      "chartData": {
+        "marketShare": [],
+        "marketShareLabels": [],
+        "evolution": [
+          1.67,
+          5.76,
+          2.88,
+          4.12,
+          3.95
+        ],
+        "evolutionLabels": [
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "segments": [],
+        "segmentsLabels": [],
+        "competitors": [],
+        "competitorsLabels": []
+      },
+      "context": {
+        "meta": {
+          "ville_recherchee": "Rennes",
+          "segment_analyse": "distribution",
+          "generated_at": "2025-11-13T21:54:04.013Z"
+        },
+        "geo": {
+          "nom_commune": "Rennes",
+          "code_commune": "35238",
+          "population": 227830,
+          "code_departement": "35",
+          "code_region": "53",
+          "nom_region": "Bretagne"
+        },
+        "concurrence_locale_api": {
+          "nb_operateurs_bio_total": 0,
+          "nb_concurrents_directs": 0,
+          "concurrents_directs": [],
+          "ventilation_activites": {},
+          "detail_operateurs": []
+        },
+        "risques_locaux_api": {
+          "code_commune": "35238",
+          "basol": {
+            "total": 6,
+            "items": [
+              {
+                "identifiant_ssp": "SSP000038301",
+                "nom_etablissement": "ST Microelectronics",
+                "adresse": "3 RUE DE SUISSE",
+                "adresse_lieudit": null,
+                "code_insee": "35238",
+                "nom_commune": "RENNES",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000038301",
+                "date_maj": "2022-06-16",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          -1.664258,
+                          48.088181
+                        ],
+                        [
+                          -1.663978,
+                          48.088177
+                        ],
+                        [
+                          -1.663979,
+                          48.088154
+                        ],
+                        [
+                          -1.663979,
+                          48.088144
+                        ],
+                        [
+                          -1.663997,
+                          48.087661
+                        ],
+                        [
+                          -1.664029,
+                          48.086779
+                        ],
+                        [
+                          -1.664035,
+                          48.086672
+                        ],
+                        [
+                          -1.664315,
+                          48.086677
+                        ],
+                        [
+                          -1.664335,
+                          48.086677
+                        ],
+                        [
+                          -1.665154,
+                          48.086691
+                        ],
+                        [
+                          -1.666163,
+                          48.086707
+                        ],
+                        [
+                          -1.666163,
+                          48.086707
+                        ],
+                        [
+                          -1.667536,
+                          48.086728
+                        ],
+                        [
+                          -1.667528,
+                          48.086982
+                        ],
+                        [
+                          -1.667505,
+                          48.087661
+                        ],
+                        [
+                          -1.667484,
+                          48.088211
+                        ],
+                        [
+                          -1.667453,
+                          48.088234
+                        ],
+                        [
+                          -1.666108,
+                          48.088212
+                        ],
+                        [
+                          -1.666108,
+                          48.088212
+                        ],
+                        [
+                          -1.665604,
+                          48.088203
+                        ],
+                        [
+                          -1.66553,
+                          48.088202
+                        ],
+                        [
+                          -1.665283,
+                          48.088198
+                        ],
+                        [
+                          -1.665158,
+                          48.088196
+                        ],
+                        [
+                          -1.664961,
+                          48.088194
+                        ],
+                        [
+                          -1.664258,
+                          48.088181
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000038901",
+                "nom_etablissement": "ENGIE ex GDF - ANCIENNE USINE A GAZ DE RENNES",
+                "adresse": "62 Bd Voltaire",
+                "adresse_lieudit": null,
+                "code_insee": "35238",
+                "nom_commune": "RENNES",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000038901",
+                "date_maj": "2022-04-25",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          -1.700874,
+                          48.105272
+                        ],
+                        [
+                          -1.701038,
+                          48.105275
+                        ],
+                        [
+                          -1.701379,
+                          48.105279
+                        ],
+                        [
+                          -1.701783,
+                          48.105285
+                        ],
+                        [
+                          -1.702161,
+                          48.105291
+                        ],
+                        [
+                          -1.702669,
+                          48.105299
+                        ],
+                        [
+                          -1.702669,
+                          48.105299
+                        ],
+                        [
+                          -1.702669,
+                          48.105299
+                        ],
+                        [
+                          -1.702668,
+                          48.105302
+                        ],
+                        [
+                          -1.702769,
+                          48.105304
+                        ],
+                        [
+                          -1.702769,
+                          48.105304
+                        ],
+                        [
+                          -1.702769,
+                          48.105304
+                        ],
+                        [
+                          -1.702765,
+                          48.10539
+                        ],
+                        [
+                          -1.702924,
+                          48.105409
+                        ],
+                        [
+                          -1.703025,
+                          48.105421
+                        ],
+                        [
+                          -1.70334,
+                          48.10546
+                        ],
+                        [
+                          -1.703318,
+                          48.105408
+                        ],
+                        [
+                          -1.703318,
+                          48.105408
+                        ],
+                        [
+                          -1.703318,
+                          48.105408
+                        ],
+                        [
+                          -1.703331,
+                          48.105407
+                        ],
+                        [
+                          -1.703771,
+                          48.105479
+                        ],
+                        [
+                          -1.703804,
+                          48.105495
+                        ],
+                        [
+                          -1.703819,
+                          48.105512
+                        ],
+                        [
+                          -1.703872,
+                          48.105596
+                        ],
+                        [
+                          -1.70388,
+                          48.105634
+                        ],
+                        [
+                          -1.703922,
+                          48.105806
+                        ],
+                        [
+                          -1.703963,
+                          48.105802
+                        ],
+                        [
+                          -1.704061,
+                          48.106208
+                        ],
+                        [
+                          -1.704061,
+                          48.106208
+                        ],
+                        [
+                          -1.704061,
+                          48.106208
+                        ],
+                        [
+                          -1.70402,
+                          48.106211
+                        ],
+                        [
+                          -1.704021,
+                          48.106217
+                        ],
+                        [
+                          -1.704066,
+                          48.106458
+                        ],
+                        [
+                          -1.704066,
+                          48.106458
+                        ],
+                        [
+                          -1.704066,
+                          48.106458
+                        ],
+                        [
+                          -1.70346,
+                          48.106509
+                        ],
+                        [
+                          -1.702671,
+                          48.106575
+                        ],
+                        [
+                          -1.70205,
+                          48.106631
+                        ],
+                        [
+                          -1.701606,
+                          48.106669
+                        ],
+                        [
+                          -1.701132,
+                          48.106711
+                        ],
+                        [
+                          -1.700912,
+                          48.106734
+                        ],
+                        [
+                          -1.700892,
+                          48.106699
+                        ],
+                        [
+                          -1.700874,
+                          48.106666
+                        ],
+                        [
+                          -1.700816,
+                          48.106557
+                        ],
+                        [
+                          -1.700785,
+                          48.106502
+                        ],
+                        [
+                          -1.700738,
+                          48.106415
+                        ],
+                        [
+                          -1.700705,
+                          48.106355
+                        ],
+                        [
+                          -1.700672,
+                          48.106296
+                        ],
+                        [
+                          -1.700639,
+                          48.106231
+                        ],
+                        [
+                          -1.700601,
+                          48.106163
+                        ],
+                        [
+                          -1.700572,
+                          48.106111
+                        ],
+                        [
+                          -1.70054,
+                          48.106056
+                        ],
+                        [
+                          -1.700514,
+                          48.106008
+                        ],
+                        [
+                          -1.700485,
+                          48.10596
+                        ],
+                        [
+                          -1.700457,
+                          48.105908
+                        ],
+                        [
+                          -1.70039,
+                          48.105794
+                        ],
+                        [
+                          -1.700359,
+                          48.105744
+                        ],
+                        [
+                          -1.700217,
+                          48.105499
+                        ],
+                        [
+                          -1.700186,
+                          48.105449
+                        ],
+                        [
+                          -1.700149,
+                          48.105388
+                        ],
+                        [
+                          -1.700108,
+                          48.105313
+                        ],
+                        [
+                          -1.700096,
+                          48.105291
+                        ],
+                        [
+                          -1.700048,
+                          48.105264
+                        ],
+                        [
+                          -1.700048,
+                          48.105264
+                        ],
+                        [
+                          -1.700048,
+                          48.105264
+                        ],
+                        [
+                          -1.700294,
+                          48.105267
+                        ],
+                        [
+                          -1.700516,
+                          48.105269
+                        ],
+                        [
+                          -1.700874,
+                          48.105272
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000070701",
+                "nom_etablissement": "SNC LES BAUDIERES - MONIER",
+                "adresse": "167 ROUTE DE LORIENT",
+                "adresse_lieudit": null,
+                "code_insee": "35238",
+                "nom_commune": "RENNES",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000070701",
+                "date_maj": "2024-05-23",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          -1.730994,
+                          48.103783
+                        ],
+                        [
+                          -1.732217,
+                          48.103545
+                        ],
+                        [
+                          -1.732334,
+                          48.103522
+                        ],
+                        [
+                          -1.732578,
+                          48.103474
+                        ],
+                        [
+                          -1.73262,
+                          48.103578
+                        ],
+                        [
+                          -1.732721,
+                          48.103822
+                        ],
+                        [
+                          -1.732851,
+                          48.104127
+                        ],
+                        [
+                          -1.732474,
+                          48.104199
+                        ],
+                        [
+                          -1.731752,
+                          48.104338
+                        ],
+                        [
+                          -1.731749,
+                          48.104339
+                        ],
+                        [
+                          -1.731723,
+                          48.104278
+                        ],
+                        [
+                          -1.731711,
+                          48.10428
+                        ],
+                        [
+                          -1.731741,
+                          48.104349
+                        ],
+                        [
+                          -1.732854,
+                          48.104135
+                        ],
+                        [
+                          -1.732952,
+                          48.104369
+                        ],
+                        [
+                          -1.732981,
+                          48.104437
+                        ],
+                        [
+                          -1.733067,
+                          48.104641
+                        ],
+                        [
+                          -1.733093,
+                          48.104636
+                        ],
+                        [
+                          -1.733499,
+                          48.105588
+                        ],
+                        [
+                          -1.732495,
+                          48.105926
+                        ],
+                        [
+                          -1.732037,
+                          48.106066
+                        ],
+                        [
+                          -1.732029,
+                          48.106054
+                        ],
+                        [
+                          -1.731956,
+                          48.106066
+                        ],
+                        [
+                          -1.73165,
+                          48.105336
+                        ],
+                        [
+                          -1.731376,
+                          48.104686
+                        ],
+                        [
+                          -1.73137,
+                          48.104671
+                        ],
+                        [
+                          -1.731243,
+                          48.10437
+                        ],
+                        [
+                          -1.731168,
+                          48.104192
+                        ],
+                        [
+                          -1.730994,
+                          48.103783
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000690401",
+                "nom_etablissement": "Ancien établissement du matériel",
+                "adresse": "BOULEVARD DE GUINES",
+                "adresse_lieudit": null,
+                "code_insee": "35238",
+                "nom_commune": "RENNES",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000690401",
+                "date_maj": "2022-12-12",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          -1.688672,
+                          48.103167
+                        ],
+                        [
+                          -1.688737,
+                          48.103105
+                        ],
+                        [
+                          -1.688787,
+                          48.103056
+                        ],
+                        [
+                          -1.688821,
+                          48.103021
+                        ],
+                        [
+                          -1.688858,
+                          48.102983
+                        ],
+                        [
+                          -1.688889,
+                          48.102945
+                        ],
+                        [
+                          -1.688922,
+                          48.102904
+                        ],
+                        [
+                          -1.688986,
+                          48.102822
+                        ],
+                        [
+                          -1.689082,
+                          48.102699
+                        ],
+                        [
+                          -1.689129,
+                          48.10264
+                        ],
+                        [
+                          -1.689196,
+                          48.102555
+                        ],
+                        [
+                          -1.689247,
+                          48.102488
+                        ],
+                        [
+                          -1.689344,
+                          48.102365
+                        ],
+                        [
+                          -1.689383,
+                          48.102313
+                        ],
+                        [
+                          -1.689423,
+                          48.102262
+                        ],
+                        [
+                          -1.689454,
+                          48.102219
+                        ],
+                        [
+                          -1.68948,
+                          48.102183
+                        ],
+                        [
+                          -1.689508,
+                          48.102144
+                        ],
+                        [
+                          -1.689536,
+                          48.102104
+                        ],
+                        [
+                          -1.689608,
+                          48.102004
+                        ],
+                        [
+                          -1.689675,
+                          48.101908
+                        ],
+                        [
+                          -1.689711,
+                          48.101856
+                        ],
+                        [
+                          -1.689744,
+                          48.101809
+                        ],
+                        [
+                          -1.689787,
+                          48.10175
+                        ],
+                        [
+                          -1.689832,
+                          48.10169
+                        ],
+                        [
+                          -1.68987,
+                          48.101637
+                        ],
+                        [
+                          -1.689935,
+                          48.101549
+                        ],
+                        [
+                          -1.68996,
+                          48.101517
+                        ],
+                        [
+                          -1.689967,
+                          48.101508
+                        ],
+                        [
+                          -1.690001,
+                          48.101458
+                        ],
+                        [
+                          -1.690051,
+                          48.101392
+                        ],
+                        [
+                          -1.690103,
+                          48.10132
+                        ],
+                        [
+                          -1.690104,
+                          48.101243
+                        ],
+                        [
+                          -1.690199,
+                          48.101243
+                        ],
+                        [
+                          -1.690429,
+                          48.101245
+                        ],
+                        [
+                          -1.690523,
+                          48.101246
+                        ],
+                        [
+                          -1.69062,
+                          48.101246
+                        ],
+                        [
+                          -1.690707,
+                          48.101246
+                        ],
+                        [
+                          -1.690746,
+                          48.101249
+                        ],
+                        [
+                          -1.690911,
+                          48.101261
+                        ],
+                        [
+                          -1.690997,
+                          48.101267
+                        ],
+                        [
+                          -1.691158,
+                          48.101278
+                        ],
+                        [
+                          -1.691233,
+                          48.101283
+                        ],
+                        [
+                          -1.691318,
+                          48.101287
+                        ],
+                        [
+                          -1.691389,
+                          48.101293
+                        ],
+                        [
+                          -1.691549,
+                          48.101305
+                        ],
+                        [
+                          -1.69183,
+                          48.101326
+                        ],
+                        [
+                          -1.691853,
+                          48.101327
+                        ],
+                        [
+                          -1.691907,
+                          48.101377
+                        ],
+                        [
+                          -1.691895,
+                          48.101409
+                        ],
+                        [
+                          -1.691866,
+                          48.101483
+                        ],
+                        [
+                          -1.691824,
+                          48.101592
+                        ],
+                        [
+                          -1.691804,
+                          48.101645
+                        ],
+                        [
+                          -1.691783,
+                          48.1017
+                        ],
+                        [
+                          -1.691768,
+                          48.10174
+                        ],
+                        [
+                          -1.691727,
+                          48.101853
+                        ],
+                        [
+                          -1.691687,
+                          48.10196
+                        ],
+                        [
+                          -1.691661,
+                          48.102027
+                        ],
+                        [
+                          -1.691645,
+                          48.102072
+                        ],
+                        [
+                          -1.691618,
+                          48.102144
+                        ],
+                        [
+                          -1.691571,
+                          48.102267
+                        ],
+                        [
+                          -1.691551,
+                          48.102321
+                        ],
+                        [
+                          -1.691528,
+                          48.102379
+                        ],
+                        [
+                          -1.691502,
+                          48.102452
+                        ],
+                        [
+                          -1.691469,
+                          48.10254
+                        ],
+                        [
+                          -1.691437,
+                          48.102621
+                        ],
+                        [
+                          -1.691407,
+                          48.102703
+                        ],
+                        [
+                          -1.691376,
+                          48.102785
+                        ],
+                        [
+                          -1.691352,
+                          48.102847
+                        ],
+                        [
+                          -1.691286,
+                          48.103021
+                        ],
+                        [
+                          -1.691267,
+                          48.103071
+                        ],
+                        [
+                          -1.691245,
+                          48.103129
+                        ],
+                        [
+                          -1.691187,
+                          48.103283
+                        ],
+                        [
+                          -1.691112,
+                          48.103318
+                        ],
+                        [
+                          -1.691033,
+                          48.103314
+                        ],
+                        [
+                          -1.690908,
+                          48.103306
+                        ],
+                        [
+                          -1.690751,
+                          48.103296
+                        ],
+                        [
+                          -1.690694,
+                          48.103292
+                        ],
+                        [
+                          -1.690626,
+                          48.103289
+                        ],
+                        [
+                          -1.690562,
+                          48.103285
+                        ],
+                        [
+                          -1.690373,
+                          48.103273
+                        ],
+                        [
+                          -1.690316,
+                          48.103269
+                        ],
+                        [
+                          -1.690164,
+                          48.10326
+                        ],
+                        [
+                          -1.690069,
+                          48.103254
+                        ],
+                        [
+                          -1.689797,
+                          48.103237
+                        ],
+                        [
+                          -1.689656,
+                          48.103227
+                        ],
+                        [
+                          -1.689547,
+                          48.103221
+                        ],
+                        [
+                          -1.689452,
+                          48.103215
+                        ],
+                        [
+                          -1.689387,
+                          48.103211
+                        ],
+                        [
+                          -1.689296,
+                          48.103205
+                        ],
+                        [
+                          -1.68921,
+                          48.1032
+                        ],
+                        [
+                          -1.689103,
+                          48.103193
+                        ],
+                        [
+                          -1.68901,
+                          48.103187
+                        ],
+                        [
+                          -1.688901,
+                          48.103181
+                        ],
+                        [
+                          -1.68879,
+                          48.103174
+                        ],
+                        [
+                          -1.688731,
+                          48.103171
+                        ],
+                        [
+                          -1.688672,
+                          48.103167
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000951401",
+                "nom_etablissement": "GIAT Industrie",
+                "adresse": "72 RUE CLAUDE BERNARD",
+                "adresse_lieudit": null,
+                "code_insee": "35238",
+                "nom_commune": "RENNES",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000951401",
+                "date_maj": "2015-01-16",
+                "geom": {
+                  "type": "Point",
+                  "coordinates": [
+                    -1.699056,
+                    48.098852
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP001107701",
+                "nom_etablissement": "STATION SERVICE TOTAL (ex Blanchet)",
+                "adresse": "10 RUE DU BOSPHORE",
+                "adresse_lieudit": null,
+                "code_insee": "35238",
+                "nom_commune": "RENNES",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP001107701",
+                "date_maj": "2016-12-01",
+                "geom": {
+                  "type": "Point",
+                  "coordinates": [
+                    -1.675891,
+                    48.084126
+                  ]
+                }
+              }
+            ],
+            "source": "georisques_api"
+          },
+          "azi": {
+            "total": 1,
+            "items": [
+              {
+                "code_national_azi": "35DREAL19950002",
+                "libelle_azi": "AZI PHEC 95",
+                "liste_libelle_risque": [
+                  {
+                    "num_risque": "11",
+                    "libelle_risque_long": "Inondation"
+                  }
+                ],
+                "libelle_bassin_risques": "Vilaine; Oust;Blavet",
+                "date_debut_programmation": "01/01/1995",
+                "date_fin_programmation": "01/01/1995",
+                "date_debut_etude": null,
+                "date_fin_etude": null,
+                "date_debut_information": null,
+                "date_fin_information": null,
+                "date_realisation": null,
+                "date_diffusion": "01/01/1995",
+                "date_publication_web": null,
+                "code_insee": "35238",
+                "libelle_commune": "RENNES"
+              }
+            ],
+            "source": "georisques_api"
+          },
+          "catnat": {
+            "total": 10,
+            "items": [
+              {
+                "code_national_catnat": "INTE0100048A",
+                "date_debut_evt": "12/11/2000",
+                "date_fin_evt": "12/11/2000",
+                "date_publication_arrete": "12/02/2001",
+                "date_publication_jo": "23/02/2001",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "35238",
+                "libelle_commune": "RENNES"
+              },
+              {
+                "code_national_catnat": "INTE0100059A",
+                "date_debut_evt": "05/01/2001",
+                "date_fin_evt": "07/01/2001",
+                "date_publication_arrete": "12/02/2001",
+                "date_publication_jo": "23/02/2001",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "35238",
+                "libelle_commune": "RENNES"
+              },
+              {
+                "code_national_catnat": "INTE0100409A",
+                "date_debut_evt": "24/03/2001",
+                "date_fin_evt": "27/03/2001",
+                "date_publication_arrete": "06/07/2001",
+                "date_publication_jo": "18/07/2001",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "35238",
+                "libelle_commune": "RENNES"
+              },
+              {
+                "code_national_catnat": "INTE2031566A",
+                "date_debut_evt": "13/08/2020",
+                "date_fin_evt": "13/08/2020",
+                "date_publication_arrete": "23/11/2020",
+                "date_publication_jo": "03/12/2020",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "35238",
+                "libelle_commune": "RENNES"
+              },
+              {
+                "code_national_catnat": "INTE2503788A",
+                "date_debut_evt": "23/01/2025",
+                "date_fin_evt": "05/02/2025",
+                "date_publication_arrete": "05/02/2025",
+                "date_publication_jo": "08/02/2025",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "35238",
+                "libelle_commune": "RENNES"
+              },
+              {
+                "code_national_catnat": "INTE9300513A",
+                "date_debut_evt": "08/06/1993",
+                "date_fin_evt": "09/06/1993",
+                "date_publication_arrete": "28/09/1993",
+                "date_publication_jo": "10/10/1993",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "35238",
+                "libelle_commune": "RENNES"
+              },
+              {
+                "code_national_catnat": "INTE9300602A",
+                "date_debut_evt": "10/06/1993",
+                "date_fin_evt": "11/06/1993",
+                "date_publication_arrete": "26/10/1993",
+                "date_publication_jo": "03/12/1993",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "35238",
+                "libelle_commune": "RENNES"
+              },
+              {
+                "code_national_catnat": "INTE9500070A",
+                "date_debut_evt": "17/01/1995",
+                "date_fin_evt": "31/01/1995",
+                "date_publication_arrete": "06/02/1995",
+                "date_publication_jo": "08/02/1995",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "35238",
+                "libelle_commune": "RENNES"
+              },
+              {
+                "code_national_catnat": "INTE9900627A",
+                "date_debut_evt": "25/12/1999",
+                "date_fin_evt": "29/12/1999",
+                "date_publication_arrete": "29/12/1999",
+                "date_publication_jo": "30/12/1999",
+                "libelle_risque_jo": "Mouvement de Terrain",
+                "code_insee": "35238",
+                "libelle_commune": "RENNES"
+              },
+              {
+                "code_national_catnat": "INTE9900627A",
+                "date_debut_evt": "25/12/1999",
+                "date_fin_evt": "29/12/1999",
+                "date_publication_arrete": "29/12/1999",
+                "date_publication_jo": "30/12/1999",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "35238",
+                "libelle_commune": "RENNES"
+              }
+            ],
+            "source": "georisques_api"
+          }
+        },
+        "production_locale_region_5ans": [
+          {
+            "annee": 2020,
+            "surface_totale_ha": 454967.82,
+            "nb_fermes": 21298
+          },
+          {
+            "annee": 2021,
+            "surface_totale_ha": 491858.42,
+            "nb_fermes": 22942
+          },
+          {
+            "annee": 2022,
+            "surface_totale_ha": 503784.81,
+            "nb_fermes": 24107
+          },
+          {
+            "annee": 2023,
+            "surface_totale_ha": 497147.89,
+            "nb_fermes": 25181
+          },
+          {
+            "annee": 2024,
+            "surface_totale_ha": 497420.11,
+            "nb_fermes": 25929
+          }
+        ],
+        "production_nationale_5ans": [
+          {
+            "annee": 2020,
+            "surface_totale_ha": 7554282.92,
+            "nb_fermes": 307312
+          },
+          {
+            "annee": 2021,
+            "surface_totale_ha": 8231508.48,
+            "nb_fermes": 337519
+          },
+          {
+            "annee": 2022,
+            "surface_totale_ha": 8466035.41,
+            "nb_fermes": 351659
+          },
+          {
+            "annee": 2023,
+            "surface_totale_ha": 8303291.32,
+            "nb_fermes": 359226
+          },
+          {
+            "annee": 2024,
+            "surface_totale_ha": 8134700.51,
+            "nb_fermes": 362486
+          }
+        ],
+        "tendance_ventes_pct_5ans": {
+          "periode": {
+            "debut": 2020,
+            "fin": 2024
+          },
+          "evolution_moyenne_pct": 3.68,
+          "details": [
+            {
+              "annee": 2020,
+              "evolution_pct_moyenne": 1.67
+            },
+            {
+              "annee": 2021,
+              "evolution_pct_moyenne": 5.76
+            },
+            {
+              "annee": 2022,
+              "evolution_pct_moyenne": 2.88
+            },
+            {
+              "annee": 2023,
+              "evolution_pct_moyenne": 4.12
+            },
+            {
+              "annee": 2024,
+              "evolution_pct_moyenne": 3.95
+            }
+          ]
+        },
+        "tendance_commerce_5ans": {
+          "periode": {
+            "debut": 6666,
+            "fin": 6666
+          },
+          "details": [
+            {
+              "annee": 6666,
+              "total_valeur_M_eur": 2538.66
+            }
+          ]
+        }
+      },
+      "operateurs": {
+        "total": 0,
+        "list": []
+      },
+      "metadata": {
+        "secteur": "distribution",
+        "ville": "Rennes",
+        "region": "",
+        "objectif": "fruits",
+        "generatedAt": "2025-11-13T21:55:04.026Z",
+        "aiModel": "fallback"
+      }
+    }
+  }
+}

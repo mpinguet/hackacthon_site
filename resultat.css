@@ -317,6 +317,11 @@ body {
     color: #e65100;
 }
 
+.kpi-trend.negative {
+    background: #ffebee;
+    color: #c62828;
+}
+
 /* ===========================
    CHARTS
    =========================== */

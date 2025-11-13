@@ -61,85 +61,70 @@ app.post('/api/analyze', async (req, res) => {
         dataContext += donneesBio.acteurs_nationaux.slice(0, 3).map(a => `${a.nom} (${a.part_marche})`).join(', ');
         dataContext += `.\n`;
         
-        // Prompt structuré COURT pour Ollama
-        const prompt = `Expert marché bio. Données JSON:
+        // Prompt structuré : utilise vraies données JSON si disponibles, sinon génération probabiliste
+        const useDeptData = deptData !== null && deptData !== undefined;
+        const prompt = useDeptData ? 
+        `Tu es un expert en analyse de marché bio. IMPORTANT: Tu dois utiliser UNIQUEMENT les données réelles fournies ci-dessous.
+
+DONNÉES RÉELLES À UTILISER OBLIGATOIREMENT:
 ${dataContext}
 
-Analyse pour: ${secteur} en ${region}
+Mission: Analyser "${secteur}" en "${region}"
 Objectif: ${objectif}
+
+⚠️ RÈGLES STRICTES:
+1. COPIE EXACTEMENT les valeurs du JSON (taille_marche, croissance, nb_operateurs_bio_total, potentiel)
+2. NE PAS inventer ou modifier les chiffres
+3. Si croissance est NÉGATIVE (ex: -2.3%), garde-la NÉGATIVE dans ta réponse
+4. Si potentiel est "Limité", utilise "Limité" (pas "Élevé")
+5. Si le marché est petit (< 50M€), NE PAS dire "en pleine expansion"
 
 Réponds en JSON pur (sans markdown):
 {
-  "summary": "Un résumé exécutif de 3-4 phrases sur le marché",
+  "summary": "Résumé réaliste basé sur les VRAIES données (si croissance négative, le mentionner !)",
   "kpis": {
-    "marche": "Taille du marché (ex: 250M€)",
-    "acteurs": "Nombre d'acteurs (ex: 45)",
-    "croissance": "Croissance annuelle (ex: +8.5%)",
-    "potentiel": "Potentiel (Élevé/Modéré/Faible)",
+    "marche": "${deptData.taille_marche}",
+    "acteurs": ${deptData.nb_operateurs_bio_total},
+    "croissance": "${deptData.croissance}",
+    "potentiel": "${deptData.potentiel}",
     "trends": {
-      "marche": "1 mot: Forte/Modérée/Faible/Stable",
-      "acteurs": "1 mot: Croissant/Stable/Décroissant",
-      "croissance": "1 mot: Explosive/Forte/Modérée/Faible",
-      "potentiel": "1 mot: Exceptionnel/Élevé/Modéré/Limité"
+      "marche": "Détermine selon croissance réelle: Décroissante si négatif, Faible si <3%, Modérée si <8%, Forte si >=8%",
+      "acteurs": "Détermine selon nombre: Limité si <50, Stable si <150, Dynamique si <300, Croissant si >=300",
+      "croissance": "Idem que marche",
+      "potentiel": "COPIE EXACTEMENT: ${deptData.potentiel}"
     }
   },
-  "keyPoints": [
-    "Point clé 1 sur les tendances du marché",
-    "Point clé 2 sur la consommation",
-    "Point clé 3 sur la distribution",
-    "Point clé 4 sur les consommateurs",
-    "Point clé 5 sur les certifications",
-    "Point clé 6 sur les barrières à l'entrée"
-  ],
-  "actors": [
-    {"name": "Nom acteur 1", "type": "Distributeur/Producteur/etc", "market": "15%", "growth": "+10%"},
-    {"name": "Nom acteur 2", "type": "Type", "market": "12%", "growth": "+8%"},
-    {"name": "Nom acteur 3", "type": "Type", "market": "10%", "growth": "+12%"},
-    {"name": "Nom acteur 4", "type": "Type", "market": "8%", "growth": "+15%"},
-    {"name": "Nom acteur 5", "type": "Type", "market": "Leader", "growth": "Stable"},
-    {"name": "Nom acteur 6", "type": "Type", "market": "7%", "growth": "+9%"}
-  ],
-  "recommendations": [
-        {"title": "Titre recommandation 1", "desc": "Description détaillée", "comment": "Bref commentaire lié aux données du marché (1-2 phrases)"},
-        {"title": "Titre recommandation 2", "desc": "Description détaillée", "comment": "Bref commentaire lié aux données du marché (1-2 phrases)"},
-        {"title": "Titre recommandation 3", "desc": "Description détaillée", "comment": "Bref commentaire lié aux données du marché (1-2 phrases)"},
-        {"title": "Titre recommandation 4", "desc": "Description détaillée", "comment": "Bref commentaire lié aux données du marché (1-2 phrases)"},
-        {"title": "Titre recommandation 5", "desc": "Description détaillée", "comment": "Bref commentaire lié aux données du marché (1-2 phrases)"},
-        {"title": "Titre recommandation 6", "desc": "Description détaillée", "comment": "Bref commentaire lié aux données du marché (1-2 phrases)"}
-  ],
-  "chartData": {
-    "marketShare": [45, 20, 15, 12, 8],
-    "marketShareLabels": ["Alimentaire", "Cosmétiques", "Textiles", "Bien-être", "Autres"],
-    "evolution": [150, 180, 220, 280, 350, 420],
-    "evolutionLabels": ["2020", "2021", "2022", "2023", "2024", "2025"],
-    "segments": [28, 22, 18, 17, 15],
-    "segmentsLabels": ["Fruits & Légumes", "Produits laitiers", "Viandes", "Céréales", "Boissons"],
-    "competitors": [30, 25, 20, 25],
-    "competitorsLabels": ["Leader A", "Leader B", "Leader C", "Autres"]
-  }
+  "keyPoints": ["Point 1", "Point 2", "Point 3", "Point 4", "Point 5", "Point 6"],
+  "actors": [{"name": "Acteur", "type": "Type", "market": "X%", "growth": "+Y%"}, {"name": "Acteur", "type": "Type", "market": "X%", "growth": "+Y%"}, {"name": "Acteur", "type": "Type", "market": "X%", "growth": "+Y%"}, {"name": "Acteur", "type": "Type", "market": "X%", "growth": "+Y%"}, {"name": "Acteur", "type": "Type", "market": "X%", "growth": "+Y%"}, {"name": "Acteur", "type": "Type", "market": "X%", "growth": "+Y%"}],
+  "recommendations": [{"title": "Reco 1", "desc": "Desc", "comment": "Commentaire"}, {"title": "Reco 2", "desc": "Desc", "comment": "Commentaire"}, {"title": "Reco 3", "desc": "Desc", "comment": "Commentaire"}, {"title": "Reco 4", "desc": "Desc", "comment": "Commentaire"}, {"title": "Reco 5", "desc": "Desc", "comment": "Commentaire"}, {"title": "Reco 6", "desc": "Desc", "comment": "Commentaire"}],
+  "chartData": {"marketShare": [45, 20, 15, 12, 8], "marketShareLabels": ["Alimentaire", "Cosmétiques", "Textiles", "Bien-être", "Autres"], "evolution": "Calcule avec croissance ${deptData.croissance}", "evolutionLabels": ["2020", "2021", "2022", "2023", "2024", "2025"], "segments": [28, 22, 18, 17, 15], "segmentsLabels": ["Fruits & Légumes", "Produits laitiers", "Viandes", "Céréales", "Boissons"], "competitors": [30, 25, 20, 25], "competitorsLabels": ["Leader A", "Leader B", "Leader C", "Autres"]}
 }
+⚠️ RAPPEL: UTILISE LES VRAIES VALEURS DU JSON !` 
+        : 
+        `Tu es un expert en analyse de marché bio. La région "${region}" n'a pas de données dans notre base. Génère une estimation probabiliste réaliste.
 
-IMPORTANT: Utilise les données JSON pour calculer:
-- evolution: base-toi sur la croissance du département (ex: ${deptData ? deptData.croissance : '12%'}). Calcule 6 valeurs de 2020 à 2025 avec cette progression annuelle
-- segments: pour secteur alimentaire, utilise les spécialités du département ${deptData ? `(${deptData.specialites.join(', ')})` : ''}
-- competitors: prends les 3 premiers acteurs_nationaux du JSON avec leurs vraies parts de marché
-- marketShare: répartition des 5 secteurs du JSON (alimentaire, cosmétique, textile, bien-être, autres)
+Mission: Analyser "${secteur}" en "${region}"
+Objectif: ${objectif}
 
-IMPORTANT: Pour CHAQUE recommandation renvoyée dans "recommendations", ajoute un champ string nommé "comment" (1-2 phrases) qui explique pourquoi cette recommandation est pertinente au regard des KPIs et des données du marché fournies. Le champ `comment` doit être concret et référencé aux données (ex: croissance, parts de marché, spécialités locales).
+⚠️ RÈGLES PROBABILISTES:
+- 70% chance: marché favorable (croissance +3% à +15%, potentiel Élevé/Très Élevé)
+- 30% chance: marché défavorable (croissance -5% à +3%, potentiel Modéré/Limité)
+- Cohérence: si croissance < 0%, alors potentiel ne peut PAS être "Très Élevé"
 
-Génère des VALEURS RÉALISTES et COHÉRENTES avec le département ${region}.`;
+Réponds en JSON pur (sans markdown) avec estimation réaliste.`;
 
         console.log('🤖 Interrogation de Ollama...');
+        console.log(`📊 ${useDeptData ? `Vraies données: Marché=${deptData.taille_marche}, Croissance=${deptData.croissance}` : 'Génération probabiliste pour région inconnue'}`);
         
         // Appel à Ollama
         const ollamaResponse = await axios.post(OLLAMA_URL, {
             model: MODEL,
             prompt: prompt,
             stream: false,
-            temperature: 0.3,  // Plus bas = plus rapide et déterministe
-            top_p: 0.8
+            temperature: useDeptData ? 0.1 : 0.7,  // Plus élevé pour génération créative si pas de données
+            top_p: useDeptData ? 0.5 : 0.9
         }, {
-            timeout: 10000 // 10 secondes timeout max
+            timeout: 15000 // 15 secondes timeout
         });
         
         console.log('✅ Réponse reçue de Ollama');
@@ -274,11 +259,19 @@ function determineTrend(value, type) {
         if (num >= 15) return 'Explosive';
         if (num >= 10) return 'Forte';
         if (num >= 5) return 'Modérée';
-        return 'Faible';
+        if (num >= 0) return 'Faible';
+        return 'Décroissante'; // Gère les valeurs négatives
     } else if (type === 'acteurs') {
         if (value > 300) return 'Croissant';
         if (value > 150) return 'Dynamique';
-        return 'Stable';
+        if (value > 50) return 'Stable';
+        return 'Limité'; // Gère les faibles nombres
+    } else if (type === 'potentiel') {
+        const lower = value.toLowerCase();
+        if (lower.includes('très') || lower.includes('excep')) return 'Exceptionnel';
+        if (lower.includes('élevé')) return 'Élevé';
+        if (lower.includes('modéré')) return 'Modéré';
+        return 'Limité'; // Gère les cas défavorables
     }
     return 'Modérée';
 }
@@ -288,7 +281,7 @@ function generateFallbackData(secteur, region, objectif) {
     const deptData = donneesBio.departements[region];
     const secteurData = donneesBio.secteurs[secteur];
     
-    // KPIs basés sur les données JSON
+    // KPIs basés sur les vraies données JSON ou générés de façon probabiliste
     const kpis = deptData ? {
         marche: deptData.taille_marche,
         acteurs: deptData.nb_operateurs_bio_total,
@@ -298,76 +291,154 @@ function generateFallbackData(secteur, region, objectif) {
             marche: determineTrend(deptData.croissance, 'croissance'),
             acteurs: determineTrend(deptData.nb_operateurs_bio_total, 'acteurs'),
             croissance: determineTrend(deptData.croissance, 'croissance'),
-            potentiel: deptData.potentiel === 'Très Élevé' ? 'Exceptionnel' : deptData.potentiel
+            potentiel: determineTrend(deptData.potentiel, 'potentiel')
         }
     } : {
-        marche: Math.floor(Math.random() * 500 + 200) + 'M€',
-        acteurs: Math.floor(Math.random() * 50 + 30),
-        croissance: '+' + (Math.random() * 10 + 5).toFixed(1) + '%',
-        potentiel: ['Élevé', 'Très Élevé', 'Modéré'][Math.floor(Math.random() * 3)],
+        // Générer des valeurs probabilistes pour région inconnue (70% positif, 30% négatif/faible)
+        marche: Math.floor(Math.random() * 400 + 50) + 'M€',
+        acteurs: Math.floor(Math.random() * 200 + 20),
+        croissance: Math.random() > 0.3 ? '+' + (Math.random() * 12 + 3).toFixed(1) + '%' : (Math.random() > 0.5 ? '+' + (Math.random() * 3).toFixed(1) + '%' : '-' + (Math.random() * 5).toFixed(1) + '%'),
+        potentiel: Math.random() > 0.3 ? (Math.random() > 0.5 ? 'Élevé' : 'Très Élevé') : (Math.random() > 0.5 ? 'Modéré' : 'Limité'),
         trends: {
-            marche: 'Forte',
-            acteurs: 'Croissant',
-            croissance: 'Forte',
-            potentiel: 'Élevé'
+            marche: 'Estimé',
+            acteurs: 'Estimé',
+            croissance: 'Estimé',
+            potentiel: 'Estimé'
         }
     };
     
     // Résumé basé sur les données
-    let summary = `Cette analyse du secteur "${secteur}" dans la région "${region}" révèle un marché `;
+    let summary = `Cette analyse du secteur "${secteur}" dans la région "${region}" révèle `;
     if (deptData) {
-        summary += `de ${deptData.taille_marche} avec ${deptData.nb_operateurs_bio_total} opérateurs bio. `;
-        summary += `La croissance est de ${deptData.croissance} et les spécialités locales incluent ${deptData.specialites.join(', ')}. `;
+        const croissanceNum = parseFloat(deptData.croissance);
+        const isNegative = croissanceNum < 0;
+        const isWeak = croissanceNum < 3 && croissanceNum >= 0;
+        
+        summary += `un marché de ${deptData.taille_marche} avec ${deptData.nb_operateurs_bio_total} opérateurs bio. `;
+        
+        if (isNegative) {
+            summary += `⚠️ Le marché connaît une décroissance de ${deptData.croissance}, avec un potentiel ${deptData.potentiel.toLowerCase()}. `;
+        } else if (isWeak) {
+            summary += `La croissance est faible (${deptData.croissance}) avec un potentiel ${deptData.potentiel.toLowerCase()}. `;
+        } else {
+            summary += `La croissance est de ${deptData.croissance} avec un potentiel ${deptData.potentiel.toLowerCase()}. `;
+        }
+        
+        summary += `Les spécialités locales incluent ${deptData.specialites.join(', ')}. `;
+        
+        // Ajouter les risques s'ils sont élevés
+        if (deptData.risque_pollution_basol === 'Élevé' || deptData.risque_inondation_azi.includes('risque')) {
+            summary += `⚠️ Attention aux risques environnementaux (pollution: ${deptData.risque_pollution_basol}, inondations: ${deptData.risque_inondation_azi}). `;
+        }
     } else {
-        summary += `en pleine expansion avec un potentiel de croissance significatif. `;
+        summary += `un marché en pleine expansion avec un potentiel de croissance significatif. `;
     }
-    summary += `Le marché présente des opportunités stratégiques importantes.`;
+    
+    // Adapter la conclusion selon le potentiel
+    if (deptData && (deptData.potentiel === 'Limité' || parseFloat(deptData.croissance) < 0)) {
+        summary += `Le marché présente des défis importants nécessitant une stratégie adaptée.`;
+    } else {
+        summary += `Le marché présente des opportunités stratégiques importantes.`;
+    }
+    
+    // Générer des points clés adaptés au contexte
+    let keyPoints = [];
+    if (deptData) {
+        const croissanceNum = parseFloat(deptData.croissance);
+        const isNegative = croissanceNum < 0;
+        const isWeak = croissanceNum < 3 && croissanceNum >= 0;
+        const hasHighRisks = deptData.risque_pollution_basol === 'Élevé' || deptData.risque_inondation_azi.includes('risque');
+        
+        if (isNegative || deptData.potentiel === 'Limité') {
+            // Points clés pour marché défavorable
+            keyPoints = [
+                `⚠️ Le marché ${region} connaît une ${isNegative ? 'décroissance' : 'croissance faible'} de ${deptData.croissance}, nécessitant une approche prudente et ciblée.`,
+                `Avec seulement ${deptData.nb_operateurs_bio_total} opérateurs bio, le marché est peu développé mais présente des opportunités de niche pour les acteurs innovants.`,
+                `Les spécialités locales (${deptData.specialites.join(', ')}) peuvent servir de différenciateur face aux marchés plus matures.`,
+                hasHighRisks ? `⚠️ Risques environnementaux identifiés : pollution ${deptData.risque_pollution_basol}, inondations ${deptData.risque_inondation_azi}. Un plan de gestion des risques est essentiel.` : `La zone présente des risques environnementaux modérés nécessitant une surveillance.`,
+                `Le potentiel ${deptData.potentiel.toLowerCase()} suggère de privilégier une stratégie conservatrice avec des investissements progressifs.`,
+                `Focus recommandé sur les segments à forte valeur ajoutée et les circuits courts pour maximiser la rentabilité malgré la taille réduite du marché.`
+            ];
+        } else {
+            // Points clés pour marché favorable (utiliser les tendances du JSON)
+            keyPoints = donneesBio.tendances_marche.slice(0, 6);
+        }
+    } else {
+        keyPoints = donneesBio.tendances_marche.slice(0, 6);
+    }
     
     return {
         summary: summary,
         kpis: kpis,
-        keyPoints: donneesBio.tendances_marche.slice(0, 6),
+        keyPoints: keyPoints,
         actors: donneesBio.acteurs_nationaux.slice(0, 6).map(a => ({
             name: a.nom,
             type: a.type,
             market: a.part_marche,
             growth: a.croissance
         })),
-        recommendations: [
+        recommendations: deptData && (parseFloat(deptData.croissance) < 0 || deptData.potentiel === 'Limité') ? [
+            // Recommandations pour marché défavorable
+            {
+                title: 'Approche Conservatrice et Ciblée',
+                desc: `Privilégier une stratégie d'entrée progressive avec des investissements limités et un focus sur les niches rentables.`,
+                comment: `Avec une croissance de ${deptData.croissance} et un potentiel ${deptData.potentiel.toLowerCase()}, une approche prudente minimise les risques financiers.`
+            },
+            {
+                title: 'Différenciation par la Qualité',
+                desc: 'Se concentrer sur des produits premium à forte valeur ajoutée plutôt que sur le volume, en capitalisant sur les spécialités locales.',
+                comment: `Les spécialités locales (${deptData.specialites.join(', ')}) offrent un angle de différenciation dans un marché restreint de ${deptData.taille_marche}.`
+            },
+            {
+                title: 'Circuits Courts Obligatoires',
+                desc: 'Établir des partenariats directs avec les producteurs locaux pour réduire les coûts et améliorer les marges.',
+                comment: `Avec seulement ${deptData.nb_operateurs_bio_total} opérateurs, les circuits courts sont plus viables que les canaux de distribution traditionnels.`
+            },
+            {
+                title: 'Gestion des Risques Environnementaux',
+                desc: 'Mettre en place un plan de prévention et surveillance des risques identifiés (pollution, inondations).',
+                comment: `Risques identifiés : pollution ${deptData.risque_pollution_basol}, inondations ${deptData.risque_inondation_azi}. La conformité et l'assurance sont critiques.`
+            },
+            {
+                title: 'Test & Learn Avant Scale-Up',
+                desc: `Tester le marché avec une offre limitée avant tout déploiement massif sur le secteur "${secteur}".`,
+                comment: `Le contexte défavorable nécessite une validation du marché par étapes pour éviter les investissements non rentables.`
+            },
+            {
+                title: 'Veille et Pivot Rapide',
+                desc: 'Surveiller étroitement les évolutions du marché et être prêt à pivoter ou sortir si les indicateurs se dégradent.',
+                comment: 'Dans un marché en difficulté, la capacité d\'adaptation rapide est plus importante que la persistance.'
+            }
+        ] : [
+            // Recommandations pour marché favorable (version originale)
             {
                 title: 'Positionnement Local et Authentique',
-                desc: 'Miser sur l\'origine locale des produits et la transparence de la chaîne de production pour créer une connexion émotionnelle avec les consommateurs.'
-            ,
+                desc: 'Miser sur l\'origine locale des produits et la transparence de la chaîne de production pour créer une connexion émotionnelle avec les consommateurs.',
                 comment: deptData ? `Dans ${region}, les spécialités locales (${deptData.specialites.join(', ')}) renforcent l\'intérêt des consommateurs pour l\'origine locale — c\'est un levier d\'acquisition et de différenciation.` : 'Valoriser l\'origine locale et la traçabilité pour renforcer la confiance des consommateurs.'
             },
             {
                 title: 'Digitalisation de la Distribution',
-                desc: 'Développer une présence e-commerce forte avec click & collect et livraison rapide pour capter la croissance du canal digital (+25% annuel).'
-            ,
+                desc: 'Développer une présence e-commerce forte avec click & collect et livraison rapide pour capter la croissance du canal digital (+25% annuel).',
                 comment: deptData ? `Le canal digital croît dans la région; une plateforme e-commerce optimisée permettra de capter les consommateurs urbains et d\'augmenter la fréquence d\'achat.` : 'Le canal digital progresse rapidement; investir dans une expérience en ligne est stratégique.'
             },
             {
                 title: 'Partenariats Stratégiques',
-                desc: 'Établir des alliances avec des producteurs locaux et des magasins spécialisés pour sécuriser l\'approvisionnement et la distribution.'
-            ,
+                desc: 'Établir des alliances avec des producteurs locaux et des magasins spécialisés pour sécuriser l\'approvisionnement et la distribution.',
                 comment: 'Des partenariats avec producteurs locaux et détaillants spécialisés réduisent les risques d\'approvisionnement et augmentent la résilience face aux acteurs intégrés.'
             },
             {
                 title: 'Communication sur les Certifications',
-                desc: 'Mettre en avant les labels bio, certifications et démarches environnementales pour rassurer et convaincre les consommateurs exigeants.'
-            ,
+                desc: 'Mettre en avant les labels bio, certifications et démarches environnementales pour rassurer et convaincre les consommateurs exigeants.',
                 comment: 'Les labels (AB, Ecocert...) restent un critère clé : une communication claire sur ces certifications augmente la crédibilité et la conversion.'
             },
             {
                 title: 'Innovation Produit',
-                desc: `Développer des produits différenciants dans le segment "${secteur}" en répondant aux nouvelles attentes : zéro déchet, vrac, formats nomades.`
-            ,
+                desc: `Développer des produits différenciants dans le segment "${secteur}" en répondant aux nouvelles attentes : zéro déchet, vrac, formats nomades.`,
                 comment: `L\'innovation (zéro déchet, vrac, formats nomades) permet souvent d\'obtenir une prime prix et de fidéliser une clientèle engagée sur le segment ${secteur}.`
             },
             {
                 title: 'Analyse Continue du Marché',
-                desc: 'Mettre en place une veille concurrentielle régulière avec BioMarket Insights pour ajuster la stratégie en temps réel.'
-            ,
+                desc: 'Mettre en place une veille concurrentielle régulière avec BioMarket Insights pour ajuster la stratégie en temps réel.',
                 comment: 'Le marché est dynamique; une veille régulière (KPIs, concurrents, tendances) permet d\'anticiper les ruptures et d\'adapter l\'offre rapidement.'
             }
         ],

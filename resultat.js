@@ -7,9 +7,9 @@ function decodeParam(key) {
     return params.get(key) ? decodeURIComponent(params.get(key)) : '';
 }
 
-const secteur = decodeParam('secteur') || 'Alimentaire Bio';
-const region = decodeParam('region') || 'France';
-const objectif = decodeParam('objectif') || 'Analyse de marché générale';
+const secteur = localStorage.getItem('secteurGlobal') || 'Alimentaire Bio';
+const region = localStorage.getItem('regionGlobale') || "France";
+const objectif = localStorage.getItem('objectifGlobale') || "Etude de marché générale";
 
 // Debug : afficher les paramètres reçus
 console.log('🔍 Paramètres reçus:');
@@ -98,7 +98,7 @@ function generateReport() {
     if (!aiData) {
         console.warn('⚠️ Données AI non disponibles, utilisation des valeurs par défaut');
         aiData = {
-            summary: `Cette analyse approfondie du secteur "${secteur}" dans la région "${region}" révèle un marché en pleine expansion avec un potentiel de croissance significatif.`,
+            summary: `Cette analyse approfondie du secteur "${secteur}" dans le dommaine "${objectif}", dans la région "${region}" révèle un marché en pleine expansion avec un potentiel de croissance significatif.`,
             kpis: {
                 marche: Math.floor(Math.random() * 500 + 200) + 'M€',
                 acteurs: Math.floor(Math.random() * 50 + 30),
@@ -410,70 +410,32 @@ function generateRecommendations() {
     const recommendations = aiData && aiData.recommendations ? aiData.recommendations : [
         {
             title: 'Positionnement Local et Authentique',
-            desc: 'Miser sur l\'origine locale des produits et la transparence de la chaîne de production pour créer une connexion émotionnelle avec les consommateurs.',
-            comment: `Le marché montre un fort intérêt pour l\'origine locale ; les consommateurs privilégient les circuits courts et la traçabilité — opportunité particulièrement forte en ${region}.`
+            desc: 'Miser sur l\'origine locale des produits et la transparence de la chaîne de production pour créer une connexion émotionnelle avec les consommateurs.'
         },
         {
             title: 'Digitalisation de la Distribution',
-            desc: 'Développer une présence e-commerce forte avec click & collect et livraison rapide pour capter la croissance du canal digital (+25% annuel).',
-            comment: 'Le canal digital croît rapidement (~+25% annuel) ; une expérience en ligne fluide est clé pour capter les consommateurs urbains et flexibles.'
+            desc: 'Développer une présence e-commerce forte avec click & collect et livraison rapide pour capter la croissance du canal digital (+25% annuel).'
         },
         {
             title: 'Partenariats Stratégiques',
-            desc: 'Établir des alliances avec des producteurs locaux et des magasins spécialisés pour sécuriser l\'approvisionnement et la distribution.',
-            comment: 'Face à une offre fragmentée, les partenariats réduisent les risques d\'approvisionnement et renforcent la compétitivité face aux acteurs intégrés.'
+            desc: 'Établir des alliances avec des producteurs locaux et des magasins spécialisés pour sécuriser l\'approvisionnement et la distribution.'
         },
         {
             title: 'Communication sur les Certifications',
-            desc: 'Mettre en avant les labels bio, certifications et démarches environnementales pour rassurer et convaincre les consommateurs exigeants.',
-            comment: 'Les labels (AB, Ecocert...) restent un critère décisif pour la majorité des acheteurs ; une communication claire augmente le taux de conversion.'
+            desc: 'Mettre en avant les labels bio, certifications et démarches environnementales pour rassurer et convaincre les consommateurs exigeants.'
         },
         {
             title: 'Innovation Produit',
-            desc: `Développer des produits différenciants dans le segment "${secteur}" en répondant aux nouvelles attentes : zéro déchet, vrac, formats nomades.`,
-            comment: 'La demande pour des formats pratiques et durables augmente ; l\'innovation peut permettre de capter une prime prix et fidéliser une clientèle engagée.'
+            desc: `Développer des produits différenciants dans le segment "${secteur}" en répondant aux nouvelles attentes : zéro déchet, vrac, formats nomades.`
         },
         {
             title: 'Analyse Continue du Marché',
-            desc: 'Mettre en place une veille concurrentielle régulière avec BioMarket Insights pour ajuster la stratégie en temps réel.',
-            comment: 'Le marché est dynamique et sujet à des ruptures de tendance rapides ; une veille régulière permet d\'anticiper les mouvements des concurrents et d\'adapter l\'offre.'
+            desc: 'Mettre en place une veille concurrentielle régulière avec BioMarket Insights pour ajuster la stratégie en temps réel.'
         }
     ];
     
-    // Helper: génère un commentaire pertinent pour une recommandation en se basant sur aiData
-    function buildRecoComment(reco, idx) {
-        if (reco.comment) return reco.comment;
-
-        const kpis = aiData && aiData.kpis ? aiData.kpis : {};
-        const summary = aiData && aiData.summary ? aiData.summary : '';
-        const growth = (kpis.croissance || '').toString();
-        const marche = kpis.marche || '';
-
-        const growthPos = growth.includes('+') || growth.toLowerCase().includes('↑');
-
-        // Messages adaptés par index (1..6)
-        switch (idx) {
-            case 0:
-                return `Sur la base des données, la valorisation de l\'origine locale est un levier efficace en ${region} — la traçabilité et la proximité renforcent la confiance des consommateurs.`;
-            case 1:
-                return growthPos ? `Le canal digital montre une forte croissance (${growth || 'tendance positive'}) — investir dans l\'e-commerce et une UX fluide permettra de capter les segments urbains.` : `Le canal digital progresse; une présence en ligne améliorée limitera le risque de perte de parts de marché.`;
-            case 2:
-                return `Les résultats montrent une offre fragmentée; des partenariats (producteurs, enseignes spécialisées) réduisent les risques d\'approvisionnement et sécurisent la chaîne logistique.`;
-            case 3:
-                return `Les certifications restent un critère d\'achat majeur : communiquer clairement sur les labels (AB, Ecocert...) augmente la crédibilité et le taux de conversion.`;
-            case 4:
-                return `L\'innovation produit (zéro déchet, vrac, formats nomades) est un différenciateur rentable — elle permet souvent d\'atteindre une prime prix sur le segment ${secteur}.`;
-            case 5:
-                return `Le marché évolue rapidement; mettre en place une veille continue (KPIs, concurrents, tendances) permettra d\'ajuster la stratégie en temps réel et d\'anticiper les ruptures.`;
-            default:
-                return summary || 'Commentaire marché non disponible.';
-        }
-    }
-
     const recosList = document.getElementById('recosList');
     recommendations.forEach((reco, index) => {
-        // Générer ou utiliser le commentaire fourni par l'IA
-        const commentText = buildRecoComment(reco, index);
         const div = document.createElement('div');
         div.className = 'reco-item';
         div.innerHTML = `
@@ -481,7 +443,6 @@ function generateRecommendations() {
             <div class="reco-content">
                 <div class="reco-title">${reco.title}</div>
                 <div class="reco-desc">${reco.desc}</div>
-                ${commentText ? `<div class="reco-comment">${commentText}</div>` : ''}
             </div>
         `;
         recosList.appendChild(div);

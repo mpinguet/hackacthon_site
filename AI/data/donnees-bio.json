@@ -168,30 +168,6 @@
       "potentiel": "Élevé",
       "specialites": ["Maraîchage", "Produits laitiers", "Volailles bio"]
     },
-    "TEST - Zone Rouge": {
-      "zone_analysee": "Zone Test - Marché Défavorable",
-      "segment_analyse": "Secteur en Difficulté",
-      "population": 180000,
-      "surface_km2": 2500,
-      "revenu_median": 17500,
-      "taux_pauvrete": 28.5,
-      "nb_operateurs_bio_total": 23,
-      "nb_concurrents_directs": 8,
-      "ventilation_acteurs": {
-        "producteurs": 12,
-        "transformateurs": 6,
-        "distributeurs": 5
-      },
-      "surface_bio_hectares": 890,
-      "risque_pollution_basol": "Élevé",
-      "risque_inondation_azi": "Oui - Zone à risque majeur",
-      "hist_secheresse_catnat": 12,
-      "hist_inondation_catnat": 9,
-      "taille_marche": "18M€",
-      "croissance": "-2.3%",
-      "potentiel": "Limité",
-      "specialites": ["Peu de spécialités", "Marché restreint"]
-    },
     "59 - Nord": {
       "zone_analysee": "Nord (Lille)",
       "segment_analyse": "Céréales et Distribution Bio",

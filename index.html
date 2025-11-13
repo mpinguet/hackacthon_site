@@ -140,7 +140,6 @@
                         <label for="region">Département d'Intérêt *</label>
                         <select id="region" required>
                             <option value="" disabled selected>Sélectionnez un département</option>
-                            <option value="TEST - Zone Rouge" style="color: #c62828; font-weight: bold;">⚠️ TEST - Zone Rouge (Données négatives)</option>
                             <option value="01 - Ain">01 - Ain</option>
                             <option value="02 - Aisne">02 - Aisne</option>
                             <option value="03 - Allier">03 - Allier</option>
@@ -244,9 +243,15 @@
                     </div>
                     <div class="form-group">
                         <label for="objectif">Objectif de l'Étude *</label>
-                        <textarea id="objectif" rows="4"
-                            placeholder="Décrivez votre produit: fruit, légume, boisson, cosmétiques... "
-                            required></textarea>
+                        <select id="objectif" required>
+                            <option value="" disabled selected>Sélectionnez un produit</option>
+                            <option value="legumes">Légumes frais</option>
+                            <option value="fruits">Fruits</option>
+                            <option value="viticulture">Viticulture</option>
+                            <option value="surfaces cultures fourrageres">Surfaces et cultures fourragères</option>
+                            <option value="cereales oleoproteagineux">Céréales et oléoprotéagineux (yc légumes secs)</option>
+                            <option value="plantes parfum aromatiques medicinales">Plantes à parfum, aromatiques et médicinales</option>
+                        </select>
                     </div>
                     <button type="submit" class="submit-btn">Lancer l'Analyse IA</button>
                 </form>

@@ -259,14 +259,16 @@ body {
 
 .section-content {
     overflow: hidden;
-    transition: max-height 0.35s ease;
+    transition: max-height 0.35s ease, opacity 0.35s ease;
+    max-height: 10000px; /* Valeur suffisamment grande pour tout contenu */
+    opacity: 1;
 }
 
 .report-section.collapsible.collapsed .section-content {
     max-height: 0 !important;
     padding-top: 0;
     padding-bottom: 0;
-    opacity: 0.95;
+    opacity: 0;
 }
 
 .section-header h2 {

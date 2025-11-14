@@ -37,9 +37,12 @@ async function init() {
     renderMacro(study.context?.macro_france);
     renderRiskTimeline(study.context?.risques_locaux_api);
     renderRaw(study);
-    setupCollapsibles();
     finishProgress('Analyse terminée. Préparation du rapport...');
-    setTimeout(hideStatusBanner, 600);
+    // Attendre que le DOM soit complètement rendu avant d'initialiser les collapsibles
+    setTimeout(() => {
+      setupCollapsibles();
+      setTimeout(hideStatusBanner, 600);
+    }, 100);
   } catch (error) {
     console.error('Erreur étude:', error);
     failProgress(error.message || "Impossible de récupérer l'étude");
@@ -796,36 +799,28 @@ function renderRiskTimeline(risques) {
 
 function setupCollapsibles() {
   const sections = document.querySelectorAll('.report-section.collapsible');
-  sections.forEach(section => {
+  sections.forEach((section) => {
     const toggle = section.querySelector('.collapse-toggle');
     const content = section.querySelector('.section-content');
     if (!toggle || !content) return;
+    
+    // Initialiser toutes les sections comme ouvertes (pas de classe collapsed)
+    section.classList.remove('collapsed');
+    toggle.innerHTML = '<i class="ri-arrow-up-s-line"></i>';
+    
     toggle.addEventListener('click', () => {
       section.classList.toggle('collapsed');
       if (section.classList.contains('collapsed')) {
-        content.style.maxHeight = '0px';
         toggle.innerHTML = '<i class="ri-arrow-down-s-line"></i>';
       } else {
-        content.style.maxHeight = content.scrollHeight + 'px';
         toggle.innerHTML = '<i class="ri-arrow-up-s-line"></i>';
       }
     });
-    content.style.maxHeight = content.scrollHeight + 'px';
   });
+  
   if (!collapsibleInitialized) {
-    window.addEventListener('resize', adjustCollapsibleHeights);
     collapsibleInitialized = true;
   }
-}
-
-function adjustCollapsibleHeights() {
-  document.querySelectorAll('.report-section.collapsible').forEach(section => {
-    if (section.classList.contains('collapsed')) return;
-    const content = section.querySelector('.section-content');
-    if (content) {
-      content.style.maxHeight = content.scrollHeight + 'px';
-    }
-  });
 }
 
 function formatNumber(value) {

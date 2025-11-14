@@ -1,0 +1,1522 @@
+{
+  "id": "716485dd-b250-4a5e-a5a2-12c49972f82c",
+  "prefix": "analyse",
+  "generated_at": "2025-11-14T10:01:30.975Z",
+  "payload": {
+    "endpoint": "/api/analyze",
+    "request": {
+      "secteur": "alimentaire",
+      "region": "",
+      "objectif": "legumes",
+      "ville": "Issy-les-Moulineaux",
+      "model": "mistral-nemo:latest"
+    },
+    "response": {
+      "summary": "Analyse du marché bio pour les légumes à Issy-les-Moulineaux",
+      "kpis": {
+        "marche": "Non disponible",
+        "acteurs": 0,
+        "croissance": 3.95,
+        "potentiel": "Non disponible",
+        "trends": {
+          "marche": "Non disponible",
+          "acteurs": "Non disponible",
+          "croissance": 3.95,
+          "potentiel": "Non disponible"
+        }
+      },
+      "keyPoints": [
+        "La ville d'Issy-les-Moulineaux a une population de 67 695 habitants.",
+        "Le secteur alimentaire est le principal marché cible pour les légumes bio."
+      ],
+      "actors": [],
+      "recommendations": [
+        {
+          "title": "Étude de marché approfondie",
+          "desc": "Il serait bénéfique d'effectuer une étude de marché plus détaillée pour identifier les opportunités et les menaces dans le secteur des légumes bio à Issy-les-Moulineaux."
+        }
+      ],
+      "chartData": {
+        "marketShare": [],
+        "marketShareLabels": [],
+        "evolution": [
+          3.95
+        ],
+        "evolutionLabels": [
+          "2024"
+        ],
+        "segments": [],
+        "segmentsLabels": [],
+        "competitors": [],
+        "competitorsLabels": []
+      },
+      "aiModel": "mistral-nemo:latest",
+      "context": {
+        "meta": {
+          "ville_recherchee": "Issy-les-Moulineaux",
+          "segment_analyse": "alimentaire",
+          "generated_at": "2025-11-14T10:01:23.433Z"
+        },
+        "geo": {
+          "nom_commune": "Issy-les-Moulineaux",
+          "code_commune": "92040",
+          "population": 67695,
+          "code_departement": "92",
+          "code_region": "11",
+          "nom_region": "Île-de-France"
+        },
+        "concurrence_locale_api": {
+          "nb_operateurs_bio_total": 0,
+          "nb_concurrents_directs": 0,
+          "concurrents_directs": [],
+          "ventilation_activites": {},
+          "detail_operateurs": []
+        },
+        "risques_locaux_api": {
+          "code_commune": "92040",
+          "basol": {
+            "total": 10,
+            "items": [
+              {
+                "identifiant_ssp": "SSP000290701",
+                "nom_etablissement": "TIRU",
+                "adresse": "167 QUAI DE STALINGRAD",
+                "adresse_lieudit": null,
+                "code_insee": "92040",
+                "nom_commune": "ISSY LES MOULINEAUX",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000290701",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          2.257694,
+                          48.824942
+                        ],
+                        [
+                          2.258521,
+                          48.824156
+                        ],
+                        [
+                          2.258688,
+                          48.824232
+                        ],
+                        [
+                          2.259135,
+                          48.823797
+                        ],
+                        [
+                          2.259514,
+                          48.823994
+                        ],
+                        [
+                          2.259878,
+                          48.824263
+                        ],
+                        [
+                          2.260165,
+                          48.8245
+                        ],
+                        [
+                          2.260391,
+                          48.824709
+                        ],
+                        [
+                          2.260682,
+                          48.825042
+                        ],
+                        [
+                          2.260889,
+                          48.82532
+                        ],
+                        [
+                          2.260086,
+                          48.82607
+                        ],
+                        [
+                          2.260031,
+                          48.826046
+                        ],
+                        [
+                          2.259639,
+                          48.826404
+                        ],
+                        [
+                          2.259333,
+                          48.826209
+                        ],
+                        [
+                          2.257814,
+                          48.825034
+                        ],
+                        [
+                          2.257696,
+                          48.824942
+                        ],
+                        [
+                          2.257694,
+                          48.824942
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000295401",
+                "nom_etablissement": "FONDERIE GEVELOT",
+                "adresse": "60 BOULEVARD RODIN",
+                "adresse_lieudit": null,
+                "code_insee": "92040",
+                "nom_commune": "ISSY LES MOULINEAUX",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000295401",
+                "date_maj": "2021-09-28",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          2.257233,
+                          48.818997
+                        ],
+                        [
+                          2.257492,
+                          48.81909
+                        ],
+                        [
+                          2.257637,
+                          48.819083
+                        ],
+                        [
+                          2.258094,
+                          48.81921
+                        ],
+                        [
+                          2.25823,
+                          48.819014
+                        ],
+                        [
+                          2.258059,
+                          48.81895
+                        ],
+                        [
+                          2.257521,
+                          48.818552
+                        ],
+                        [
+                          2.257232,
+                          48.818997
+                        ],
+                        [
+                          2.257233,
+                          48.818997
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000318001",
+                "nom_etablissement": "ZAC DES BORDS DE SEINE",
+                "adresse": "45 RUE CAMILLE DESMOULINS",
+                "adresse_lieudit": null,
+                "code_insee": "92040",
+                "nom_commune": "ISSY LES MOULINEAUX",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000318001",
+                "date_maj": "2017-07-13",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          2.263862,
+                          48.826703
+                        ],
+                        [
+                          2.264697,
+                          48.826813
+                        ],
+                        [
+                          2.264833,
+                          48.826886
+                        ],
+                        [
+                          2.263441,
+                          48.828039
+                        ],
+                        [
+                          2.263128,
+                          48.827879
+                        ],
+                        [
+                          2.263092,
+                          48.827882
+                        ],
+                        [
+                          2.262667,
+                          48.82824
+                        ],
+                        [
+                          2.262514,
+                          48.827872
+                        ],
+                        [
+                          2.262546,
+                          48.827782
+                        ],
+                        [
+                          2.263726,
+                          48.826777
+                        ],
+                        [
+                          2.263859,
+                          48.826703
+                        ],
+                        [
+                          2.263862,
+                          48.826703
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000322601",
+                "nom_etablissement": "BP FRANCE",
+                "adresse": "91 AVENUE DE VERDUN",
+                "adresse_lieudit": null,
+                "code_insee": "92040",
+                "nom_commune": "ISSY LES MOULINEAUX",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000322601",
+                "date_maj": "2017-03-07",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          2.258372,
+                          48.819755
+                        ],
+                        [
+                          2.258532,
+                          48.819823
+                        ],
+                        [
+                          2.258545,
+                          48.819813
+                        ],
+                        [
+                          2.258902,
+                          48.819953
+                        ],
+                        [
+                          2.259008,
+                          48.819994
+                        ],
+                        [
+                          2.259114,
+                          48.820045
+                        ],
+                        [
+                          2.259077,
+                          48.82008
+                        ],
+                        [
+                          2.259175,
+                          48.820136
+                        ],
+                        [
+                          2.259378,
+                          48.820228
+                        ],
+                        [
+                          2.259513,
+                          48.820265
+                        ],
+                        [
+                          2.260158,
+                          48.820644
+                        ],
+                        [
+                          2.260174,
+                          48.820659
+                        ],
+                        [
+                          2.260172,
+                          48.820682
+                        ],
+                        [
+                          2.260169,
+                          48.820688
+                        ],
+                        [
+                          2.260095,
+                          48.820694
+                        ],
+                        [
+                          2.258422,
+                          48.820183
+                        ],
+                        [
+                          2.258532,
+                          48.820018
+                        ],
+                        [
+                          2.258259,
+                          48.819937
+                        ],
+                        [
+                          2.258373,
+                          48.819757
+                        ],
+                        [
+                          2.258372,
+                          48.819755
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000330201",
+                "nom_etablissement": "SHELL",
+                "adresse": "180 QUAI DE STALINGRAD",
+                "adresse_lieudit": null,
+                "code_insee": "92040",
+                "nom_commune": "ISSY LES MOULINEAUX",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000330201",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          2.25619,
+                          48.824119
+                        ],
+                        [
+                          2.256484,
+                          48.824304
+                        ],
+                        [
+                          2.256273,
+                          48.824442
+                        ],
+                        [
+                          2.256909,
+                          48.824823
+                        ],
+                        [
+                          2.256834,
+                          48.824872
+                        ],
+                        [
+                          2.256614,
+                          48.824734
+                        ],
+                        [
+                          2.255924,
+                          48.824368
+                        ],
+                        [
+                          2.255922,
+                          48.824342
+                        ],
+                        [
+                          2.255912,
+                          48.824328
+                        ],
+                        [
+                          2.255884,
+                          48.824313
+                        ],
+                        [
+                          2.255572,
+                          48.824142
+                        ],
+                        [
+                          2.255639,
+                          48.824092
+                        ],
+                        [
+                          2.255973,
+                          48.824273
+                        ],
+                        [
+                          2.256189,
+                          48.82412
+                        ],
+                        [
+                          2.25619,
+                          48.824119
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000331701",
+                "nom_etablissement": "TOTAL",
+                "adresse": "15 BOULEVARD GALLIENI",
+                "adresse_lieudit": null,
+                "code_insee": "92040",
+                "nom_commune": "ISSY LES MOULINEAUX",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000331701",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          2.267304,
+                          48.832474
+                        ],
+                        [
+                          2.267957,
+                          48.832089
+                        ],
+                        [
+                          2.267772,
+                          48.831984
+                        ],
+                        [
+                          2.267689,
+                          48.832051
+                        ],
+                        [
+                          2.267406,
+                          48.831898
+                        ],
+                        [
+                          2.267347,
+                          48.831931
+                        ],
+                        [
+                          2.267304,
+                          48.832474
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000332301",
+                "nom_etablissement": "TOTAL",
+                "adresse": "201 QUAI DE STALINGRAD",
+                "adresse_lieudit": null,
+                "code_insee": "92040",
+                "nom_commune": "ISSY LES MOULINEAUX",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000332301",
+                "date_maj": "2020-09-30",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          2.255856,
+                          48.823727
+                        ],
+                        [
+                          2.256023,
+                          48.823585
+                        ],
+                        [
+                          2.256517,
+                          48.82389
+                        ],
+                        [
+                          2.256359,
+                          48.824032
+                        ],
+                        [
+                          2.255858,
+                          48.823727
+                        ],
+                        [
+                          2.255856,
+                          48.823727
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000772001",
+                "nom_etablissement": "EX SOCIETE FRANÇAISE DE MUNITIONS",
+                "adresse": "13, 14, 20 Crs Saint-vincent",
+                "adresse_lieudit": null,
+                "code_insee": "92040",
+                "nom_commune": "ISSY LES MOULINEAUX",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000772001",
+                "date_maj": "2020-12-23",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          2.254623,
+                          48.819962
+                        ],
+                        [
+                          2.254627,
+                          48.819984
+                        ],
+                        [
+                          2.254643,
+                          48.820093
+                        ],
+                        [
+                          2.254647,
+                          48.82012
+                        ],
+                        [
+                          2.254877,
+                          48.820105
+                        ],
+                        [
+                          2.254898,
+                          48.820253
+                        ],
+                        [
+                          2.254405,
+                          48.820284
+                        ],
+                        [
+                          2.254386,
+                          48.820313
+                        ],
+                        [
+                          2.254308,
+                          48.820427
+                        ],
+                        [
+                          2.254286,
+                          48.820459
+                        ],
+                        [
+                          2.254329,
+                          48.820759
+                        ],
+                        [
+                          2.254275,
+                          48.820763
+                        ],
+                        [
+                          2.254285,
+                          48.820833
+                        ],
+                        [
+                          2.254467,
+                          48.820821
+                        ],
+                        [
+                          2.254522,
+                          48.820818
+                        ],
+                        [
+                          2.254625,
+                          48.820811
+                        ],
+                        [
+                          2.254689,
+                          48.820807
+                        ],
+                        [
+                          2.254862,
+                          48.820796
+                        ],
+                        [
+                          2.255289,
+                          48.820052
+                        ],
+                        [
+                          2.255319,
+                          48.82
+                        ],
+                        [
+                          2.255128,
+                          48.819992
+                        ],
+                        [
+                          2.255162,
+                          48.819928
+                        ],
+                        [
+                          2.255293,
+                          48.819684
+                        ],
+                        [
+                          2.255349,
+                          48.819578
+                        ],
+                        [
+                          2.255353,
+                          48.819571
+                        ],
+                        [
+                          2.255366,
+                          48.819548
+                        ],
+                        [
+                          2.255409,
+                          48.819464
+                        ],
+                        [
+                          2.255081,
+                          48.819361
+                        ],
+                        [
+                          2.25504,
+                          48.819349
+                        ],
+                        [
+                          2.25504,
+                          48.819349
+                        ],
+                        [
+                          2.25498,
+                          48.819331
+                        ],
+                        [
+                          2.25462,
+                          48.819221
+                        ],
+                        [
+                          2.254547,
+                          48.819199
+                        ],
+                        [
+                          2.254204,
+                          48.819093
+                        ],
+                        [
+                          2.254202,
+                          48.819093
+                        ],
+                        [
+                          2.254176,
+                          48.819085
+                        ],
+                        [
+                          2.254073,
+                          48.819115
+                        ],
+                        [
+                          2.254028,
+                          48.81918
+                        ],
+                        [
+                          2.253967,
+                          48.819308
+                        ],
+                        [
+                          2.253836,
+                          48.819584
+                        ],
+                        [
+                          2.253716,
+                          48.819835
+                        ],
+                        [
+                          2.253547,
+                          48.82019
+                        ],
+                        [
+                          2.254247,
+                          48.820145
+                        ],
+                        [
+                          2.254428,
+                          48.820134
+                        ],
+                        [
+                          2.254511,
+                          48.820128
+                        ],
+                        [
+                          2.25453,
+                          48.8201
+                        ],
+                        [
+                          2.254608,
+                          48.819985
+                        ],
+                        [
+                          2.254623,
+                          48.819962
+                        ]
+                      ]
+                    ],
+                    [
+                      [
+                        [
+                          2.253381,
+                          48.819897
+                        ],
+                        [
+                          2.25349,
+                          48.819919
+                        ],
+                        [
+                          2.25369,
+                          48.8195
+                        ],
+                        [
+                          2.253899,
+                          48.819063
+                        ],
+                        [
+                          2.253845,
+                          48.818983
+                        ],
+                        [
+                          2.253695,
+                          48.818937
+                        ],
+                        [
+                          2.253574,
+                          48.8189
+                        ],
+                        [
+                          2.253202,
+                          48.818787
+                        ],
+                        [
+                          2.253082,
+                          48.81875
+                        ],
+                        [
+                          2.253021,
+                          48.818844
+                        ],
+                        [
+                          2.252901,
+                          48.819029
+                        ],
+                        [
+                          2.252893,
+                          48.819042
+                        ],
+                        [
+                          2.252888,
+                          48.819051
+                        ],
+                        [
+                          2.252884,
+                          48.81906
+                        ],
+                        [
+                          2.252871,
+                          48.819081
+                        ],
+                        [
+                          2.252844,
+                          48.819132
+                        ],
+                        [
+                          2.252836,
+                          48.819148
+                        ],
+                        [
+                          2.252827,
+                          48.819165
+                        ],
+                        [
+                          2.252816,
+                          48.819191
+                        ],
+                        [
+                          2.252812,
+                          48.819202
+                        ],
+                        [
+                          2.252795,
+                          48.819236
+                        ],
+                        [
+                          2.252784,
+                          48.819262
+                        ],
+                        [
+                          2.252773,
+                          48.819286
+                        ],
+                        [
+                          2.252763,
+                          48.81931
+                        ],
+                        [
+                          2.252737,
+                          48.819377
+                        ],
+                        [
+                          2.252729,
+                          48.819403
+                        ],
+                        [
+                          2.25272,
+                          48.81943
+                        ],
+                        [
+                          2.252702,
+                          48.819484
+                        ],
+                        [
+                          2.252693,
+                          48.819519
+                        ],
+                        [
+                          2.252686,
+                          48.819547
+                        ],
+                        [
+                          2.252677,
+                          48.819575
+                        ],
+                        [
+                          2.252674,
+                          48.819587
+                        ],
+                        [
+                          2.25267,
+                          48.819605
+                        ],
+                        [
+                          2.252664,
+                          48.819633
+                        ],
+                        [
+                          2.252655,
+                          48.819666
+                        ],
+                        [
+                          2.252647,
+                          48.8197
+                        ],
+                        [
+                          2.252637,
+                          48.819746
+                        ],
+                        [
+                          2.252629,
+                          48.819782
+                        ],
+                        [
+                          2.252626,
+                          48.819796
+                        ],
+                        [
+                          2.252623,
+                          48.819822
+                        ],
+                        [
+                          2.252619,
+                          48.819852
+                        ],
+                        [
+                          2.252615,
+                          48.819883
+                        ],
+                        [
+                          2.25261,
+                          48.819941
+                        ],
+                        [
+                          2.252606,
+                          48.819973
+                        ],
+                        [
+                          2.252603,
+                          48.82
+                        ],
+                        [
+                          2.252601,
+                          48.820025
+                        ],
+                        [
+                          2.2526,
+                          48.82005
+                        ],
+                        [
+                          2.252601,
+                          48.820079
+                        ],
+                        [
+                          2.252599,
+                          48.820109
+                        ],
+                        [
+                          2.252599,
+                          48.82013
+                        ],
+                        [
+                          2.252601,
+                          48.820157
+                        ],
+                        [
+                          2.252601,
+                          48.820192
+                        ],
+                        [
+                          2.252604,
+                          48.820226
+                        ],
+                        [
+                          2.252605,
+                          48.820252
+                        ],
+                        [
+                          2.252605,
+                          48.820268
+                        ],
+                        [
+                          2.252566,
+                          48.820275
+                        ],
+                        [
+                          2.252628,
+                          48.820446
+                        ],
+                        [
+                          2.252784,
+                          48.820478
+                        ],
+                        [
+                          2.252977,
+                          48.820516
+                        ],
+                        [
+                          2.253023,
+                          48.820418
+                        ],
+                        [
+                          2.253201,
+                          48.820455
+                        ],
+                        [
+                          2.253206,
+                          48.820456
+                        ],
+                        [
+                          2.253233,
+                          48.820461
+                        ],
+                        [
+                          2.253485,
+                          48.81993
+                        ],
+                        [
+                          2.253381,
+                          48.819897
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000772101",
+                "nom_etablissement": "EX FONDERIE GEVELOT",
+                "adresse": "64, 66, 68, 70 Bd Rodin",
+                "adresse_lieudit": null,
+                "code_insee": "92040",
+                "nom_commune": "ISSY LES MOULINEAUX",
+                "statut": "Clôturée",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000772101",
+                "date_maj": "2011-10-07",
+                "geom": {
+                  "type": "Point",
+                  "coordinates": [
+                    2.258315,
+                    48.819044
+                  ]
+                }
+              },
+              {
+                "identifiant_ssp": "SSP000915201",
+                "nom_etablissement": "Services informatiques de EDF-GDF",
+                "adresse": "r bara",
+                "adresse_lieudit": null,
+                "code_insee": "92040",
+                "nom_commune": "ISSY LES MOULINEAUX",
+                "statut": "En cours",
+                "fiche_risque": "https://fiches-risques.brgm.fr/georisques/infosols/instruction/SSP000915201",
+                "date_maj": "2020-12-23",
+                "geom": {
+                  "type": "MultiPolygon",
+                  "coordinates": [
+                    [
+                      [
+                        [
+                          2.268081,
+                          48.8344
+                        ],
+                        [
+                          2.268083,
+                          48.834398
+                        ],
+                        [
+                          2.268425,
+                          48.834154
+                        ],
+                        [
+                          2.26853,
+                          48.834079
+                        ],
+                        [
+                          2.268585,
+                          48.83404
+                        ],
+                        [
+                          2.268934,
+                          48.83379
+                        ],
+                        [
+                          2.269093,
+                          48.833677
+                        ],
+                        [
+                          2.269196,
+                          48.833603
+                        ],
+                        [
+                          2.269718,
+                          48.833228
+                        ],
+                        [
+                          2.269849,
+                          48.833134
+                        ],
+                        [
+                          2.268733,
+                          48.832568
+                        ],
+                        [
+                          2.268676,
+                          48.832573
+                        ],
+                        [
+                          2.268673,
+                          48.832573
+                        ],
+                        [
+                          2.26864,
+                          48.832576
+                        ],
+                        [
+                          2.26862,
+                          48.832593
+                        ],
+                        [
+                          2.268398,
+                          48.832784
+                        ],
+                        [
+                          2.268039,
+                          48.833093
+                        ],
+                        [
+                          2.267893,
+                          48.833219
+                        ],
+                        [
+                          2.267632,
+                          48.833444
+                        ],
+                        [
+                          2.267236,
+                          48.833785
+                        ],
+                        [
+                          2.267231,
+                          48.83379
+                        ],
+                        [
+                          2.267292,
+                          48.833851
+                        ],
+                        [
+                          2.267293,
+                          48.833851
+                        ],
+                        [
+                          2.267579,
+                          48.834085
+                        ],
+                        [
+                          2.267613,
+                          48.834113
+                        ],
+                        [
+                          2.26778,
+                          48.834256
+                        ],
+                        [
+                          2.26803,
+                          48.834383
+                        ],
+                        [
+                          2.268072,
+                          48.834397
+                        ],
+                        [
+                          2.268081,
+                          48.8344
+                        ]
+                      ]
+                    ]
+                  ]
+                }
+              }
+            ],
+            "source": "georisques_api"
+          },
+          "azi": {
+            "total": 1,
+            "items": [
+              {
+                "code_national_azi": "93DDT19990004",
+                "libelle_azi": "La Seine",
+                "liste_libelle_risque": [
+                  {
+                    "num_risque": "11",
+                    "libelle_risque_long": "Inondation"
+                  }
+                ],
+                "libelle_bassin_risques": "",
+                "date_debut_programmation": "01/12/1999",
+                "date_fin_programmation": "01/12/1999",
+                "date_debut_etude": null,
+                "date_fin_etude": null,
+                "date_debut_information": null,
+                "date_fin_information": null,
+                "date_realisation": null,
+                "date_diffusion": "01/12/1999",
+                "date_publication_web": null,
+                "code_insee": "92040",
+                "libelle_commune": "ISSY-LES-MOULINEAUX"
+              }
+            ],
+            "source": "georisques_api"
+          },
+          "catnat": {
+            "total": 10,
+            "items": [
+              {
+                "code_national_catnat": "INTE0000771A",
+                "date_debut_evt": "01/06/1997",
+                "date_fin_evt": "31/12/1997",
+                "date_publication_arrete": "27/12/2000",
+                "date_publication_jo": "29/12/2000",
+                "libelle_risque_jo": "Sécheresse",
+                "code_insee": "92040",
+                "libelle_commune": "ISSY-LES-MOULINEAUX"
+              },
+              {
+                "code_national_catnat": "INTE0100460A",
+                "date_debut_evt": "06/07/2001",
+                "date_fin_evt": "07/07/2001",
+                "date_publication_arrete": "06/08/2001",
+                "date_publication_jo": "11/08/2001",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "92040",
+                "libelle_commune": "ISSY-LES-MOULINEAUX"
+              },
+              {
+                "code_national_catnat": "INTE0200119A",
+                "date_debut_evt": "26/07/2001",
+                "date_fin_evt": "26/07/2001",
+                "date_publication_arrete": "12/03/2002",
+                "date_publication_jo": "28/03/2002",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "92040",
+                "libelle_commune": "ISSY-LES-MOULINEAUX"
+              },
+              {
+                "code_national_catnat": "INTE0400472A",
+                "date_debut_evt": "08/03/2001",
+                "date_fin_evt": "08/03/2001",
+                "date_publication_arrete": "15/06/2004",
+                "date_publication_jo": "07/07/2004",
+                "libelle_risque_jo": "Inondations Remontée Nappe",
+                "code_insee": "92040",
+                "libelle_commune": "ISSY-LES-MOULINEAUX"
+              },
+              {
+                "code_national_catnat": "INTE1616446A",
+                "date_debut_evt": "28/05/2016",
+                "date_fin_evt": "05/06/2016",
+                "date_publication_arrete": "15/06/2016",
+                "date_publication_jo": "16/06/2016",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "92040",
+                "libelle_commune": "ISSY-LES-MOULINEAUX"
+              },
+              {
+                "code_national_catnat": "INTE1804348A",
+                "date_debut_evt": "15/01/2018",
+                "date_fin_evt": "05/02/2018",
+                "date_publication_arrete": "14/02/2018",
+                "date_publication_jo": "15/02/2018",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "92040",
+                "libelle_commune": "ISSY-LES-MOULINEAUX"
+              },
+              {
+                "code_national_catnat": "INTE9700555A",
+                "date_debut_evt": "05/08/1997",
+                "date_fin_evt": "06/08/1997",
+                "date_publication_arrete": "17/12/1997",
+                "date_publication_jo": "30/12/1997",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "92040",
+                "libelle_commune": "ISSY-LES-MOULINEAUX"
+              },
+              {
+                "code_national_catnat": "INTE9900444A",
+                "date_debut_evt": "30/05/1999",
+                "date_fin_evt": "30/05/1999",
+                "date_publication_arrete": "29/09/1999",
+                "date_publication_jo": "20/10/1999",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "92040",
+                "libelle_commune": "ISSY-LES-MOULINEAUX"
+              },
+              {
+                "code_national_catnat": "INTE9900627A",
+                "date_debut_evt": "25/12/1999",
+                "date_fin_evt": "29/12/1999",
+                "date_publication_arrete": "29/12/1999",
+                "date_publication_jo": "30/12/1999",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "92040",
+                "libelle_commune": "ISSY-LES-MOULINEAUX"
+              },
+              {
+                "code_national_catnat": "INTE9900627A",
+                "date_debut_evt": "25/12/1999",
+                "date_fin_evt": "29/12/1999",
+                "date_publication_arrete": "29/12/1999",
+                "date_publication_jo": "30/12/1999",
+                "libelle_risque_jo": "Mouvement de Terrain",
+                "code_insee": "92040",
+                "libelle_commune": "ISSY-LES-MOULINEAUX"
+              }
+            ],
+            "source": "georisques_api"
+          }
+        },
+        "production_locale_region_5ans": [
+          {
+            "annee": 2020,
+            "surface_totale_ha": 107000.32,
+            "nb_fermes": 3660
+          },
+          {
+            "annee": 2021,
+            "surface_totale_ha": 118663.3,
+            "nb_fermes": 4113
+          },
+          {
+            "annee": 2022,
+            "surface_totale_ha": 129029.17,
+            "nb_fermes": 4380
+          },
+          {
+            "annee": 2023,
+            "surface_totale_ha": 124961.73,
+            "nb_fermes": 4438
+          },
+          {
+            "annee": 2024,
+            "surface_totale_ha": 122077.65,
+            "nb_fermes": 4386
+          }
+        ],
+        "production_nationale_5ans": [
+          {
+            "annee": 2020,
+            "surface_totale_ha": 7554282.92,
+            "nb_fermes": 307312
+          },
+          {
+            "annee": 2021,
+            "surface_totale_ha": 8231508.48,
+            "nb_fermes": 337519
+          },
+          {
+            "annee": 2022,
+            "surface_totale_ha": 8466035.41,
+            "nb_fermes": 351659
+          },
+          {
+            "annee": 2023,
+            "surface_totale_ha": 8303291.32,
+            "nb_fermes": 359226
+          },
+          {
+            "annee": 2024,
+            "surface_totale_ha": 8134700.51,
+            "nb_fermes": 362486
+          }
+        ],
+        "tendance_ventes_pct_5ans": {
+          "periode": {
+            "debut": 2020,
+            "fin": 2024
+          },
+          "evolution_moyenne_pct": 3.68,
+          "details": [
+            {
+              "annee": 2020,
+              "evolution_pct_moyenne": 1.67
+            },
+            {
+              "annee": 2021,
+              "evolution_pct_moyenne": 5.76
+            },
+            {
+              "annee": 2022,
+              "evolution_pct_moyenne": 2.88
+            },
+            {
+              "annee": 2023,
+              "evolution_pct_moyenne": 4.12
+            },
+            {
+              "annee": 2024,
+              "evolution_pct_moyenne": 3.95
+            }
+          ]
+        },
+        "tendance_commerce_5ans": {
+          "periode": {
+            "debut": 6666,
+            "fin": 6666
+          },
+          "details": [
+            {
+              "annee": 6666,
+              "total_valeur_M_eur": 2538.66
+            }
+          ]
+        },
+        "macro_france": {
+          "population": [
+            {
+              "annee": 2019,
+              "valeur": 67382061
+            },
+            {
+              "annee": 2020,
+              "valeur": 67601110
+            },
+            {
+              "annee": 2021,
+              "valeur": 67842811
+            },
+            {
+              "annee": 2022,
+              "valeur": 68065015
+            },
+            {
+              "annee": 2023,
+              "valeur": 68287487
+            },
+            {
+              "annee": 2024,
+              "valeur": 68516699
+            }
+          ],
+          "gdp_growth": [
+            {
+              "annee": 2019,
+              "valeur": 2.02744646419237
+            },
+            {
+              "annee": 2020,
+              "valeur": -7.44064589948231
+            },
+            {
+              "annee": 2021,
+              "valeur": 6.88233783360239
+            },
+            {
+              "annee": 2022,
+              "valeur": 2.57084047567793
+            },
+            {
+              "annee": 2023,
+              "valeur": 0.936487518850853
+            },
+            {
+              "annee": 2024,
+              "valeur": 1.16613851497229
+            }
+          ],
+          "agri_land_pct": [
+            {
+              "annee": 2018,
+              "valeur": 53.1776602653307
+            },
+            {
+              "annee": 2019,
+              "valeur": 52.915574914185
+            },
+            {
+              "annee": 2020,
+              "valeur": 52.729670655905
+            },
+            {
+              "annee": 2021,
+              "valeur": 52.7417272474256
+            },
+            {
+              "annee": 2022,
+              "valeur": 52.6738892290565
+            },
+            {
+              "annee": 2023,
+              "valeur": 52.5043974394656
+            }
+          ]
+        }
+      },
+      "operateurs": {
+        "total": 0,
+        "list": []
+      },
+      "metadata": {
+        "secteur": "alimentaire",
+        "ville": "Issy-les-Moulineaux",
+        "region": "",
+        "objectif": "legumes",
+        "generatedAt": "2025-11-14T10:01:30.975Z",
+        "aiModel": "mistral-nemo:latest"
+      }
+    }
+  }
+}

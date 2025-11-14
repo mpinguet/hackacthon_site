@@ -12,7 +12,14 @@ const donneesBio = JSON.parse(fs.readFileSync(donneesBioPath, 'utf8'));
 const operateursLocaux = loadOperateursLocaux();
 
 const OLLAMA_URL = process.env.OLLAMA_URL || 'http://localhost:11434/api/generate';
-const MODEL = process.env.OLLAMA_MODEL || 'deepseek-r1:8b';
+const DEFAULT_MODEL = process.env.OLLAMA_MODEL || 'mistral-nemo:latest';
+const ALLOWED_MODELS = Array.from(new Set(
+    (process.env.OLLAMA_ALLOWED_MODELS || 'deepseek-r1:8b,mistral-nemo:latest,llama3.1:8b')
+        .split(',')
+        .map(value => value.trim())
+        .filter(Boolean)
+        .concat(DEFAULT_MODEL)
+));
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -54,7 +61,7 @@ app.post('/api/contexte', async (req, res) => {
 });
 
 app.post('/api/analyze', async (req, res) => {
-    const { secteur, region, objectif, ville } = req.body || {};
+    const { secteur, region, objectif, ville, model } = req.body || {};
     const targetVille = (ville || '').trim() || (region || '').trim();
     if (!secteur || !objectif || !targetVille) {
         return res.status(400).json({
@@ -64,6 +71,7 @@ app.post('/api/analyze', async (req, res) => {
     }
 
     try {
+        const requestedModel = resolveModelName(model);
         const contexte = await collectContexte(targetVille, secteur);
         const operatorsRaw = findLocalOperators(targetVille);
         const filteredOperatorsFull = filterOperatorsBySegment(operatorsRaw, secteur).map(formatLocalOperator);
@@ -83,7 +91,7 @@ app.post('/api/analyze', async (req, res) => {
 
         let aiStudy = null;
         try {
-            aiStudy = await runAISynthesis(facts);
+            aiStudy = await runAISynthesis(facts, requestedModel);
         } catch (aiError) {
             console.warn('⚠️ Synthèse IA impossible:', aiError.message);
         }
@@ -100,7 +108,7 @@ app.post('/api/analyze', async (req, res) => {
                 region,
                 objectif,
                 generatedAt: new Date().toISOString(),
-                aiModel: aiStudy?.aiModel || (aiStudy ? MODEL : 'fallback')
+                aiModel: aiStudy?.aiModel || requestedModel || 'fallback'
             }
         };
 
@@ -115,9 +123,9 @@ app.post('/api/analyze', async (req, res) => {
 app.get('/api/health', async (_req, res) => {
     try {
         await axios.get(`${OLLAMA_URL.replace('/generate','')}/api/tags`, { timeout: 2000 });
-        res.json({ status: 'ok', ollama: 'connected', model: MODEL, timestamp: new Date().toISOString() });
+        res.json({ status: 'ok', ollama: 'connected', model: DEFAULT_MODEL, timestamp: new Date().toISOString() });
     } catch (error) {
-        res.json({ status: 'warning', ollama: 'disconnected', model: MODEL, message: error.message, timestamp: new Date().toISOString() });
+        res.json({ status: 'warning', ollama: 'disconnected', model: DEFAULT_MODEL, message: error.message, timestamp: new Date().toISOString() });
     }
 });
 
@@ -160,6 +168,9 @@ function formatLocalOperator(entry = {}) {
         quartier: entry.quartier || null,
         code_postal: entry.code_postal || null,
         adresse: entry.adresse || null,
+        latitude: typeof entry.latitude === 'number' ? entry.latitude : entry.lat || entry.latitude_deg || null,
+        longitude: typeof entry.longitude === 'number' ? entry.longitude : entry.lon || entry.lng || entry.longitude_deg || null,
+        departement: entry.departement || entry.departement_nom || null,
         labels: entry.labels || [],
         site: entry.site || null,
         contact: entry.contact || null,
@@ -192,6 +203,16 @@ function persistMarketData(prefix, payload) {
     } catch (err) {
         console.warn(`Impossible d'enregistrer ${prefix}:`, err.message);
     }
+}
+
+function resolveModelName(value) {
+    const candidate = (value || '').trim();
+    if (!candidate) return DEFAULT_MODEL;
+    const match = ALLOWED_MODELS.find(model => model.toLowerCase() === candidate.toLowerCase());
+    if (!match && candidate) {
+        console.warn(`Mod�le ${candidate} non autoris�, utilisation de ${DEFAULT_MODEL}.`);
+    }
+    return match || DEFAULT_MODEL;
 }
 
 function buildFactsPayload({ secteur, region, objectif, ville, contexte, operateurs }) {
@@ -288,16 +309,19 @@ function buildLeanOperators(list = [], limit = 10) {
         activite: op.activite,
         categorie: op.categorie,
         ville: op.ville,
+        latitude: typeof op.latitude === 'number' ? op.latitude : null,
+        longitude: typeof op.longitude === 'number' ? op.longitude : null,
+        departement: op.departement || op.departement_nom || null,
         labels: Array.isArray(op.labels) ? op.labels.slice(0, 2) : [],
         site: op.site || null
     }));
 }
 
-async function runAISynthesis(facts) {
+async function runAISynthesis(facts, modelName = DEFAULT_MODEL) {
     const prompt = buildAIPrompt(facts);
     try {
         const { data } = await axios.post(OLLAMA_URL, {
-            model: MODEL,
+            model: modelName,
             prompt,
             stream: false,
             options: { temperature: 0.3 }
@@ -305,7 +329,7 @@ async function runAISynthesis(facts) {
         const raw = data?.response || '';
         const jsonText = extractJsonObject(raw);
         const parsed = JSON.parse(jsonText);
-        parsed.aiModel = data?.model || MODEL;
+        parsed.aiModel = data?.model || modelName || DEFAULT_MODEL;
         return parsed;
     } catch (error) {
         const status = error.response?.status;
@@ -315,12 +339,7 @@ async function runAISynthesis(facts) {
 }
 
 function buildAIPrompt(facts) {
-    return `Tu es un analyste de marché bio pour PME. Analyse les données structurées ci-dessous et produit une étude de marché exploitable.\n` +
-        `Les données sont :\n${JSON.stringify(facts)}\n\n` +
-        `Contraintes :\n` +
-        `- Réponds UNIQUEMENT avec un JSON valide (sans markdown).\n` +
-        `- Le JSON doit respecter strictement la structure suivante:\n` +
-        `{
+    const schema = `{
   "summary": "...",
   "kpis": {
     "marche": "...",
@@ -347,11 +366,24 @@ function buildAIPrompt(facts) {
     "competitors": [],
     "competitorsLabels": []
   }
+}`;
+    const serializedFacts = JSON.stringify(facts);
+    return [
+        'Tu es un analyste de marche bio pour PME. Analyse les donnees structurees ci-dessous et produit une etude exploitable.',
+        'Donnees :',
+        serializedFacts,
+        '',
+        'Contraintes :',
+        '- Reponds UNIQUEMENT avec un JSON valide (sans markdown).',
+        '- Le JSON doit respecter strictement la structure suivante:',
+        schema,
+        '- Utilise les chiffres disponibles dans facts. N indique "Non disponible" que si l information est absente.',
+        '- Le champ "kpis.acteurs" doit refleter le volume reel d operateurs identifies (facts.competition.nb_operateurs_bio_total ou facts.operateurs.length).',
+        '- Le bloc "actors" doit lister jusqu a 5 operateurs issus de facts.operateurs ou facts.competition.echantillon_operateurs avec name/type/market/growth/site renseignes (utilise "Non disponible" uniquement si aucune info existe).',
+        '- Chaque jeu de donnees "chartData" doit provenir des chiffres fournis (ventes, commerce, competition). En l absence de donnees, renvoie [].',
+        '- N ajoute aucun commentaire hors JSON.'
+    ].join('\n');
 }
-` +
-        `- Utilise les chiffres présents dans facts. Si une donnée manque, indique "Non disponible".\n`;
-}
-
 function extractJsonObject(text) {
     const start = text.indexOf('{');
     const end = text.lastIndexOf('}');
@@ -532,3 +564,4 @@ function formatPercent(value) {
     if (Number.isNaN(num)) return value;
     return `${num.toFixed(2)}%`;
 }
+

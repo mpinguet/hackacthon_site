@@ -1,0 +1,439 @@
+{
+  "id": "c3361bd8-af6b-497d-9318-e052f5a0bcff",
+  "prefix": "analyse",
+  "generated_at": "2025-11-14T10:03:11.957Z",
+  "payload": {
+    "endpoint": "/api/analyze",
+    "request": {
+      "secteur": "alimentaire",
+      "region": "",
+      "objectif": "legumes",
+      "ville": "Lachapelle-sous-Aubenas",
+      "model": "deepseek-r1:8b"
+    },
+    "response": {
+      "summary": "Le marché des légumes à Lachapelle-sous-Aubenas (1840 habitants, région Auvergne-Rhône-Alpes) est confronté à des risques naturels (inondations, sécheresse) mais bénéficie d'une production régionale et nationale stable. Les ventes ont connu une croissance positive (+1.67% à +5.76%) ces dernières années, avec une faible concurrence en bio (0 opérateurs). Le commerce local est peu documenté, mais les tendances montrent un potentiel de croissance.",
+      "kpis": {
+        "marche": "Marché des légumes en France : production nationale de 8134700.51 hectares en 2024. Commerce : 2538.66 M€ pour l'année 6666 (données incomplètes).",
+        "acteurs": "0 opérateurs bio et 0 concurrents directs identifiés.",
+        "croissance": "Croissance moyenne des ventes : +1.67% en 2020, +5.76% en 2021, +2.88% en 2022, +4.12% en 2023, +3.95% en 2024.",
+        "potentiel": "Faible concurrence en bio, mais risques naturels (10 catnat) et demande potentielle de produits locaux.",
+        "trends": {
+          "marche": "Croissance des ventes (+5.76% en 2021), mais données commerciales incomplètes.",
+          "acteurs": "Stabilité à 0 opérateurs bio.",
+          "croissance": "Taux d'évolution positifs (+1.67% à +5.76%) depuis 2020.",
+          "potentiel": "Développement possible du bio malgré les risques naturels."
+        }
+      },
+      "keyPoints": [
+        "Marché des légumes en croissance avec une moyenne de +3.95% en 2024.",
+        "Faible concurrence en bio (0 opérateurs) à Lachapelle-sous-Aubenas.",
+        "Risques naturels (inondations, sécheresse) pouvant affecter la production.",
+        "Production régionale et nationale stable (+927557.48 ha en 2024).",
+        "Commerce local peu documenté mais potentiel de développement."
+      ],
+      "actors": [
+        {
+          "name": "Non disponible",
+          "type": "Non disponible",
+          "market": "Non disponible",
+          "growth": "Non disponible",
+          "site": "Non disponible"
+        },
+        {
+          "name": "Non disponible",
+          "type": "Non disponible",
+          "market": "Non disponible",
+          "growth": "Non disponible",
+          "site": "Non disponible"
+        },
+        {
+          "name": "Non disponible",
+          "type": "Non disponible",
+          "market": "Non disponible",
+          "growth": "Non disponible",
+          "site": "Non disponible"
+        },
+        {
+          "name": "Non disponible",
+          "type": "Non disponible",
+          "market": "Non disponible",
+          "growth": "Non disponible",
+          "site": "Non disponible"
+        },
+        {
+          "name": "Non disponible",
+          "type": "Non disponible",
+          "market": "Non disponible",
+          "growth": "Non disponible",
+          "site": "Non disponible"
+        }
+      ],
+      "recommendations": [
+        {
+          "title": "Développement du bio",
+          "desc": "Exploiter la faible concurrence en mettant en avant les produits biologiques locaux."
+        },
+        {
+          "title": "Gestion des risques naturels",
+          "desc": "Diversifier les cultures et utiliser des techniques durables pour atténuer les impacts des inondations et sécheresses."
+        },
+        {
+          "title": "Marketing local",
+          "desc": "Promouvoir les légumes auprès des habitants de Lachapelle-sous-Aubenas et des zones environnantes."
+        }
+      ],
+      "chartData": {
+        "marketShare": [],
+        "marketShareLabels": [],
+        "evolution": [
+          1.67,
+          5.76,
+          2.88,
+          4.12,
+          3.95
+        ],
+        "evolutionLabels": [
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024"
+        ],
+        "segments": [],
+        "segmentsLabels": [],
+        "competitors": [],
+        "competitorsLabels": []
+      },
+      "aiModel": "deepseek-r1:8b",
+      "context": {
+        "meta": {
+          "ville_recherchee": "Lachapelle-sous-Aubenas",
+          "segment_analyse": "alimentaire",
+          "generated_at": "2025-11-14T10:02:14.330Z"
+        },
+        "geo": {
+          "nom_commune": "Lachapelle-sous-Aubenas",
+          "code_commune": "07122",
+          "population": 1840,
+          "code_departement": "07",
+          "code_region": "84",
+          "nom_region": "Auvergne-Rhône-Alpes"
+        },
+        "concurrence_locale_api": {
+          "nb_operateurs_bio_total": 0,
+          "nb_concurrents_directs": 0,
+          "concurrents_directs": [],
+          "ventilation_activites": {},
+          "detail_operateurs": []
+        },
+        "risques_locaux_api": {
+          "code_commune": "07122",
+          "basol": {
+            "total": 0,
+            "items": [],
+            "source": "georisques_api"
+          },
+          "azi": {
+            "total": 0,
+            "items": [],
+            "source": "georisques_api"
+          },
+          "catnat": {
+            "total": 10,
+            "items": [
+              {
+                "code_national_catnat": "INTE0400864A",
+                "date_debut_evt": "17/08/2004",
+                "date_fin_evt": "17/08/2004",
+                "date_publication_arrete": "11/01/2005",
+                "date_publication_jo": "15/01/2005",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "07122",
+                "libelle_commune": "LACHAPELLE-SOUS-AUBENAS"
+              },
+              {
+                "code_national_catnat": "INTE1905474A",
+                "date_debut_evt": "01/07/2017",
+                "date_fin_evt": "30/09/2017",
+                "date_publication_arrete": "27/02/2019",
+                "date_publication_jo": "23/03/2019",
+                "libelle_risque_jo": "Sécheresse",
+                "code_insee": "07122",
+                "libelle_commune": "LACHAPELLE-SOUS-AUBENAS"
+              },
+              {
+                "code_national_catnat": "INTE2014522A",
+                "date_debut_evt": "01/04/2019",
+                "date_fin_evt": "30/09/2019",
+                "date_publication_arrete": "17/06/2020",
+                "date_publication_jo": "10/07/2020",
+                "libelle_risque_jo": "Sécheresse",
+                "code_insee": "07122",
+                "libelle_commune": "LACHAPELLE-SOUS-AUBENAS"
+              },
+              {
+                "code_national_catnat": "INTE9200465A",
+                "date_debut_evt": "22/09/1992",
+                "date_fin_evt": "22/09/1992",
+                "date_publication_arrete": "12/10/1992",
+                "date_publication_jo": "13/10/1992",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "07122",
+                "libelle_commune": "LACHAPELLE-SOUS-AUBENAS"
+              },
+              {
+                "code_national_catnat": "INTE9300655A",
+                "date_debut_evt": "22/09/1993",
+                "date_fin_evt": "25/09/1993",
+                "date_publication_arrete": "29/11/1993",
+                "date_publication_jo": "15/12/1993",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "07122",
+                "libelle_commune": "LACHAPELLE-SOUS-AUBENAS"
+              },
+              {
+                "code_national_catnat": "IOCE1030923A",
+                "date_debut_evt": "07/09/2010",
+                "date_fin_evt": "08/09/2010",
+                "date_publication_arrete": "02/12/2010",
+                "date_publication_jo": "05/12/2010",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "07122",
+                "libelle_commune": "LACHAPELLE-SOUS-AUBENAS"
+              },
+              {
+                "code_national_catnat": "IOME2308745A",
+                "date_debut_evt": "01/04/2022",
+                "date_fin_evt": "30/09/2022",
+                "date_publication_arrete": "03/04/2023",
+                "date_publication_jo": "03/05/2023",
+                "libelle_risque_jo": "Sécheresse",
+                "code_insee": "07122",
+                "libelle_commune": "LACHAPELLE-SOUS-AUBENAS"
+              },
+              {
+                "code_national_catnat": "NOR19821118",
+                "date_debut_evt": "06/11/1982",
+                "date_fin_evt": "10/11/1982",
+                "date_publication_arrete": "18/11/1982",
+                "date_publication_jo": "19/11/1982",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "07122",
+                "libelle_commune": "LACHAPELLE-SOUS-AUBENAS"
+              },
+              {
+                "code_national_catnat": "NOR19821118",
+                "date_debut_evt": "06/11/1982",
+                "date_fin_evt": "10/11/1982",
+                "date_publication_arrete": "18/11/1982",
+                "date_publication_jo": "19/11/1982",
+                "libelle_risque_jo": "Tempête",
+                "code_insee": "07122",
+                "libelle_commune": "LACHAPELLE-SOUS-AUBENAS"
+              },
+              {
+                "code_national_catnat": "NOR19840215",
+                "date_debut_evt": "14/10/1983",
+                "date_fin_evt": "16/10/1983",
+                "date_publication_arrete": "15/02/1984",
+                "date_publication_jo": "26/02/1984",
+                "libelle_risque_jo": "Inondations et/ou Coulées de Boue",
+                "code_insee": "07122",
+                "libelle_commune": "LACHAPELLE-SOUS-AUBENAS"
+              }
+            ],
+            "source": "georisques_api"
+          }
+        },
+        "production_locale_region_5ans": [
+          {
+            "annee": 2020,
+            "surface_totale_ha": 877272.48,
+            "nb_fermes": 43743
+          },
+          {
+            "annee": 2021,
+            "surface_totale_ha": 917492.55,
+            "nb_fermes": 46940
+          },
+          {
+            "annee": 2022,
+            "surface_totale_ha": 943324.99,
+            "nb_fermes": 49338
+          },
+          {
+            "annee": 2023,
+            "surface_totale_ha": 932440.72,
+            "nb_fermes": 50352
+          },
+          {
+            "annee": 2024,
+            "surface_totale_ha": 927557.48,
+            "nb_fermes": 50400
+          }
+        ],
+        "production_nationale_5ans": [
+          {
+            "annee": 2020,
+            "surface_totale_ha": 7554282.92,
+            "nb_fermes": 307312
+          },
+          {
+            "annee": 2021,
+            "surface_totale_ha": 8231508.48,
+            "nb_fermes": 337519
+          },
+          {
+            "annee": 2022,
+            "surface_totale_ha": 8466035.41,
+            "nb_fermes": 351659
+          },
+          {
+            "annee": 2023,
+            "surface_totale_ha": 8303291.32,
+            "nb_fermes": 359226
+          },
+          {
+            "annee": 2024,
+            "surface_totale_ha": 8134700.51,
+            "nb_fermes": 362486
+          }
+        ],
+        "tendance_ventes_pct_5ans": {
+          "periode": {
+            "debut": 2020,
+            "fin": 2024
+          },
+          "evolution_moyenne_pct": 3.68,
+          "details": [
+            {
+              "annee": 2020,
+              "evolution_pct_moyenne": 1.67
+            },
+            {
+              "annee": 2021,
+              "evolution_pct_moyenne": 5.76
+            },
+            {
+              "annee": 2022,
+              "evolution_pct_moyenne": 2.88
+            },
+            {
+              "annee": 2023,
+              "evolution_pct_moyenne": 4.12
+            },
+            {
+              "annee": 2024,
+              "evolution_pct_moyenne": 3.95
+            }
+          ]
+        },
+        "tendance_commerce_5ans": {
+          "periode": {
+            "debut": 6666,
+            "fin": 6666
+          },
+          "details": [
+            {
+              "annee": 6666,
+              "total_valeur_M_eur": 2538.66
+            }
+          ]
+        },
+        "macro_france": {
+          "population": [
+            {
+              "annee": 2019,
+              "valeur": 67382061
+            },
+            {
+              "annee": 2020,
+              "valeur": 67601110
+            },
+            {
+              "annee": 2021,
+              "valeur": 67842811
+            },
+            {
+              "annee": 2022,
+              "valeur": 68065015
+            },
+            {
+              "annee": 2023,
+              "valeur": 68287487
+            },
+            {
+              "annee": 2024,
+              "valeur": 68516699
+            }
+          ],
+          "gdp_growth": [
+            {
+              "annee": 2019,
+              "valeur": 2.02744646419237
+            },
+            {
+              "annee": 2020,
+              "valeur": -7.44064589948231
+            },
+            {
+              "annee": 2021,
+              "valeur": 6.88233783360239
+            },
+            {
+              "annee": 2022,
+              "valeur": 2.57084047567793
+            },
+            {
+              "annee": 2023,
+              "valeur": 0.936487518850853
+            },
+            {
+              "annee": 2024,
+              "valeur": 1.16613851497229
+            }
+          ],
+          "agri_land_pct": [
+            {
+              "annee": 2018,
+              "valeur": 53.1776602653307
+            },
+            {
+              "annee": 2019,
+              "valeur": 52.915574914185
+            },
+            {
+              "annee": 2020,
+              "valeur": 52.729670655905
+            },
+            {
+              "annee": 2021,
+              "valeur": 52.7417272474256
+            },
+            {
+              "annee": 2022,
+              "valeur": 52.6738892290565
+            },
+            {
+              "annee": 2023,
+              "valeur": 52.5043974394656
+            }
+          ]
+        }
+      },
+      "operateurs": {
+        "total": 0,
+        "list": []
+      },
+      "metadata": {
+        "secteur": "alimentaire",
+        "ville": "Lachapelle-sous-Aubenas",
+        "region": "",
+        "objectif": "legumes",
+        "generatedAt": "2025-11-14T10:03:11.957Z",
+        "aiModel": "deepseek-r1:8b"
+      }
+    }
+  }
+}

@@ -262,6 +262,9 @@ body {
     transition: max-height 0.35s ease, opacity 0.35s ease;
     max-height: 10000px; /* Valeur suffisamment grande pour tout contenu */
     opacity: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .report-section.collapsible.collapsed .section-content {
@@ -493,55 +496,79 @@ body {
 .kpi-grid {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1.5rem;
 }
 
 .kpi-card {
-    background: #fdfefb;
-    border-radius: 20px;
+    position: relative;
+    background: #ffffff;
+    border-radius: 18px;
     padding: 1.5rem;
-    border: 1px solid rgba(45,80,22,0.08);
-    text-align: center;
+    border: 1px solid rgba(45,80,22,0.15);
+    color: var(--primary);
+}
+
+.macro-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .kpi-icon {
     width: 48px;
     height: 48px;
-    border-radius: 16px;
-    background: rgba(124,179,66,0.15);
-    display: flex;
+    border-radius: 14px;
+    background: rgba(45, 80, 22, 0.12);
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 0.75rem;
-    color: var(--secondary);
+    margin-bottom: 1rem;
+    color: var(--primary);
 }
 
 .kpi-icon i {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 .kpi-value {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 700;
     color: var(--primary);
 }
 
 .kpi-label {
     font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-top: 0.35rem;
     color: var(--muted);
 }
 
 .kpi-trend {
-    margin-top: 0.75rem;
+    margin-top: 1rem;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(45,80,22,0.08);
+    color: var(--primary);
 }
 
-.kpi-trend.positive { color: var(--success); }
-.kpi-trend.negative { color: var(--danger); }
-.kpi-trend.neutral { color: var(--muted); }
+.kpi-trend.positive {
+    background: rgba(61, 187, 117, 0.15);
+    color: #1e7a4c;
+}
+.kpi-trend.negative {
+    background: rgba(240, 91, 86, 0.15);
+    color: #c23631;
+}
+.kpi-trend.neutral {
+    background: rgba(92, 102, 89, 0.12);
+    color: var(--muted);
+}
 
 /* ===========================
    CHART CARDS
@@ -639,6 +666,102 @@ body {
 
 .actor-info a:hover {
     text-decoration: underline;
+}
+
+.actors-layout {
+    display: grid;
+    grid-template-columns: minmax(320px, 420px) 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+.actors-map-card {
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 20px;
+    padding: 1.25rem;
+    background: #fff;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.05);
+}
+
+.map-card-header h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    color: var(--primary);
+}
+
+.map-card-header p {
+    margin: 0.3rem 0 1rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.actors-map {
+    width: 100%;
+    height: 360px;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.08);
+}
+
+.map-empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--muted);
+    font-size: 0.95rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+.map-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #f4f8ec;
+    border-radius: 999px;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.85rem;
+    border: 1px solid rgba(45,80,22,0.1);
+}
+
+.legend-color {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.actors-empty {
+    padding: 1.5rem;
+    border: 1px dashed rgba(45,80,22,0.3);
+    border-radius: 16px;
+    text-align: center;
+    color: var(--muted);
+    background: #fdfef9;
+}
+
+.actors-empty strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--primary);
+}
+
+@media (max-width: 1100px) {
+    .actors-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .actors-map {
+        height: 300px;
+    }
 }
 
 /* ===========================

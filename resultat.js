@@ -9,12 +9,22 @@ const secteur = decodeParam('secteur') || 'Alimentaire Bio';
 const ville = decodeParam('ville') || decodeParam('region') || 'Paris';
 const region = decodeParam('region') || '';
 const objectif = decodeParam('objectif') || 'Analyse de marché générale';
+const model = decodeParam('model') || 'deepseek-r1:8b';
+const MAP_COLORS = ['#2d5016', '#7cb342', '#a7d46b', '#4c8c2b', '#cbeaa3', '#5d9c39'];
+const LEAFLET_CDN = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+const HTML2PDF_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
 
 let chartInstances = [];
 let collapsibleInitialized = false;
 let progressValue = 0;
 let progressTimer = null;
+let actorsMapInstance = null;
+let actorsMarkersLayer = null;
+let exportInProgress = false;
+let leafletLoadingPromise = null;
+let html2PdfLoaderPromise = null;
 
+setupExportButton();
 init();
 
 async function init() {
@@ -54,7 +64,7 @@ async function fetchStudy() {
   const response = await fetch(API_ANALYZE_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ secteur, region, objectif, ville })
+    body: JSON.stringify({ secteur, region, objectif, ville, model })
   });
   if (!response.ok) throw new Error(`API analyse: ${response.status}`);
   return response.json();
@@ -89,6 +99,7 @@ function renderMetadata(study) {
   setBadge('regionBadge', regionLabel ? `<i class="ri-map-pin-2-line"></i><span>${regionLabel}</span>` : '');
   setText('dateGeneration', new Date().toLocaleString('fr-FR'));
   setText('objectifValue', objectif);
+  setText('modelValue', study?.metadata?.aiModel || model);
 }
 
 function renderSummary(study) {
@@ -510,6 +521,15 @@ function renderActors(study) {
   if (!grid) return;
   grid.innerHTML = '';
   const actors = Array.isArray(study.actors) && study.actors.length ? study.actors : (study.operateurs?.list || []);
+  if (!actors.length) {
+    grid.innerHTML = `
+      <div class="actors-empty">
+        <strong>Aucun opérateur exploitable n'a été remonté.</strong>
+        <span>Ajoutez une localisation plus large ou un autre segment pour enrichir la cartographie.</span>
+      </div>`;
+    renderActorsMap([]);
+    return;
+  }
   const actorIcons = [
     'ri-store-2-line',
     'ri-building-2-line',
@@ -523,6 +543,8 @@ function renderActors(study) {
     div.className = 'actor-card';
     const siteLink = actor.site ? `<a href="${actor.site}" target="_blank" rel="noopener">Site</a>` : '-';
     const icon = actorIcons[idx % actorIcons.length];
+    const coverage = actor.market || actor.ville || actor.city || study?.context?.geo?.nom_commune || study?.context?.geo?.nom_region || '-';
+    const resource = actor.growth || siteLink;
     div.innerHTML = `
       <div class="actor-header">
         <div class="actor-logo"><i class="${icon}"></i></div>
@@ -532,11 +554,154 @@ function renderActors(study) {
         </div>
       </div>
       <div class="actor-info">
-        <div class="actor-stat"><span>Position:</span><strong>${actor.market || '-'}</strong></div>
-        <div class="actor-stat"><span>Ressource:</span><strong>${actor.growth || siteLink}</strong></div>
+        <div class="actor-stat"><span>Position:</span><strong>${coverage}</strong></div>
+        <div class="actor-stat"><span>Ressource:</span><strong>${resource}</strong></div>
       </div>`;
     grid.appendChild(div);
   });
+  const mapDataset = study.operateurs?.list?.length ? study.operateurs.list : actors;
+  renderActorsMap(mapDataset);
+}
+
+
+function renderActorsMap(operators = []) {
+  const mapElement = document.getElementById('actorsMap');
+  const legendElement = document.getElementById('actorsMapLegend');
+  if (!mapElement) return;
+
+  const renderEmpty = (message) => {
+    if (legendElement) legendElement.innerHTML = '';
+    mapElement.innerHTML = `<div class="map-empty-state">${message}</div>`;
+  };
+
+  if (actorsMapInstance) {
+    actorsMapInstance.remove();
+    actorsMapInstance = null;
+    actorsMarkersLayer = null;
+  }
+  mapElement.innerHTML = '';
+
+  if (!operators || !operators.length) {
+    renderEmpty('Aucun opérateur géolocalisé pour le moment.');
+    return;
+  }
+
+  const points = operators
+    .map(op => {
+      const lat = Number(op.latitude ?? op.lat ?? op.position_lat);
+      const lng = Number(op.longitude ?? op.lon ?? op.position_lng);
+      if (!Number.isFinite(lat) || !Number.isFinite(lng)) return null;
+      return {
+        lat,
+        lng,
+        label: op.nom || op.name || 'Acteur bio',
+        categorie: op.categorie || op.type || op.activite || 'Acteur bio',
+        ville: op.ville || op.market || '',
+        site: op.site || null
+      };
+    })
+    .filter(Boolean);
+
+  if (!points.length) {
+    renderEmpty('Les opérateurs répertoriés n’ont pas de coordonnées GPS exploitables.');
+    return;
+  }
+
+  const mountMap = () => {
+    const categoryColors = {};
+    let colorIndex = 0;
+    const getColor = (category) => {
+      const key = category || 'Acteur bio';
+      if (!categoryColors[key]) {
+        categoryColors[key] = MAP_COLORS[colorIndex % MAP_COLORS.length];
+        colorIndex += 1;
+      }
+      return categoryColors[key];
+    };
+
+    actorsMapInstance = L.map(mapElement, { zoomControl: true });
+    const bounds = L.latLngBounds(points.map(point => [point.lat, point.lng]));
+    actorsMapInstance.fitBounds(bounds, { padding: [32, 32] });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(actorsMapInstance);
+
+    actorsMarkersLayer = L.layerGroup().addTo(actorsMapInstance);
+    points.forEach(point => {
+      const color = getColor(point.categorie);
+      L.circleMarker([point.lat, point.lng], {
+        radius: 8,
+        color,
+        weight: 1.2,
+        fillColor: color,
+        fillOpacity: 0.85
+      })
+        .bindPopup(`
+          <strong>${point.label}</strong><br>
+          ${point.categorie}<br>
+          ${point.ville || ''}
+          ${point.site ? `<br><a href="${point.site}" target="_blank" rel="noopener">Site</a>` : ''}
+        `)
+        .addTo(actorsMarkersLayer);
+    });
+
+    if (legendElement) {
+      const legendItems = Object.entries(points.reduce((acc, point) => {
+        const key = point.categorie || 'Acteur bio';
+        acc[key] = (acc[key] || 0) + 1;
+        return acc;
+      }, {}));
+      legendElement.innerHTML = legendItems
+        .map(([label, value], idx) => {
+          const color = getColor(label) || MAP_COLORS[idx % MAP_COLORS.length];
+          return `
+            <div class="legend-item">
+              <span class="legend-color" style="background:${color}"></span>
+              <span>${label}</span>
+              <strong>${value}</strong>
+            </div>`;
+        })
+        .join('');
+    }
+  };
+
+  if (typeof L === 'undefined') {
+    mapElement.innerHTML = '<div class="map-empty-state">Chargement de la carte en cours...</div>';
+    loadLeafletLibrary()
+      .then(mountMap)
+      .catch(() => renderEmpty('Carte indisponible. Vérifiez votre connexion.'));
+    return;
+  }
+
+  mountMap();
+}
+
+function loadLeafletLibrary() {
+  if (typeof L !== 'undefined') return Promise.resolve();
+  if (leafletLoadingPromise) return leafletLoadingPromise;
+
+  leafletLoadingPromise = new Promise((resolve, reject) => {
+    const existing = document.querySelector('script[data-leaflet-dynamic]');
+    if (existing) {
+      existing.addEventListener('load', () => resolve());
+      existing.addEventListener('error', () => reject(new Error('Leaflet indisponible')));
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = LEAFLET_CDN;
+    script.async = true;
+    script.defer = true;
+    script.dataset.leafletDynamic = 'true';
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error('Leaflet indisponible'));
+    (document.head || document.body).appendChild(script);
+  }).finally(() => {
+    setTimeout(() => {
+      leafletLoadingPromise = null;
+    }, 0);
+  });
+
+  return leafletLoadingPromise;
 }
 
 function renderCompetitionDetails(concurrence) {
@@ -853,4 +1018,99 @@ function parsePercent(value) {
   if (value == null) return null;
   const match = String(value).replace(',', '.').match(/-?\d+(\.\d+)?/);
   return match ? parseFloat(match[0]) : null;
+}
+
+function setupExportButton() {
+  const btn = document.getElementById('exportPdfBtn');
+  if (!btn) return;
+  btn.addEventListener('click', exportReportToPdf);
+}
+
+function exportReportToPdf() {
+  if (exportInProgress) return;
+  const metadata = document.getElementById('metadata');
+  const main = document.getElementById('mainReport');
+  if (!metadata || !main) return;
+
+  exportInProgress = true;
+
+  ensureHtml2PdfReady()
+    .then(() => {
+      const exportWrapper = document.createElement('div');
+      exportWrapper.className = 'pdf-export-wrapper';
+      exportWrapper.style.padding = '24px';
+      exportWrapper.style.background = '#fff';
+      exportWrapper.style.maxWidth = '1024px';
+      exportWrapper.style.position = 'fixed';
+      exportWrapper.style.top = '-9999px';
+      exportWrapper.style.left = '-9999px';
+      const metaClone = metadata.cloneNode(true);
+      const mainClone = main.cloneNode(true);
+      metaClone.style.display = 'block';
+      mainClone.style.display = 'block';
+      mainClone.querySelectorAll('.report-section').forEach(section => section.classList.remove('collapsed'));
+      mainClone.querySelectorAll('.section-content').forEach(section => {
+        section.style.display = 'block';
+      });
+      exportWrapper.appendChild(metaClone);
+      exportWrapper.appendChild(mainClone);
+      document.body.appendChild(exportWrapper);
+
+      const filename = `BioMarket-${new Date().toISOString().slice(0, 10)}.pdf`;
+      return html2pdf()
+        .set({
+          margin: 10,
+          filename,
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true },
+          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        })
+        .from(exportWrapper)
+        .save()
+        .then(() => {
+          exportWrapper.remove();
+        })
+        .catch(error => {
+          exportWrapper.remove();
+          throw error;
+        });
+    })
+    .then(() => {
+      exportInProgress = false;
+    })
+    .catch(error => {
+      console.error('Export PDF', error);
+      exportInProgress = false;
+      alert('Impossible de générer le PDF. Réessayez dans un instant.');
+    });
+}
+
+function ensureHtml2PdfReady() {
+  if (typeof html2pdf !== 'undefined') return Promise.resolve();
+  if (html2PdfLoaderPromise) return html2PdfLoaderPromise;
+
+  html2PdfLoaderPromise = new Promise((resolve, reject) => {
+    const existing = document.querySelector('script[data-html2pdf-dynamic]');
+    if (existing) {
+      existing.addEventListener('load', () => resolve());
+      existing.addEventListener('error', () => reject(new Error('html2pdf introuvable')));
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = HTML2PDF_CDN;
+    script.async = true;
+    script.defer = true;
+    script.dataset.html2pdfDynamic = 'true';
+    script.crossOrigin = 'anonymous';
+    script.referrerPolicy = 'no-referrer';
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error('html2pdf introuvable'));
+    (document.head || document.body).appendChild(script);
+  }).finally(() => {
+    setTimeout(() => {
+      html2PdfLoaderPromise = null;
+    }, 0);
+  });
+
+  return html2PdfLoaderPromise;
 }

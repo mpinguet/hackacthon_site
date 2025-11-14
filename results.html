@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
     <link rel="stylesheet" href="resultat.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha512-sA+e2FG4POQFfCajLkA++2uVH54camzatoDtr1cGukdxbYlR5c+EMF4iAfDdc0AGJi/7luWMSuD8RnbM2w5xgw==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha512-vRmG2G8XNPXGpG5H4m6q+UpBAkLTlaX2UjsFvdcGaOeL50DJBSSTXobHxPPH/F+NcwHfRQ4cZIz0P2vL31sQ2Q==" crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC7fTssuLwZqhetYG5PaPkmQ4Z1ZC1z0N+J5pQqrYygV70+VYB9nBPZtC2Z1N0G4rH3gr6JfmTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <header class="header">
@@ -18,7 +21,7 @@
                 <i class="ri-leaf-line"></i>
                 <span>BioMarket Insights</span>
             </div>
-            <button class="export-btn" onclick="window.print()">
+            <button class="export-btn" type="button" id="exportPdfBtn">
                 <i class="ri-share-forward-line"></i>
                 Exporter PDF
             </button>
@@ -55,6 +58,10 @@
                 <div class="info-item">
                     <span class="info-label">Objectif</span>
                     <span class="info-value" id="objectifValue"></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Modele IA</span>
+                    <span class="info-value" id="modelValue"></span>
                 </div>
             </div>
         </div>
@@ -110,7 +117,7 @@
                         <div class="kpi-trend" id="kpiTrendActeurs">-</div>
                     </div>
                     <div class="kpi-card">
-                        <div class="kpi-icon"><i class="ri-trending-up-line"></i></div>
+                        <div class="kpi-icon"><i class="ri-line-chart-line"></i></div>
                         <div class="kpi-value" id="kpiCroissance">-</div>
                         <div class="kpi-label">Croissance annuelle</div>
                         <div class="kpi-trend" id="kpiTrendCroissance">-</div>
@@ -175,34 +182,6 @@
                 </div>
                 <div class="section-content">
                     <div class="points-list" id="pointsList"></div>
-                </div>
-            </section>
-
-            <section class="report-section collapsible">
-                <div class="section-header">
-                    <h2><i class="ri-community-line"></i> Cartographie des acteurs</h2>
-                    <button class="collapse-toggle" type="button">
-                        <i class="ri-arrow-up-s-line"></i>
-                    </button>
-                </div>
-                <div class="section-content">
-                    <div class="actors-grid" id="actorsGrid"></div>
-                </div>
-            </section>
-
-            <section class="report-section collapsible">
-                <div class="section-header">
-                    <h2><i class="ri-store-3-line"></i> Concurrence locale détaillée</h2>
-                    <button class="collapse-toggle" type="button">
-                        <i class="ri-arrow-up-s-line"></i>
-                    </button>
-                </div>
-                <div class="section-content">
-                    <div class="competition-kpis" id="competitionSummary"></div>
-                    <div class="competition-split" id="activitySplit"></div>
-                    <div class="table-card">
-                        <table id="competitorsTable" class="data-table"></table>
-                    </div>
                 </div>
             </section>
 

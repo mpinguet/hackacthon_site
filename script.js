@@ -2,7 +2,15 @@
 // FORM SUBMISSION HANDLER
 // ===========================
 
-document.addEventListener('DOMContentLoaded', initializeMarketForm);
+const GEO_COMMUNES_ENDPOINT = 'https://geo.api.gouv.fr/communes';
+let villeSearchAbortController = null;
+let villeSearchDebounce = null;
+let currentVilleMeta = null;
+
+document.addEventListener('DOMContentLoaded', () => {
+    initializeMarketForm();
+    setupVilleSearch();
+});
 
 function initializeMarketForm() {
     const form = document.getElementById('marketForm');
@@ -10,18 +18,68 @@ function initializeMarketForm() {
     form.addEventListener('submit', handleMarketFormSubmit);
 }
 
+function setupVilleSearch() {
+    const input = document.getElementById('ville');
+    const helper = document.getElementById('villeHelper');
+    if (!input) return;
+    setHelperText(helper, 'Saisissez au moins 2 lettres pour rechercher une commune.');
+
+    input.addEventListener('input', () => {
+        const value = input.value.trim();
+        currentVilleMeta = null;
+        input.dataset.insee = '';
+        input.dataset.departement = '';
+        input.dataset.departementLabel = '';
+
+        if (value.length < 2) {
+            clearVilleOptions();
+            setHelperText(helper, 'Tapez au moins 2 lettres...');
+            return;
+        }
+
+        setHelperText(helper, 'Recherche en cours...');
+        if (villeSearchDebounce) clearTimeout(villeSearchDebounce);
+        villeSearchDebounce = setTimeout(() => {
+            requestVilleSuggestions(value);
+        }, 250);
+    });
+
+    input.addEventListener('change', () => syncVilleMetadata(input));
+    input.addEventListener('blur', () => syncVilleMetadata(input));
+
+    const savedVille = localStorage.getItem('villeGlobale');
+    if (savedVille) {
+        input.value = savedVille;
+        const departementLabel = localStorage.getItem('departementGlobal') || '';
+        const insee = localStorage.getItem('villeInseeGlobal') || '';
+        if (departementLabel || insee) {
+            currentVilleMeta = {
+                nom: savedVille,
+                insee,
+                departement: departementLabel,
+                departementLabel
+            };
+            input.dataset.insee = insee;
+            input.dataset.departement = departementLabel;
+            input.dataset.departementLabel = departementLabel;
+        }
+    }
+}
+
 function handleMarketFormSubmit(event) {
     event.preventDefault();
 
     const secteurInput = document.getElementById('secteur');
     const villeInput = document.getElementById('ville');
-    const regionInput = document.getElementById('region');
     const objectifInput = document.getElementById('objectif');
+    const modelInput = document.getElementById('model');
 
     const secteur = (secteurInput?.value || '').trim();
     const ville = (villeInput?.value || '').trim();
-    const region = (regionInput?.value || '').trim();
+    const villeMeta = currentVilleMeta || getVilleMetaFromInput(villeInput);
+    const departement = villeMeta?.departementLabel || '';
     const objectif = (objectifInput?.value || '').trim();
+    const model = (modelInput?.value || '').trim() || 'deepseek-r1:8b';
 
     const missing = [];
     if (!secteur) missing.push('secteur');
@@ -34,25 +92,37 @@ function handleMarketFormSubmit(event) {
         return;
     }
 
-    persistSelections({ secteur, ville, region, objectif });
-    renderSubmissionPreview({ secteur, ville, region, objectif });
+    persistSelections({
+        secteur,
+        ville,
+        departement,
+        objectif,
+        model,
+        insee: villeMeta?.insee || ''
+    });
+    renderSubmissionPreview({ secteur, ville, departement, objectif, model });
 
-    const params = new URLSearchParams({ secteur, ville, objectif });
-    if (region) params.set('region', region);
+    const params = new URLSearchParams({ secteur, ville, objectif, model });
+    if (departement) params.set('departement', departement);
+    if (villeMeta?.insee) {
+        params.set('insee', villeMeta.insee);
+    }
 
     setTimeout(() => {
         window.location.href = `results.html?${params.toString()}`;
     }, 600);
 }
 
-function persistSelections({ secteur, ville, region, objectif }) {
+function persistSelections({ secteur, ville, departement, objectif, model, insee }) {
     localStorage.setItem('secteurGlobal', secteur);
     localStorage.setItem('villeGlobale', ville);
-    localStorage.setItem('regionGlobale', region);
     localStorage.setItem('objectifGlobale', objectif);
+    localStorage.setItem('modelGlobal', model);
+    if (departement) localStorage.setItem('departementGlobal', departement);
+    if (insee) localStorage.setItem('villeInseeGlobal', insee);
 }
 
-function renderSubmissionPreview({ secteur, ville, region, objectif }) {
+function renderSubmissionPreview({ secteur, ville, departement, objectif, model }) {
     const resultsDiv = document.getElementById('results');
     if (!resultsDiv) return;
     resultsDiv.style.display = 'block';
@@ -67,8 +137,9 @@ function renderSubmissionPreview({ secteur, ville, region, objectif }) {
         <ul class="results-summary">
             <li><i class="ri-archive-stack-line"></i>Secteur : <strong>${secteur}</strong></li>
             <li><i class="ri-building-line"></i>Ville ciblée : <strong>${ville}</strong></li>
-            ${region ? `<li><i class="ri-map-pin-line"></i>Département : <strong>${region}</strong></li>` : ''}
+            ${departement ? `<li><i class="ri-map-pin-line"></i>Département : <strong>${departement}</strong></li>` : ''}
             <li><i class="ri-focus-line"></i>Objectif : <strong>${objectif}</strong></li>
+            <li><i class="ri-cpu-line"></i>Modele IA : <strong>${model}</strong></li>
         </ul>
         <div class="results-note">
             <i class="ri-robot-2-line"></i>
@@ -76,6 +147,100 @@ function renderSubmissionPreview({ secteur, ville, region, objectif }) {
         </div>
     `;
     resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function requestVilleSuggestions(query) {
+    const helper = document.getElementById('villeHelper');
+    if (villeSearchAbortController) {
+        villeSearchAbortController.abort();
+    }
+    villeSearchAbortController = new AbortController();
+    const params = new URLSearchParams({
+        nom: query,
+        fields: 'nom,code,codeDepartement,departement',
+        limit: '50',
+        boost: 'population'
+    });
+
+    fetch(`${GEO_COMMUNES_ENDPOINT}?${params.toString()}`, { signal: villeSearchAbortController.signal })
+        .then(response => {
+            if (!response.ok) throw new Error(`Geo API ${response.status}`);
+            return response.json();
+        })
+        .then(communes => {
+            populateVilleSuggestions(communes);
+            if (!communes.length) {
+                setHelperText(helper, 'Aucune commune trouvée avec cette saisie.');
+            } else {
+                setHelperText(helper, 'Choisissez une commune dans la liste.');
+            }
+        })
+        .catch(error => {
+            if (error.name === 'AbortError') return;
+            console.error('Recherche commune impossible', error);
+            setHelperText(helper, 'Recherche impossible. Vrifiez votre connexion.');
+            clearVilleOptions();
+        });
+}
+
+function populateVilleSuggestions(communes) {
+    const datalist = document.getElementById('villeSuggestions');
+    if (!datalist) return;
+    datalist.innerHTML = '';
+    const fragment = document.createDocumentFragment();
+    communes.forEach(commune => {
+        const option = document.createElement('option');
+        option.value = commune.nom;
+        option.label = `${commune.nom}  ${commune.departement?.nom || commune.codeDepartement || ''}`;
+        option.dataset.insee = commune.code;
+        option.dataset.departement = commune.departement?.nom || '';
+        option.dataset.departementLabel = `${commune.codeDepartement || ''} - ${commune.departement?.nom || ''}`;
+        fragment.appendChild(option);
+    });
+    datalist.appendChild(fragment);
+}
+
+function clearVilleOptions() {
+    const datalist = document.getElementById('villeSuggestions');
+    if (datalist) datalist.innerHTML = '';
+}
+
+function syncVilleMetadata(input) {
+    const meta = getVilleMetaFromInput(input);
+    if (meta) {
+        currentVilleMeta = meta;
+        input.dataset.insee = meta.insee || '';
+        input.dataset.departement = meta.departement || '';
+        input.dataset.departementLabel = meta.departementLabel || '';
+    } else {
+        currentVilleMeta = null;
+        input.dataset.insee = '';
+        input.dataset.departement = '';
+        input.dataset.departementLabel = '';
+    }
+}
+
+function getVilleMetaFromInput(input) {
+    if (!input) return null;
+    const datalist = document.getElementById('villeSuggestions');
+    if (!datalist) return null;
+    const value = input.value.trim().toLowerCase();
+    if (!value) return null;
+    const option = Array.from(datalist.options).find(opt => (opt.value || '').toLowerCase() === value);
+    if (!option) return null;
+    return {
+        nom: option.value,
+        insee: option.dataset.insee || '',
+        departement: option.dataset.departement || '',
+        departementLabel: option.dataset.departementLabel || ''
+    };
+}
+
+
+function setHelperText(element, text) {
+    if (element) {
+        element.textContent = text;
+    }
 }
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -195,3 +360,9 @@ window.addEventListener('scroll', () => {
 
 console.log('%cBioMarket Insights', 'color: #7cb342; font-size: 20px; font-weight: bold;');
 console.log('%cÉtudes de marché bio par IA - Développé avec passion', 'color: #2d5016; font-size: 12px;');
+
+
+
+
+
+
